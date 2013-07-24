@@ -7,8 +7,6 @@ public class Solution {
         if(num == null || num.length < 3) return res;
         Arrays.sort(num);
         int[]sorted = num;
-        int lastI = -1;
-        int lastJ = -1;
         
         Map<Integer,Integer> countMap = new HashMap<Integer,Integer>();
         for( int i = 0; i< num.length; i++) {
@@ -19,6 +17,7 @@ public class Solution {
             Integer val = countMap.get(sorted[i]);
             countMap.put(sorted[i], val+1);
         }
+        int lastI = -1;
         for( int i = 0; i < sorted.length; i ++) {
             if(lastI != -1 && sorted[i] == sorted[lastI]){
                 continue;
@@ -30,6 +29,7 @@ public class Solution {
                 countMap.put(sorted[i],val-1);
             }
             int sum = -1 * sorted[i];
+            int lastJ = -1;
             for(int j = i+1; j < sorted.length; j++ ){
                 if( lastJ != -1 && sorted[j] == sorted[lastJ]){
                     continue;
@@ -45,16 +45,6 @@ public class Solution {
                     countMap.put(sorted[j], thisVal);
                     continue;
                 }
-
-                /*  if( res.size() != 0){
-                    ArrayList<Integer> lastRes = res.get(res.size()-1);
-                    if( (lastRes.get(0) == sorted[i]) &&
-                        (lastRes.get(1) == sorted[j]) &&
-                        (lastRes.get(2) == sum - sorted[j]) ) {
-                        countMap.put(sorted[j], thisVal);
-                        continue;
-                    }
-                }*/
                 ArrayList<Integer> thisRes = new ArrayList<Integer>();
                 thisRes.add(sorted[i]);
                 thisRes.add(sorted[j]);
