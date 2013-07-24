@@ -18,6 +18,9 @@ public class Solution {
             countMap.put(sorted[i], val+1);
         }
         for( int i = 0; i < sorted.length; i ++) {
+            if(i > 0 && sorted[i] == sorted[i-1]){
+                continue;
+            }
             Integer val = countMap.get(sorted[i]);
             if( val == 1) {
                 countMap.remove(sorted[i]);
@@ -26,6 +29,9 @@ public class Solution {
             }
             int sum = -1 * sorted[i];
             for(int j = i+1; j < sorted.length; j++ ){
+                if(sorted[j] == sorted[j-1]){
+                    continue;
+                }
                 Integer thisVal = countMap.get(sorted[j]);
                 if( thisVal == 1) {
                     countMap.remove(sorted[j]);
@@ -38,7 +44,7 @@ public class Solution {
                     continue;
                 }
 
-                if( res.size() != 0){
+                /*  if( res.size() != 0){
                     ArrayList<Integer> lastRes = res.get(res.size()-1);
                     if( (lastRes.get(0) == sorted[i]) &&
                         (lastRes.get(1) == sorted[j]) &&
@@ -46,7 +52,7 @@ public class Solution {
                         countMap.put(sorted[j], thisVal);
                         continue;
                     }
-                }
+                }*/
                 ArrayList<Integer> thisRes = new ArrayList<Integer>();
                 thisRes.add(sorted[i]);
                 thisRes.add(sorted[j]);
