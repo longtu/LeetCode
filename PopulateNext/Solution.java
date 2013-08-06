@@ -20,9 +20,12 @@ public class Solution {
         // DO NOT write main() function
         TreeLinkNode parent = root;
         TreeLinkNode nextParent = null;
-        while(parent != null && nextParent != null) {
+        while(parent != null || nextParent != null) {
             while(parent != null) {
                 if(parent.left != null){
+                    if(nextParent == null){
+                        nextParent = parent.left;
+                    }
                     if(parent.right != null){
                         parent.left.next = parent.right;
                     }
@@ -38,14 +41,17 @@ public class Solution {
                     }
                 }
                 if(parent.right != null) {
-                        TreeLinkNode nextParentWithChild = findNextParentWithChild(parent);
-                        if(nextParentWithChild == null) {
-                            parent.right.next = null;
-                        }
-                        else{
-                            parent.right.next = (nextParentWithChild.left != null)? 
-                                (nextParentWithChild.left):(nextParentWithChild.right);
-                        }
+                    if(nextParent == null) {
+                        nextParent = parent.right;
+                    }
+                    TreeLinkNode nextParentWithChild = findNextParentWithChild(parent);
+                    if(nextParentWithChild == null) {
+                        parent.right.next = null;
+                    }
+                    else{
+                        parent.right.next = (nextParentWithChild.left != null)? 
+                            (nextParentWithChild.left):(nextParentWithChild.right);
+                    }
                 }
                 parent = parent.next;
             }         
