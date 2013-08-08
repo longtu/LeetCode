@@ -49,9 +49,6 @@ public class Solution {
             myQueue.addFirst(startIndex);
             while(myQueue.size()!=0) {
                 Integer thisNodeIndex = myQueue.removeLast();
-                if(whiteList.contains(startIndex)) {
-                    continue;
-                }
                 whiteList.add(thisNodeIndex);
                 int x = getX(thisNodeIndex, width);
                 int y = getY(thisNodeIndex, width);
