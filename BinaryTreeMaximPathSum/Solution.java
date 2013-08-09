@@ -23,13 +23,13 @@ public class Solution {
             return new MetaData(Integer.MIN_VALUE,0);
         }
 
-        MetaData leftData = maxPathSum(root.left);
-        MetaData rightData = maxPathSum(root.right);
+        MetaData leftData = maxPathSumWithMeta(root.left);
+        MetaData rightData = maxPathSumWithMeta(root.right);
 
         int maxSinglePath = ((leftData.maxSinglePath > rightData.maxSinglePath)?
-                            (leftData.maxSinglePath):(rightData.maxSinglePath))+val;
+                            (leftData.maxSinglePath):(rightData.maxSinglePath))+root.val;
 
-        int myPathSumWithNode = leftData.maxSinglePath + rightData.maxSinglePath +val;
+        int myPathSumWithNode = leftData.maxSinglePath + rightData.maxSinglePath +root.val;
         int maxPathSumOfChildren = ((leftData.maxPathSum > rightData.maxPathSum)?
                             (leftData.maxPathSum):(rightData.maxPathSum));
         int myMaxPathSum = (myPathSumWithNode > maxPathSumOfChildren)? 
