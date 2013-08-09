@@ -20,7 +20,7 @@ public class Solution {
         // Start typing your Java solution below
         // DO NOT write main() function
         if(root==null){
-            return new MetaData(0,0);
+            return new MetaData(Integer.MIN_VALUE,0);
         }
 
         MetaData leftData = maxPathSum(root.left);
@@ -38,6 +38,8 @@ public class Solution {
     }
 
     public int maxPathSum(TreeNode root) {
+        if(root == null)
+            return 0;
         return maxPathSumWithMeta(root).maxPathSum;
     }
 }
