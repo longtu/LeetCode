@@ -10,31 +10,37 @@
 public class Solution {
     class MetaData{
         int maxPathSum;
-        int maxSinglePath;
-        public MetaData(int maxPathSum, int maxSinglePath){
+        int maxConnectPath;
+        public MetaData(int maxPathSum, int maxConnectPath){
             this.maxPathSum = maxPathSum;
-            this.maxSinglePath = maxSinglePath;
+            this.maxConnectPath = maxConnectPath;
         }
     }
     public MetaData maxPathSumWithMeta(TreeNode root) {
         // Start typing your Java solution below
         // DO NOT write main() function
         if(root==null){
-            return new MetaData(Integer.MIN_VALUE,0);
+            return new MetaData(Integer.MIN_VALUE, Integer.MIN_VALUE);
         }
 
         MetaData leftData = maxPathSumWithMeta(root.left);
         MetaData rightData = maxPathSumWithMeta(root.right);
 
-        int maxSinglePath = ((leftData.maxSinglePath > rightData.maxSinglePath)?
-                            (leftData.maxSinglePath):(rightData.maxSinglePath))+root.val;
+        int maxConnectPathWithChild = ((leftData.maxConnectPath > rightData.maxConnectPath)?
+                            (leftData.maxConnectPath):(rightData.maxConnectPath))+root.val;
+        int myMaxConnectPath = (root.val > maxConnectPathWithChild)?
+                            (root.val):(maxConnectPathWithChild);
 
-        int myPathSumWithNode = leftData.maxSinglePath + rightData.maxSinglePath +root.val;
+        int maxWithRoot = root.val;
+        if(leftData.maxConnectPath > 0)
+            maxWithRoot += leftData.maxConnectPath;
+        if(rightData.maxConnectPath > 0)
+            maxWithRoot += rightData.maxConnectPath;
         int maxPathSumOfChildren = ((leftData.maxPathSum > rightData.maxPathSum)?
                             (leftData.maxPathSum):(rightData.maxPathSum));
-        int myMaxPathSum = (myPathSumWithNode > maxPathSumOfChildren)? 
-            (myPathSumWithNode):(maxPathSumOfChildren);
-        return new MetaData(myMaxPathSum, maxSinglePath);
+        int myMaxPathSum = (maxWithRoot > maxPathSumOfChildren)? 
+            (maxWithRoot):(maxPathSumOfChildren);
+        return new MetaData(myMaxPathSum, myMaxConnectPath);
     }
 
     public int maxPathSum(TreeNode root) {
