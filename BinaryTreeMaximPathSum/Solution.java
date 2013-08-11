@@ -26,10 +26,10 @@ public class Solution {
         MetaData leftData = maxPathSumWithMeta(root.left);
         MetaData rightData = maxPathSumWithMeta(root.right);
 
-        int maxConnectPathWithChild = ((leftData.maxConnectPath > rightData.maxConnectPath)?
-                            (leftData.maxConnectPath):(rightData.maxConnectPath))+root.val;
-        int myMaxConnectPath = (root.val > maxConnectPathWithChild)?
-                            (root.val):(maxConnectPathWithChild);
+        int maxConnectPathOfChild = ((leftData.maxConnectPath > rightData.maxConnectPath)?
+                            (leftData.maxConnectPath):(rightData.maxConnectPath));
+        int myMaxConnectPath = (maxConnectPathOfChild > 0)?
+                            (maxConnectPathOfChild+root.val):(root.val);
 
         int maxWithRoot = root.val;
         if(leftData.maxConnectPath > 0)
