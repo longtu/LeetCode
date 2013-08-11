@@ -46,10 +46,10 @@ public class Solution {
             if(!connect[start][i]){
                 continue;
             }
-            String palinString = s.substring(start,i+1);
-            thisPart.add(palinString);
+            thisPart.add(s.substring(start, i+1));
             dfs(i+1, s, connect, res, thisPart);
-            thisPart.remove(palinString);
+            //remove uses Equals(), therefore we need to remove the Last 1
+            thisPart.remove(thisPart.size()-1);
         }
     }
 }
