@@ -3,7 +3,7 @@ public class Solution {
     class Meta{
         int end;
         int start;
-        public Meta(int end, int start){
+        public Meta(int start, int end){
             this.end = end;
             this.start = start;
         }
@@ -36,6 +36,6 @@ public class Solution {
             if(end-start+1 > res)
                 res=end-start+1;
         }
-       return res; 
+        return res; 
     }
 }
