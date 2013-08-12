@@ -11,16 +11,18 @@ public class Solution {
         return (misMatch == 1);
     }
 
-    private boolean[][] buildAdjMap(String[] arr){
+    private ArrayList<List<Integer>> buildAdjMap(String[] arr){
         int len = arr.length;
-        boolean[][] adjMap = new boolean [len][len];
+        ArrayList<List<Integer>> adjMap = new ArrayList<List<Integer>>();
         for(int i = 0; i< len; ++i){
-            adjMap[i][i] = false;
+            List<Integer> thisList = new LinkedList<Integer>();
             for(int j = 0; j< len; ++j){
                 boolean val = isConnect(arr[i], arr[j]);
-                adjMap[i][j] = val;
-                adjMap[j][i] = val;
+                if(val){
+                    thisList.add(j);
+                }
             }
+            adjMap.add(thisList);
         }
         return adjMap;
     }
@@ -40,32 +42,36 @@ public class Solution {
             }
             i++;
         }
-        boolean[][] adj = buildAdjMap(strs);
-        int[] res = new int[1];
-        res[0] = Integer.MAX_VALUE;
+        ArrayList<List<Integer>> adj = buildAdjMap(strs);
         Set<String> visited = new HashSet<String>();
-        dfs(strs,visited,adj,start_index,end,1,res);
-        if(res[0] == Integer.MAX_VALUE)
-            res[0] = 0;
-        return res[0]; 
+        return bfs(strs,visited,adj,start_index,end);
     }
-    private void dfs(String [] arr, Set<String> visited, boolean[][] adj, int start,
-    String end, int step, int [] res){
+
+    private int bfs(String [] arr, Set<String> visited, ArrayList<List<Integer>> adj, 
+            int src, String end){
         //find the end        
-        if(arr[start].equals(end)){
-          if(step < res[0])
-             res[0] = step;
-             return; 
-        }
-        for(int i = 0; i<arr.length;++i){
-            if(visited.contains(arr[i]) ||
-                    !adj[start][i]){
-                continue;
+        LinkedList<Integer> queue = new LinkedList<Integer>();
+        LinkedList<Integer> levels = new LinkedList<Integer>();
+        queue.addFirst(src);
+        levels.addFirst(1);
+        visited.add(arr[src]);
+
+        while(queue.size() >0){
+            int i = queue.removeLast();
+            int level = levels.removeLast();
+            if(arr[i].equals(end)){
+             return level; 
             }
-            visited.add(arr[i]);
-            dfs(arr,visited,adj,i,end,step+1,res);
-            visited.remove(arr[i]);
+            List<Integer> neighbours = adj.get(i);
+            for(int j : neighbours){
+                if(visited.contains(arr[j]))
+                    continue;
+                visited.add(arr[j]);
+                queue.addFirst(j);
+                levels.addFirst(level+1);
+            }
         }
+        return 0;
     }
 }
 
