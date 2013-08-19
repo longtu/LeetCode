@@ -1,0 +1,91 @@
+Problems Index
+//******//
+Best practise:
+1)Draw example in draft/sketch
+2)Generate test cases to run the code
+
+Something to Look at:
+1)Java Generic operations on Deque/PriorityQueue/Stack
+2)Prepare Questions to ask
+3)Prepare Project highlights and contributions
+
+/****************************************************************/
+/****Topic 1: Tree***********************************************/
+/****************************************************************/
+1)Populating Next Right Pointers in Each Node O(1) space O(N) time  
+    a)Any binary tree
+    leverage parent next pointer, consider different cases for left/right children
+
+2)Flatten Binary Tree to Linked List, using rightChild link as next pointer
+    a)PreOrder solution[LeetCode]
+    b)If the BinaryTree is search tree, return in-order solution[NonLeetCode]
+    Keep track of leftMost/rightMost for each node, update accordingly in recursion   
+    c)Convert Sorted Array to Balanced Binary Search Tree
+    //Binary Cut Recursion 
+    d)Convert Sorted List to Balanced Binary Search Tree [Practice]
+    //convert to ArrayFirst or do it with nice recursion 
+    e) Determine if a BST is valid
+    (Needs MetaData min, max, isValid) 
+
+3)Sum of Path(from root to leaf) equals to K
+    a)determine if there is one solution
+    b)fetch all solutions
+    Recursion with K-root.getValue() down to root children, use a shared List to remember path
+    and another list to remember all results
+    c)If the path may start/end at any node in the tree(rather than only from root to leaf), find the max sum
+    //Recursion with MetaData{
+        int maxPathRootWithNode
+        int maxPathUnderSubTreeNode
+    }see LeetCode Solution for detailed relationship    
+    d)Sum Root to Leaf Numbers(each node only from 0-9 and represents one digit of a number)
+    Post Preorder pass parent sum value, Order to retrive sum 
+
+4)Min/Max Depth of a Tree
+    a)Max Depth of a Tree can do simple recursion but Min Depth cannot, as null return 0, max depth will not be affected, however, minDepth will cause a node with one null child and another not null child is not height 1, but non-null child height+1
+    b)Therefore Max depth works for simple recursion but MinDepth needs more check
+    c)We can use BFS to solve the problem, Min is the nearest leaf node return and Max is the farthest leaf node return (How to keep track of level: swap two lists or use two seperate Queue)
+    d)Balanced Binary Search Tree
+    //Similar recursion but needs two information, height and isBalanced, can use integer -1 to merge these two information in one data type 
+
+5)Binary Tree Level Order Print
+    a)From Top to bottom, print level
+    //BFS with MetaData, Two Queue, Multiple Lists
+    b)Pring from bottom to top
+    //Insert in the front of the list, or use a stack to reverse, or just reverse
+    c)From top to bottom in Zig-Zag
+    //multiple lists: use a lable to mark left-right/right-left insert into the List 
+    //Queue:Use a stack to reverse in case of need reverse
+
+6)From In Order + (Post/Pre Order) to construct a Binary Tree
+    a)Post+Pre does not work
+
+7)Tree Similarity
+    a)Determine if it is same tree?
+    b)Determine if it is symmetric tree?
+
+8)Structureally unique Binary Search Trees for nodes from 1 to N
+    a)How many of them
+    //use recursion, combinations of possible left/right children node numbers
+    b)How to build all of them
+/****************************************************************/
+/****Topic 2: Hashing, Searching & counting**********************/
+/****************************************************************/
+
+
+
+/****************************************************************/
+/****Topic 3: Dynamic Programming********************************/
+/****************************************************************/
+
+
+/****************************************************************/
+/****Topic 4: Graph**********************************************/
+/****************************************************************/
+1)Min&Max Depth of a tree
+    See 4) of Topic 1
+
+
+/****************************************************************/
+/****Topic 5: Tricks*********************************************/
+/****************************************************************/
+ 
