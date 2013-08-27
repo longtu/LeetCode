@@ -64,18 +64,45 @@ Something to Look at:
     b)Determine if it is symmetric tree?
 
 8)Structureally unique Binary Search Trees for nodes from 1 to N
-    a)How many of them
+    a)How many of them?How to build them?
     //use recursion, combinations of possible left/right children node numbers
-    b)How to build all of them
+    h(n)= h(0)*h(n-1)+h(1)*h(n-2) + ... + h(n-1)h(0) (where n>=2，h(0) = h(1) = 1) 
+    [Catalan Number]    h(n)=C(2n,n)/(n+1) (n=1,2,3,...)
+    b)n pair of parenthesis, how many possible ways to match them?
+    //f(2n) = f(0)*f(2n-2) + f(2)*f(2n - 4) + ... + f(2n - 4)*f(2) + f(2n-2)*f(0)
+    //f(0)*f(2n-2) means the 0th and 2n-1th element matches, and then it goes recursively to
+    //the 2n-2 elements in the between; f(2n) = h(n)
+    c)one infinite stack has in-stack sequece 1,2,3...n-1,n, what's the number of possible
+    out-stack sequence? h(n) how about out-stack 1,2,3,...n and possible ways of in-stack?
+    d)2n points on the circule, the number of ways to connect the 2n points using n lines
+    e)n matrix multiply chain, the ways to parenthesis the chain is h(n): P=a1×a2×a3×……×an
+    f)number of ways from (0,0) to (n,n): only right, and up is allowed and cannot exceed the diagnose, h(n)
+    g)2K people in two row, each row has n people and sorted by increasing height order, the person in the back row has to be higher than the person in front of him, what's the total possible ways of doing it? h(n)
+
+9)Lowest Common Ancestor of two tree nodes
+    a)What if the tree is BST: simple
+        Search the tree find the Node node where (node.val-src.val)*(node.val-dest.val) < 0 ||
+        node == src || node == dest
+    b)What if the node has parent pointer?
+        Similar to find the last common node for two linked List that diverges
+    c)What if it is a generic binary tree?
+        Using recursion:
+        a) return two lists of the ancestors and compare the first non-common node
+        b) LCA() returns null if root does not contain any of the two, otherwise return root or         root.left/root.right
+
 /****************************************************************/
-/****Topic 2: Hashing, Searching & counting**********************/
+/****Topic 2: Recursion & Dynamic Programming********************/
 /****************************************************************/
+1)Regular expression matching with . and * support
 
 
 
 /****************************************************************/
-/****Topic 3: Dynamic Programming********************************/
+/****Topic 3: Hashing, Searching & counting**********************/
 /****************************************************************/
+
+
+
 
 
 /****************************************************************/
