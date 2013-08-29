@@ -7,6 +7,7 @@ public class Solution {
         boolean hasReverse = false;
         int src = 0;
         int dest = num.length-1;
+        //This loop can be replaced with a O(n) loop
         for(int j = num.length-2; j >=0 && !hasReverse; --j)
             for(int i= num.length-1; i >j; --i) {
                 if(num[i] > num[j])
