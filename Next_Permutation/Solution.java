@@ -1,7 +1,7 @@
 public class Solution {
 
     public void nextPermutation(int[] num) {
-        if(num == null || num.size()<=1)
+        if(num == null || num.length<=1)
             return;
 
         boolean hasReverse = false;
@@ -23,6 +23,7 @@ public class Solution {
             num[dest] = tmp;
             src++;
         }
+        dest = num.length-1;
         for(;src<dest;src++,dest--)
         {
             int tmp = num[src];
