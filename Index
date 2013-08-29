@@ -93,6 +93,18 @@ Something to Look at:
 /****************************************************************/
 /****Topic 2: Recursion & Dynamic Programming********************/
 /****************************************************************/
+1)Return all possible subsets of a collection of integer S, with each subset in increasing order
+  a)[combination]Iterative : ans(k+1) = ans(k) +: ans(k).append(S[k+1])
+  b)What if there might be duplicates in the collection?
+    consider the case of S[k] == S[k+1], there is only several subsets in ans(k) needs
+    to be updated with S[k+1], the size of ans(k) will help determine what are the subsets
+    if ans(k) is also ordered
+  c) Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
+    //Method1:Use the same way as b), but remember to remove the subsets with size > k
+    //Method2:combine(n,k) recursion to combine(i-1,k-1) for i = k...n
+    
+
+
 1)Regular expression matching with . and * support
 
 
