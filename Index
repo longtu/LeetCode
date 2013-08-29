@@ -102,6 +102,21 @@ Something to Look at:
   c) Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
     //Method1:Use the same way as b), but remember to remove the subsets with size > k
     //Method2:combine(n,k) recursion to combine(i-1,k-1) for i = k...n
+  d)return all possible letter combinations that a phone number can represents
+    eg. "23" ->["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
+    //same as c)
+2)Permutation Sequence
+    The set [1,2,3,…,n] contains a total of n! unique permutations.
+    By listing and labeling all of the permutations in order,
+    We get the following sequence (ie, for n = 3):
+        "123"
+        "132"
+        "213"
+        "231"
+        "312"
+        "321"
+    Given n and k, return the kth permutation sequence.
+    Note: Given n will be between 1 and 9 inclusive.
     
 
 
