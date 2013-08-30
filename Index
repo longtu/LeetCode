@@ -119,9 +119,11 @@ Something to Look at:
     Note: Given n will be between 1 and 9 inclusive.
     //See answer a recursion with:  
     public String getPermutation(ArrayList<Integer> digits, int k)
-
-
-
+3)Unique Permutation
+    Given a collection of numbers that might contain duplicates, return all possible unique permutations. For example,
+    [1,1,2] have the following unique permutations:
+    [1,1,2], [1,2,1], and [2,1,1].
+    //Solution: recusion, but stop before the first element same as the integer being inserted
 
 1)Regular expression matching with . and * support
 
