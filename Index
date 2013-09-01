@@ -125,6 +125,20 @@ Something to Look at:
     [1,1,2], [1,2,1], and [2,1,1].
     //Solution: recusion, but stop before the first element same as the integer being inserted
 
+4)KnapSack Problem:
+  a)Combinations sum without duplicates(0-1knapsack):
+
+  b)Combinations sum with duplicates(Unbounded knapsack):
+
+
+
+
+
+
+
+
+
+
 1)Regular expression matching with . and * support
 
 
