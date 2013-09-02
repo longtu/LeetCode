@@ -143,7 +143,10 @@ Something to Look at:
 
 6)Spirial Matrix
     a)Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
-    
+    //very easy to break the boundary condition, should test carefully 
+    b)Given an integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.
+    //This is an easier recursion
+
 
 1)Regular expression matching with . and * support
 
