@@ -144,10 +144,22 @@ Something to Look at:
 6)Spirial Matrix
     a)Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
     //very easy to break the boundary condition, should test carefully 
+    //Boundary condition is: one column
     b)Given an integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.
     //This is an easier recursion
 
+7)Restore IP address from a String:
+    //DFS analogous process
+    //Boundary check: when should be 0 invalid? what is the range of IP Address?
 
+8) Triangle Problem
+    a)minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
+    //bottom-up, save space(save initialization), only one instance of n array needs to be used
+    // if keep using top-down, right to left can also save space usage
+    //so the direction of recursion: top-down/bottom-up or left-right, right-left can help simplify the solution 
+    b)Pascal Triangle
+    //top-down
+9)
 1)Regular expression matching with . and * support
 
 
