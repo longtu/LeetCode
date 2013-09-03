@@ -167,6 +167,10 @@ Something to Look at:
    b)Interleaving String
     //Two dimension DP, only one step recursion, therefore can be optimized using one dimension
 
+10) Two step recursion to smaller problem, constant space
+    a) Decode digits into Alphabetic characters
+    b) Fibnacci Number
+    c) Ways to sum up to N points from win/tie/lose
 
 
 1)Regular expression matching with . and * support
