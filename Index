@@ -46,6 +46,7 @@ Something to Look at:
     c)We can use BFS to solve the problem, Min is the nearest leaf node return and Max is the farthest leaf node return (How to keep track of level: swap two lists or use two seperate Queue)
     d)Balanced Binary Search Tree
     //Similar recursion but needs two information, height and isBalanced, can use integer -1 to merge these two information in one data type 
+    // If the defination 'Balanced' means max/min leaf depth differs no more than 1, it's a different problem
 
 5)Binary Tree Level Order Print
     a)From Top to bottom, print level
@@ -159,7 +160,15 @@ Something to Look at:
     //so the direction of recursion: top-down/bottom-up or left-right, right-left can help simplify the solution 
     b)Pascal Triangle
     //top-down
-9)
+
+9) Subsequence problems
+   a)Distingct Subsequences
+    //One Dimension DP, needs sum on previous result
+   b)Interleaving String
+    //Two dimension DP, only one step recursion, therefore can be optimized using one dimension
+
+
+
 1)Regular expression matching with . and * support
 
 
