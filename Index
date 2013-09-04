@@ -8,6 +8,7 @@ Something to Look at:
 1)Java Generic operations on Deque/PriorityQueue/Stack
 2)Prepare Questions to ask
 3)Prepare Project highlights and contributions
+4)Prefix Tree/String matching Algorithm
 
 /****************************************************************/
 /****Topic 1: Tree***********************************************/
@@ -168,24 +169,26 @@ Something to Look at:
     //Two dimension DP, only one step recursion, therefore can be optimized using one dimension
     c)Longest Parlindromic Substring
     //Similarly with b), Two dimension DP, one step recursion, can be optimized using one dimension
-    /***two unsolved problems:
-    d)Wild card matching:regular expression matching
-    e)Regular expression matching with . and * support
 
 10) Two step recursion to smaller problem, constant space
     a) Decode digits into Alphabetic characters
     b) Fibnacci Number
     c) Ways to sum up to N points from win/tie/lose
-    /****/
-    d)Jump Game
 
 11)Scramble String:
     //Three dimension recursion
     //boundary and relation constraint between three dimensions
     //error in boundary of recursion see ERROR in code
-    
-12)Two dimension Maximum subarray
 
+13)Jump Game
+    //boolean problem: for loop, update max(which is boundary of the loop)
+    //min step problem: for loop, maintain a interval of current jump times, update the interval
+
+
+/TODO:/    
+12)Two dimension Maximum subarray
+14)Wild card matching:regular expression matching
+15)Regular expression matching with . and * support
 
 
 
@@ -193,6 +196,7 @@ Something to Look at:
 /****************************************************************/
 /****Topic 3: Hashing, Searching & counting**********************/
 /****************************************************************/
+
 
 
 
