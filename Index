@@ -196,8 +196,20 @@ Something to Look at:
 /****************************************************************/
 /****Topic 3: Hashing, Searching & counting**********************/
 /****************************************************************/
-
-
+1)Binary Search
+    a)Simple Exact search of key
+    b)Search first/last occurance of key 
+    c)Search hard/soft upper/lowwer boundary with key
+    d)Search target with rotated array(no duplicates)
+    e)Search minimum in rotated array
+    f)Search Kth minimum in rotated array
+    g)Search Kth minimum in union of two sorted array
+        // O(K) or log(m) + log(n)
+    h)Search median in union of two sorted array
+    i)find integer square root
+    j)Search kth number from m servers:
+        using K size Heap
+        using array and merge
 
 
 
