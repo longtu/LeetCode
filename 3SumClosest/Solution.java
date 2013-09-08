@@ -9,6 +9,7 @@ public class Solution {
         int ret = 0;
         for (int i = 0 ; i < num.length-1; ++i) {
             int sum = target - num[i];
+            //this i+1 would make sure the triple in increasing order
             for(int start = i+1, int end = num.length-1;
                 start < end; ) {
                 int val = num[start] + num[end];

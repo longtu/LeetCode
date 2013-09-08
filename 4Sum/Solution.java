@@ -1,64 +1,63 @@
 public class Solution {
 
-    public ArrayList<ArrayList<Integer>> fourSum(int[] num, int target) {
-        
-        ArrayList<ArrayList<Integer>> res= new ArrayList<ArrayList<Integer>>();
-        if(num == null || num.length < 4)
-            return res;
-
-        Arrays.sort(num);
-        Map<Integer, List<Set<Integer>>> countMap = new HashMap<Integer, List<Set<Integer>>>();
-        int lastI = -1;
-        for(int i = 0; i< num.length; i++) {
-            if(lastI != -1 && num[lastI] == num[i] ){
-                continue;
-            }
-            int lastJ = -1;
-            for(int j = i+1; j < num.length; j++) {
-                if(lastJ != -1 && num[lastJ] == num[j]){
-                    continue;
-                }
-                int sum = num[i] + num[j];        
-                Set<Integer> pair = new HashSet<Integer>();
-                pair.add(i);
-                pair.add(j);
-                lastJ = j;
-                lastI = i;
-                List<Set<Integer>> pairList = null;
-                if(countMap.containsKey(sum)){
-                    pairList = countMap.get(sum);
-                }
-                else{
-                    pairList = new LinkedList<Set<Integer>>();
-                }
-                pairList.add(pair);
-                countMap.put(sum,pairList);
-            }
-        }
-        for(Integer sum: countMap.keySet()){
-            if(!countMap.containsKey(target - sum)){
-                continue;
-            }
-            List<Set<Integer>> srcPairList = countMap.get(sum);
-            List<Set<Integer>> destPairList = countMap.get(target-sum);
-            for(Set<Integer> srcPair: srcPairList){
-                for (Set<Integer> destPair: destPairList){
-                    Set<Integer> quatro = new HashSet<Integer>(srcPair);
-                    quatro.addAll(destPair);
-                    if(srcPair.size() < 4) {
-                        continue;
-                    }
-                    Integer[] thisArray = quatro.toArray(new Integer[quatro.size()]);
-                    Arrays.sort(thisArray);
-                    ArrayList<Integer> thisList = new ArrayList<Integer>();
-                    for(Integer val: thisArray) {
-                        thisList.add(val);
-                    }
-                    res.add(thisList);
-                }
-            }
-        }
-        return res;
-    }
+class Pair{
+	int left;
+	int right;
+	public Pair(int left, int right){
+		this.left = left;
+		this.right =right;
+	}
 }
-
+	private ArrayList<ArrayList<Integer> >getFours(int [] num, List<Pair> srcPairs,
+			List<Pair> destPairs){
+		ArrayList<ArrayList<Integer>> all = new ArrayList<ArrayList<Integer>>();
+		//this will make sure a<b<c<d
+		for(Pair src: srcPairs)
+			for(Pair dest:destPairs){
+				if(src.right < dest.left){
+					ArrayList<Integer> al = new ArrayList<Integer>();
+					al.add(num[src.left]);
+					al.add(num[src.right]);
+					al.add(num[dest.left]);
+					al.add(num[dest.right]);
+					all.add(al);
+				}
+			}
+		return all;
+	}
+	public ArrayList<ArrayList<Integer>> fourSum(int[] num, int target) {
+		//if input is invalid, return empty results
+		ArrayList<ArrayList<Integer>> all = new ArrayList<ArrayList<Integer>> ();
+		if(num == null || num.length < 4)
+			return all;
+		//sort first for removing duplicates in the future
+		Arrays.sort(num);
+		//building pair sum index map
+		Map<Integer, List<Pair>> pairSumMap = new HashMap<Integer, List<Pair>>();
+		for(int i = 0; i < num.length; ++i)
+			for(int j = i+1; j< num.length; ++j) {
+				int sum = num[i] + num [j];
+				Pair pair = new Pair(i, j);
+				if(!pairSumMap.containsKey(sum)){
+					pairSumMap.put(sum, new LinkedList<Pair>());
+				}
+				List<Pair> pairList = pairSumMap.get(sum);
+				pairList.add(pair);
+			}
+		//Finding two pairs sum to target
+		for(Integer val : pairSumMap.keySet()){
+			//otherwise may cause duplicates
+			if(val > target/2)
+				continue;
+			//no the other pair match
+			if(!pairSumMap.containsKey(target- val))
+				continue;
+			//src and dest
+			List<Pair> srcPairs = pairSumMap.get(val);
+			List<Pair> destPairs = pairSumMap.get(target-val);
+			ArrayList<ArrayList<Integer>> al = getFours(num,srcPairs, destPairs);
+			all.addAll(al);
+		}
+		return all;
+	}
+}

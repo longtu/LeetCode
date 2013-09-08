@@ -214,6 +214,18 @@ Something to Look at:
     k)Find Median of two sorted array in long(m+n)
         use j) method, even number and odd number cases are different
 
+2)K values in an Array sum to S
+    a) when k = 2, the best two solution is 
+        O(n) space hashtable and O(n) time, find all pairs, use ordering to make sure no duplicates
+        O(1) space and O(nlogn) time, firstly sort, the use two pointers move
+
+    b) when k = 3, the best two solution is 
+        solution 1: for each value v, do a) it will be O(n^2) time and O(n) space
+        solution 2: O(nlogn) sort, then do n times two array check (n^2), this method would support find NEAREST solution, how to make sure the triple in increasing order?
+
+    c) when k = 4, use any two pairs to build pair sum map <sum List<Pair>> in O(n^2), and reduces to two sum problem O(n^2) enforce results only have fours in order 
+
+
 
 
 /****************************************************************/
