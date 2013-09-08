@@ -206,11 +206,13 @@ Something to Look at:
     g)Search Kth minimum in union of two sorted array
         // O(K) or log(m) + log(n)
     h)Search median in union of two sorted array
+        //odd number and even number is different
     i)find integer square root
     j)Search kth number from m servers:
         using K size Heap
         using array and merge
-
+    k)Find Median of two sorted array in long(m+n)
+        use j) method, even number and odd number cases are different
 
 
 
