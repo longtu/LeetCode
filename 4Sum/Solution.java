@@ -1,4 +1,3 @@
-public class Solution {
 
 class Pair{
 	int left;
@@ -12,17 +11,26 @@ class Pair{
 			List<Pair> destPairs){
 		ArrayList<ArrayList<Integer>> all = new ArrayList<ArrayList<Integer>>();
 		//this will make sure a<b<c<d
-		for(Pair src: srcPairs)
+        //this will make sure left has no duplicates
+		Set<Integer> srcSet = new HashSet<Integer>();
+		for(Pair src: srcPairs){
+			Set<Integer> destSet = new HashSet<Integer>();
+			if(srcSet.contains(num[src.left]))
+				continue;
 			for(Pair dest:destPairs){
-				if(src.right < dest.left){
+                //this will make sure left has no duplicates
+				if(src.right < dest.left && !destSet.contains(num[dest.left])){
 					ArrayList<Integer> al = new ArrayList<Integer>();
 					al.add(num[src.left]);
 					al.add(num[src.right]);
 					al.add(num[dest.left]);
 					al.add(num[dest.right]);
+					destSet.add(num[dest.left]);
+					srcSet.add(num[src.left]);
 					all.add(al);
 				}
 			}
+		}
 		return all;
 	}
 	public ArrayList<ArrayList<Integer>> fourSum(int[] num, int target) {
@@ -34,8 +42,13 @@ class Pair{
 		Arrays.sort(num);
 		//building pair sum index map
 		Map<Integer, List<Pair>> pairSumMap = new HashMap<Integer, List<Pair>>();
-		for(int i = 0; i < num.length; ++i)
+		for(int i = 0; i < num.length; ++i) {
+            //cannot do short cut-here as (a,c) (b,d) might be useful when val[a]==val[b]
+            //and in the four (a, x) (b, y) 
 			for(int j = i+1; j< num.length; ++j) {
+                //this will make sure no duplicates from (a b) (a c) where val[b]== val[c]
+				if(num[j] == num[j-1] && num[j] != num [i])
+					continue;
 				int sum = num[i] + num [j];
 				Pair pair = new Pair(i, j);
 				if(!pairSumMap.containsKey(sum)){
@@ -44,6 +57,7 @@ class Pair{
 				List<Pair> pairList = pairSumMap.get(sum);
 				pairList.add(pair);
 			}
+		}
 		//Finding two pairs sum to target
 		for(Integer val : pairSumMap.keySet()){
 			//otherwise may cause duplicates
@@ -60,4 +74,3 @@ class Pair{
 		}
 		return all;
 	}
-}

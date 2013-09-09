@@ -224,6 +224,7 @@ Something to Look at:
         solution 2: O(nlogn) sort, then do n times two array check (n^2), this method would support find NEAREST solution, how to make sure the triple in increasing order?
 
     c) when k = 4, use any two pairs to build pair sum map <sum List<Pair>> in O(n^2), and reduces to two sum problem O(n^2) enforce results only have fours in order 
+        how to make sure there is no duplicates is very tricky and difficult
 
 
 
