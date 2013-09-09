@@ -248,3 +248,12 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 3,2,1 → 1,2,3
 1,1,5 → 1,5,1
 //Solution: O(n) interseting strcutre of least significant digits, the break point is the first node that has any lements right of it, but greater than it, we can then replace the point with smallest bigger element and sort the others. As the strcuture of the array, we can simply do it linear
+
+2)Two pointers trick
+    a)Longest substring without repeating Characters
+    b)Two/Three sum to S or Two/Three sum closest to S
+    c)
+
+3)LinkedList Implementation
+    a) Swap LinkedList nodes in pair of Two 
+       // Use helper
