@@ -153,6 +153,8 @@ Something to Look at:
 7)Restore IP address from a String:
     //DFS analogous process
     //Boundary check: when should be 0 invalid? what is the range of IP Address?
+  a)Suduku Solver
+        DFS
 
 8) Triangle Problem
     a)minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
@@ -250,9 +252,12 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 //Solution: O(n) interseting strcutre of least significant digits, the break point is the first node that has any lements right of it, but greater than it, we can then replace the point with smallest bigger element and sort the others. As the strcuture of the array, we can simply do it linear
 
 2)Two pointers trick
+    2.1)Two pointers advances
     a)Longest substring without repeating Characters
     b)Two/Three sum to S or Two/Three sum closest to S
-    c)
+    2.2)Two pointers merge
+    a)is String Parlidrome
+    b)Container with max water
 
 3)LinkedList Implementation
     a) Swap LinkedList nodes in pair of Two 
@@ -262,3 +267,4 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
         Swap to move integer i into A[i-1], the condition to stop swapping: in range + not equal swap 
 5)Observation and Analysis
     a)Trap drain water
+
