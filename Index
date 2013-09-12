@@ -270,4 +270,5 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
         Swap to move integer i into A[i-1], the condition to stop swapping: in range + not equal swap 
 5)Observation and Analysis
     a)Trap drain water
-
+    b)Longest Valid Parentheses
+        //only position instead of character will be needed to push
