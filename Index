@@ -263,8 +263,20 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
         b)Container with max water
 
 3)LinkedList Implementation
-    a) Swap LinkedList nodes in pair of Two 
-       // Use helper
+    a)Swap LinkedList nodes in pair of Two,Reverse LinkedList in group of K, Reverse Linked List from M to N
+        // Use helper, and a helper function reverse from node m to node n
+        //for reverse in group of K, either use recursion
+        //or use one more variable pre(started with helper) to avoid recursion
+    b)Remove duplicates from sorted List (either all duplicated entries or remove duplicates)
+        // Use helper, very careful to implement the loop
+    c)Two pointer trick:
+        (a)Remove Nth from the end of the List
+        (b)Detect Circle and return beginning of the circle
+            two pointers traverse at different speed of traverse, find the position the two pointers meet,
+            use the third pointer to start, and the first pointer start at the same time, these two pointers will meet at beginning of the             circle
+        (c)Detect the first common node of two merged lists
+            two pointers traverse to the end to figure out length of the two, and then two pointers restart traverse with length diff
+            the two pointers will meet at the beginning of the two merged lists
 4)constant space problem usually means a) solvable by only several variable b) solvable by using input data strucutre(SWAPPING)
     a)Find First Missing positive integer
         Swap to move integer i into A[i-1], the condition to stop swapping: in range + not equal swap 
@@ -272,3 +284,5 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
     a)Trap drain water
     b)Longest Valid Parentheses
         //only position instead of character will be needed to push
+6)Rotating
+    a)90 degree clock-wise rotate image

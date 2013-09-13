@@ -15,7 +15,7 @@ public class Solution {
         // DO NOT write main() function
         if(head == null || k<2)
             return head;
-        
+
         ListNode end = head;
         for(int i = 1; i<k && end != null; ++i){
             end = end.next;
@@ -28,17 +28,40 @@ public class Solution {
         }
     }
 
-
-
     private ListNode reverseList(ListNode head, ListNode tail){
         ListNode ret = tail.next;
-        List curr = head;
-        while(curr != tail.next){
+        //this value needs to be protected
+        ListNode end =tail.next;
+        ListNode curr = head;
+        while(curr != end){
             ListNode tmp = curr.next;
             curr.next = ret;
             ret = curr;
             curr = tmp;
         }
         return ret;
+    }
+
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+        ListNode helper = new ListNode(-1);
+
+        helper.next = head;
+        ListNode prev, start, end;
+        ListNode curr = helper;
+        for(int i = 0; i <=n; ++i, curr = curr.next){
+            if(curr == null)
+                throw new RuntimeException("Invalid input");
+            if(i == m -1){
+                prev = curr;
+            }
+            if(i == m){
+                start = curr;
+            }
+            if(i == n){
+                end = curr;
+            }
+        }
+        prev.next = reverseList(start, end);
+        return helper.next;
     }
 }
