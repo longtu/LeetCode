@@ -292,3 +292,14 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
         //for loop control
 6)Rotating
     a)90 degree clock-wise rotate image
+
+8)Best time to sell stock
+    single transaction(compare max), infinite transactions, double transactions(O(N))
+
+/****************************************************************/
+/****Topic 7: Big Data*******************************************/
+/****************************************************************/
+Bloom Filter: n items, m bits, hashtable number k, and error rate e
+k = ln2*(m/n) error rate is smallest, 
+m >= 1.44n*log(1/e) 
+counting filter to support deletion
