@@ -11,7 +11,7 @@ public class Solution {
 			return s.isEmpty();
 		if(s.isEmpty() && p.isEmpty())
 			return true;
-		if(s.isEmpty() || p.isEmpty())
+		if(p.isEmpty())
 			return false;
 
 		if(p.charAt(0) == '*'){
@@ -21,8 +21,13 @@ public class Solution {
 			}
 			return false;
 		}
-		if(p.charAt(0) == '?')
-			return isMatch(s.substring(1), p.substring(1));
-		return (p.charAt(0) == s.charAt(0)) && isMatch(s.substring(1), p.substring(1));
+        if(s.isEmpty())
+            return false;
+
+		if(p.charAt(0) == '?'){
+    		return isMatch(s.substring(1), p.substring(1));         
+		}
+		return (p.charAt(0) == s.charAt(0)) && isMatch(s.substring(1),
+				p.substring(1));
 	}
 }
