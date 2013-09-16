@@ -1,7 +1,7 @@
 //wild card matching
 public class Solution {
     public boolean isMatch(String s, String p) {
-		// Start typing your Java solution below
+        // Start typing your Java solution below
 		// DO NOT write main() function
 		if(s == null && p == null)
 			return true;
@@ -9,25 +9,41 @@ public class Solution {
 			return p.isEmpty();
 		if(p == null)
 			return s.isEmpty();
-		if(s.isEmpty() && p.isEmpty())
-			return true;
-		if(p.isEmpty())
-			return false;
 
-		if(p.charAt(0) == '*'){
-			for(int i =0; i<=s.length();++i){
-				if(isMatch(s.substring(i), p.substring(1)))
-					return true;
+		int []prev = new int[s.length()+1];
+		int [] next = null;
+		char[] src = s.toCharArray();
+		char[] pattern = p.toCharArray();
+		prev[0] = 1;
+		for(int i = 1;i<=p.length();++i){
+			next = new int[s.length()+1];
+			for(int j = 0; j<= s.length();++j){
+				if(pattern[i-1] == '*') {
+					if(j > 0 ) {
+						for(int k = 0; k<=j; ++k){
+							if(prev[k] == 1){
+								next[j] =1;
+								break;
+							}
+						}
+					}
+					else
+						next[j]=prev[j];
+				}
+				else if(pattern[i-1] == '?'){
+					if(j == 0)
+						continue;
+					next[j]=prev[j-1];
+				}
+				else {
+					if( j == 0)
+						continue;
+					if(prev[j-1] == 1 && pattern[i-1] == src[j-1])
+						next[j] = 1;
+				}
 			}
-			return false;
+			prev = next;
 		}
-        if(s.isEmpty())
-            return false;
-
-		if(p.charAt(0) == '?'){
-    		return isMatch(s.substring(1), p.substring(1));         
-		}
-		return (p.charAt(0) == s.charAt(0)) && isMatch(s.substring(1),
-				p.substring(1));
-	}
+		return prev[s.length()]==1;
+    }
 }
