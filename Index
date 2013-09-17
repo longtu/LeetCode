@@ -186,10 +186,13 @@ Something to Look at:
     //boolean problem: for loop, update max(which is boundary of the loop)
     //min step problem: for loop, maintain a interval of current jump times, update the interval
 
+14)Regular expression matches:
+    Wild card matching:regular expression matching
+    //DP is a good way to solve, however TLE, only greedy passes
+    //Inner and outter two while loop
 
 /TODO:/    
 12)Two dimension Maximum subarray
-14)Wild card matching:regular expression matching
 15)Regular expression matching with . and * support
 
 
