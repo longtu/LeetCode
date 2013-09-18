@@ -56,6 +56,7 @@ public boolean isMatch(String s, String p)
     int i=0;
     int j=0;
     int star=-1;
+    //this is the starting position in src where we can try to match *
     int sp=0;
 
     while(i<n)
@@ -74,6 +75,8 @@ public boolean isMatch(String s, String p)
             else
             {
                 j=star+1;
+                //whenever sp cannot match with the remaining, j will just go back to 
+                //next right to * and i will use next try with an increamented index in src
                 i=++sp;     //* match 1 character
             }
         }

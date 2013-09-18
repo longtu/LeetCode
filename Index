@@ -186,6 +186,7 @@ Something to Look at:
     Wild card matching:regular expression matching
     //DP is a good way to solve, however TLE, only greedy passes
     //Inner and outter two while loop
+    //Greedy impl is very hard
 
     Regular expression matching with . and * support
     //very careful implementation, two dimentional dp but only two steps look-back
