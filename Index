@@ -182,21 +182,21 @@ Something to Look at:
     //boundary and relation constraint between three dimensions
     //error in boundary of recursion see ERROR in code
 
-13)Jump Game
-    //boolean problem: for loop, update max(which is boundary of the loop)
-    //min step problem: for loop, maintain a interval of current jump times, update the interval
-
-14)Regular expression matches:
+12)Regular expression matches:
     Wild card matching:regular expression matching
     //DP is a good way to solve, however TLE, only greedy passes
     //Inner and outter two while loop
 
+    Regular expression matching with . and * support
+    //very careful implementation, two dimentional dp but only two steps look-back
+    //therefore eligible for space optimization
+
+13)Jump Game
+    //boolean problem: for loop, update max(which is boundary of the loop)
+    //min step problem: for loop, maintain a interval of current jump times, update the interval
+
 /TODO:/    
 12)Two dimension Maximum subarray
-15)Regular expression matching with . and * support
-
-
-
 
 /****************************************************************/
 /****Topic 3: Hashing, Searching & counting**********************/
@@ -260,17 +260,23 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 //Solution: O(n) interseting strcutre of least significant digits, the break point is the first node that has any lements right of it, but greater than it, we can then replace the point with smallest bigger element and sort the others. As the strcuture of the array, we can simply do it linear
 
 2)Two pointers trick
-    2.1)Two pointers advances
+    2.1)Same array: Two pointers advances
         a)Longest substring without repeating Characters
         b)Two/Three sum to S or Two/Three sum closest to S
         c)Longest valid parentheses
             //keep the difference count and start/end
 
-    2.2)Two pointers merge
+    2.2)Same Array: Two pointers merge
         a)is String Parlidrome
         b)Container with max water
         c)Reverse an Integer with no extra space(keep in mind if not with any string, overflow can happen)
         d)Palindrome Integer(all negative false, especially the Integer.Min, otherwise use two pointers merge)
+
+    2.3 Same array: Two passes of opposite direction
+        see 8)
+
+    2.4 Two arrays: Two pointers on two array advance together
+        see Topic DP.12)
 
 3)LinkedList Implementation
     a)Swap LinkedList nodes in pair of Two,Reverse LinkedList in group of K, Reverse Linked List from M to N
@@ -303,6 +309,7 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 
 8)Best time to sell stock
     single transaction(compare max), infinite transactions, double transactions(O(N))
+    //double transaction can use two passes of two different directions
 
 /****************************************************************/
 /****Topic 7: Big Data*******************************************/
