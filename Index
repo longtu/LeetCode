@@ -294,6 +294,10 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
         (c)Detect the first common node of two merged lists
             two pointers traverse to the end to figure out length of the two, and then two pointers restart traverse with length diff
             the two pointers will meet at the beginning of the two merged lists
+    d)Rotate List by K
+        // check relationship between k and size of the list
+        // helper is useful in implementation, and remember to connect tail to head
+
 4)constant space problem usually means a) solvable by only several variable b) solvable by using input data strucutre(SWAPPING)
     a)Find First Missing positive integer
         Swap to move integer i into A[i-1], the condition to stop swapping: in range + not equal swap 

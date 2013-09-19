@@ -11,7 +11,6 @@
  */
 public class Solution {
     
-    
     private int getSize(ListNode head){
         int size = 0;
         while(head!= null){
@@ -20,8 +19,6 @@ public class Solution {
         }
         return size;
     }
-    
-    
     
     public ListNode rotateRight(ListNode head, int n) {
        
@@ -41,7 +38,11 @@ public class Solution {
             curr = helper.next; 
         }
         helper.next = null;
-        curr.next = head;
-        return curr;
+        helper = curr;
+
+        while(curr.next != null;)
+            curr = curr.next;
+        curr.next = head; 
+        return helper;
     }
 }
