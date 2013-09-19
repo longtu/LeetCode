@@ -1,6 +1,5 @@
 /*12:06*/
 
-
 public class Solution {
 
     public boolean searchMatrix(int[][] matrix, int target) {
@@ -11,7 +10,7 @@ public class Solution {
         int end = matrix.length-1;
 
         while(start <= end){
-            int mid = start+ (end-start)>>1;
+            int mid = start+ ((end-start)>>1);
             if(matrix[mid][0] < target){
                 start = mid+1;
             }else if(matrix[mid][0] > target){
@@ -26,7 +25,7 @@ public class Solution {
         start = 0;
         end = matrix[end].length-1;
         while(start <=end){
-            int mid = start+ (end-start)>>1;
+            int mid = start+ ((end-start)>>1);
             if(matrix[row][mid] < target){
                 start = mid+1;
             }else if(matrix[row][mid] > target){
