@@ -203,6 +203,7 @@ Something to Look at:
 /****Topic 3: Hashing, Searching & counting**********************/
 /****************************************************************/
 1)Binary Search
+    //be careful about the << precedence
     a)Simple Exact search of key
     b)Search first/last occurance of key 
     c)Search hard/soft upper/lowwer boundary with key
