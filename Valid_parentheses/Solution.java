@@ -24,4 +24,55 @@ public class Solution{
         }
         return stack.isEmpty();
     }
+
+    //generate parenthesis
+	public LinkedList<String> genAllParenth(int n){
+
+		LinkedList<String> res = new LinkedList<String>();
+		if(n==0){
+			res.add(new String(""));
+			return res;
+		}
+		if(n==1){
+			res.add(new String("()"));
+			return res;
+		}
+		for(int k = 0; k<n; ++k){
+			LinkedList<String> leftSub = genAllParenth(k);
+			LinkedList<String> rightSub = genAllParenth(n-k-1);
+			for (String left: leftSub)
+				for(String right: rightSub){
+					StringBuilder sb = new StringBuilder(2*n);
+					sb.append("(");
+					sb.append(left);
+					sb.append(")");
+					sb.append(right);
+					res.add(sb.toString());
+				}
+		}
+		return res;
+	}
+	public LinkedList<String> genAllParenthDP(int n){
+
+		Map<Integer,LinkedList<String>> prevResults = new HashMap<Integer,LinkedList<String>>();
+		for(int i = 0; i<=n; ++i){
+			LinkedList<String> res = new LinkedList<String>();
+			if(i == 0){
+				res.add("");
+			}else{
+				for(int k = 0; k<i; ++k){
+					LinkedList<String> leftSub = prevResults.get(k);
+					LinkedList<String> rightSub = prevResults.get(i-k-1);
+					for (String left: leftSub)
+						for(String right: rightSub){
+							String sb = "(" +left+right+")";
+							res.add(sb);
+						}
+				}
+			}
+			prevResults.put(i, res);
+		}
+		return prevResults.get(n);
+	}
+    
 }

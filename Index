@@ -74,6 +74,8 @@ Something to Look at:
     //f(2n) = f(0)*f(2n-2) + f(2)*f(2n - 4) + ... + f(2n - 4)*f(2) + f(2n-2)*f(0)
     //f(0)*f(2n-2) means the 0th and 2n-1th element matches, and then it goes recursively to
     //the 2n-2 elements in the between; f(2n) = h(n)
+    //see solution for generating all these parenthesis, and this can also be solved using DFS
+    //basically backtracking...
     c)one infinite stack has in-stack sequece 1,2,3...n-1,n, what's the number of possible
     out-stack sequence? h(n) how about out-stack 1,2,3,...n and possible ways of in-stack?
     d)2n points on the circule, the number of ways to connect the 2n points using n lines
