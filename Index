@@ -252,6 +252,8 @@ Something to Look at:
     2)Integer2Roman:
         for each pos, mapps 0-3, 4, 5,6-8,9 to the char value
         appendAll
+4)Anagrams
+    sort before hashing
 
 /****************************************************************/
 /****Topic 4: Graph**********************************************/
@@ -280,6 +282,7 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
         b)Two/Three sum to S or Two/Three sum closest to S
         c)Longest valid parentheses
             //keep the difference count and start/end
+        d)Max subsum Array
 
     2.2)Same Array: Two pointers merge
         a)is String Parlidrome
