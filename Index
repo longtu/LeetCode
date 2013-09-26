@@ -200,6 +200,13 @@ Something to Look at:
 
 14) Max rectangular:
     //two dimension DP or use a stack/List to maintain increasing hight of rectangulars
+
+15) BackTracking:
+    1)Generate Valid Parenthesis: keep consistant relationship See 1.8: Remaining Right>= Left
+    2)DFS
+    3)Permutation, Combination
+    4)NQueens Problem
+
 /TODO:/    
 12)Two dimension Maximum subarray
 
