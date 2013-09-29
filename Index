@@ -212,9 +212,12 @@ Something to Look at:
     4)NQueens Problem
 
 16) Unique Paths
-    Simple one step DP, can be optimized using O(n) space
+    a)Simple one step DP, can be optimized using O(n) space
     //very similar to 12), but a extention to 2D
-    //if the step to right has to be smaller than down, see Topic 1.8 (f
+    b)if the step to right has to be smaller than down, see Topic 1.8 (f
+    c)If there is obstacle
+    //consider both direction would be affected(max/first?)
+    
 
 /TODO:/    
 12)Two dimension Maximum subarray

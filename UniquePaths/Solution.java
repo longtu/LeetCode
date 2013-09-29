@@ -32,19 +32,26 @@ public class Solution {
         int [][] paths = new int [2][n];
         for(int i = 0; i<2; ++i)
             paths[i] = new int[n];
+        //i == 0 will do early break
         for(int i =0; i < n ; ++i){
             if(obstacleGrid[0][i] != 1)
                 paths[0][i] = 1;
+            else
+                break;
         }
-
+        //bug1: not consider horizonal direction
+        //bug2: not consider horizonal direction can be affected by max obstacle
         for(int i = 1; i<m; ++i){
+            int maxBlock = -1;
             for(int j = 0; j<n; ++j){
                 paths[i%2][j] = 0;
-                if(obstacleGrid[i][j] == 1)
+                if(obstacleGrid[i][j] == 1){
+                    maxBlock = j;
                     continue;
+                }
                 for(int k = 0; k<=j;++k)
-                    paths[i%2][j] += paths[(i-1)%2][k];
-
+                    if(k >maxBlock)
+                        paths[i%2][j] += paths[(i-1)%2][k];
             }
         }
         return paths[(m-1)%2][n-1];
