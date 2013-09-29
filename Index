@@ -173,6 +173,10 @@ Something to Look at:
     //Two dimension DP, only one step recursion, therefore can be optimized using one dimension
     c)Longest Parlindromic Substring
     //Similarly with b), Two dimension DP, one step recursion, can be optimized using one dimension
+    TODO d): Longest increasing subsequence
+    e) Edit distance:
+    //one step, two dimention DP. can be optimzed using O(N) space
+    //similar with longest common subsequence
 
 10) Two step recursion to smaller problem, constant space
     a) Decode digits into Alphabetic characters
@@ -232,6 +236,8 @@ Something to Look at:
         using array and merge
     k)Find Median of two sorted array in long(m+n)
         use j) method, even number and odd number cases are different
+    TODO:matrix has all rows/columns sorted, find a key in the matrix
+    //use a special location of the matrix as pivot
 
 2)K values in an Array sum to S
     a) when k = 2, the best two solution is 
