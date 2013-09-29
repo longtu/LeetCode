@@ -334,6 +334,7 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
         // use helper helps a lot
     f)Merge K sorted Lists
         //use min Heap
+        //merge two sorted Arrays/Lists
 
 4)constant space problem usually means a) solvable by only several variable b) solvable by using input data strucutre(SWAPPING)
     a)Find First Missing positive integer

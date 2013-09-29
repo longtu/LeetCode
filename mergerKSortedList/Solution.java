@@ -10,6 +10,7 @@
  * }
  */
 public class Solution {
+    //K sorted lists
 	    class HeapKey{
 	        int listIndex;
 	        ListNode node;
@@ -51,4 +52,51 @@ public class Solution {
 	        }
 	        return helper.next;
 	    }
+        //merge two sorted Array
+        public void merge(int A[], int m, int B[], int n) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+            int i = m;
+            int j = n;
+            while(i >=1 && j>=1){
+                if(A[i-1] > B[j-1]) {
+                    A[i+j-1] = A[i-1];
+                    i--;
+                }
+                else {
+                    A[i+j-1] = B[j-1];
+                    j--;
+                }
+            }
+            while(j >=1 ){
+                A[i+j-1] = B[j-1];
+                j--;
+            }
+
+        }
+        //merge two sorted Lists
+        public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+            ListNode helper  = new ListNode(-1);
+            ListNode prev = helper;
+
+            while(l1 != null && l2 != null){
+                if(l1.val < l2.val){
+                    prev.next = l1;
+                    l1 = l1.next;
+                }else {
+                    prev.next = l2;
+                    l2 = l2.next;
+                }
+                prev = prev.next;
+                prev.next = null;
+            }
+            if(l1 != null) {
+                prev.next = l1;
+            }else {
+                prev.next = l2;
+            }
+            return helper.next;
+        }
 }
