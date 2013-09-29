@@ -345,6 +345,10 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
     single transaction(compare max), infinite transactions, double transactions(O(N))
     //double transaction can use two passes of two different directions
 
+9)Get Sum/Union of two string/array
+    a)Add Binary: Reverse, char/integer, carry
+    b)Sum two String of base K
+
 /****************************************************************/
 /****Topic 7: Big Data*******************************************/
 /**********************************************************r*****/
