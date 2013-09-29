@@ -75,89 +75,128 @@ public class Solution {
 		}
 		return find;
 	}
-	/**
-	 * V3.1: Hard Boundary find
-	 * Search LAST element that smaller than target, if not found, return -1
-	 */
-	public int binarySearch4(int[] A, int target) {
 
-		int start = 0;
-		int end = A.length-1;
+    /**
+     * V2.3 mutliple instances match
+     * Search Range of matche elements
+     */
+    public class Solution {
+        public int[] searchRange(int[] A, int target) {
+            int [] ret = new int[2];
+            ret[0] = -1;
+            ret[1] = -1;
+            if(A == null)
+                return ret;
+            int start = 0;
+            int end = A.length-1;
 
-		while(start <= end){
-			int mid = start +((end-start)>>1);
-			if(A[mid] > target)
-				end = mid-1;
-			else if(A[mid] < target)
-				start = mid+1;
-			else {
-				end = mid-1;
-			}
-		}
-		return end;
-	}
-	/**
-	 * V3.1: Hard Boundary find
-	 * Search First element that greater than target, if not found, return -1
-	 */
-	public int binarySearch5(int[] A, int target) {
+            ret[0] = findBoundary(start,end,A,target,true);
+            ret[1] = findBoundary(start,end,A,target,false);
 
-		int start = 0;
-		int end = A.length-1;
+            return ret;
+        }
+        int findBoundary(int start, int end, int [] A, int target, boolean isLeft){
+            int find = -1;
+            while(start <= end){
+                int mid = start + ((end-start)>>1);
+                if(A[mid] > target ){
+                    end = mid-1;
+                }else if(A[mid] < target){
+                    start = mid +1;
+                }else {
+                    find = mid;
+                    if(isLeft)
+                        end = mid-1;
+                    else
+                        start = mid+1;
+                }
+            }
+            return find;
+        }
+    }
+    /**
+     * V3.1: Hard Boundary find
+     * Search LAST element that smaller than target, if not found, return -1
+     */
+    public int binarySearch4(int[] A, int target) {
 
-		while(start <= end){
-			int mid = start +((end-start)>>1);
-			if(A[mid] > target)
-				end = mid-1;
-			else if(A[mid] < target)
-				start = mid+1;
-			else {
-				start = mid+1;
-			}
-		}
-		return (start == A.length)?(-1):start;
-	}
-	/**
-	 * V4.1: Soft Boundary find
-	 * Search First element that equals or bigger than target, if not found, return -1
-	 * V3.2 + 1
-	 *
-	 * V4.2: Soft Boundary find
-	 * Search Last element that smaller or equals target, if not found, return -1
-	 * V3.1 - 1
-	 */
-	
-	
-	/** Find any Range in 	sorted array with O(logn)
-	 ** 					unsorted array with O(nlogn)
-	 */
+        int start = 0;
+        int end = A.length-1;
+
+        while(start <= end){
+            int mid = start +((end-start)>>1);
+            if(A[mid] > target)
+                end = mid-1;
+            else if(A[mid] < target)
+                start = mid+1;
+            else {
+                end = mid-1;
+            }
+        }
+        return end;
+    }
+    /**
+     * V3.1: Hard Boundary find
+     * Search First element that greater than target, if not found, return -1
+     */
+    public int binarySearch5(int[] A, int target) {
+
+        int start = 0;
+        int end = A.length-1;
+
+        while(start <= end){
+            int mid = start +((end-start)>>1);
+            if(A[mid] > target)
+                end = mid-1;
+            else if(A[mid] < target)
+                start = mid+1;
+            else {
+                start = mid+1;
+            }
+        }
+        return (start == A.length)?(-1):start;
+    }
+    /**
+     * V4.1: Soft Boundary find
+     * Search First element that equals or bigger than target, if not found, return -1
+     * V3.2 + 1
+     *
+     * V4.2: Soft Boundary find
+     * Search Last element that smaller or equals target, if not found, return -1
+     * V3.1 - 1
+     */
 
 
-	/** V4 k step rotated sorted Array, no duplicates
-	 */
-	public int binarySearch6(int[] A, int target) {
-		int start = 0;
-		int end = A.length-1;
-		
-		while(start <= end){
-			int mid = start +((end-start)>>2);
-			if(A[mid] > target){
-				//right of mid is sorted, so smaller elements only on the left
-				if(A[end] > A[mid]){
-					end = mid-1;
-				}else if(A[start] <= target){
-					end = mid -1;
-				}else{
-					start = mid+1;
-				}
-				
-			}else if(A[mid] < target){
-				//left of mid is sorted, so bigger elements only on the right
-				if(A[mid] > A[start]){
-					start = mid +1;
-				}else if(A[end] >= target){
-					start = mid +1;
-				}else{
+    /** Find any Range in 	sorted array with O(logn)
+     ** 					unsorted array with O(nlogn)
+     */
+
+
+    /** V4 k step rotated sorted Array, no duplicates
+    */
+    public int binarySearch6(int[] A, int target) {
+        int start = 0;
+        int end = A.length-1;
+
+        while(start <= end){
+            int mid = start +((end-start)>>2);
+            if(A[mid] > target){
+                //right of mid is sorted, so smaller elements only on the left
+                if(A[end] > A[mid]){
+                    end = mid-1;
+                }else if(A[start] <= target){
+                    end = mid -1;
+                }else{
+                    start = mid+1;
+                }
+
+            }else if(A[mid] < target){
+                //left of mid is sorted, so bigger elements only on the right
+                if(A[mid] > A[start]){
+                    start = mid +1;
+                }else if(A[end] >= target){
+                    start = mid +1;
+                }else{
 					end = mid-1;
 				}
 			}

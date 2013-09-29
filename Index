@@ -221,8 +221,9 @@ Something to Look at:
     //be careful about the << precedence
     a)Simple Exact search of key
     b)Search first/last occurance of key 
-        // search 2DMatrix
+        //search range(left,right) for matched Key
     c)Search hard/soft upper/lowwer boundary with key
+        // search 2DMatrix
     d)Search target with rotated array(no duplicates)
     e)Search minimum in rotated array
     f)Search Kth minimum in rotated array
