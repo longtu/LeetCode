@@ -211,6 +211,11 @@ Something to Look at:
     3)Permutation, Combination
     4)NQueens Problem
 
+16) Unique Paths
+    Simple one step DP, can be optimized using O(n) space
+    //very similar to 12), but a extention to 2D
+    //if the step to right has to be smaller than down, see Topic 1.8 (f
+
 /TODO:/    
 12)Two dimension Maximum subarray
 
