@@ -1,0 +1,65 @@
+/****************************************************************/
+/****Topic 7: Big Data*******************************************/
+/**********************************************************r*****/
+KEY:
+    1)Firstly look at if there is data struture can load all data in a single node:
+      bitMap, Trie, two-level-bucketing, or bloom filter
+    2)If not, let's do paritioning to different nodes(hashing/bucketing)  
+    3)If only one machine is allowed or we want to save IO between different machines, we can put all paritions on the same machine and reduce them all together
+    4)Reduce the problem into final results using external sort/heap/merge sort
+
+1) Trie Tree n words, avg length len(h)--> build time n*len = n*h, single query time: O(len)=O(h) space:
+O(n*len)
+    Think of Trie as a hash tree specialized in string(optimized for string comparision)
+
+    a)one text file of 10k lines, one word each line, find out top m frequent words
+        assume there are n (n<10k) disctinct words: O(10k*len+ n*lgm) 
+    b)1G file with only 1M memory can be used, one word each line, and upper limit for each word is 16 byte
+        partition; trie+heap to find max k
+    c)10G strings with duplicates,remove duplicates
+        partition; trie+heap to find max k
+    d) query word limit is 255 byte, total 10G query, in total 3 million distinct words, find top k query words with max 1G memory
+        3M*255 < 10G, therefore can be loaded into memory: Trie or HashTable
+        Use a heap
+    e) Another important usage for trie is text/phone number completion 
+
+
+2)Two(Multi)-level bucketing: especially useful for finding median number
+    Think of bucketing a range hashing(partitioning) method and can keep the original  sequence:
+    a) 500G 32-bit/64-bit integers, how to find median number with several M memory
+        A interger range can be used for direct address: 2^20 = 1M
+        two/three level bucketing the integers, and you will be able to know the xth
+        of a smaller level bucket
+    b)5G integers, find all the integers has no dupliates
+        bucketing + bitmap for each bucket
+         
+3)Hashing partition (for marking or counting, then sort/heap), for limited size integer/string, Trie tree is applicable to help
+    all problem of 1) can be solved with hashing parition then reducing the results
+    in terms of: counting, top k, removing/keep dupliates, or two dataset similarity comparision
+
+
+4)Bloom Filter: can be used as dictionary error allowance, n items, m bits, hashtable number k, and error rate e
+k = ln2*(m/n) error rate is smallest, 
+m >= 1.44n*log(1/e) 
+counting filter to support deletion
+    a)5G URLs each URL is of 64 bytes, with 4G memory
+        m>= 1.44*n*log100 = 10n = 10*5G/8 = ~5G, therefore we can use bloom filter
+5)Bitmap: Especially useful for integers labeling, check for existance,but not support counting
+    if we use bit size of 2 instead of 1, we can determine if there is duplicates
+6)Inverted Indexing becomes useful when document concerned.
+    web/doc key word search, search engine
+7)Map reduce
+    a)count appearance of each word in a set of documents
+    b)We have N machines and each can process O(N) numbers, we have O(N^2) numbers, how to find
+    meidan number for them?
+    //sort+merge sort
+
+8)Pagination and indexing: A very big file cannot be loaded into memory, one integer each line, how to find 100 random values from the big file?
+    //paginating the dataset, generate a random key and use the key to get the indexed value
+
+9)LBS: location based search
+    1)Geo hashing: not sufficient though
+    http://iamzhongyong.iteye.com/blog/1399333
+    http://www.cnblogs.com/dengxinglin/archive/2012/12/14/2817761.html
+    2) R Tree
+    http://blog.csdn.net/v_july_v/article/details/11288807

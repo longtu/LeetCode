@@ -1,0 +1,88 @@
+/****************************************************************/
+/****Topic 5: Tricks*********************************************/
+/****************************************************************/
+1)Next Permutation
+Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
+If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).The replacement must be in-place, do not allocate extra memory.
+
+Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.
+1,2,3 → 1,3,2
+3,2,1 → 1,2,3
+1,1,5 → 1,5,1
+//Solution: O(n) interseting strcutre of least significant digits, the break point is the first node that has any lements right of it, but greater than it, we can then replace the point with smallest bigger element and sort the others. As the strcuture of the array, we can simply do it linear
+//very similar to bucketing solution (2) in Topic 7
+
+2)Two pointers trick
+    2.1)Same array: Two pointers advances
+        a)Longest substring without repeating Characters
+        b)Two/Three sum to S or Two/Three sum closest to S
+        c)Longest valid parentheses
+            //keep the difference count and start/end
+        d)Max subsum Array
+
+    2.2)Same Array: Two pointers merge
+        a)is String Parlidrome
+        b)Container with max water
+        c)Reverse an Integer with no extra space(keep in mind if not with any string, overflow can happen)
+        d)Palindrome Integer(all negative false, especially the Integer.Min, otherwise use two pointers merge)
+        e)three color sort, need to keep remember the boundary between first two
+
+    2.3 Same array: Two passes of opposite direction
+        see 8)
+
+    2.4 Two arrays: Two pointers on two array advance together
+        see Topic DP.12)
+
+3)LinkedList Implementation
+    a)Swap LinkedList nodes in pair of Two,Reverse LinkedList in group of K, Reverse Linked List from M to N
+        // Use helper, and a helper function reverse from node m to node n
+        //for reverse in group of K, either use recursion
+        //or use one more variable pre(started with helper) to avoid recursion
+    b)Remove duplicates from sorted List (either all duplicated entries or remove duplicates)
+        // Use helper, very careful to implement the loop
+    c)Two pointer trick:
+        (a)Remove Nth from the end of the List
+        (b)Detect Circle and return beginning of the circle
+            two pointers traverse at different speed of traverse, find the position the two pointers meet,
+            use the third pointer to start, and the first pointer start at the same time, these two pointers will meet at beginning of the             circle
+        (c)Detect the first common node of two merged lists
+            two pointers traverse to the end to figure out length of the two, and then two pointers restart traverse with length diff
+            the two pointers will meet at the beginning of the two merged lists
+    d)Rotate List by K
+        // check relationship between k and size of the list
+        // helper is useful in implementation, and remember to connect tail to head
+    e)Partition List
+        // use helper helps a lot
+    f)Merge K sorted Lists
+        //use min Heap
+        //merge two sorted Arrays/Lists
+
+4)constant space problem usually means a) solvable by only several variable b) solvable by using input data strucutre(SWAPPING)
+    a)Find First Missing positive integer
+        Swap to move integer i into A[i-1], the condition to stop swapping: in range + not equal swap 
+    b)Set matrix zeros with constant space
+    //be careful about the first line/column
+5)Observation and Analysis
+    a)Trap drain water
+    b)Longest Valid Parentheses
+        //only position instead of character will be needed to push
+    c)Merge/Insert Intervals
+        // how to use comparable+compare/comparator+compare
+        // how to decide to intervals overlaps
+        //for loop control
+6)Rotating
+    a)90 degree clock-wise rotate image
+
+8)Best time to sell stock
+    single transaction(compare max), infinite transactions, double transactions(O(N))
+    //double transaction can use two passes of two different directions
+
+9)Get Sum/Union of two string/array
+    a)Add Binary: Reverse, char/integer, carry
+    b)Sum two String of base K
+10)Linear labeling and counting:
+    a)CountAndSay
+    two variables: count/last
+    b)lengthOfLastWord
+    vaiable:Last+preprocessing
+

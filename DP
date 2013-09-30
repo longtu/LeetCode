@@ -1,0 +1,129 @@
+/****************************************************************/
+/****Topic 2: Recursion & Dynamic Programming********************/
+/****************************************************************/
+1)Return all possible subsets of a collection of integer S, with each subset in increasing order
+  a)[combination]Iterative : ans(k+1) = ans(k) +: ans(k).append(S[k+1])
+  b)What if there might be duplicates in the collection?
+    consider the case of S[k] == S[k+1], there is only several subsets in ans(k) needs
+    to be updated with S[k+1], the size of ans(k) will help determine what are the subsets
+    if ans(k) is also ordered
+  c) Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
+    //Method1:Use the same way as b), but remember to remove the subsets with size > k
+    //Method2:combine(n,k) recursion to combine(i-1,k-1) for i = k...n
+  d)return all possible letter combinations that a phone number can represents
+    eg. "23" ->["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
+    //same as c)
+2)Permutation Sequence
+    The set [1,2,3,…,n] contains a total of n! unique permutations.
+    By listing and labeling all of the permutations in order,
+    We get the following sequence (ie, for n = 3):
+        "123"
+        "132"
+        "213"
+        "231"
+        "312"
+        "321"
+    Given n and k, return the kth permutation sequence.
+    Note: Given n will be between 1 and 9 inclusive.
+    //See answer a recursion with:  
+    public String getPermutation(ArrayList<Integer> digits, int k)
+3)Unique Permutation
+    Given a collection of numbers that might contain duplicates, return all possible unique permutations. For example,
+    [1,1,2] have the following unique permutations:
+    [1,1,2], [1,2,1], and [2,1,1].
+    //Solution: recusion, but stop before the first element same as the integer being inserted
+
+4)Combination Sum problem
+  a)Combinations sum without duplicates
+    //(0-1knapsack): difficult to remove duplicates recursions
+    //Recursion DFS easier to code, however it is less efficient
+    // in order to remove duplicates, either put the results in the interface and reset flag
+    // or use return value and use the index to check if the same value index is being used
+    //Conclusion: in case of duplication may happen, DFS with Results in interface and flag is much easier to code with
+
+  b)Combinations sum with duplicates():
+    //Recursion
+
+5)Kanpsack http://blog.csdn.net/hhygcy/article/details/3955683
+    a)Change Making Problem
+    b)SubsetSum(Unique Subset would be good)
+    c)Set parition to minimize the difference
+
+6)Spirial Matrix
+    a)Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
+    //very easy to break the boundary condition, should test carefully 
+    //Boundary condition is: one column
+    b)Given an integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.
+    //This is an easier recursion
+
+7)Restore IP address from a String:
+    //DFS analogous process
+    //Boundary check: when should be 0 invalid? what is the range of IP Address?
+  a)Suduku Solver
+        DFS
+
+8) Triangle Problem
+    a)minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
+    //bottom-up, save space(save initialization), only one instance of n array needs to be used
+    // if keep using top-down, right to left can also save space usage
+    //so the direction of recursion: top-down/bottom-up or left-right, right-left can help simplify the solution 
+    b)Pascal Triangle
+    //top-down
+
+9) Subsequence problems
+    a)Distingct Subsequences
+    //One Dimension DP, needs sum on previous result
+    b)Interleaving String
+    //Two dimension DP, only one step recursion, therefore can be optimized using one dimension
+    c)Longest Parlindromic Substring
+    //Similarly with b), Two dimension DP, one step recursion, can be optimized using one dimension
+    TODO d): Longest increasing subsequence
+    e) Edit distance:
+    //one step, two dimention DP. can be optimzed using O(N) space
+    //similar with longest common subsequence
+
+10) Two step recursion to smaller problem, constant space
+    a) Decode digits into Alphabetic characters
+    b) Fibnacci Number
+    c) Ways to sum up to N points from win/tie/lose
+
+11)Scramble String:
+    //Three dimension recursion
+    //boundary and relation constraint between three dimensions
+    //error in boundary of recursion see ERROR in code
+
+12)Regular expression matches:
+    Wild card matching:regular expression matching
+    //DP is a good way to solve, however TLE, only greedy passes
+    //Inner and outter two while loop
+    //Greedy impl is very hard
+
+    Regular expression matching with . and * support
+    //very careful implementation, two dimentional dp but only two steps look-back
+    //therefore eligible for space optimization
+
+13)Jump Game
+    //boolean problem: for loop, update max(which is boundary of the loop)
+    //min step problem: for loop, maintain a interval of current jump times, update the interval
+
+14) Max rectangular:
+    //two dimension DP or use a stack/List to maintain increasing hight of rectangulars
+
+15) BackTracking:
+    1)Generate Valid Parenthesis: keep consistant relationship See 1.8: Remaining Right>= Left
+    2)DFS
+    3)Permutation, Combination
+    4)NQueens Problem
+
+16) Unique Paths
+    a)Simple one step DP, can be optimized using O(n) space
+    //very similar to 12), but a extention to 2D
+    b)if the step to right has to be smaller than down, see Topic 1.8 (f
+    c)If there is obstacle
+    //consider both direction would be affected(max/first?)
+    
+
+/TODO:/    
+12)Two dimension Maximum subarray
+
+

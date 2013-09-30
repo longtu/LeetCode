@@ -1,0 +1,48 @@
+/****************************************************************/
+/****Topic 3: Hashing, Searching & counting**********************/
+/****************************************************************/
+1)Binary Search
+    //be careful about the << precedence
+    a)Simple Exact search of key
+    b)Search first/last occurance of key 
+        //search range(left,right) for matched Key
+    c)Search hard/soft upper/lowwer boundary with key
+        // search 2DMatrix
+    d)Search target with rotated array(no duplicates)
+    e)Search minimum in rotated array
+    f)Search Kth minimum in rotated array
+    g)Search Kth minimum in union of two sorted array
+        // O(K) or log(m) + log(n)
+    h)Search median in union of two sorted array
+        //odd number and even number is different
+    i)find integer square root
+    j)Search kth number from m servers:
+        using K size Heap
+        using array and merge
+    k)Find Median of two sorted array in long(m+n)
+        use j) method, even number and odd number cases are different
+    TODO:matrix has all rows/columns sorted, find a key in the matrix
+    //use a special location of the matrix as pivot
+
+2)K values in an Array sum to S
+    a) when k = 2, the best two solution is 
+        O(n) space hashtable and O(n) time, find all pairs, use ordering to make sure no duplicates
+        O(1) space and O(nlogn) time, firstly sort, the use two pointers move
+
+    b) when k = 3, the best two solution is 
+        solution 1: for each value v, do a) it will be O(n^2) time and O(n) space
+        solution 2: O(nlogn) sort, then do n times two array check (n^2), this method would support find NEAREST solution, how to make sure the triple in increasing order?
+
+    c) when k = 4, use any two pairs to build pair sum map <sum List<Pair>> in O(n^2), and reduces to two sum problem O(n^2) enforce results only have fours in order 
+        how to make sure there is no duplicates is very tricky and difficult
+
+3)Roman & Integer
+    1)Roman2Integer:
+        find the val for each character, negative the val if next character has higher val
+        sum all val
+    2)Integer2Roman:
+        for each pos, mapps 0-3, 4, 5,6-8,9 to the char value
+        appendAll
+4)Anagrams
+    sort before hashing
+
