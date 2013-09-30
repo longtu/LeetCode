@@ -121,9 +121,45 @@
     b)if the step to right has to be smaller than down, see Topic 1.8 (f
     c)If there is obstacle
     //consider both direction would be affected(max/first?)
-    
+
+17) Classic DPs:
+    DP1:
+        a)Matrix Multiply Chain:
+        //M[i,j] = min(M[i,k]+ M[k,j]+pipkpj) n^2 space, n^3 time
+        //no optimization can be done
+        b)Longest Common Parlindrome SubString/SubSequence
+        //M[i,j] where j = i+k, k from 1,2,3....increasing,similar with a)
+    DP2:
+        a) Longest Common SubSequence
+        //M[i,j] = M[i-1,j-1] +1 if A[i] = A[j] or max(M[i,j-1], M[i-1,j])   
+        //Use a seperate Matrix to use as path reference the process
+        //only one step recursion, can be optimized with linear space 
+
+        b) Edit Distance
+        //Very very Similar to a)
+        //Cost can be arbitratry, and change the DP function a little bit
+        
+        c) Longest increasing SubSequence
+        //Method1:L(i) = { 1 + Max ( L(j) ) } where j < i and arr[j] < arr[i] 
+        //and if there is no such j then L(i) = 1, result is return max(L(i)) where 0 < i < n
+        //O(n^2)
+        //Method2: sort nlogn, the goes back to a), n^2
+        
+        d)桥两边的城市分别是a(1)...a(n)和b(1)...b(n).这里的要求a(i)只可以和b(i)之间造桥,同时两座桥之间不能交叉.希望可以得到一个尽量多座桥的方案.
+        //same as c)
+
+        e)Box Stacking. You are given a set of n types of rectangular 3-D boxes, where the i^th box has height h(i), width w(i) and depth d(i) (all real numbers). You want to create a stack of boxes which is as tall as possible, but you can only stack a box on top of another box if the dimensions of the 2-D base of the lower box are each strictly larger than those of the 2-D base of the higher box. Of course, you can rotate a box so that any side functions as its base. It is also allowable to use multiple instances of the same type of box.
+        //因为箱子可以翻转的缘故.我们首先定义我们的箱子的长宽高分别是h,w,d.为了避免重复计算,我们约定w<=d.这样每个箱子可以改成3个箱子.这样我们就不用在考虑旋转的问题了.第一步,我们先把箱子按照w*d的值来排序.(为社么要排序读者可以自己想想).然后我们的模型就开始用H(j)来表示第j个箱子时这个箱子的高度.记得最长递增子序列的约束条件是Ai<Aj.这里的条件只是改成了对应的di<dj&&wi<wj.同时原来的+1也变成了+hi.
+        //H(j) = max{H(i)} +hj  where i<j Wi>Wj and di>dj
+        
+    DP3:
+       a) Longest Common SubString
+        //M[i,j] = M[i-1,j-1] +1 if A[i] = A[j] or 0
+        //Final Solution = max(M[i,j]), O(mn) both space and time
+        //how to retrieve back?http://gongqi.iteye.com/blog/1517447
+         
+       b) Longest increasing subString
+        // O(N) trick solution
 
 /TODO:/    
 12)Two dimension Maximum subarray
-
-
