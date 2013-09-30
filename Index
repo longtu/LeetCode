@@ -359,6 +359,12 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 9)Get Sum/Union of two string/array
     a)Add Binary: Reverse, char/integer, carry
     b)Sum two String of base K
+10)Linear labeling and counting:
+    a)CountAndSay
+    two variables: count/last
+    b)lengthOfLastWord
+    vaiable:Last+preprocessing
+
 
 /****************************************************************/
 /****Topic 7: Big Data*******************************************/
