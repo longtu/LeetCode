@@ -161,5 +161,8 @@
        b) Longest increasing subString
         // O(N) trick solution
 
+13) Maximal Rectangular of two-dimensional Array
+    structure is similar as Two dimension subarray, however max needs to be updated everytime
+    O(N^2) space, O(N^3) time
 /TODO:/    
 12)Two dimension Maximum subarray
