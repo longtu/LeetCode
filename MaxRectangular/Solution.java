@@ -21,7 +21,7 @@ public class Solution {
     			int last = -1;
     			int maxWidth = 0;
     			for(int y = 0; y<width; ++y){
-    				if(dp[x][y] == 1 && matrix[x][y] == '1'){
+    				if(dp[x][y] == 1 && matrix[x+h][y] == '1'){
     					if(last == -1)
     						last = y;
     					dp[x][y] = 1;
