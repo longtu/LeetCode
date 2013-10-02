@@ -175,35 +175,30 @@ public class Solution {
     /** V4 k step rotated sorted Array, no duplicates
     */
     public int binarySearch6(int[] A, int target) {
+        int find = -1;
+        if(A == null)
+            return find;
         int start = 0;
         int end = A.length-1;
-
-        while(start <= end){
-            int mid = start +((end-start)>>2);
-            if(A[mid] > target){
-                //right of mid is sorted, so smaller elements only on the left
-                if(A[end] > A[mid]){
+        while(start<=end){
+            int mid = start + ((end-start)>>1);
+            if(A[mid] == target)
+                return mid;
+            if(A[start] <= A[mid]){
+                if(target >=A[start] && target < A[mid])
                     end = mid-1;
-                }else if(A[start] <= target){
-                    end = mid -1;
-                }else{
+                else
                     start = mid+1;
-                }
-
-            }else if(A[mid] < target){
-                //left of mid is sorted, so bigger elements only on the right
-                if(A[mid] > A[start]){
-                    start = mid +1;
-                }else if(A[end] >= target){
-                    start = mid +1;
-                }else{
-					end = mid-1;
-				}
-			}
-			else return mid;
-		}
-		return -1;
-	}
+            }
+            else{
+                if(target > A[mid] && target <=A[end])
+                    start = mid+1;
+                else
+                    end = mid-1;
+            } 
+        }
+        return find;        
+    }
 	
 	/** find the Kth smallest element in rotated array */
 	/** assume input has no duplicates **/
