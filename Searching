@@ -10,7 +10,7 @@
         // search 2DMatrix
     d)Search target with rotated array(no duplicates)
     e)Search minimum in rotated array
-    f)Search Kth minimum in rotated array
+    f)Search Kth minimum in rotated array(with/out duplicates)
     g)Search Kth minimum in union of two sorted array
         // O(K) or log(m) + log(n)
     h)Search median in union of two sorted array
