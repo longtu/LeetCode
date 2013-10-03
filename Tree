@@ -14,7 +14,8 @@
     d)Convert Sorted List to Balanced Binary Search Tree [Practice]
     //convert to ArrayFirst or do it with nice recursion 
     e) Determine if a BST is valid
-    (Needs MetaData min, max, isValid) 
+    //Method1:(Needs MetaData min, max, isValid) 
+    //Method2:InOrder traversal, has to be strictly increasing
 
 3)Sum of Path(from root to leaf) equals to K
     a)determine if there is one solution
@@ -96,4 +97,13 @@
         a) return two lists of the ancestors and compare the first non-common node
         b) LCA() returns null if root does not contain any of the two, otherwise return root or         root.left/root.right
 
-/
+10)Nearest node to key
+    //a)along the path to leaf, calculate the minDiff between node value, and remember the min
+    //max integer = 0x7FFFFFFF;
+
+12)Median of dataStream
+    //Method1: Balanced-BST
+    O(logN) insert, O(logN) find
+    //Method2: MaxHeap and MinHeap
+    O(logN) insert, O(1) find
+    First insert, then adjust the size, always insert to the first when it's all empty

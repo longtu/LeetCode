@@ -77,7 +77,6 @@
     //Two dimension DP, only one step recursion, therefore can be optimized using one dimension
     c)Longest Parlindromic Substring
     //Similarly with b), Two dimension DP, one step recursion, can be optimized using one dimension
-    TODO d): Longest increasing subsequence
     e) Edit distance:
     //one step, two dimention DP. can be optimzed using O(N) space
     //similar with longest common subsequence
@@ -114,6 +113,7 @@
     2)DFS
     3)Permutation, Combination
     4)NQueens Problem
+    See 19) problem b
 
 16) Unique Paths
     a)Simple one step DP, can be optimized using O(n) space
@@ -161,8 +161,24 @@
        b) Longest increasing subString
         // O(N) trick solution
 
-13) Maximal Rectangular of two-dimensional Array
+18) a)Maximal Rectangular of two-dimensional Array
     structure is similar as Two dimension subarray, however max needs to be updated everytime
     O(N^2) space, O(N^3) time
-/TODO:/    
-12)Two dimension Maximum subarray
+    b)Two dimension Maximum subarray
+        //for one-dimension, using O(N) scan
+
+19) Palindrom cutting:
+    a)MinimumCut:
+    //Method1: firstly using O(N^2) building Palindrome[i,j] map
+       O(N^3): minCut(i,j) = min(cut(i,k)+cut(k,j))+1 if Palindrom[i,j] == false
+                    = 0     if Palindrom[i,j] == true
+    //Method2: only cut for Palindrom[i,j] == ture
+        firstly using O(N^2) building Palindrome[i,j] map
+        Then use the relationship: O(N^2)
+               minCut(i) = 0 if Palindrome(0,i) is true;
+                         = min{minCut(j)}, + 1) if Palindrome(j+1,i) is true
+               ans = minCut(LEN-1) 
+    b)AllPossibleCuts:
+     //Method1: backtracking/DFS solution, with Palindrome[i,j] Map
+     //Method2: similar with Method1, but more recursive, adding results from smaller problem
+        Res(i,j) = aggregate all K such that String(i,k)*Res(k,j) where Palindrome(i,k) is true

@@ -15,7 +15,10 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 2)Two pointers trick
     2.1)Same array: Two pointers advances
         a)Longest substring without repeating Characters
-        b)Two/Three sum to S or Two/Three sum closest to S
+        b1)Two/Three sum to S or Two/Three sum closest to S
+        b2)Two sum of BST:
+            //convert to array, O(N) time + O(N) space
+            //convert BST to double linkedList in place, O(N) time and O(1)space
         c)Longest valid parentheses
             //keep the difference count and start/end
         d)Max subsum Array
@@ -62,6 +65,10 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
         Swap to move integer i into A[i-1], the condition to stop swapping: in range + not equal swap 
     b)Set matrix zeros with constant space
     //be careful about the first line/column
+    c)Groups of 1s:http://codercareer.blogspot.com/2013/02/no-41-group-of-1s-in-matrix.html
+    //input data+DFS/BFS
+    //DFS can be implemented using stack
+
 5)Observation and Analysis
     a)Trap drain water
     b)Longest Valid Parentheses
@@ -74,8 +81,17 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
     a)90 degree clock-wise rotate image
 
 8)Best time to sell stock
-    single transaction(compare max), infinite transactions, double transactions(O(N))
+    a)single transaction(compare max), infinite transactions, double transactions(O(N))
     //double transaction can use two passes of two different directions
+    b)Three Increasing Elements in an Array
+    //O(N) space, O(N) time, similar as 8)
+    //http://codercareer.blogspot.com/2013/02/no-42-three-increasing-elements-in-array.html
+    c)Find sequence pari(index i<j) such that A[i] - A[j] maximizes
+        //method1: divide and conquer O(N) time, recursion
+        //method2: additional array, O(N) scan twice, O(N)time, O(N)space
+        //method3:
+        Let us define diff[i] for the difference of a pair whose subtrahend is the ith number in an array. The minuend corresponding to the maximal diff[i] should be the maximum of all numbers on the left side of ith number in an array. We can get the maximal numbers on the left side of each ith number in an array while scanning the array once, and subtract the ith number for them. http://codercareer.blogspot.com/2011/12/no-28-pair-with-maximal-difference.html
+    //same as stock market problem
 
 9)Get Sum/Union of two string/array
     a)Add Binary: Reverse, char/integer, carry
@@ -85,4 +101,17 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
     two variables: count/last
     b)lengthOfLastWord
     vaiable:Last+preprocessing
+11) Find the single missing number from range 0-n
+    XOR
 
+12) Master's method:
+    F(n) = aF(N/B) +f(N)
+    n^logb(a) ~ f(N)
+    n^logb(a),  n^logb(a)logN, f(N)
+
+13) Stack with Min() Operation
+    //Method1: using auxilary stack, push to min_stack if new push is no greater than peek
+                pop() when min_stack peek is the same as peek
+    //Method2: Very tricky, do not push when new val < min, push val*2-min
+                when pop, and find a val < min, push out value min, and restore min as 2*min-val
+    http://codercareer.blogspot.com/2011/09/no-02-stack-with-function-min.html

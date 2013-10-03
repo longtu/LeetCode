@@ -4,4 +4,6 @@
 1)Min&Max Depth of a tree
     See 4) of Topic 1
 
-
+2)visted Label setting is differnt for DFS/BFS
+    DFS: before adding into stack, otherwise may cause duplication
+    BFS: after pulling from the stack, as nodes will be in order
