@@ -7,3 +7,7 @@
 2)visted Label setting is differnt for DFS/BFS
     DFS: before adding into stack, otherwise may cause duplication
     BFS: after pulling from the stack, as nodes will be in order
+
+3)String Path in Matrix:
+http://codercareer.blogspot.com/2012/02/no-34-string-path-in-matrix.html
+    DFS

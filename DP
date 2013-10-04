@@ -85,6 +85,9 @@
     a) Decode digits into Alphabetic characters
     b) Fibnacci Number
     c) Ways to sum up to N points from win/tie/lose
+    d) Stolen house problem
+    //think more about the problem relatioship
+    http://codercareer.blogspot.com/2013/02/no-44-maximal-stolen-values.html
 
 11)Scramble String:
     //Three dimension recursion
