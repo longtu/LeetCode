@@ -20,12 +20,18 @@ http://codercareer.blogspot.com/2013/02/no-38-digits-in-sequence.html
     2.1)Same array: Two pointers advances
         a)Longest substring without repeating Characters
         b1)Two/Three sum to S or Two/Three sum closest to S
+        //in case of Three Sum, and the sum = 0, a easier solution is to find all neg and reduces to two sum by sorting and neg the neg value
+        //4Sum: first determine two, the use two sum, it's easier to remove duplicates O(N^3)
+        //OR preprocessing with two pairs, O(N^2LogN)
         b2)Two sum of BST:
             //convert to array, O(N) time + O(N) space
             //convert BST to double linkedList in place, O(N) time and O(1)space
         c)Longest valid parentheses
             //keep the difference count and start/end
         d)Max subsum Array
+        e) Remove Numbers in Array
+        // can also using swapping method
+        http://codercareer.blogspot.com/2012/02/no-32-remove-numbers-in-array.html
 
     2.2)Same Array: Two pointers merge
         a)is String Parlidrome

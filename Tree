@@ -107,3 +107,12 @@
     //Method2: MaxHeap and MinHeap
     O(logN) insert, O(1) find
     First insert, then adjust the size, always insert to the first when it's all empty
+
+13)Sliding Window Maximum
+    //Method1: heap O(NlogN), not O(NlogK). also the queue data strcuture needs to know the element index inside the array
+    //Method2: Using dequeu to maintain sliding window max/min
+Summary:
+    //Heap is good for maintaining top K till now issue, has no time factor
+    //dequeue is good for maintaing top/min issues with time window
+    //see http://leetcode.com/2011/01/sliding-window-maximum.html
+
