@@ -1,20 +1,12 @@
-public class Solution {
-    public double pow(double x, int n) {
-        
-        if(x == 0)
-            return 0;
-
-        boolean isNeg = false;
-        if( n < 0) {
-            isNeg = true;
-            n *= -1;
-        }
-        double val = 1; 
-        for(int i = 0; i<n; ++i)
-            val *=x;
-        if(isNeg)
-            val = 1/val;
-        return val;
-    }
+double pow(double x, int n) {
+    if (n == 0) return 1.0;
+    // Compute x^{n/2} and store the result into a temporary
+    // variable to avoid unnecessary computing
+    double half = pow(x, n / 2);
+    if (n % 2 == 0)
+        return half * half;
+    else if (n > 0)
+        return half * half * x;
+    else
+        return half * half / x;
 }
-
