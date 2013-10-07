@@ -3,6 +3,8 @@
 /****************************************************************/
 1)Return all possible subsets of a collection of integer S, with each subset in increasing order
   a)[combination]Iterative : ans(k+1) = ans(k) +: ans(k).append(S[k+1])
+    //power set problem: can use a bit vector represents which one is used
+    //http://www.geeksforgeeks.org/power-set/
   b)What if there might be duplicates in the collection?
     consider the case of S[k] == S[k+1], there is only several subsets in ans(k) needs
     to be updated with S[k+1], the size of ans(k) will help determine what are the subsets

@@ -14,7 +14,7 @@
     d)Convert Sorted List to Balanced Binary Search Tree [Practice]
     //convert to ArrayFirst or do it with nice recursion 
     e) Determine if a BST is valid
-    //Method1:(Needs MetaData min, max, isValid) 
+    //Method1:(Needs MetaData min, max, isValid, this max/min can be transferred as arguments
     //Method2:InOrder traversal, has to be strictly increasing
 
 3)Sum of Path(from root to leaf) equals to K

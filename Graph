@@ -11,3 +11,6 @@
 3)String Path in Matrix:
 http://codercareer.blogspot.com/2012/02/no-34-string-path-in-matrix.html
     DFS
+
+4) TODO: A* algorithm to detect a path from src to dest
+    //worth reading?

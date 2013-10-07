@@ -87,6 +87,10 @@ http://codercareer.blogspot.com/2013/02/no-38-digits-in-sequence.html
         // how to use comparable+compare/comparator+compare
         // how to decide to intervals overlaps
         //for loop control
+    d)histogram 
+        //max area histogram: Use a stack to keep strictly increasing areaed histogram
+        //overlaps: use interval trees to determin if X/Y range  both overlaps O(NlogN)
+
 6)Rotating
     a)90 degree clock-wise rotate image
 
@@ -112,6 +116,7 @@ http://codercareer.blogspot.com/2013/02/no-38-digits-in-sequence.html
     b)lengthOfLastWord
     vaiable:Last+preprocessing
 11) Find the single missing number from range 0-n
+    Find the single missing number shows up only once
     XOR
 
 12) Master's method:
@@ -130,3 +135,18 @@ http://codercareer.blogspot.com/2013/02/no-38-digits-in-sequence.html
     //when n = 2: top face to face
     //when n>2:The array should be a class {T, int}, which acts like a list, they all grow with
     //the same direction, keep an array of stack head
+
+15) Implementing a queue using two stacks
+    for push/pop, first checks if the other is empty, if not push until the other is empty
+
+16) Leader election: distinguish a leader server from 10 servers:
+    wait a random number time and sends out a message
+
+17) a.From coin flipping to dice flipping: three bits, may fail for 1/6 cases
+    b.How to do card deck: increasing index, swap index with a random after index node
+
+18) Find how many zeros after a factorial: count how many 5s
+
+19) bits:
+    how to determin if it's a power of 2: x&(x-1) = 0
+    how to compute *, /2: x<<1, x>>1;
