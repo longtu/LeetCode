@@ -150,3 +150,6 @@ http://codercareer.blogspot.com/2013/02/no-38-digits-in-sequence.html
 19) bits:
     how to determin if it's a power of 2: x&(x-1) = 0
     how to compute *, /2: x<<1, x>>1;
+
+20) Pow:    use recursion, what if neg?
+    Sqrt:   what if overflow?

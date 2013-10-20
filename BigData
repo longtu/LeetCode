@@ -42,6 +42,7 @@ O(n*len)
 k = ln2*(m/n) error rate is smallest, 
 m >= 1.44n*log(1/e) 
 counting filter to support deletion
+http://blog.csdn.net/jiaomeng/article/details/1495500
     a)5G URLs each URL is of 64 bytes, with 4G memory
         m>= 1.44*n*log100 = 10n = 10*5G/8 = ~5G, therefore we can use bloom filter
 5)Bitmap: Especially useful for integers labeling, check for existance,but not support counting
