@@ -63,6 +63,8 @@
     //Boundary check: when should be 0 invalid? what is the range of IP Address?
   a)Suduku Solver
         DFS
+  b)Word Search
+        DFS
 
 8) Triangle Problem
     a)minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.

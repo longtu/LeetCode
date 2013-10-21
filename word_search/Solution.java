@@ -22,14 +22,14 @@ public class Solution {
     boolean dfsSearch(char[][] board, char[] arr, int x, int y,
             Set<Integer> visited) {
 
+        int matched = visited.size();
+        if (matched == arr.length)
+            return true;
+
         int width = board[0].length;
         int index = getIndex(x, y, width);
         if (visited.contains(index))
             return false;
-
-        int matched = visited.size();
-        if (matched == arr.length)
-            return true;
 
         char value = getCharValue(x, y, board);
         if (value == 0 || value != arr[matched])
