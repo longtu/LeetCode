@@ -10,28 +10,52 @@ public class Solution {
             return 0 - dividend;
         }
         boolean isNeg = false;
+        long longDividend = dividend;
+        long longDivisor = divisor;
+
         if (dividend < 0 && divisor > 0) {
-            divisor = 0 - divisor;
+            longDividend = 0 - dividend;
             isNeg = true;
         }
         if (dividend > 0 && divisor < 0) {
-            dividend = 0 - dividend;
+            longDivisor = 0 - divisor;
             isNeg = true;
         }
-        if (dividend > 0 && divisor > 0) {
-            dividend = 0 - dividend;
-            divisor = 0 - divisor;
+        if (dividend < 0 && divisor < 0) {
+            longDividend = 0 - dividend;
+            longDivisor = 0 - divisor;
         }
-        if (divisor < dividend)
-            return 0;
-        int result = 0;
-        while (dividend <= divisor) {
-            dividend -= divisor;
-            result += 1;
-        }
+        int result = divideLong(longDividend, longDivisor).result;
         if (isNeg)
             return (0 - result);
         return result;
     }
+
+    class DivideRes {
+        int result;
+        int left;
+
+        public DivideRes(int result, int left) {
+            this.result = result;
+            this.left = left;
+        }
+    }
+
+    private DivideRes divideLong(long dividend, long divisor) {
+        if (dividend > divisor + divisor) {
+            DivideRes prev = divideLong(dividend, divisor + divisor);
+            DivideRes curr = divideLong(prev.left, divisor);
+            return new DivideRes(prev.result + prev.result + curr.result,
+                    curr.left);
+        } else if (dividend >= divisor) {
+            return new DivideRes(1, (int) (dividend - divisor));
+        } else
+            return new DivideRes(0, (int) (dividend));
+    }
+
+ /*   public static void main(String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.divide(2147483647, 2));
+    }*/
 }
 
