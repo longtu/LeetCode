@@ -41,6 +41,7 @@ public class Solution {
         if(prev[0] != null && prev[0].val > root.val){
             if(pair.left == null) {
                 pair.left = prev[0];
+                //edge case here: need to fix when two are adjacent to each other
                 pair.right = root;
             }
             else

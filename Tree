@@ -111,6 +111,10 @@
 13)Sliding Window Maximum
     //Method1: heap O(NlogN), not O(NlogK). also the queue data strcuture needs to know the element index inside the array
     //Method2: Using dequeu to maintain sliding window max/min
+
+14) Recover mistakenly swapped BST (In-order traversal + Recursion)
+    //edge case for adjacent swaps.
+    //how to do traversal without recursion? That's real O(1) space solution
 Summary:
     //Heap is good for maintaining top K till now issue, has no time factor
     //dequeue is good for maintaing top/min issues with time window
