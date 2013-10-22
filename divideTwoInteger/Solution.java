@@ -14,16 +14,16 @@ public class Solution {
         long longDivisor = divisor;
 
         if (dividend < 0 && divisor > 0) {
-            longDividend = 0 - dividend;
+            longDividend = 0 -(long) dividend;
             isNeg = true;
         }
         if (dividend > 0 && divisor < 0) {
-            longDivisor = 0 - divisor;
+            longDivisor = 0 - (long) divisor;
             isNeg = true;
         }
         if (dividend < 0 && divisor < 0) {
-            longDividend = 0 - dividend;
-            longDivisor = 0 - divisor;
+            longDividend = 0 - (long) dividend;
+            longDivisor = 0 - (long) divisor;
         }
         int result = divideLong(longDividend, longDivisor).result;
         if (isNeg)
@@ -42,7 +42,7 @@ public class Solution {
     }
 
     private DivideRes divideLong(long dividend, long divisor) {
-        if (dividend > divisor + divisor) {
+        if (dividend >= divisor + divisor) {
             DivideRes prev = divideLong(dividend, divisor + divisor);
             DivideRes curr = divideLong(prev.left, divisor);
             return new DivideRes(prev.result + prev.result + curr.result,
