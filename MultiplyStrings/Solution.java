@@ -30,7 +30,7 @@ public class Solution {
             String currRes = multiply(left, right[i], right.length - 1 - i);
             res = merge(res, currRes);
         }
-        return res;
+        return removeLeadingZeros(res);
     }
 
     private String merge(String src, String dest) {
@@ -40,14 +40,15 @@ public class Solution {
                 : (destArr.length));
         char[] ret = new char[len];
         int carry = 0;
-        for (int i = len - 1; i >= 0; --i) {
-            if (srcArr.length - 1 >= i)
-                carry += (srcArr[srcArr.length - 1 - i]) - '0';
-
-            if (destArr.length - 1 >= i)
-                carry += (destArr[destArr.length - 1 - i]) - '0';
+        //use of j here to help to index the array
+        int j = 0;
+        for (int i = len - 1; i >= 0; --i, ++j) {
+            if (srcArr.length > j)
+                carry += (srcArr[srcArr.length - j - 1]) - '0';
+            if (destArr.length > j)
+                carry += (destArr[destArr.length - j - 1]) - '0';
             ret[i] = (char) (carry % 10 + '0');
-            carry = carry / 10 + '0';
+            carry = carry / 10;
         }
         int start = (ret[0] == '0') ? (1) : (0);
         return new String(ret).substring(start);
@@ -58,25 +59,37 @@ public class Solution {
         char[] ret = new char[len];
         int carry = 0;
         for (int i = len - 1; i >= 0; --i) {
-            if (len - 1 - i < tail) {
+            if (i > num1.length) {
                 ret[i] = '0';
                 continue;
             }
-            if (num1.length - 1 >= i)
-                carry = (val - '0') * (num1[num1.length - 1 - i] - '0') + carry;
+            if ((i <= num1.length) && (i > 0))
+                carry = (val - '0') * (num1[i - 1] - '0') + carry;
             ret[i] = (char) (carry % 10 + '0');
-            carry = carry / 10 + '0';
+            carry = carry / 10;
         }
         int start = (ret[0] == '0') ? (1) : (0);
         return new String(ret).substring(start);
     }
-
+    //remember to remove leading zeros and signs
+    private String removeLeadingZeros(String src) {
+        if (src == null || src.isEmpty())
+            return src;
+        char[] arr = src.toCharArray();
+        int i = 0;
+        for (; i < arr.length - 1; ++i) {
+            if (arr[i] != '+' && arr[i] != '0')
+                break;
+        }
+        return src.substring(i);
+    }
+/*
     public static void main(String[] args) {
         Solution sol = new Solution();
-        Integer left = 1;
-        Integer right = 2;
+        Integer left = 0;
+        Integer right = 22;
         System.out.println(sol.multiply(left.toString(), right.toString()));
         System.out.println(left * right);
-    }
+    }*/
 }
 
