@@ -39,7 +39,8 @@ public class Solution {
         for(int i = 0; i <= (size-1)/2; ++i){
             if( i == 0)
                 node = head;
-            node = node.next;
+            else
+                node = node.next;
         }
 
         TreeNode left = sortedListToBST(head, size - size/2-1);
