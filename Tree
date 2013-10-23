@@ -11,8 +11,8 @@
     Keep track of leftMost/rightMost for each node, update accordingly in recursion   
     c)Convert Sorted Array to Balanced Binary Search Tree
     //Binary Cut Recursion 
-    d)Convert Sorted List to Balanced Binary Search Tree [Practice]
-    //convert to ArrayFirst or do it with nice recursion 
+    d)Convert Sorted List to Balanced Binary Search Tree
+    //convert to ArrayFirst or do it with nice recursion [need to calculate size only once]
     e) Determine if a BST is valid
     //Method1:(Needs MetaData min, max, isValid, this max/min can be transferred as arguments
     //Method2:InOrder traversal, has to be strictly increasing
