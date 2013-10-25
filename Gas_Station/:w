@@ -1,0 +1,33 @@
+public class Solution {
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        if(gas == null || gas.length == 0)
+            return 0;
+        int [] diff = new int [gas.length];
+        for(int i = 0; i < gas.length; ++i){
+            diff[i] = gas[i] - cost[i];
+        }
+    }
+
+    int findMaxSum(int [] diff){
+    
+        int start = 0;
+        int end = start;
+        int sum = diff[0];
+        int step = 1;
+
+        while(step < diff.length){
+            end = (end+1)%diff.length;
+            sum += diff[end];
+            step += 1;
+            if(sum < 0){
+                while(sum < 0 && step >1){
+                    sum -= diff[start];
+                    start = (start+1)%diff.length;
+                    step--;
+                }
+            }
+        }
+        return start;
+    
+    }
+}
