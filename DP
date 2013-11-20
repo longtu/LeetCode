@@ -9,9 +9,12 @@
     consider the case of S[k] == S[k+1], there is only several subsets in ans(k) needs
     to be updated with S[k+1], the size of ans(k) will help determine what are the subsets
     if ans(k) is also ordered
-  c) Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
+  c) Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.[****]
     //Method1:Use the same way as b), but remember to remove the subsets with size > k
-    //Method2:combine(n,k) recursion to combine(i-1,k-1) for i = k...n
+    //Method2:combine(n,k) recursion to combine(i-1,k-1) for i = k...n, two dimension DP can use O(N) space
+    //combine(n,k) = combine(n-1,k-1){n} + combine(n-1, k);
+    // in case of duplicates, still need to use similar strategy as b) to include no duplicate results
+    // OR,for removing duplicates, b) and c) can also use an extra HashSet/HashMap
   d)return all possible letter combinations that a phone number can represents
     eg. "23" ->["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
     //same as c)
