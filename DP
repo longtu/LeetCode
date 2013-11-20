@@ -37,7 +37,8 @@
     [1,1,2] have the following unique permutations:
     [1,1,2], [1,2,1], and [2,1,1].
     //Solution: recusion, but stop before the first element same as the integer being inserted
-
+    //(I first thought should be insert after all same value shows up, the opposite is the solution, which is much easier
+    to implment!!!)
 4)Combination Sum problem
   a)Combinations sum without duplicates
     //(0-1knapsack): difficult to remove duplicates recursions
