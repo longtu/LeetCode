@@ -46,14 +46,14 @@
     // in order to remove duplicates, either put the results in the interface and reset flag
     // or use return value and use the index to check if the same value index is being used
     //Conclusion: in case of duplication may happen, DFS with Results in interface and flag is much easier to code with
-
+    //Conclusion cont.: An easier way to remove duplicates would be using set/hashing/sort to remove duplicates
   b)Combinations sum with duplicates():
     //Recursion
 
 5)Kanpsack http://blog.csdn.net/hhygcy/article/details/3955683
     a)Change Making Problem
     b)SubsetSum(Unique Subset would be good)
-    c)Set parition to minimize the difference
+    c)Set parition to minimize the difference [DP relationship here ***]
 
 6)Spirial Matrix
     a)Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
