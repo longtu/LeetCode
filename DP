@@ -57,7 +57,7 @@
 
 6)Spirial Matrix
     a)Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
-    //very easy to break the boundary condition, should test carefully 
+    //very easy to break the boundary condition, should test carefully [Good Practice***]
     //Boundary condition is: one column
     b)Given an integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.
     //This is an easier recursion
@@ -65,7 +65,7 @@
 7)Restore IP address from a String:
     //DFS analogous process
     //Boundary check: when should be 0 invalid? what is the range of IP Address?
-  a)Suduku Solver
+  a)Suduku Solver[good implementation practice]
         DFS
   b)Word Search
         DFS
@@ -172,13 +172,18 @@
        b) Longest increasing subString
         // O(N) trick solution
 
-18) a)Maximal Rectangular of two-dimensional Array
-    structure is similar as Two dimension subarray, however max needs to be updated everytime
-    O(N^2) space, O(N^3) time
+18) a)Hist-graph problem [Practice]
+    //Method1: O(N^2) simple solution
+    //Method2: O(N) use a stack to store non-decrease elements(actually stores the index) and append height 0 in the end as well
+
     b)Two dimension Maximum subarray
         //for one-dimension, using O(N) scan
+    c)Maximal Rectangular of two-dimensional Array [Practice]
+    //Method1: structure is similar as Two dimension subarray, however max needs to be updated everytime
+    O(N^2) space, O(N^3) time
+    //Method2: converting into Histo-graph problem
 
-19) Palindrom cutting:
+19) Palindrom cutting:[MATRIX-CHAIN]
     a)MinimumCut:
     //Method1: firstly using O(N^2) building Palindrome[i,j] map
        O(N^3): minCut(i,j) = min(cut(i,k)+cut(k,j))+1 if Palindrom[i,j] == false
