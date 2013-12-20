@@ -104,27 +104,26 @@
 
 12)Regular expression matches:
     Wild card matching:regular expression matching
+    //Whenever feel like recursion is a solution, try to use DP if possible
     //DP is a good way to solve, however TLE, only greedy passes
     //Inner and outter two while loop
     //Greedy impl is very hard
 
     Regular expression matching with . and * support
     //very careful implementation, two dimentional dp but only two steps look-back
+    //tricky edge case ""<->"c*c*", be careful about empty string match
     //therefore eligible for space optimization
 
 13)Jump Game
     //boolean problem: for loop, update max(which is boundary of the loop)
     //min step problem: for loop, maintain a interval of current jump times, update the interval
 
-14) Max rectangular:
-    //two dimension DP or use a stack/List to maintain increasing hight of rectangulars
-
 15) BackTracking:
     1)Generate Valid Parenthesis: keep consistant relationship See 1.8: Remaining Right>= Left
     2)DFS
     3)Permutation, Combination
-    4)NQueens Problem
-    See 19) problem b
+    4)NQueens Problem (Good practice)
+    //Interface design: markup arrays of x,y positions and coordinate array, 
 
 16) Unique Paths
     a)Simple one step DP, can be optimized using O(n) space
@@ -132,15 +131,11 @@
     b)if the step to right has to be smaller than down, see Topic 1.8 (f
     c)If there is obstacle
     //consider both direction would be affected(max/first?)
+    //both b) and c) can be approached by setting limitation/boundary on the M[i,j] in case of b), the limitation would 
+    be M[i,i] = 1 is the boundary of DP, in c), it would be M[i,j] = 0 in case of obstacle at (i,j)
 
 17) Classic DPs:
     DP1:
-        a)Matrix Multiply Chain:
-        //M[i,j] = min(M[i,k]+ M[k,j]+pipkpj) n^2 space, n^3 time
-        //no optimization can be done
-        b)Longest Common Parlindrome SubString/SubSequence
-        //M[i,j] where j = i+k, k from 1,2,3....increasing,similar with a)
-    DP2:
         a) Longest Common SubSequence
         //M[i,j] = M[i-1,j-1] +1 if A[i] = A[j] or max(M[i,j-1], M[i-1,j])   
         //Use a seperate Matrix to use as path reference the process
@@ -159,9 +154,21 @@
         d)桥两边的城市分别是a(1)...a(n)和b(1)...b(n).这里的要求a(i)只可以和b(i)之间造桥,同时两座桥之间不能交叉.希望可以得到一个尽量多座桥的方案.
         //same as c)
 
-        e)Box Stacking. You are given a set of n types of rectangular 3-D boxes, where the i^th box has height h(i), width w(i) and depth d(i) (all real numbers). You want to create a stack of boxes which is as tall as possible, but you can only stack a box on top of another box if the dimensions of the 2-D base of the lower box are each strictly larger than those of the 2-D base of the higher box. Of course, you can rotate a box so that any side functions as its base. It is also allowable to use multiple instances of the same type of box.
+        e)Box Stacking.//Good practice how to order and what's the best to optimize
+        You are given a set of n types of rectangular 3-D boxes, where the i^th box has height h(i), width w(i) and depth d(i) (all real numbers). You want to create a stack of boxes which is as tall as possible, but you can only stack a box on top of another box if the dimensions of the 2-D base of the lower box are each strictly larger than those of the 2-D base of the higher box. Of course, you can rotate a box so that any side functions as its base. It is also allowable to use multiple instances of the same type of box.
         //因为箱子可以翻转的缘故.我们首先定义我们的箱子的长宽高分别是h,w,d.为了避免重复计算,我们约定w<=d.这样每个箱子可以改成3个箱子.这样我们就不用在考虑旋转的问题了.第一步,我们先把箱子按照w*d的值来排序.(为社么要排序读者可以自己想想).然后我们的模型就开始用H(j)来表示第j个箱子时这个箱子的高度.记得最长递增子序列的约束条件是Ai<Aj.这里的条件只是改成了对应的di<dj&&wi<wj.同时原来的+1也变成了+hi.
         //H(j) = max{H(i)} +hj  where i<j Wi>Wj and di>dj
+
+    DP2:
+        a)Matrix Multiply Chain:
+        //M[i,j] = min(M[i,k]+ M[k,j]+pipkpj) n^2 space, n^3 time
+        //no optimization can be done
+        b)Longest Parlindrome SubString
+        //M[i,j] where j = i+k, k from 1,2,3....increasing,similar with a)
+        c)Longest Parlindrome SubSequence
+        //Method1: Reverse+LCS
+        //Method2:Similar as b), however the logic is similar as LCS
+        c)See 19 as well
         
     DP3:
        a) Longest Common SubString
@@ -172,7 +179,7 @@
        b) Longest increasing subString
         // O(N) trick solution
 
-18) a)Hist-graph problem [Practice]
+18) a)Max Hist-graph problem [Practice]
     //Method1: O(N^2) simple solution
     //Method2: O(N) use a stack to store non-decrease elements(actually stores the index) and append height 0 in the end as well
 
