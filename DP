@@ -63,12 +63,20 @@
     //This is an easier recursion
 
 7)Restore IP address from a String:
-    //DFS analogous process
+    //DFS analogous process+BackTracking:
     //Boundary check: when should be 0 invalid? what is the range of IP Address?
   a)Suduku Solver[good implementation practice]
         DFS
   b)Word Search
         DFS
+
+  c)Generate Valid Parenthesis: keep consistant relationship See 1.8: Remaining Right>= Left
+
+  e)Permutation, Combination
+  
+  f)NQueens Problem (Good practice)
+  //Interface design: markup arrays of x,y positions and coordinate array, 
+
 
 8) Triangle Problem
     a)minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
@@ -83,11 +91,6 @@
     //One Dimension DP, needs sum on previous result
     b)Interleaving String
     //Two dimension DP, only one step recursion, therefore can be optimized using one dimension
-    c)Longest Parlindromic Substring
-    //Similarly with b), Two dimension DP, one step recursion, can be optimized using one dimension
-    e) Edit distance:
-    //one step, two dimention DP. can be optimzed using O(N) space
-    //similar with longest common subsequence
 
 10) Two step recursion to smaller problem, constant space
     a) Decode digits into Alphabetic characters
@@ -98,7 +101,7 @@
     http://codercareer.blogspot.com/2013/02/no-44-maximal-stolen-values.html
 
 11)Scramble String:
-    //Three dimension recursion
+    //Three dimension recursion, be active to ask if you see a 3D DP
     //boundary and relation constraint between three dimensions
     //error in boundary of recursion see ERROR in code
 
@@ -118,12 +121,6 @@
     //boolean problem: for loop, update max(which is boundary of the loop)
     //min step problem: for loop, maintain a interval of current jump times, update the interval
 
-15) BackTracking:
-    1)Generate Valid Parenthesis: keep consistant relationship See 1.8: Remaining Right>= Left
-    2)DFS
-    3)Permutation, Combination
-    4)NQueens Problem (Good practice)
-    //Interface design: markup arrays of x,y positions and coordinate array, 
 
 16) Unique Paths
     a)Simple one step DP, can be optimized using O(n) space
@@ -165,6 +162,8 @@
         //no optimization can be done
         b)Longest Parlindrome SubString
         //M[i,j] where j = i+k, k from 1,2,3....increasing,similar with a)
+        //Similarly with 9.b), Two dimension DP, one step(step-size is 2) recursion, can be optimized using one dimension
+
         c)Longest Parlindrome SubSequence
         //Method1: Reverse+LCS
         //Method2:Similar as b), however the logic is similar as LCS
