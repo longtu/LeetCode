@@ -28,7 +28,9 @@ http://codercareer.blogspot.com/2013/02/no-38-digits-in-sequence.html
             //convert BST to double linkedList in place, O(N) time and O(1)space
         c)Longest valid parentheses
             //keep the difference count and start/end
+            //Or use a stack
         d)Max subsum Array
+        // however, this problem should be typically solved with : http://en.wikipedia.org/wiki/Maximum_subarray_problem
         e) Remove Numbers in Array
         // can also using swapping method
         http://codercareer.blogspot.com/2012/02/no-32-remove-numbers-in-array.html
@@ -81,40 +83,39 @@ http://codercareer.blogspot.com/2013/02/no-38-digits-in-sequence.html
 
 5)Observation and Analysis
     a)Trap drain water
-    b)Longest Valid Parentheses
-        //only position instead of character will be needed to push
-    c)Merge/Insert Intervals
+    b)Merge/Insert Intervals
         // how to use comparable+compare/comparator+compare
         // how to decide to intervals overlaps
         //for loop control
-    d)histogram 
+    c)histogram 
         //max area histogram: Use a stack to keep strictly increasing areaed histogram
         //overlaps: use interval trees to determin if X/Y range  both overlaps O(NlogN)
 
 6)Rotating
     a)90 degree clock-wise rotate image
 
-8)Best time to sell stock
+8)Best time to sell stock(Research on multiple transactions and limited window)
     a)single transaction(compare max), infinite transactions, double transactions(O(N))
-    //double transaction can use two passes of two different directions
+    //single transaction is to find max diff problem(not max increasing substring problem)
+    //double transaction can use two passes of two different directions (Linear DP array)
+    //http://www.cnblogs.com/caijinlong/archive/2013/05/01/3053165.html
+    //Research on m transactions and limited window
     b)Three Increasing Elements in an Array
     //O(N) space, O(N) time, similar as 8)
     //http://codercareer.blogspot.com/2013/02/no-42-three-increasing-elements-in-array.html
     c)Find sequence pari(index i<j) such that A[i] - A[j] maximizes
-        //method1: divide and conquer O(N) time, recursion
-        //method2: additional array, O(N) scan twice, O(N)time, O(N)space
-        //method3:
-        Let us define diff[i] for the difference of a pair whose subtrahend is the ith number in an array. The minuend corresponding to the maximal diff[i] should be the maximum of all numbers on the left side of ith number in an array. We can get the maximal numbers on the left side of each ith number in an array while scanning the array once, and subtract the ith number for them. http://codercareer.blogspot.com/2011/12/no-28-pair-with-maximal-difference.html
     //same as stock market problem
 
 9)Get Sum/Union of two string/array
     a)Add Binary: Reverse, char/integer, carry
     b)Sum two String of base K
+
 10)Linear labeling and counting:
     a)CountAndSay
     two variables: count/last
     b)lengthOfLastWord
     vaiable:Last+preprocessing
+
 11) Find the single missing number from range 0-n
     Find the single missing number shows up only once
     XOR
@@ -130,12 +131,14 @@ http://codercareer.blogspot.com/2013/02/no-38-digits-in-sequence.html
     //Method2: Very tricky, do not push when new val < min, push val*2-min
                 when pop, and find a val < min, push out value min, and restore min as 2*min-val
     http://codercareer.blogspot.com/2011/09/no-02-stack-with-function-min.html
+    //use min+delta is easier to understand
 
 14) n Stack implementation with One Array, not overflow unless the array is full
     //when n = 2: top face to face
-    //when n>2:The array should be a class {T, int}, which acts like a list, they all grow with
+    //when n>2:(Research on building multi-stack using an array)
+    //The array should be a class {T, int}, which acts like a list, they all grow with 
     //the same direction, keep an array of stack head
-
+    
 15) Implementing a queue using two stacks
     for push/pop, first checks if the other is empty, if not push until the other is empty
 
@@ -143,7 +146,8 @@ http://codercareer.blogspot.com/2013/02/no-38-digits-in-sequence.html
     wait a random number time and sends out a message
 
 17) a.From coin flipping to dice flipping: three bits, may fail for 1/6 cases
-    b.How to do card deck: increasing index, swap index with a random after index node
+    b.How to get equal probability from a biased coin: toe twice, discard both tail and both head, use head/tail or tail/head
+    c.How to do card deck: increasing index, swap index with a random after index node(Research)
 
 18) Find how many zeros after a factorial: count how many 5s
 
