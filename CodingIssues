@@ -1,0 +1,21 @@
+1.Two-dimentional Array:
+*When initialize: use boolean[][] img = new boolean[5][10];instead of extra loop every row;
+*Array in parameter does not take size: foo( int [][] img) instead of foo( int [3][2]);
+*While using Array for DP, if one dimension will grow from 1 (instead of 0 ) to LEN, make sure to initialize the array with size LEN+1, this will make it easier to code and not causing errors
+
+
+2.Void Recursion for generating all solution:
+*While adding curr to allSolution, remember to copy, see: https://github.com/rw2409/LeetCode/blob/master/Palindrome_Partitioning1/Solution.java#L41
+*
+
+3.Collection interface:
+*List: remove only has two interfaces remove(E)//this will use equals or remove(int index)
+*Queue: add/remove/element VS offer/poll/peek //the former throws exception
+
+4.Advanced Datastructures:
+Interval Tree
+Trie
+
+5.Double-Link list
+*Head/Tail empty pointer will points to itself
+*
