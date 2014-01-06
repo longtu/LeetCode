@@ -33,3 +33,52 @@ public class Solution {
         }
     }
 }
+
+/////////Second Implementation
+
+
+import java.util.ArrayList;
+
+public class Solution {
+    public ArrayList<String> restoreIpAddresses(String s) {
+        ArrayList<String> res = new ArrayList<String>();
+        if (s == null || s.length() == 0)
+            return res;
+        genIP(0, 0, s, "", res);
+        return res;
+    }
+
+    private boolean isValidSub(String s) {
+        if (s.length() == 1) {
+            return true;
+        }
+        if (s.length() == 2)
+            return (s.compareTo("99") <= 0) && (s.compareTo("10") >= 0);
+        if (s.length() == 3)
+            return (s.compareTo("255") <= 0) && (s.compareTo("100") >= 0);
+        return false;
+    }
+
+    private void genIP(int index, int stage, String s, String curr,
+            ArrayList<String> res) {
+        if (stage == 3) {
+            String sub = s.substring(index);
+            if (isValidSub(sub))
+                res.add(curr + sub);
+            return;
+        }
+        for (int i = 1; i <= 3 && index + i < s.length(); ++i) {
+            String sub = s.substring(index, index + i);
+            if (isValidSub(sub))
+                genIP(index + i, stage + 1, s, curr + sub + ".", res);
+        }
+    }
+
+    public static void main(String args[]) {
+        Solution sol = new Solution();
+        System.out.println(sol.restoreIpAddresses("25525511135"));
+        System.out.println("TEST");
+
+    }
+
+}

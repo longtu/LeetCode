@@ -4,10 +4,10 @@
 1)Min&Max Depth of a tree
     See 4) of Topic 1
 
-2)visted Label setting is differnt for DFS/BFS
-    DFS: before adding into stack, otherwise may cause duplication
-    BFS: after pulling from the stack, as nodes will be in order
-
+2)visted Label setting is the same for DFS/BFS
+    DFS: before adding into stack(or before recursive call), otherwise may cause duplication
+    BFS: before adding into queue, otherwise may cause duplication
+    
 3)String Path in Matrix:
 http://codercareer.blogspot.com/2012/02/no-34-string-path-in-matrix.html
     DFS

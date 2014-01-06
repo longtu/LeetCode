@@ -9,9 +9,12 @@
     consider the case of S[k] == S[k+1], there is only several subsets in ans(k) needs
     to be updated with S[k+1], the size of ans(k) will help determine what are the subsets
     if ans(k) is also ordered
-  c) Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
+  c) Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.[****]
     //Method1:Use the same way as b), but remember to remove the subsets with size > k
-    //Method2:combine(n,k) recursion to combine(i-1,k-1) for i = k...n
+    //Method2:combine(n,k) recursion to combine(i-1,k-1) for i = k...n, two dimension DP can use O(N) space
+    //combine(n,k) = combine(n-1,k-1){n} + combine(n-1, k);
+    // in case of duplicates, still need to use similar strategy as b) to include no duplicate results
+    // OR,for removing duplicates, b) and c) can also use an extra HashSet/HashMap
   d)return all possible letter combinations that a phone number can represents
     eg. "23" ->["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
     //same as c)
@@ -34,7 +37,8 @@
     [1,1,2] have the following unique permutations:
     [1,1,2], [1,2,1], and [2,1,1].
     //Solution: recusion, but stop before the first element same as the integer being inserted
-
+    //(I first thought should be insert after all same value shows up, the opposite is the solution, which is much easier
+    to implment!!!)
 4)Combination Sum problem
   a)Combinations sum without duplicates
     //(0-1knapsack): difficult to remove duplicates recursions
@@ -42,29 +46,37 @@
     // in order to remove duplicates, either put the results in the interface and reset flag
     // or use return value and use the index to check if the same value index is being used
     //Conclusion: in case of duplication may happen, DFS with Results in interface and flag is much easier to code with
-
+    //Conclusion cont.: An easier way to remove duplicates would be using set/hashing/sort to remove duplicates
   b)Combinations sum with duplicates():
     //Recursion
 
 5)Kanpsack http://blog.csdn.net/hhygcy/article/details/3955683
     a)Change Making Problem
     b)SubsetSum(Unique Subset would be good)
-    c)Set parition to minimize the difference
+    c)Set parition to minimize the difference [DP relationship here ***]
 
 6)Spirial Matrix
     a)Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
-    //very easy to break the boundary condition, should test carefully 
+    //very easy to break the boundary condition, should test carefully [Good Practice***]
     //Boundary condition is: one column
     b)Given an integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.
     //This is an easier recursion
 
 7)Restore IP address from a String:
-    //DFS analogous process
+    //DFS analogous process+BackTracking:
     //Boundary check: when should be 0 invalid? what is the range of IP Address?
-  a)Suduku Solver
+  a)Suduku Solver[good implementation practice]
         DFS
   b)Word Search
         DFS
+
+  c)Generate Valid Parenthesis: keep consistant relationship See 1.8: Remaining Right>= Left
+
+  e)Permutation, Combination
+  
+  f)NQueens Problem (Good practice)
+  //Interface design: markup arrays of x,y positions and coordinate array, 
+
 
 8) Triangle Problem
     a)minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
@@ -79,11 +91,6 @@
     //One Dimension DP, needs sum on previous result
     b)Interleaving String
     //Two dimension DP, only one step recursion, therefore can be optimized using one dimension
-    c)Longest Parlindromic Substring
-    //Similarly with b), Two dimension DP, one step recursion, can be optimized using one dimension
-    e) Edit distance:
-    //one step, two dimention DP. can be optimzed using O(N) space
-    //similar with longest common subsequence
 
 10) Two step recursion to smaller problem, constant space
     a) Decode digits into Alphabetic characters
@@ -94,33 +101,26 @@
     http://codercareer.blogspot.com/2013/02/no-44-maximal-stolen-values.html
 
 11)Scramble String:
-    //Three dimension recursion
+    //Three dimension recursion, be active to ask if you see a 3D DP
     //boundary and relation constraint between three dimensions
     //error in boundary of recursion see ERROR in code
 
 12)Regular expression matches:
     Wild card matching:regular expression matching
+    //Whenever feel like recursion is a solution, try to use DP if possible
     //DP is a good way to solve, however TLE, only greedy passes
     //Inner and outter two while loop
     //Greedy impl is very hard
 
     Regular expression matching with . and * support
     //very careful implementation, two dimentional dp but only two steps look-back
+    //tricky edge case ""<->"c*c*", be careful about empty string match
     //therefore eligible for space optimization
 
 13)Jump Game
     //boolean problem: for loop, update max(which is boundary of the loop)
     //min step problem: for loop, maintain a interval of current jump times, update the interval
 
-14) Max rectangular:
-    //two dimension DP or use a stack/List to maintain increasing hight of rectangulars
-
-15) BackTracking:
-    1)Generate Valid Parenthesis: keep consistant relationship See 1.8: Remaining Right>= Left
-    2)DFS
-    3)Permutation, Combination
-    4)NQueens Problem
-    See 19) problem b
 
 16) Unique Paths
     a)Simple one step DP, can be optimized using O(n) space
@@ -128,15 +128,11 @@
     b)if the step to right has to be smaller than down, see Topic 1.8 (f
     c)If there is obstacle
     //consider both direction would be affected(max/first?)
+    //both b) and c) can be approached by setting limitation/boundary on the M[i,j] in case of b), the limitation would 
+    be M[i,i] = 1 is the boundary of DP, in c), it would be M[i,j] = 0 in case of obstacle at (i,j)
 
 17) Classic DPs:
     DP1:
-        a)Matrix Multiply Chain:
-        //M[i,j] = min(M[i,k]+ M[k,j]+pipkpj) n^2 space, n^3 time
-        //no optimization can be done
-        b)Longest Common Parlindrome SubString/SubSequence
-        //M[i,j] where j = i+k, k from 1,2,3....increasing,similar with a)
-    DP2:
         a) Longest Common SubSequence
         //M[i,j] = M[i-1,j-1] +1 if A[i] = A[j] or max(M[i,j-1], M[i-1,j])   
         //Use a seperate Matrix to use as path reference the process
@@ -155,9 +151,23 @@
         d)桥两边的城市分别是a(1)...a(n)和b(1)...b(n).这里的要求a(i)只可以和b(i)之间造桥,同时两座桥之间不能交叉.希望可以得到一个尽量多座桥的方案.
         //same as c)
 
-        e)Box Stacking. You are given a set of n types of rectangular 3-D boxes, where the i^th box has height h(i), width w(i) and depth d(i) (all real numbers). You want to create a stack of boxes which is as tall as possible, but you can only stack a box on top of another box if the dimensions of the 2-D base of the lower box are each strictly larger than those of the 2-D base of the higher box. Of course, you can rotate a box so that any side functions as its base. It is also allowable to use multiple instances of the same type of box.
+        e)Box Stacking.//Good practice how to order and what's the best to optimize
+        You are given a set of n types of rectangular 3-D boxes, where the i^th box has height h(i), width w(i) and depth d(i) (all real numbers). You want to create a stack of boxes which is as tall as possible, but you can only stack a box on top of another box if the dimensions of the 2-D base of the lower box are each strictly larger than those of the 2-D base of the higher box. Of course, you can rotate a box so that any side functions as its base. It is also allowable to use multiple instances of the same type of box.
         //因为箱子可以翻转的缘故.我们首先定义我们的箱子的长宽高分别是h,w,d.为了避免重复计算,我们约定w<=d.这样每个箱子可以改成3个箱子.这样我们就不用在考虑旋转的问题了.第一步,我们先把箱子按照w*d的值来排序.(为社么要排序读者可以自己想想).然后我们的模型就开始用H(j)来表示第j个箱子时这个箱子的高度.记得最长递增子序列的约束条件是Ai<Aj.这里的条件只是改成了对应的di<dj&&wi<wj.同时原来的+1也变成了+hi.
         //H(j) = max{H(i)} +hj  where i<j Wi>Wj and di>dj
+
+    DP2:
+        a)Matrix Multiply Chain:
+        //M[i,j] = min(M[i,k]+ M[k,j]+pipkpj) n^2 space, n^3 time
+        //no optimization can be done
+        b)Longest Parlindrome SubString
+        //M[i,j] where j = i+k, k from 1,2,3....increasing,similar with a)
+        //Similarly with 9.b), Two dimension DP, one step(step-size is 2) recursion, can be optimized using one dimension
+
+        c)Longest Parlindrome SubSequence
+        //Method1: Reverse+LCS
+        //Method2:Similar as b), however the logic is similar as LCS
+        c)See 19 as well
         
     DP3:
        a) Longest Common SubString
@@ -168,13 +178,18 @@
        b) Longest increasing subString
         // O(N) trick solution
 
-18) a)Maximal Rectangular of two-dimensional Array
-    structure is similar as Two dimension subarray, however max needs to be updated everytime
-    O(N^2) space, O(N^3) time
+18) a)Max Hist-graph problem [Practice]
+    //Method1: O(N^2) simple solution
+    //Method2: O(N) use a stack to store non-decrease elements(actually stores the index) and append height 0 in the end as well
+
     b)Two dimension Maximum subarray
         //for one-dimension, using O(N) scan
+    c)Maximal Rectangular of two-dimensional Array [Practice]
+    //Method1: structure is similar as Two dimension subarray, however max needs to be updated everytime
+    O(N^2) space, O(N^3) time
+    //Method2: converting into Histo-graph problem
 
-19) Palindrom cutting:
+19) Palindrom cutting:[MATRIX-CHAIN]
     a)MinimumCut:
     //Method1: firstly using O(N^2) building Palindrome[i,j] map
        O(N^3): minCut(i,j) = min(cut(i,k)+cut(k,j))+1 if Palindrom[i,j] == false
