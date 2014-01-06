@@ -69,6 +69,11 @@ http://codercareer.blogspot.com/2013/02/no-38-digits-in-sequence.html
     f)Merge K sorted Lists
         //use min Heap
         //merge two sorted Arrays/Lists
+    g)Reorder List: 1,2,3,4,5,6-> 1,6,2,5,3,4
+        //size+reverse+merge+split
+        //split will make sure end points to null
+    h)Insertion_sort of LinkedList
+        //remove/insert implementation
 
 4)constant space problem usually means a) solvable by only several variable b) solvable by using input data strucutre(SWAPPING)
     a)Find First Missing positive integer

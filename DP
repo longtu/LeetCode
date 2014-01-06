@@ -189,3 +189,16 @@
      //Method1: backtracking/DFS solution, with Palindrome[i,j] Map
      //Method2: similar with Method1, but more recursive, adding results from smaller problem
         Res(i,j) = aggregate all K such that String(i,k)*Res(k,j) where Palindrome(i,k) is true
+
+20)Activity Scheduling problem:
+    Job j starts at sj, finishes at fj, and has weight or value vj . 
+    Two jobs compatible if they don't overlap.
+    Goal:  find maximum weight subset of mutually compatible jobs
+    Sorting on finishing time
+    a) If the weight is equal, always choose the one that finishes earliest
+    b) If the weight is not equal, need a preprocessing value: p[i] which is the left most node compatible with activity[i]
+
+    Res[i] = (Res[p[i]] + weight[i] , Res[i-1]);
+    //always thought about one step back if you see weird (N)2 recursion
+
+    c)Scheduling bandwith problem, sorted by finishing time

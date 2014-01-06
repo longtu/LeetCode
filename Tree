@@ -68,7 +68,7 @@
     a)Determine if it is same tree?
     b)Determine if it is symmetric tree?
 
-8)Structureally unique Binary Search Trees for nodes from 1 to N
+8)Structureally unique Binary Search Trees for nodes from 1 to n [******] 
     a)How many of them?How to build them?
     //use recursion, combinations of possible left/right children node numbers
     h(n)= h(0)*h(n-1)+h(1)*h(n-2) + ... + h(n-1)h(0) (where n>=2，h(0) = h(1) = 1) 
@@ -81,10 +81,10 @@
     //basically backtracking...
     c)one infinite stack has in-stack sequece 1,2,3...n-1,n, what's the number of possible
     out-stack sequence? h(n) how about out-stack 1,2,3,...n and possible ways of in-stack?
-    d)2n points on the circule, the number of ways to connect the 2n points using n lines
+    d)2n points on the circule, the number of ways to connect the 2n points using n lines without crossing-over
     e)n matrix multiply chain, the ways to parenthesis the chain is h(n): P=a1×a2×a3×……×an
     f)number of ways from (0,0) to (n,n): only right, and up is allowed and cannot exceed the diagnose, h(n)
-    g)2K people in two row, each row has n people and sorted by increasing height order, the person in the back row has to be higher than the person in front of him, what's the total possible ways of doing it? h(n)
+    g)2n people in two row, each row has n people and sorted by increasing height order, the person in the back row has to be higher than the person in front of him, what's the total possible ways of doing it? h(n)
 
 9)Lowest Common Ancestor of two tree nodes
     a)What if the tree is BST: simple
@@ -108,7 +108,7 @@
     O(logN) insert, O(1) find
     First insert, then adjust the size, always insert to the first when it's all empty
 
-13)Sliding Window Maximum
+13)Sliding Window Maximum [****]
     //Method1: heap O(NlogN), not O(NlogK). also the queue data strcuture needs to know the element index inside the array
     //Method2: Using dequeu to maintain sliding window max/min
 
@@ -120,3 +120,4 @@ Summary:
     //dequeue is good for maintaing top/min issues with time window
     //see http://leetcode.com/2011/01/sliding-window-maximum.html
 
+8)Structureally unique Binary Search Trees for nodes from 1 to N
