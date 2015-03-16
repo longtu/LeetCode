@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/3Sum" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/3SumClosest" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/4Sum" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/AddBinary" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Anagrams" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/BinaryTreeMaximPathSum" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Buy_Sell_Stock" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CombinationSum" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CombinationSumWithDuplicates" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Combinations" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ContainerWithMostWater" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CountAndSay" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Decode_Ways" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Distnct_SubSequences" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EditDistance" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/FindMedianOfTwo" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/First_Missing_Positive" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Gas_Station" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/GrayCode" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/InterLeavingString" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Jump_Game" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/LargeRectangleInHistogram" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/LastNofList" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/LengthOfLastWord" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/LinkList_InsertionSort" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/LinkedListReverse" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Longest_Consecutive_Sequence" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Longest_Parlindromic_Substring" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Longest_Valid_Parentheses" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MaxRectangular" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MergeList" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Merge_Intervals" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MultiplyStrings" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/NQueues" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Next_Permutation" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Palindrome_Number" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Palindrome_Partitioning1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Palindrome_Partitioning2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PartitionList" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Permutation_Sequence" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Permute_Unique" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Plus_One" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PopulateNext" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ReOrderList" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RegularExpressionMatching" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RemoveDuplicatesFromList" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RestoreIPAddress" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ReverseBit" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ReverseIntegers" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RomanAndInteger" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RotateList" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Scramble_String" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Search2DMatrix" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Search_Insert_Pos" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SetMatrixZeros" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SortColors" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SortedList2BST" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SpiralMatrix" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Sqrt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Substring_with_Concatenation_of_All_Words" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Sudoku" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SumRootToLeafNumbers" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SurroundedRegions" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/TextJustification" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Trap_DrainWater" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/UniquePaths" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Valid_parentheses" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Word_Ladder" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/candy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/divideTwoInteger" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/isValid_Number" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/longest_common_prefix" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/max_k_sliding_window" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/mergerKSortedList" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/recoverBST" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/removeElements" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/strstr" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/word_search" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
