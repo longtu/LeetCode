@@ -1,39 +1,31 @@
-/**
- * Definition for singly-linked list.
- * class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
- * }
- */
-public class Solution {
+public String addBinary(String a, String b) {
 
-    public ListNode detectCycle(ListNode head) {
-        ListNode fastNode = head;
-        ListNode slowNode = head;
-        int flag = 1;
-        boolean hasCycle = false;
-        while(fastNode != null){
-            fastNode = fastNode.next;
-            flag ^= 1;
-            if(flag == 1)
-                slowNode = slowNode.next;
-            if(fastNode == slowNode){
-                hasCycle = true;
-                break;    
-            }
-        }
-        if(!hasCycle)
-            return null;
-        
-        fast = head;
-        while(fastNode != slowNode){
-            fastNode = fastNode.next;
-            slowNode = slowNode.next;
-        }
+    if(a == null)
+        return addBinary("", b);
 
+    if(b == null)
+        return addBinary(a, "");
+
+    Stack<Character> stack = new Stack<Character>();
+
+    int carry = 0;
+    for( int left = a.length()-1,right = b.length()-1; left >=0 || right >=0;){
+        if( left >=0 && right >= 0){
+            int carry = (a.charAt(left--) - '0' + b.charAt(right--) - '0') + carry;
+        } 
+        else if( left >= 0){
+            int carry = (a.charAt(left--) - '0') + carry;
+        } else {
+            int carry = (a.charAt(right--) - '0') + carry;
+        } 
+        stack.push(carry%2 + '0');
+        carry = carry/2;
     }
+    if(carry > 0)
+        stack.push(carry%2 + '0');
+
+    StringBuilder sb = new StringBuilder();
+    while(!stack.isEmpty())
+        sb.append(stack.pop());
+    return sb.toString();
 }
