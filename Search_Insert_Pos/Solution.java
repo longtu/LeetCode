@@ -1,4 +1,3 @@
-
 public class Solution {
 	
 	/**constraint: 1) Has to be sorted, 2) Array ***/
@@ -76,95 +75,81 @@ public class Solution {
 		return find;
 	}
 
-    /**
-     * V2.3 mutliple instances match
-     * Search Range of matche elements
-     */
-    public class Solution {
-        public int[] searchRange(int[] A, int target) {
-            int [] ret = new int[2];
-            ret[0] = -1;
-            ret[1] = -1;
-            if(A == null)
-                return ret;
-            int start = 0;
-            int end = A.length-1;
-
-            ret[0] = findBoundary(start,end,A,target,true);
-            ret[1] = findBoundary(start,end,A,target,false);
-
-            return ret;
-        }
-        int findBoundary(int start, int end, int [] A, int target, boolean isLeft){
-            int find = -1;
-            while(start <= end){
-                int mid = start + ((end-start)>>1);
-                if(A[mid] > target ){
-                    end = mid-1;
-                }else if(A[mid] < target){
-                    start = mid +1;
-                }else {
-                    find = mid;
-                    if(isLeft)
-                        end = mid-1;
-                    else
-                        start = mid+1;
-                }
-            }
-            return find;
-        }
-    }
-    /**
-     * V3.1: Hard Boundary find
-     * Search LAST element that smaller than target, if not found, return -1
-     */
-    public int binarySearch4(int[] A, int target) {
+    // first greater or equal
+    public int binarySearch1(int[] arr, int target) {
 
         int start = 0;
-        int end = A.length-1;
-
-        while(start <= end){
-            int mid = start +((end-start)>>1);
-            if(A[mid] > target)
-                end = mid-1;
-            else if(A[mid] < target)
-                start = mid+1;
-            else {
-                end = mid-1;
+        int end = arr.length - 1;
+        int find = -1;
+        int mid;
+        while (start <= end) {
+            mid = start + ((end - start) >> 1);
+            if (arr[mid] < target) {
+                start = mid + 1;
+            } else {
+                find = mid;
+                end = mid - 1;
             }
         }
-        return end;
+        return find;
     }
-    /**
-     * V3.1: Hard Boundary find
-     * Search First element that greater than target, if not found, return -1
-     */
-    public int binarySearch5(int[] A, int target) {
+
+    // last smaller or equal
+    public int binarySearch2(int[] arr, int target) {
 
         int start = 0;
-        int end = A.length-1;
-
-        while(start <= end){
-            int mid = start +((end-start)>>1);
-            if(A[mid] > target)
-                end = mid-1;
-            else if(A[mid] < target)
-                start = mid+1;
-            else {
-                start = mid+1;
+        int end = arr.length - 1;
+        int find = -1;
+        int mid;
+        while (start <= end) {
+            mid = start + ((end - start) >> 1);
+            if (arr[mid] > target) {
+                end = mid - 1;
+            } else {
+                find = mid;
+                start = mid + 1;
             }
         }
-        return (start == A.length)?(-1):start;
+        return find;
     }
-    /**
-     * V4.1: Soft Boundary find
-     * Search First element that equals or bigger than target, if not found, return -1
-     * V3.2 + 1
-     *
-     * V4.2: Soft Boundary find
-     * Search Last element that smaller or equals target, if not found, return -1
-     * V3.1 - 1
-     */
+
+    // first greater
+    public int binarySearch3(int[] arr, int target) {
+
+        int start = 0;
+        int end = arr.length - 1;
+        int find = -1;
+        int mid;
+        while (start <= end) {
+            mid = start + ((end - start) >> 1);
+            if (arr[mid] <= target) {
+                start = mid + 1;
+            } else {
+                find = mid;
+                end = mid - 1;
+            }
+        }
+        return find;
+    }
+
+    // last smaller
+    public int binarySearch4(int[] arr, int target) {
+
+        int start = 0;
+        int end = arr.length - 1;
+        int find = -1;
+        int mid;
+        while (start <= end) {
+            mid = start + ((end - start) >> 1);
+            if (arr[mid] >= target) {
+                end = mid - 1;
+            } else {
+                find = mid;
+                start = mid + 1;
+            }
+        }
+        return find;
+    }
 
 
     /** Find any Range in 	sorted array with O(logn)
