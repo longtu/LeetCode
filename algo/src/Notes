@@ -1,0 +1,8 @@
+bit-manipulation:
+    use 1<<shifts to achieve range limit or make mask, e.g. IntegerMax = 1<<32-1;
+
+
+Dynamic programming:
+    *Remember to leverage variable type default values from JAVA spec: boolean->false, numeric/char->0, reference->null
+    *Global/Local optimal relationship
+    *Once you use two array optimization instead of full array, the inner/outer loop relationship cannot be easily switched
