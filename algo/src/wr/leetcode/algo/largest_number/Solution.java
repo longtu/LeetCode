@@ -1,37 +1,25 @@
 package wr.leetcode.algo.largest_number;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Solution {
-
-    private int compare (String left, String right) {
-
-        char[] lchars = left.toCharArray();
-        char[] rchars = right.toCharArray();
-
-        char[] longer = (lchars.length >= rchars.length)?(lchars):(rchars);
-        char[] shorter = (longer == lchars)? (rchars):(lchars);
-
+    public static int compare (String left, String right) {
+        if(left.length() < right.length()) {
+            return -1*compare(right, left);
+        }
+        //left size >= right size
         int i = 0;
-        for( ; i < shorter.length; ++i){
-            if(longer[i] != shorter[i]) {
-                return (lchars[i] - rchars[i]);
+        while( i < right.length() ) {
+            if(left.charAt(i) != right.charAt(i) ){
+                return (left.charAt(i) - right.charAt(i));
             }
+            ++i;
         }
-        if(longer.length == i){
+        if(left.length() == right.length())
             return 0;
-        }
-        String longers = new String(longer);
-        int ret =  compare(longers.substring(i, longer.length), longers.substring(0, i));
+        return compare(left.substring(i), left.substring(0,i));
 
-        if(longer == lchars) {
-            return ret;
-        } else {
-            return ret * -1;
-        }
     }
 
     public String largestNumber(int[] num) {
@@ -39,21 +27,11 @@ public class Solution {
         if(num == null || num.length == 0) {
             return "";
         }
-
-        List<String> strs = new LinkedList<String>();
-        for(int n : num)
-            strs.add(String.valueOf(n));
-        Collections.sort(strs, new Comparator<String>() {
-            @Override
-            public int compare(String s, String t1) {
-                return new Solution().compare(t1, s);
-            }
-        });
+        List<String> strs = Arrays.stream(num).boxed().map(a -> a.toString()).collect(Collectors.toList());
+        Collections.sort(strs, (a, b) -> Solution.compare(b, a));
         StringBuilder sb = new StringBuilder();
-        boolean zero = true;
-        for (String str : strs) {
-            sb.append(str);
-        }
+        strs.stream().forEach( a->sb.append(a));
+
         String ret = sb.toString();
         if(ret.startsWith("0")){
             ret = "0";
