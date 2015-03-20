@@ -16,7 +16,6 @@ public class Solution {
             return 0;
         }
         int n = prices.length;
-
         if(k > n-1) {
             return maxProfit(prices);
         }
