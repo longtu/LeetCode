@@ -3,6 +3,14 @@ bit-manipulation:
 
 
 Dynamic programming:
-    *Remember to leverage variable type default values from JAVA spec: boolean->false, numeric/char->0, reference->null
-    *Global/Local optimal relationship
-    *Once you use two array optimization instead of full array, the inner/outer loop relationship cannot be easily switched
+#Buy/Sell Stock :
+	-Use local/global relations
+ 	-Remember to leverage variable type default values from JAVA spec: boolean->false, numeric/char->0, reference->null
+ 	-Once you use two array optimization instead of full array, the inner/outer loop relationship CANNOT be easily switched
+
+#Climbing Stairs/Decode ways/Fibnacci:
+	-split into initialization and recursive phase
+	-initialization phase: set up initial value, however this initial value may not be the same as result of this edge case when n = 0
+ 	-sol[0] base cannot be computed in recursive loop (while/for)
+ 	-Once using constant space optimization, remember to reset the values !!
+ 	-Once use while for loop, remember to increment i !!!

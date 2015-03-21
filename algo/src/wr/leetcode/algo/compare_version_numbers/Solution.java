@@ -22,7 +22,7 @@ public class Solution {
             }
             ++i;
         }
-
+        //this is easy to forget, though we think about this, we forgot in initial implementaion
         while(i < srcs.length) {
             int left = Integer.parseInt(srcs[i]);
             if(left != 0) {
