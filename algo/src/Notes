@@ -14,3 +14,10 @@ Dynamic programming:
  	-sol[0] base cannot be computed in recursive loop (while/for)
  	-Once using constant space optimization, remember to reset the values !!
  	-Once use while for loop, remember to increment i !!!
+
+ #Unique Paths(I,II)//skip
+ 	-Two dimension extention of Fibnacci
+
+ #Word Distance()
+ 	-Two dimension extention of Fibnacci
+ 	-Recursive relationship is a little bit difficult to figure out.
