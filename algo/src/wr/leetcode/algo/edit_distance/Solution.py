@@ -11,7 +11,8 @@ class Solution:
 
    	sol = [ [ 0 for y in xrange(n+1)] for i in xrange(2)]
 
-   	for i in xrange(m+1):
+   	i = 0
+   	while i < m+1:
    		for j in xrange(n+1):
    			sol [i%2][j] = max(i,j);
    			if i > 0:
@@ -23,7 +24,7 @@ class Solution:
    				if word1[(i-1)%2] == word2[j-1]:
    					diff = 0
    				sol[i%2][j] = min (sol[i%2][j], sol[(i-1)%2][j-1] + diff)
-
+   		i += 1
    	return sol[m%2][n]
 
 if __name__ == '__main__':
