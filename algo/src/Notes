@@ -8,23 +8,38 @@ Dynamic programming:
  	-Remember to leverage variable type default values from JAVA spec: boolean->false, numeric/char->0, reference->null
  	-Once you use two array optimization instead of full array, the inner/outer loop relationship CANNOT be easily switched
 
+#Distinct Subsequence
+	- Use local/global optimal relations
+
+#Max product subarray //skip
+	- Use local/global optimal relations
+	- Extention is max product subarray
+
 #Climbing Stairs/Decode ways/Fibnacci:
 	-split into initialization and recursive phase
 	-initialization phase: set up initial value, however this initial value may not be the same as result of this edge case when n = 0
  	-sol[0] base cannot be computed in recursive loop (while/for)
  	-Once using constant space optimization, remember to reset the values !!
  	-Once use while for loop, remember to increment i !!!
-#Distinct Subsequence
-	- Use local/global optimal relations
 
-#Unique Paths(I,II)	//skip
+#Unique Paths(I,II)/Minimum Path Sum	//skip
  	-Two dimension extention of Fibnacci
+
 
 #Word Distance()
- 	-Two dimension extention of Fibnacci
+ 	-Traditional bigger/smaller problem; Two dimension extention of Fibnacci
  	-Recursive relationship is a little bit difficult to figure out.
 
 #Interleaving Sting
-	-Two dimension extention of Fibnacci
+ 	-Traditional bigger/smaller problem; Two dimension extention of Fibnacci
 	-recursive relationship boundary, watch out for what values to use
-	
+
+#Longest Valid Parentheses //skip optimal solution, still TLE
+	-change its problem to be has valid parenthesis
+ 	-Traditional bigger/smaller problem; Two dimension extention of Fibnacci
+	-Recursinve relathionship boundary
+	-Optimal solution should be O(N)
+
+#Word Break
+	-use BFS or DFS
+	-
