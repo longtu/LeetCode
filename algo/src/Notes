@@ -1,69 +1,66 @@
 bit-manipulation:
     use 1<<shifts to achieve range limit or make mask, e.g. IntegerMax = 1<<32-1;
 
-Dynamic programming:
-#Buy/Sell Stock :
+##Dynamic programming:
+Buy/Sell Stock :
 	-Use local/global relations
  	-Remember to leverage variable type default values from JAVA spec: boolean->false, numeric/char->0, reference->null
  	-Once you use two array optimization instead of full array, the inner/outer loop relationship CANNOT be easily switched
 
-#Distinct Subsequence
+Distinct Subsequence
 	- Use local/global optimal relations
 
-#Max sum subarray //skip
+Max sum subarray //skip
 	- Use local/global optimal relations
 	- Extention is max product subarray
 
-#Parlindrome Paritioning II
+Parlindrome Paritioning II
+    - find all Parlindromes first
+    - Use local/global optimal relations
 
-
-#Climbing Stairs/Decode ways/Fibnacci/:
+Climbing Stairs/Decode ways/Fibnacci/:
 	-split into initialization and recursive phase
 	-initialization phase: set up initial value, however this initial value may not be the same as result of this edge case when n = 0
  	-sol[0] base cannot be computed in recursive loop (while/for)
  	-Once using constant space optimization, remember to reset the values !!
  	-Once use while for loop, remember to increment i !!!
 
-#Triangle:		//skip
+Triangle:		//skip
     -Similar 1-dimension recursive relationship
     -however we can go from bottom up instead of top down to speed up and easy to code
 
-#Unique Paths(I,II)/Minimum Path Sum	//skip
+Unique Paths(I,II)/Minimum Path Sum	//skip
  	-Two dimension extention of Fibnacci
 
-
-#Word Distance()
+Word Distance()
  	-Traditional bigger/smaller problem; Two dimension extention of Fibnacci
  	-Recursive relationship is a little bit difficult to figure out.
 
-#Longest Parlindrome Partitioning
+Scramble String
 	-Comparing with Word Distance, two source relationship subproblem structure
 	-Implementation very easily can cause bugs: break for different sublengths, look up, check the code...
 
-
-#Interleaving Sting
+Interleaving Sting
  	-Traditional bigger/smaller problem; Two dimension extention of Fibnacci
 	-recursive relationship boundary, watch out for what values to use
 
-#Unique BSTs I/II 	//skip
+Unique BSTs I/II 	//skip
 	 -Traditional bigger/smaller problem;
 	 -Still similar to two dimension extention of Fibnacci, but there are very large number of smaller problem can be reduced to
 
-#Word Break
+Word Break
+    -use valid lengths from dictionary to parse string
 	-use BFS or DFS(LTE unless use tuning)
 	-Word BreakII returns all lists, using DFS is much easier to code
 	-无节操剪枝
 
-#Largest Rectangular //skip optimal, but not TLE
+Largest Rectangular //skip optimal, but not TLE
 	-recursive relationship
 	-What is stored in meta data results
 
-#Regular Expression Matching
-#Wild Card Matching
-
-#Scramble String
-
-#Longest Valid Parentheses //skip optimal solution, still TLE
+Regular Expression Matching
+Wild Card Matching
+Longest Valid Parentheses //skip optimal solution, still TLE
 	-change its problem to be has valid parenthesis
  	-Traditional bigger/smaller problem; Two dimension extention of Fibnacci
 	-Recursinve relathionship boundary
