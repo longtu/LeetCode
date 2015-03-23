@@ -1,7 +1,6 @@
 bit-manipulation:
     use 1<<shifts to achieve range limit or make mask, e.g. IntegerMax = 1<<32-1;
 
-
 Dynamic programming:
 #Buy/Sell Stock :
 	-Use local/global relations
@@ -11,16 +10,20 @@ Dynamic programming:
 #Distinct Subsequence
 	- Use local/global optimal relations
 
-#Max product subarray //skip
+#Max sum subarray //skip
 	- Use local/global optimal relations
 	- Extention is max product subarray
 
-#Climbing Stairs/Decode ways/Fibnacci:
+#Climbing Stairs/Decode ways/Fibnacci/:
 	-split into initialization and recursive phase
 	-initialization phase: set up initial value, however this initial value may not be the same as result of this edge case when n = 0
  	-sol[0] base cannot be computed in recursive loop (while/for)
  	-Once using constant space optimization, remember to reset the values !!
  	-Once use while for loop, remember to increment i !!!
+
+#Triangle:		//skip
+    -Similar 1-dimension recursive relationship
+    -however we can go from bottom up instead of top down to speed up and easy to code
 
 #Unique Paths(I,II)/Minimum Path Sum	//skip
  	-Two dimension extention of Fibnacci
@@ -30,16 +33,35 @@ Dynamic programming:
  	-Traditional bigger/smaller problem; Two dimension extention of Fibnacci
  	-Recursive relationship is a little bit difficult to figure out.
 
+#Longest Parlindrome Partitioning
+	-Comparing with Word Distance, two source relationship subproblem structure
+	-
+
+
 #Interleaving Sting
  	-Traditional bigger/smaller problem; Two dimension extention of Fibnacci
 	-recursive relationship boundary, watch out for what values to use
+
+#Unique BSTs I/II 	//skip
+	 -Traditional bigger/smaller problem;
+	 -Still similar to two dimension extention of Fibnacci, but there are very large number of smaller problem can be reduced to
+
+#Word Break
+	-use BFS or DFS(LTE unless use tuning)
+	-Word BreakII returns all lists, using DFS is much easier to code
+	-无节操剪枝
+
+#Largest Rectangular //skip optimal, but not TLE
+	-recursive relationship
+	-What is stored in meta data results
+
+#Regular Expression Matching
+#Wild Card Matching
+
+#Scramble String
 
 #Longest Valid Parentheses //skip optimal solution, still TLE
 	-change its problem to be has valid parenthesis
  	-Traditional bigger/smaller problem; Two dimension extention of Fibnacci
 	-Recursinve relathionship boundary
 	-Optimal solution should be O(N)
-
-#Word Break
-	-use BFS or DFS
-	-
