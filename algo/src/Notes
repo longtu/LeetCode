@@ -14,6 +14,9 @@ Dynamic programming:
 	- Use local/global optimal relations
 	- Extention is max product subarray
 
+#Parlindrome Paritioning II
+
+
 #Climbing Stairs/Decode ways/Fibnacci/:
 	-split into initialization and recursive phase
 	-initialization phase: set up initial value, however this initial value may not be the same as result of this edge case when n = 0
@@ -35,7 +38,7 @@ Dynamic programming:
 
 #Longest Parlindrome Partitioning
 	-Comparing with Word Distance, two source relationship subproblem structure
-	-
+	-Implementation very easily can cause bugs: break for different sublengths, look up, check the code...
 
 
 #Interleaving Sting
