@@ -59,12 +59,15 @@ Largest Rectangular //skip optimal, but not TLE
 	-recursive relationship
 	-What is stored in meta data results
 
-Regular Expression Matching
+Regular Expression Matching ////skip optimal, but not TLE
     -simple recursive relationship
     -but tooooo many edge cases!!!
+    -need to redo to catch all edge cases
 
-Wild Card Matching
-
+Wild Card Matching //skip optimal, but not TLE
+    -simple recursive relationship
+	-无节操剪枝
+    -need to check how to prune
 
 
 Longest Valid Parentheses //skip optimal solution, still TLE
