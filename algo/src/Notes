@@ -17,6 +17,7 @@ Max sum subarray //skip
 Parlindrome Paritioning II
     - find all Parlindromes first
     - Use local/global optimal relations
+    - Made mistakes
 
 Climbing Stairs/Decode ways/Fibnacci/:
 	-split into initialization and recursive phase
@@ -59,7 +60,13 @@ Largest Rectangular //skip optimal, but not TLE
 	-What is stored in meta data results
 
 Regular Expression Matching
+    -simple recursive relationship
+    -but tooooo many edge cases!!!
+
 Wild Card Matching
+
+
+
 Longest Valid Parentheses //skip optimal solution, still TLE
 	-change its problem to be has valid parenthesis
  	-Traditional bigger/smaller problem; Two dimension extention of Fibnacci
