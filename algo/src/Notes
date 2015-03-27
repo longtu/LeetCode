@@ -89,3 +89,13 @@ Tree UpsideDown: // needs practice
 Unique Binary Search Trees I/II
     -Use copy tree, convert to a recursive-able function
 
+Validate Binary Search Tree
+Same Tree //skip
+Symmetric Tree //skip
+min/max Tree Depth
+	-use recursion
+	-watch out for null/leaf nodes/non-leaf nodes
+Balanced Trees
+	-use recursion, keep track of height from bottom up
+
+
