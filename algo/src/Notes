@@ -75,3 +75,17 @@ Longest Valid Parentheses //skip optimal solution, still TLE
  	-Traditional bigger/smaller problem; Two dimension extention of Fibnacci
 	-Recursinve relathionship boundary
 	-Optimal solution should be O(N)
+
+##Tree:
+Binary Search Tree Iterator:
+	-In order iterator: Use a stack O(h) space, O(1) time
+	-Java Stack is a class, not interface
+	-Level-by-level iterator: Use a queue,  O(N) space
+
+Tree UpsideDown: // needs practice
+	-Iterative solution is clean and good, but could be easier
+	-Did not think of the recursive solution
+
+Unique Binary Search Trees I/II
+    -Use copy tree, convert to a recursive-able function
+
