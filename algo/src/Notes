@@ -98,4 +98,5 @@ min/max Tree Depth
 Balanced Trees
 	-use recursion, keep track of height from bottom up
 
-
+Post-Order-Traversal:
+	-stupid mistakes
