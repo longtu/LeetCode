@@ -21,7 +21,7 @@ Parlindrome Paritioning II
 
 Climbing Stairs/Decode ways/Fibnacci/:
 	-split into initialization and recursive phase
-	-initialization phase: set up initial value, however this initial value may not be the same as result of this edge case when n = 0
+	-initialization phase: set up initial value, however this initial value may not be the same as result of this edge ca   ase when n = 0
  	-sol[0] base cannot be computed in recursive loop (while/for)
  	-Once using constant space optimization, remember to reset the values !!
  	-Once use while for loop, remember to increment i !!!
@@ -84,6 +84,8 @@ Binary Search Tree In-order Traversal Iterator:
 	-Post order can also reverse pre-order results
 	-Java Stack is a class, not interface
 	-Level-by-level iterator: Use a queue,  O(N) space
+	-Level-by-level iterator(bottom-up): use swap queues + stack
+	-Zig-Zag: Use swap queues and linkedlist, use a reverse label to addFirst/Last
 
 Tree UpsideDown: // needs practice
 	-Iterative solution is clean and good, but could be easier
