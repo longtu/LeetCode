@@ -77,8 +77,11 @@ Longest Valid Parentheses //skip optimal solution, still TLE
 	-Optimal solution should be O(N)
 
 ##Tree:
-Binary Search Tree Iterator:
+Binary Search Tree In-order Traversal Iterator:
 	-In order iterator: Use a stack O(h) space, O(1) time
+	-Pre order: Use a stack o(h) space
+	-Post order: use a stack o(h)  as well, just some cases to take care
+	-Post order can also reverse pre-order results
 	-Java Stack is a class, not interface
 	-Level-by-level iterator: Use a queue,  O(N) space
 
@@ -98,5 +101,4 @@ min/max Tree Depth
 Balanced Trees
 	-use recursion, keep track of height from bottom up
 
-Post-Order-Traversal:
-	-stupid mistakes
+

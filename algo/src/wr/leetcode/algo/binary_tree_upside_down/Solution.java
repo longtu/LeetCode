@@ -11,8 +11,8 @@ public class Solution {
 
     public TreeNode UpsideDownBinaryTree(TreeNode root) {
 
-    	TreeNode curr = new TreeNode();
-    	TreeNode next = new TreeNode();
+    	TreeNode curr = new TreeNode(-1);
+    	TreeNode next = new TreeNode(-1);
     	TreeNode node = root;
 
     	if(root == null){
@@ -28,7 +28,7 @@ public class Solution {
     		next.right = curr.right.right;
     		
     		curr.left.right = node;
-    		curr.left.left = curr.right
+    		curr.left.left = curr.right;
     		node = curr.left;
 
     		curr.left = next.left;
@@ -43,7 +43,7 @@ public class Solution {
             TreeNode left = p.left;
             p.left = right;
             right = p.right;
-            p.right ＝ parent;
+            p.right = parent;
             parent = p;
             p = left;
         }
