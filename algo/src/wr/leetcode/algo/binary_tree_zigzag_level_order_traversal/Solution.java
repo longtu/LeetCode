@@ -1,6 +1,5 @@
 package wr.leetcode.algo.binary_tree_zigzag_level_order_traversal;
 
-import javax.swing.tree.TreeNode;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;

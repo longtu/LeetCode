@@ -84,8 +84,8 @@ Binary Search Tree In-order Traversal Iterator:
 	-Post order can also reverse pre-order results
 	-Java Stack is a class, not interface
 	-Level-by-level iterator: Use a queue,  O(N) space
-	-Level-by-level iterator(bottom-up): use swap queues + stack
-	-Zig-Zag: Use swap queues and linkedlist, use a reverse label to addFirst/Last
+	-Level-by-level iterator(bottom-up): use swap queues + Stack(or linkeList, more simpler)    //worth another try
+	-Zig-Zag: Use swap queues and linkedlist, use a reverse label to addFirst/Last  //worth another try
 
 Tree UpsideDown: // needs practice
 	-Iterative solution is clean and good, but could be easier
@@ -94,13 +94,29 @@ Tree UpsideDown: // needs practice
 Unique Binary Search Trees I/II
     -Use copy tree, convert to a recursive-able function
 
-Validate Binary Search Tree
-Same Tree //skip
-Symmetric Tree //skip
-min/max Tree Depth
+Validate Binary Search Tree/Sum Root to Leaf Numbers [metadata top down]
+	-Pass metadata to children during recursion
+	-Watch out for leaf nodes
+Path Sum i/ii [need clarification on path!!]
+	-Watch out! root to leaft paths only
+	-If inner node paths are also valid, we need special care of null nodes (return a list of (empty list but null))
+
+Binary Tree Maximum Path Sum [This needs special care!!!][metadata bottom up]***
+	-when null case is simple, leaf case may need special care!!
+	-when null return null, use null check to set default value
+
+min/max Tree Depth [metadata bottom up]
 	-use recursion
 	-watch out for null/leaf nodes/non-leaf nodes
-Balanced Trees
+Balanced Trees [metadata bottom up]
 	-use recursion, keep track of height from bottom up
 
+Populating Next Right Pointers In Each Node i/ii ***
+	-implementaiton test:
+	- use node, parent,  (and leftmost)
+	- helper function
+	- helper parent
+
+Same Tree //skip
+Symmetric Tree //skip
 
