@@ -117,6 +117,9 @@ Populating Next Right Pointers In Each Node i/ii ***
 	- helper function
 	- helper parent
 
+Flatten Binary Tree to Linked List
+	-Recursion for different types of node
+
 Same Tree //skip
 Symmetric Tree //skip
 
