@@ -120,6 +120,18 @@ Populating Next Right Pointers In Each Node i/ii ***
 Flatten Binary Tree to Linked List
 	-Recursion for different types of node
 
+Convert Sorted Array to Binary Search Tree
+	-recursive
+	-use startInclusive, endExclusive, mid = (start+end)/2
+
+Construct Binary Tree from Inorder and Postorder/Pre Traversal ***
+	-leverage the length differentce from In-Order Range
+	-watch out for where pre/post traversal start/end
+
+Recover Binary Search Tree ***
+	-edge case is when two neighbour nodes are swapped
+	-use recursion/stack in-order iteration to find exceptions (watch out for this code)
+
 Same Tree //skip
 Symmetric Tree //skip
 
