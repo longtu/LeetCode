@@ -135,3 +135,6 @@ Recover Binary Search Tree ***
 Same Tree //skip
 Symmetric Tree //skip
 
+Majority Element ***
+	-figures out the relationship to cancel
+	-but not realized to use a count variable!!!
