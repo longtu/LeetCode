@@ -2,17 +2,17 @@ class Solution:
     # @param num, a list of integers
     # @return an integer
     def majorityElement(self, num):
-    	start = 0
-    	end = len(num)-1
-
-    	while start + 1 < end:
-    		if num[start] == num[end] :
-    			start += 1
+    	last = None
+    	count = 0
+    	for i in range(len(num)):
+    		if num[i] == last:
+    			count += 1
+    		elif count ==0:
+    			count += 1
+    			last= num[i]
     		else:
-    			start += 1
-    			end -=1
-
-    	return num[start]
+    			count -= 1
+    	return last
 
 if __name__ == '__main__':
 	sol = Solution();
