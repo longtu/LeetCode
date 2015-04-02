@@ -138,3 +138,6 @@ Symmetric Tree //skip
 Majority Element ***
 	-figures out the relationship to cancel
 	-but not realized to use a count variable!!!
+Maximum Gap ***
+	-too native exhaust will fail
+	-Implement radix sort (how to find index for each filed)
