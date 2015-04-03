@@ -146,6 +146,11 @@ Excel Sheet Column Title ***
 	-integer to string has to be careful!!!
 	-each filed is shifted by one bit
 
-==Needs redo!==
+Factorial Trailing Zeroes
+	-count how many 5, 5*5, 5*5*5 etc
+	-integer overflow
+
 Fraction to Recurring Decimal ***
 	-the recursion relationship
+	-integer overflow
+	-any operation of intger we need to use long
