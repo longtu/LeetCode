@@ -18,8 +18,8 @@ public class Solution {
                             int idx = board[i][k] - '0';
                             occupied[idx] = true;
                         }
-                        if(board[k][i] != '.') {
-                            int idx = board[k][i] - '0';
+                        if(board[k][j] != '.') {
+                            int idx = board[k][j] - '0';
                             occupied[idx] = true;
                         }
                     }
@@ -38,6 +38,7 @@ public class Solution {
                                 return true;
                         }
                     }
+                    board[i][j] = '.';
                     return false;
                 }
             }
