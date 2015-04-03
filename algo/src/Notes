@@ -141,3 +141,11 @@ Majority Element ***
 Maximum Gap ***
 	-too native exhaust will fail
 	-Implement radix sort (how to find index for each filed)
+Excel Sheet Column Title ***
+	-string to integer is easy
+	-integer to string has to be careful!!!
+	-each filed is shifted by one bit
+
+==Needs redo!==
+Fraction to Recurring Decimal ***
+	-the recursion relationship
