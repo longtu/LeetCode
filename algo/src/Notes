@@ -154,3 +154,7 @@ Fraction to Recurring Decimal ***
 	-the recursion relationship
 	-integer overflow
 	-any operation of intger we need to use long
+
+Sudoku Solver
+	-Backtrack Recursion
+	-Remember to reset original state!!!
