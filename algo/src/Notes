@@ -168,3 +168,12 @@ Fraction to Recurring Decimal ***
 	-the recursion relationship
 	-integer overflow
 	-any operation of intger we need to use long
+
+Minimum Window Substring ***
+	- sub-optimal: use start/end
+	- each test is not o(1)
+	- need to check optimal solution
+
+Max Points on a Line
+	- watch out for single point
+	- watch out for same points as origin

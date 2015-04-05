@@ -17,24 +17,28 @@ public class Solution {
     		return ret;
     	}
     	for (Point origin : points) {
-    		Map<Double, Integer> counts = new HashMap();
-    		for (Point point : points) {
-    			if( point != origin) {
-    				int dy = point.y - origin.y;
-    				int dx = point.x - origin.x;
-    				Double ratio;
-    				if(dx == 0) {
-    					ratio = Double.POSITIVE_INFINITY;
-    				} else {
-    					ratio = 1.0*dy/dx;
-    				}
-    				int val = counts.getOrDefault(ratio, 0) + 1;
-    				ret = Math.max(ret, val+1);
-    				counts.put(ratio, val);
-    			}
-    		}
-    	}
+            int line = 0;
+            int max = 0;
+            Map<Double, Integer> counts = new HashMap();
+            for (Point point : points) {
+                if(point.x == origin.x && point.y == origin.y) {
+                    line ++;
+                } else  {
+                    int dy = point.y - origin.y;
+                    int dx = point.x - origin.x;
+                    Double ratio;
+                    if (dx == 0) {
+                        ratio = Double.POSITIVE_INFINITY;
+                    } else {
+                        ratio = 1.0 * dy / dx;
+                    }
+                    int val = counts.getOrDefault(ratio, 0) + 1;
+                    max = Math.max(max, val);
+                    counts.put(ratio, val);
+                }
+            }
+            ret = Math.max(ret, max+line);
+        }
     	return ret;
     }
-
 }
