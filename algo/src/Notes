@@ -14,6 +14,11 @@ Max sum subarray //skip
 	- Use local/global optimal relations
 	- Extention is max product subarray
 
+Longest Substring Without Repeating Characters
+	- Use local/global optimal relations
+	- use hashtable to record last position for given character
+	- However watch out for local optimal is not (i - table.get(charAt(i))), there might be duplicates in between
+
 Parlindrome Paritioning II
     - find all Parlindromes first
     - Use local/global optimal relations
@@ -68,7 +73,6 @@ Wild Card Matching //skip optimal, but not TLE
     -simple recursive relationship
 	-无节操剪枝
     -need to check how to prune
-
 
 Longest Valid Parentheses //skip optimal solution, still TLE
 	-change its problem to be has valid parenthesis
@@ -135,12 +139,22 @@ Recover Binary Search Tree ***
 Same Tree //skip
 Symmetric Tree //skip
 
+#Back tracking
+Sudoku Solver
+	-Backtrack Recursion
+	-Remember to reset original state!!!
+
+#Math Trick
 Majority Element ***
 	-figures out the relationship to cancel
 	-but not realized to use a count variable!!!
+
+#Sorting
 Maximum Gap ***
 	-too native exhaust will fail
 	-Implement radix sort (how to find index for each filed)
+
+#Iterative, implementation
 Excel Sheet Column Title ***
 	-string to integer is easy
 	-integer to string has to be careful!!!
@@ -154,7 +168,3 @@ Fraction to Recurring Decimal ***
 	-the recursion relationship
 	-integer overflow
 	-any operation of intger we need to use long
-
-Sudoku Solver
-	-Backtrack Recursion
-	-Remember to reset original state!!!
