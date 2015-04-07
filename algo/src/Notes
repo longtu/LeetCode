@@ -162,6 +162,12 @@ Maximum Gap ***
 	-too native exhaust will fail
 	-Implement radix sort (how to find index for each filed)
 
+Sort Colors ***
+	-counting sort
+	-use firstOne, next, end to track parition
+	-watch out for maintains firstOne
+
+
 #Iterative, implementation
 Excel Sheet Column Title ***
 	-string to integer is easy
@@ -201,7 +207,6 @@ Substring with Concatenation of All Words ***
 
 Trapping Rain Water
 	-left/right max
-
 
 
 

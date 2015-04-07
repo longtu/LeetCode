@@ -19,7 +19,7 @@ public class Solution {
         	} else if (A[next] == 0) {
         		if(firstOne != -1){
         			swap(A, next, firstOne);
-        			firstOne = next;
+        			firstOne +=1;
         		}
         		next++;
         	} else {
