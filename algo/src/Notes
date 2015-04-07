@@ -1,5 +1,9 @@
-bit-manipulation:
+##bit-manipulation:
     use 1<<shifts to achieve range limit or make mask, e.g. IntegerMax = 1<<32-1;
+Repeated DNA Sequences:
+	use integer encoding of different characters, bit operation will help
+
+
 
 ##Dynamic programming:
 Buy/Sell Stock :
@@ -148,6 +152,10 @@ Sudoku Solver
 Majority Element ***
 	-figures out the relationship to cancel
 	-but not realized to use a count variable!!!
+Max Points on a Line
+	- watch out for single point
+	- watch out for same points as origin
+	- use hashtable to store ratio
 
 #Sorting
 Maximum Gap ***
@@ -172,8 +180,28 @@ Fraction to Recurring Decimal ***
 Minimum Window Substring ***
 	- sub-optimal: use start/end
 	- each test is not o(1)
-	- need to check optimal solution
+	- optimal solution : use a variable--sum of all chars, still need dictionary, see http://fisherlei.blogspot.com/2012/12/leetcode-minimum-window-substring.html
 
-Max Points on a Line
-	- watch out for single point
-	- watch out for same points as origin
+4Sum/2Sum
+	- use hashtable to remove duplicates
+	- use iteration to reduce to two sum
+	- need to check optimal solution
+	- two pointers
+
+valid palidrome
+	-two pointers
+
+strstr
+	-KMP/Boyer-Moore
+	-two pointers, watch out for empty or null
+
+Substring with Concatenation of All Words ***
+	-Optimization of early stop
+	-Use a map as word count, test if each index statisfies the word count
+
+Trapping Rain Water
+	-left/right max
+
+
+
+
