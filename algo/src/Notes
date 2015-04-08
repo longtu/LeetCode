@@ -202,6 +202,11 @@ maxArea
 	-two pointers meet
 	-update max and which boarder to move
 
+Remove Element
+	-two pointers meet
+	-update boundary, watch out for edge case
+	-similar to three color sorting
+
 ###LAG POINTERS
 Rotate List ***
 	- '''use distance between two pointers to control loop'''
