@@ -12,7 +12,6 @@ public class Solution {
         if(0 == len) {
             return helper.next;
         }
-        n = n % len;
         if(0 != n) {
             ListNode fast = helper;
             ListNode slow = helper;
