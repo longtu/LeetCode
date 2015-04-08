@@ -198,6 +198,9 @@ Minimum Window Substring ***
 	- two pointers
 valid palidrome
 	-two pointers
+maxArea
+	-two pointers meet
+	-update max and which boarder to move
 
 ###LAG POINTERS
 Rotate List ***
@@ -208,7 +211,8 @@ Remote Nth from end of List ***
 	- watch out for empty list and when len == 0
 	- mod does not make sense
 
-strstr
+###EXHAUSTIVE COMBINATION POINTERS
+Strstr
 	-KMP/Boyer-Moore
 	-two pointers, watch out for empty or null
 
@@ -216,6 +220,6 @@ Substring with Concatenation of All Words ***
 	-Optimization of early stop
 	-Use a map as word count, test if each index statisfies the word count
 
+TODO_OPTIMAL:
 Trapping Rain Water
 	-left/right max
-
