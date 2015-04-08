@@ -190,6 +190,11 @@ Minimum Window Substring ***
 	- each test is not o(1)
 	- optimal solution : use a variable--sum of all chars, still need dictionary, see http://fisherlei.blogspot.com/2012/12/leetcode-minimum-window-substring.html
 
+Remove Duplicates from Sorted Array
+	-Also Similar to meeting pointers of remove duplicates
+Remove Duplicates from Sorted Array II
+	-Use one more count variable to keep track of when can be appended
+
 ###MEETING POINTERS
 4Sum/2Sum
 	- use hashtable to remove duplicates
