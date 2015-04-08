@@ -183,19 +183,25 @@ Fraction to Recurring Decimal ***
 	-integer overflow
 	-any operation of intger we need to use long
 
+#Two pointers
+###CHASING POINTERS
 Minimum Window Substring ***
 	- sub-optimal: use start/end
 	- each test is not o(1)
 	- optimal solution : use a variable--sum of all chars, still need dictionary, see http://fisherlei.blogspot.com/2012/12/leetcode-minimum-window-substring.html
 
+###MEETING POINTERS
 4Sum/2Sum
 	- use hashtable to remove duplicates
 	- use iteration to reduce to two sum
 	- need to check optimal solution
 	- two pointers
-
 valid palidrome
 	-two pointers
+
+###LAG POINTERS
+Rotate List ***
+	- use distance between two pointers to control loop
 
 strstr
 	-KMP/Boyer-Moore
@@ -207,6 +213,4 @@ Substring with Concatenation of All Words ***
 
 Trapping Rain Water
 	-left/right max
-
-
 
