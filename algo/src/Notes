@@ -203,6 +203,11 @@ valid palidrome
 Rotate List ***
 	- '''use distance between two pointers to control loop'''
 
+Remote Nth from end of List ***
+	- '''use distance between two pointers to control loop'''
+	- watch out for empty list and when len == 0
+	- mod does not make sense
+
 strstr
 	-KMP/Boyer-Moore
 	-two pointers, watch out for empty or null
