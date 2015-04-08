@@ -201,6 +201,9 @@ Remove Duplicates from Sorted Array II
 	- use iteration to reduce to two sum
 	- need to check optimal solution
 	- two pointers
+3Sum Closest
+	- iterate over the array and subarray size is [i+1, length)
+	- waht if input < 3?
 valid palidrome
 	-two pointers
 maxArea
