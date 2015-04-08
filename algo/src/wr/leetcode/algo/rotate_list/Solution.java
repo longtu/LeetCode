@@ -6,7 +6,7 @@ public class Solution {
     public ListNode rotateRight(ListNode head, int k) {
 		int len = len(head);
 		if(0 == len) {
-			return;
+			return head;
 		}
     	k = k%len;
 

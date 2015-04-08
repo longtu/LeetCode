@@ -201,7 +201,7 @@ valid palidrome
 
 ###LAG POINTERS
 Rotate List ***
-	- use distance between two pointers to control loop
+	- '''use distance between two pointers to control loop'''
 
 strstr
 	-KMP/Boyer-Moore
