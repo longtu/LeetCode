@@ -1,7 +1,5 @@
 package wr.leetcode.algo.partition_list;
 
-import wr.leetcode.algo.ListNode;
-
 public class Solution {
     public ListNode partition(ListNode head, int x) {
 
@@ -12,12 +10,13 @@ public class Solution {
         small.next = head;
 
         while(small.next != null){
-            if(small.next.val >= x) {
+            if(small.next >= x) {
                 big.next = small.next;
                 small.next = small.next.next;
-                small = small.next;
                 big = big.next;
                 big.next = null;
+            } else {
+                small = small.next;
             }
         }
         small.next = bigHead.next;
