@@ -184,6 +184,11 @@ Fraction to Recurring Decimal ***
 	-any operation of intger we need to use long
 
 #Two pointers
+###Normal TWO POINTERS
+Partition List ***
+	-Use helper head node is of great help
+	-use four pointers to keep track of two heads/tail
+
 ###CHASING POINTERS
 Minimum Window Substring ***
 	- sub-optimal: use start/end
