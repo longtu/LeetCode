@@ -147,6 +147,10 @@ Symmetric Tree //skip
 Sudoku Solver
 	-Backtrack Recursion
 	-Remember to reset original state!!!
+Word Search
+	-Backtracking(DFS), reset visited state
+	-board problem, just one point (0,0) edge case!!!
+	-watch out for x, y range!!!
 
 #Math Trick
 Majority Element ***
