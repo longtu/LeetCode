@@ -205,6 +205,11 @@ N queens i/ii ***
 Letter Combinations of a Phone Number(edge case)
 	-watch out for null/"" and digitis 0/1, should skip instead of remove all
 
+GreyCode:
+	-Simple recursion
+	-always () shift operation result before +/- other operand
+	-reverse iterate: reverse then literate, or push into a stack
+
 #Math Trick
 Majority Element ***
 	-figures out the relationship to cancel
