@@ -39,8 +39,7 @@ public class Solution {
     public List<int[]> solveNQueens(int[] y, int n, int curr) {
         List<int[]> ret = new LinkedList();
         if(curr == n) {
-            System.out.println(Arrays.toString(y));
-            ret.add(y);
+            ret.add(Arrays.copyOf(y, y.length));
             return ret;
         }
         for (int i = 0; i < n; ++i) {

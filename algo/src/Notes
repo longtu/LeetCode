@@ -198,6 +198,10 @@ Combination Sum ii ***
 	-need to use set to remove duplicates
 	-input cannot be distincted
 
+N queens ***
+	-normal recursion
+	-remember to copy Array instead of just add!!!
+
 Letter Combinations of a Phone Number(edge case)
 	-watch out for null/"" and digitis 0/1, should skip instead of remove all
 
