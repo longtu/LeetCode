@@ -151,6 +151,14 @@ Word Search
 	-Backtracking(DFS), reset visited state
 	-board problem, just one point (0,0) edge case!!!
 	-watch out for x, y range!!!
+Word Ladder ***
+	-Naive backtracking(DFS) will cause TLE
+	-USE BFS + additional data structure(Map of depth, paths) to store paths
+	(only if current depth == parent.depth + 1 add to paths)
+	(do not need to add to queue if there is already depth info, otherwise cause TLE)
+	-Use DFS to recovery all paths from the stored info
+	-Do not pre-build all combinations of connection:
+	(W*W*Len V.S W*Len*26)
 
 #Math Trick
 Majority Element ***
