@@ -173,6 +173,12 @@ Permutations i/ii
 	-Recursion, no need to sort. Similar as substes to remove dup
 	-Use stream takes longer!!(Do not use new, use collector)
 
+Permutaiton Sequence ***
+	-convert i to i-1 makes calculation much easier
+	-recursion base condition wrong!: should check list size instead of index
+	-should return prefix + val
+	-permuation computaiton is wrong, see code
+
 #Math Trick
 Majority Element ***
 	-figures out the relationship to cancel
