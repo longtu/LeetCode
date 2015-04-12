@@ -7,10 +7,11 @@ import java.util.List;
 public class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         if(null == candidates ) {
-            return new LinkedList<>();
+            candidates = new int[0];
         }
-        Arrays.sort(candidates);
-        return combinationSumRec(candidates, target);
+        //should sort
+        int [] distinct = Arrays.stream(candidates).distinct().sorted().toArray();
+        return combinationSumRec(distinct, target);
     }
 
     public List<List<Integer>> combinationSumRec(int[] candidates, int target) {
@@ -24,8 +25,8 @@ public class Solution {
         if(candidates.length == 0) {
             return sols;
         }
-
-        for (int i = 1; i*candidates[candidates.length-1] <= target; ++i) {
+        //should start from 0 instead of 1
+        for (int i = 0; i*candidates[candidates.length-1] <= target; ++i) {
             List<List<Integer>> subs = combinationSumRec (
                 Arrays.copyOfRange(candidates, 0, candidates.length-1)
                 ,target - i*candidates[candidates.length-1]);
@@ -42,9 +43,8 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution sol = new Solution();
-        int[] arr = {2,1};
-        System.out.println(sol.combinationSum(arr, 4));
+        int[] arr = {3,6,7,2};
+        System.out.println(sol.combinationSum(arr, 7));
     }
-
 
 }

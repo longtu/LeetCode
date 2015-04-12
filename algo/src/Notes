@@ -176,17 +176,22 @@ Permutations i/ii
 	-Recursion, no need to sort. Similar as substes to remove dup
 	-Use stream takes longer!!(Do not use new, use collector)
 
+Permutaiton Sequence ***
+	-convert i to i-1 makes calculation much easier
+	-recursion base condition wrong!: should check list size instead of index
+	-should return prefix + val
+	-permuation computaiton is wrong, see code
+
 Combinations
 	-use global/local recursion
 	-direct recursion is not too bad
 	-for DP implementation, building table is a bit difficult
 	(need to research how to build an arry of Lists)
 
-Permutaiton Sequence ***
-	-convert i to i-1 makes calculation much easier
-	-recursion base condition wrong!: should check list size instead of index
-	-should return prefix + val
-	-permuation computaiton is wrong, see code
+Combination Sum ***
+	-use recursion
+	-pass subarray [0,n-1] and append to subsolution to make sure '<'
+	-watch out for '''input distinct''' and relation: should unique and sort
 
 Letter Combinations of a Phone Number(edge case)
 	-watch out for null/"" and digitis 0/1, should skip instead of remove all
