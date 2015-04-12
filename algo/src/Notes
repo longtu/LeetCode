@@ -26,7 +26,13 @@ Longest Substring Without Repeating Characters
 	- use hashtable to record last position for given character
 	- However watch out for local optimal is not (i - table.get(charAt(i))), there might be duplicates in between
 
-Parlindrome Paritioning II
+Parlindrome Paritioning i
+    - find all Parlindromes first
+    - initialize should be 'LEN+1' instead of LEN, will outOfBoundary
+    - Use DFS/Recursive to find all
+    - Forgot to use conn before recursion
+
+Parlindrome Paritioning ii
     - find all Parlindromes first
     - Use local/global optimal relations
     - Made mistakes
@@ -218,6 +224,13 @@ Restore IP Address:
     -use a list of split point
     -watch out for reset using list!!!(not add(index, val), should remove and add)
     -special requirements about 0
+
+Generate Parenthesis
+    -see Generate Parenthesis in DP
+
+Parlindrome Paritioning i
+    -see Parlindrome Paritioning i in DP
+
 
 #Math Trick
 Majority Element ***

@@ -19,6 +19,9 @@ public class Solution {
             sols.add(new LinkedList());
         } else {
             for (int l = 1; start+l-1 < s.length(); ++l) {
+                if(!conn[l][start] ){
+                    continue;
+                }
                 List<List<String>> subs = partition(s, start + l, conn);
                 for (List<String> sub : subs){
                     List<String> sol = new LinkedList(sub);
@@ -32,7 +35,7 @@ public class Solution {
 
     public boolean[][] getConn(String s) {
         int len = s.length();
-        boolean[][] conn = new boolean[len][len];
+        boolean[][] conn = new boolean[len+1][len+1];
 
         for (int l = 0; l <= len; ++l){
             for (int start = 0; start + l <= len; ++start) {
