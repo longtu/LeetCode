@@ -18,6 +18,9 @@ Max sum subarray //skip
 	- Use local/global optimal relations
 	- Extention is max product subarray
 
+Combinations
+	- Use local/global relations
+
 Longest Substring Without Repeating Characters
 	- Use local/global optimal relations
 	- use hashtable to record last position for given character
@@ -172,6 +175,12 @@ Subsets_ii
 Permutations i/ii
 	-Recursion, no need to sort. Similar as substes to remove dup
 	-Use stream takes longer!!(Do not use new, use collector)
+
+Combinations
+	-use global/local recursion
+	-direct recursion is not too bad
+	-for DP implementation, building table is a bit difficult
+	(need to research how to build an arry of Lists)
 
 Permutaiton Sequence ***
 	-convert i to i-1 makes calculation much easier
