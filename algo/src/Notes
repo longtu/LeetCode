@@ -31,6 +31,10 @@ Parlindrome Paritioning II
     - Use local/global optimal relations
     - Made mistakes
 
+Generate Parenthesis
+	- how to recursion to smaller problem
+	- similar as Unique Binary Search Trees I/II
+
 Climbing Stairs/Decode ways/Fibnacci/:
 	-split into initialization and recursive phase
 	-initialization phase: set up initial value, however this initial value may not be the same as result of this edge ca   ase when n = 0
