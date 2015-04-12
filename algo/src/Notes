@@ -19,7 +19,7 @@ Max sum subarray //skip
 	- Extention is max product subarray
 
 Combinations
-	- Use local/global relations
+	- Use local/global optimal relations
 
 Longest Substring Without Repeating Characters
 	- Use local/global optimal relations
@@ -187,6 +187,9 @@ Permutaiton Sequence ***
 	-recursion base condition wrong!: should check list size instead of index
 	-should return prefix + val
 	-permuation computaiton is wrong, see code
+
+Letter Combinations of a Phone Number(edge case)
+	-watch out for null/"" and digitis 0/1, should skip instead of remove all
 
 #Math Trick
 Majority Element ***
