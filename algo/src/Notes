@@ -165,6 +165,10 @@ Subsets
 	-Normal recursion
 	-Sort first!!! (this is missing firstly)
 
+Subsets_ii
+	-Use set to remove duplicate
+	-List Equals is deep equal
+
 #Math Trick
 Majority Element ***
 	-figures out the relationship to cancel
