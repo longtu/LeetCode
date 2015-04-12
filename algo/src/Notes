@@ -210,6 +210,11 @@ GreyCode:
 	-always () shift operation result before +/- other operand
 	-reverse iterate: reverse then literate, or push into a stack
 
+Restore IP Address:
+    -use a list of split point
+    -watch out for reset using list!!!(not add(index, val), should remove and add)
+    -special requirements about 0
+
 #Math Trick
 Majority Element ***
 	-figures out the relationship to cancel

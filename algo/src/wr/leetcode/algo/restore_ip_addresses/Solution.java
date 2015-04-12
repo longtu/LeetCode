@@ -34,15 +34,20 @@ public class Solution {
             if(isValidIP(s.substring(start, end))){
                 partitions.add(pSize, end);
                 ret.addAll(restoreIpAddresses(s, partitions));
+                partitions.remove(pSize);
             }
         }
         return ret;
     }
 
     public boolean isValidIP(String ip) {
+
+        if(ip.startsWith("0")){
+            return ip.equals("0");
+        }
         try{
             Integer val = Integer.parseInt(ip);
-            return (val >=0 && val <= 255);
+            return  (val >=0 && val <= 255);
         } catch(Exception e) {
             throw new RuntimeException(e);
         }
@@ -52,6 +57,7 @@ public class Solution {
         Solution sol = new Solution();
         System.out.println(sol.restoreIpAddresses("25525511135"));
         System.out.println(sol.restoreIpAddresses("0000"));
+        System.out.println(sol.restoreIpAddresses("010010"));
 
     }
 
