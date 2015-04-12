@@ -159,6 +159,11 @@ Word Ladder ***
 	-Use DFS to recovery all paths from the stored info
 	-Do not pre-build all combinations of connection:
 	(W*W*Len V.S W*Len*26)
+Word Break: see Word Break
+
+Subsets
+	-Normal recursion
+	-Sort first!!! (this is missing firstly)
 
 #Math Trick
 Majority Element ***
