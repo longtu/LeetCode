@@ -169,6 +169,10 @@ Subsets_ii
 	-Use set to remove duplicate
 	-List Equals is deep equal
 
+Permutations i/ii
+	-Recursion, no need to sort. Similar as substes to remove dup
+	-Use stream takes longer!!(Do not use new, use collector)
+
 #Math Trick
 Majority Element ***
 	-figures out the relationship to cancel
