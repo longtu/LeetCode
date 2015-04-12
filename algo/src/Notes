@@ -198,7 +198,7 @@ Combination Sum ii ***
 	-need to use set to remove duplicates
 	-input cannot be distincted
 
-N queens ***
+N queens i/ii ***
 	-normal recursion
 	-remember to copy Array instead of just add!!!
 
