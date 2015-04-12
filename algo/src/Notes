@@ -169,7 +169,7 @@ Subsets
 	-Sort first!!! (this is missing firstly)
 
 Subsets_ii
-	-Use set to remove duplicate
+	-Use set directly(instead of build key) to remove duplicate
 	-List Equals is deep equal
 
 Permutations i/ii
@@ -192,6 +192,11 @@ Combination Sum ***
 	-use recursion
 	-pass subarray [0,n-1] and append to subsolution to make sure '<'
 	-watch out for '''input distinct''' and relation: should unique and sort
+
+Combination Sum ii ***
+	-Similar to Combination Sum, except each element can be used at most 1
+	-need to use set to remove duplicates
+	-input cannot be distincted
 
 Letter Combinations of a Phone Number(edge case)
 	-watch out for null/"" and digitis 0/1, should skip instead of remove all
