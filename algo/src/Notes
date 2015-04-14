@@ -266,6 +266,13 @@ Fraction to Recurring Decimal ***
 	-integer overflow
 	-any operation of intger we need to use long
 
+#Binary Search
+Search in Rotated Sorted Array ***
+	-use the A[mid] A[end] and A[start] relationship
+	-Very easy to break edge case for A[mid] and A[start]
+
+
+
 #Two pointers
 ###Normal TWO POINTERS FOR PARTITION
 Partition List ***

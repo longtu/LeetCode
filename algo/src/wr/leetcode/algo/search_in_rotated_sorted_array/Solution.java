@@ -14,7 +14,7 @@ public class Solution {
             if(A[mid] == target) {
                 ret = mid;
                 break;
-            } else if (A[mid] > A[start]) {
+            } else if (A[mid] >= A[start]) {
                 if(target < A[mid] && target >= A[start]) {
                     end = mid - 1;
                 } else {
@@ -43,6 +43,13 @@ public class Solution {
         System.out.println(sol.search(arr, 2));
         System.out.println(sol.search(arr, -2));
         System.out.println(sol.search(arr, 12));
+
+        int [] b = {3,1};
+        System.out.println(sol.search(b, 3));
+        System.out.println(sol.search(b, 1));
+        System.out.println(sol.search(b, -1));
+        System.out.println(sol.search(b, 12));
+
 
     }
 }
