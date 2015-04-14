@@ -12,8 +12,10 @@ public class Solution {
         while (start <= end) {
             if (num[start] < num[end]) {
                 return num[start];
-            } else if(num[start] == num[end] && start < end) {
-                start ++;
+            } else if(num[start] == num[end]) {
+                if(start < end) {
+                    start ++;
+                }
             } else {
                 int mid = start + ((end - start) >> 1);
                 if (num[start] <= num[mid]) {
