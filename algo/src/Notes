@@ -271,7 +271,10 @@ Search in Rotated Sorted Array ***
 	-use the A[mid] A[end] and A[start] relationship
 	-Very easy to break edge case for A[mid] and A[start]
 
-
+Search in Rotated Sorted Array ii ***
+	-use the A[mid] and A[start] relationship
+	-use start ++ when A[mid] A[start] is equal
+	-very easy to break the edge case
 
 #Two pointers
 ###Normal TWO POINTERS FOR PARTITION
