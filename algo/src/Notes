@@ -280,6 +280,18 @@ Pow(x, n)
 	-watch out for edge case negatives, zero,
 	-watch out for integer overflow(use long)
 
+Search Insert Position ***
+	-Two ways:
+	-Be careful about what star/end represents during a Binary Search
+	-Or always update the ret to be the value greater than target
+	-see previous solutions
+
+Search for a Range ***
+	-Two ways:
+	-use start/end as they represent the range
+	-Or use mid to update valid ret range
+	-see previous solutions
+
 #Two pointers
 ###Normal TWO POINTERS FOR PARTITION
 Partition List ***
