@@ -2,6 +2,10 @@ package wr.leetcode.algo.powx_n;
 
 public class Solution {
     public double pow(double x, int n) {
+        return pow(x, new Long(n));
+    }
+
+    public double pow(double x, long n) {
         double ret;
         if( 0 == n) {
             ret = 1;
@@ -16,6 +20,8 @@ public class Solution {
         }
         return ret;
     }
+
+
 
     public static void main(String[] args) {
         Solution sol = new Solution();

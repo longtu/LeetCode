@@ -276,6 +276,10 @@ Search in Rotated Sorted Array ii ***
 	-use start ++ when A[mid] A[start] is equal
 	-very easy to break the edge case
 
+Pow(x, n)
+	-watch out for edge case negatives, zero,
+	-watch out for integer overflow(use long)
+
 #Two pointers
 ###Normal TWO POINTERS FOR PARTITION
 Partition List ***
