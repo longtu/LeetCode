@@ -10,12 +10,11 @@ public class Solution {
         int ret = x;
         while(x > 1 && start <= end) {
             int mid = start +((end-start)>>1);
-            int left = (mid-1)*(mid-1);
             int right = (mid+1)*(mid+1);
-            if(left < x && right > x){
+            if(mid*mid <= x && right >x){
                 ret = mid;
                 break;
-            } else if(left >= x){
+            } else if(mid*mid > x){
                 end = mid - 1;
             } else {
                 start = mid + 1;
