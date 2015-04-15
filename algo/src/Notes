@@ -286,6 +286,9 @@ Search Insert Position ***
 	-Or always update the ret to be the value greater than target
 	-see previous solutions
 
+Search a 2D Matrix
+	-search insertposition + binary search
+
 Search for a Range ***
 	-Two ways:
 	-use start/end as they represent the range
