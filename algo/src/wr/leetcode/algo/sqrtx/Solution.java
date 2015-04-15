@@ -1,16 +1,14 @@
 package wr.leetcode.algo.sqrtx;
 
 public class Solution {
-    public int mySqrt(int x) {
-        if(x < 0) {
-            throw new RuntimeException("Invalid Input");
-        }
-        int start = 0;
-        int end = x;
-        int ret = x;
+
+    public long mySqrt(long x) {
+        long start = 0;
+        long end = x;
+        long ret = x;
         while(x > 1 && start <= end) {
-            int mid = start +((end-start)>>1);
-            int right = (mid+1)*(mid+1);
+            long mid = start +((end-start)>>1);
+            long right = (mid+1)*(mid+1);
             if(mid*mid <= x && right >x){
                 ret = mid;
                 break;
@@ -21,6 +19,13 @@ public class Solution {
             }
         }
         return ret;
+    }
+
+    public int mySqrt(int x) {
+        if(x < 0) {
+            throw new RuntimeException("Invalid Input");
+        }
+        return (int ) mySqrt((long)x);
     }
 
     public static void main(String[] args) {

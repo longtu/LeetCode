@@ -292,6 +292,11 @@ Search a 2D Matrix
 Find Peak Element
 	-binary search, four possible situations
 
+Sqrt(x) ***
+	-bianry search consider only mid and its right
+	-watch for edge case 0,1
+	-watch for edge case overflow
+
 Search for a Range ***
 	-Two ways:
 	-use start/end as they represent the range
