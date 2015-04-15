@@ -289,6 +289,9 @@ Search Insert Position ***
 Search a 2D Matrix
 	-search insertposition + binary search
 
+Find Peak Element
+	-binary search, four possible situations
+
 Search for a Range ***
 	-Two ways:
 	-use start/end as they represent the range
