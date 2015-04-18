@@ -307,6 +307,10 @@ Median of two sorted Array ***
     -cut half of both array
     -throw half based on median relationship
 
+Divide without Muli-/Mod
+	-define meta data including res/remain
+	-recursive calls with double divisor
+
 #Two pointers
 ###Normal TWO POINTERS FOR PARTITION
 Partition List ***
