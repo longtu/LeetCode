@@ -303,6 +303,10 @@ Search for a Range ***
 	-Or use mid to update valid ret range
 	-see previous solutions
 
+Median of two sorted Array ***
+    -cut half of both array
+    -throw half based on median relationship
+
 #Two pointers
 ###Normal TWO POINTERS FOR PARTITION
 Partition List ***
