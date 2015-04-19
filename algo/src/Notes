@@ -29,7 +29,13 @@ Hash Table
 ##Linked List
 Copy List with Random Pointer
 	-use hashtable and iterate
-
+Reverse List in Group of K ***
+	-recursive
+	-find group last element(edge case!), recursive, reverse, connect all
+	-make sure save tail before update tail !!!
+Merge k Sorted Lists
+	-PriorityQueue use
+	-Watch out for empty list, need additional check
 
 ##bit-manipulation:
     use 1<<shifts to achieve range limit or make mask, e.g. IntegerMax = 1<<32-1;
