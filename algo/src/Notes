@@ -276,6 +276,13 @@ Search in Rotated Sorted Array ii ***
 	-use start ++ when A[mid] A[start] is equal
 	-very easy to break the edge case
 
+Search Minimun in Rotated Sorted Array i/ii ***
+	-deal with normal/length is 1 is special case
+	-in case A[start] and A[end] equals, increment start
+	-use the A[start] and A[mid] relationship
+	- A[mid] >= A[start] (A[start] > A[end]) : start= mid +1;
+	- A[mid] < A[start] (A[start] > A[end]) : end= mid;//watch out not mid+1
+
 Pow(x, n)
 	-watch out for edge case negatives, zero,
 	-watch out for integer overflow(use long)

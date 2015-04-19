@@ -8,11 +8,13 @@ public class Solution {
 
         int start = 0;
         int end = num.length - 1;
+        int ret = start;
 
         while(start <= end) {
-            if(num[start] <= num[end]) {
-                return num[start];
-            } else {
+            if(num[start] < num[end] || start == end) {
+                ret = start;
+                break;
+            } else { //A[start] > A[end]
                 int mid = start +((end-start)>>1);
                 if(num[start] <= num[mid]) {
                     start = mid + 1;
@@ -20,11 +22,8 @@ public class Solution {
                     end = mid;
                 }
             }
-            if(start  == end) {
-                break;
-            }
         }
-        return num[start];
+        return num[ret];
     }
 
     public static void main(String[] args) {
