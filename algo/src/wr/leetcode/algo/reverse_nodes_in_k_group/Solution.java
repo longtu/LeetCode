@@ -12,6 +12,7 @@ public class Solution {
         if(null == end) {
             return head;
         }
+        ListNode tail = end.next;
         ListNode helper = new ListNode(-1);
         ListNode node = head;
         while(helper.next != end) {
@@ -20,7 +21,7 @@ public class Solution {
             helper.next = node;
             node = nodeNext;
         }
-        head.next = reverseKGroup(end.next, k);
+        head.next = reverseKGroup(tail, k);
         return helper.next;
     }
 }
