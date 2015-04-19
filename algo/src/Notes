@@ -1,9 +1,35 @@
+###PLAN###
+Linked List 19
+
+String 39
+Breadth-first Search 9
+Graph 1
+Data Structure 3
+
+Array 57
+Bit Manipulation 8
+Divide and Conquer 4
+
+Math 19
+Stack 12
+Heap 1
+
+Depth-first Search 21
+Greedy 6
+Sort 7
+
+Done:
+Binary Search
+Tree
+Backtracking
+Two Pointers
+Dynamic Programming
+Hash Table
+
 ##bit-manipulation:
     use 1<<shifts to achieve range limit or make mask, e.g. IntegerMax = 1<<32-1;
 Repeated DNA Sequences:
 	use integer encoding of different characters, bit operation will help
-
-
 
 ##Dynamic programming:
 Buy/Sell Stock :
