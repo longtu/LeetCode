@@ -18,20 +18,22 @@ public class Solution {
     }
 
     public ListNode sortList(ListNode head, int len) {
-        if(len == 0) {
+
+        if(len == 0){
             return null;
         }
-        if(len ==1) {
+        if(len == 1) { // this is critical otherwise will never stop
             head.next = null;
             return head;
         }
-        int leftLen = (len)/2;
+        int leftLen = (len+1)/2;
         int rightLen = len - leftLen;
         ListNode rightHead = head;
-        for(int i = 0; i < leftLen; ++i ){
+        for(int i = 1; i <= leftLen; ++i ){
             rightHead = rightHead.next;
         }
         ListNode left = sortList(head,leftLen);
+        // this have to be rightHead, cannot use prev.next as prev.next will be set to null
         ListNode right = sortList(rightHead,rightLen);
 
         ListNode helper = new ListNode(-1);
@@ -57,4 +59,12 @@ public class Solution {
         return helper.next;
     }
 
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        ListNode two = new ListNode(2);
+        ListNode one = new ListNode(1);
+        two.next = one;
+
+        sol.sortList(two);
+    }
 }
