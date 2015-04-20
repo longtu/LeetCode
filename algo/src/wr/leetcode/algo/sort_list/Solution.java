@@ -18,21 +18,24 @@ public class Solution {
     }
 
     public ListNode sortList(ListNode head, int len) {
-        if(len < 2) {
+        if(len == 0) {
+            return null;
+        }
+        if(len ==1) {
+            head.next = null;
             return head;
         }
-        int leftLen = (len+1)/2;
+        int leftLen = (len)/2;
         int rightLen = len - leftLen;
-        ListNode node = head;
-        for(int i = 1; i < leftLen; ++i ){
-            node = node.next;
+        ListNode rightHead = head;
+        for(int i = 0; i < leftLen; ++i ){
+            rightHead = rightHead.next;
         }
         ListNode left = sortList(head,leftLen);
-        ListNode right = sortList(node.next,rightLen);
-        node.next = null;
+        ListNode right = sortList(rightHead,rightLen);
 
         ListNode helper = new ListNode(-1);
-        node = helper;
+        ListNode node = helper;
         while(left != null || right != null) {
             if(left == null) {
                 node.next = right;
