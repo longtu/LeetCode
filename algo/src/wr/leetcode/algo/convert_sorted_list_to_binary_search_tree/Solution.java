@@ -18,7 +18,7 @@ public class Solution {
             node = node.next;
         }
         TreeNode left = sortedListToBST(head, leftLen - 1);
-        TreeNode right = sortedListToBST(node.next, len - leftLen - 1);
+        TreeNode right = sortedListToBST(node.next, len - leftLen);
         TreeNode root = new TreeNode(node.val);
         root.left = left;
         root.right = right;
