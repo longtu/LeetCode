@@ -35,10 +35,6 @@ Reverse List in Group of K ***
 	-find group last element(edge case!), recursive, reverse, connect all
 	-make sure save tail before update tail !!!
 
-Sort List ***
-	-Merge sort
-	-when len == 1 remember to set tail to null, this will impact the recursive call
-
 Reorder List
 	-cut, reverse, merge
 	-watch out for empty list in case of cut
@@ -69,6 +65,14 @@ Insertion Sort List
 Merge k Sorted Lists
 	-PriorityQueue use
 	-Watch out for empty list, need additional check
+
+### Divide Conquer related list
+Sort List ***
+	-Merge sort
+	-when len == 1 remember to set tail to null, this will impact the recursive call
+
+Convert Sorted List to Binary Search Tree
+	- be careful about sub left len and sub right len
 
 ##bit-manipulation:
     use 1<<shifts to achieve range limit or make mask, e.g. IntegerMax = 1<<32-1;
