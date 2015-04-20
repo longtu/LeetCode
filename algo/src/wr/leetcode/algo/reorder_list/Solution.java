@@ -10,9 +10,11 @@ public class Solution {
         for (int i = 1; i < join; ++i) {
             node = node.next;
         }
-        ListNode right = reverse(node.next);
-        node.next = null;
-        merge(head, right);
+        if(node != null) {
+            ListNode right = reverse(node.next;
+            node.next = null;
+            merge(head, right);
+        }
     }
 
     public int len (ListNode head) {
@@ -25,14 +27,14 @@ public class Solution {
     }
 
     public ListNode reverse(ListNode head) {
-        ListNode node = new ListNode(-1);
+        ListNode helper = new ListNode(-1);
         while(null != head) {
             ListNode headNext = head.next;
-            head.next = node.next;
-            node.next = head;
+            head.next = helper.next;
+            helper.next = head;
             head = headNext;
         }
-        return node.next;
+        return helper.next;
     }
 
     public ListNode merge (ListNode left, ListNode right) {
