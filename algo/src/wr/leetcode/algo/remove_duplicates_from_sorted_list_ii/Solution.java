@@ -13,7 +13,6 @@ public class Solution {
             if(null == node.next || node.val != node.next.val) {
                 n.next = node;
                 n = n.next;
-                n.next = null;
             } else {
                 int val = node.val;
                 while(null != node && node.val == val) {
@@ -23,6 +22,7 @@ public class Solution {
             }
             node = node.next;
         }
+        n.next = null;
         return helper.next;
     }
 }
