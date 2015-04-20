@@ -29,6 +29,7 @@ public class Solution {
         }
         ListNode left = sortList(head,leftLen);
         ListNode right = sortList(node.next,rightLen);
+        node.next = null;
 
         ListNode helper = new ListNode(-1);
         node = helper;
@@ -52,4 +53,5 @@ public class Solution {
         }
         return helper.next;
     }
+
 }
