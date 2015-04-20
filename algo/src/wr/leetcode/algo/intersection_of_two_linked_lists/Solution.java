@@ -12,14 +12,15 @@ public class Solution {
         int diff = lenA - lenB; //diff >= 0
 
         while( null != headA){
-            headA = headA.next;
             if(diff > 0) {
+                headA = headA.next;
                 diff --;
             } else {
+                if(headA == headB){
+                    break;
+                }
+                headA = headA.next;
                 headB = headB.next;
-            }
-            if(headA == headB){
-                break;
             }
         }
         return headA;

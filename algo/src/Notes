@@ -52,6 +52,9 @@ Remove Duplicates from Sorted List i/ii ***
 	-need to save src.next!!!
 	-Use prev and counter to filter duplicates
 
+Intersection of Two Linked Lists ***
+	-see Intersection of Two Linked Lists
+
 ###Merge list
 Merge Two Sorted Lists
 	-Simple two pointer merge
@@ -439,6 +442,10 @@ Remote Nth from end of List ***
 	- '''use distance between two pointers to control loop'''
 	- watch out for empty list and when len == 0
 	- mod does not make sense
+
+Intersection of Two Linked Lists ***
+	-Two delay pointers
+	-watch out for special case when head1 = head2
 
 ###DOUBLE SPEED LAG POINTERS
 Linked List Cycle I/II
