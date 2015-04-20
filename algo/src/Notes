@@ -40,6 +40,10 @@ Swap Nodes in Pairs ***
 	-record nextNode
 	-remember to put last null!!!
 
+Reverse Linked List II ***
+	-record nextNode
+	-use iterative m and n relationship
+
 Reorder List
 	-cut, reverse, merge
 	-watch out for empty list in case of cut
