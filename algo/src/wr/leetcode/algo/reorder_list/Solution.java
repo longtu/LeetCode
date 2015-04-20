@@ -11,7 +11,7 @@ public class Solution {
             node = node.next;
         }
         if(node != null) {
-            ListNode right = reverse(node.next;
+            ListNode right = reverse(node.next);
             node.next = null;
             merge(head, right);
         }
