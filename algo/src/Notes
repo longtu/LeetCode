@@ -53,6 +53,9 @@ Rotate List
 Add Two Numbers
 	-Very easy idea, do not complicate it, watch for requirements!
 
+Remove Duplicates from Sorted List ii ***
+	-Use prev and counter to filter duplicates
+
 ##bit-manipulation:
     use 1<<shifts to achieve range limit or make mask, e.g. IntegerMax = 1<<32-1;
 Repeated DNA Sequences:
