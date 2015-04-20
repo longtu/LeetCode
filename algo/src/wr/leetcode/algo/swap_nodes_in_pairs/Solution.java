@@ -17,9 +17,19 @@ public class Solution {
             }
             to.next = node;
             to = to.next;
-            to.next = null;
             node = nextNode;
         }
         return dest.next;
+    }
+
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        ListNode one = new ListNode(1);
+        ListNode two = new ListNode(2);
+        one.next = two;
+        sol.swapPairs(one);
+        System.out.println(one.next.val);
+        System.out.println(two.next.val);
     }
 }
