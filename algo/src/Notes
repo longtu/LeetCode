@@ -47,7 +47,9 @@ Rotate List
 	-See 'Rotate List'
 	-two pointers
 
-Remove Duplicates from Sorted List ii ***
+Remove Duplicates from Sorted List i/ii ***
+	-How to filter and merge one src list to dest without breaking it!
+	-need to save src.next!!!
 	-Use prev and counter to filter duplicates
 
 ###Merge list
