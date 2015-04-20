@@ -35,6 +35,10 @@ Reverse List in Group of K ***
 	-find group last element(edge case!), recursive, reverse, connect all
 	-make sure save tail before update tail !!!
 
+Swap Nodes in Pairs
+	-Reverse List in Group of 2
+	-record nextNode
+
 Reorder List
 	-cut, reverse, merge
 	-watch out for empty list in case of cut
