@@ -30,6 +30,10 @@ Hash Table
 ZigZag Conversion
 	-use a group of stringBuilder and index with changing increment
 
+valid Parenthesis
+	-use a stack to keep track of matching pairs
+	-watch for not enough to match/mismatch/overmatch
+
 
 
 ##Linked List
