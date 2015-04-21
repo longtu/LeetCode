@@ -26,6 +26,12 @@ Two Pointers
 Dynamic Programming
 Hash Table
 
+##String
+ZigZag Conversion
+	-use a group of stringBuilder and index with changing increment
+
+
+
 ##Linked List
 Copy List with Random Pointer
 	-use hashtable and iterate
