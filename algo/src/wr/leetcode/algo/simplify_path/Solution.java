@@ -1,22 +1,23 @@
 package wr.leetcode.algo.simplify_path;
 
 import java.util.LinkedList;
-import java.util.Stack;
 
 public class Solution {
     public String simplifyPath(String path) {
-        if(null == path) {
+        if (null == path) {
             path = "/";
         }
 
         String[] segments = path.split("/");
         LinkedList<String> stack = new LinkedList<>();
         for (String seg : segments) {
-            if (seg.isEmpty()||seg.equals(".")) {
+            if (seg.isEmpty() || seg.equals(".")) {
                 continue;
             }
-            if(seg.equals("..") && !stack.isEmpty()) {
-                stack.pop();
+            if (seg.equals("..")) {
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                }
             } else {
                 stack.push(seg);
             }
@@ -24,8 +25,8 @@ public class Solution {
 
         StringBuilder sb = new StringBuilder("/");
         int i = 0;
-        while(!stack.isEmpty()) {
-            if(i++ != 0) {
+        while (!stack.isEmpty()) {
+            if (i++ != 0) {
                 sb.append("/");
             }
             sb.append(stack.removeLast());

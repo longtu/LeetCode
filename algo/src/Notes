@@ -35,6 +35,9 @@ valid Parenthesis
 	-watch for not enough to match/mismatch/overmatch
 
 
+##Stack
+Simplify Path
+	-condition about '..' when to push!
 
 ##Linked List
 Copy List with Random Pointer
