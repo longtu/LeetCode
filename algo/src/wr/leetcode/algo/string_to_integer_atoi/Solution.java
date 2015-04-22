@@ -5,23 +5,31 @@ public class Solution {
         if(null == str) {
             str = "";
         }
-        str.trim();
-        int sign = 1;
-        if(str.startsWith("+")){
-            str = str.substring(1,str.length());
-        } else if(str.startsWith("-")) {
-            sign = -1;
-            str = str.substring(1,str.length());
-        }
-        return (int) (sign * atoi(str));
+        return (int) (atoi(str));
     }
 
     public long atoi(String str) {
         long ret = 0;
+
+        int sign = 1;
+        boolean isDigit = false;
+
         for (int i = 0; i < str.length(); ++i) {
             char ch = str.charAt(i);
-            ret = (ch-'0') + ret*10;
+            if(ch >= '0' && ch <= '9') {
+                isDigit = true;
+                ret = (ch-'0') + ret*10;
+            } else if(isDigit) {
+                break;
+            } else if(ch == '-') {
+                sign *= -1;
+            }
         }
-        return ret;
+        return sign * ret;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.myAtoi("+-2"));
     }
 }
