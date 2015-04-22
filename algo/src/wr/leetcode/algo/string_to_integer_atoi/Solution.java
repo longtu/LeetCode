@@ -5,7 +5,7 @@ public class Solution {
         if(null == str) {
             str = "";
         }
-        long ret = atoi(str);
+        long ret = atoi(str.trim());
         if(ret > Integer.MAX_VALUE) {
             ret = Integer.MAX_VALUE;
         } else if (ret < Integer.MIN_VALUE) {
@@ -29,7 +29,10 @@ public class Solution {
             } else if((ch == '-' || ch == '+') && !isDigit) {
                 sign = (ch == '-')?(-1):(1);
                 isDigit = true;
-            } else if( isDigit) {
+            } else {
+                break;
+            }
+            if(ret > Integer.MAX_VALUE || ret < Integer.MIN_VALUE) {
                 break;
             }
         }
