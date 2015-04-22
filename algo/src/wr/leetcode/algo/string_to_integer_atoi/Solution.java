@@ -5,7 +5,15 @@ public class Solution {
         if(null == str) {
             str = "";
         }
-        return (int) (atoi(str));
+        long ret = atoi(str);
+        if(ret > Integer.MAX_VALUE) {
+            ret = Integer.MAX_VALUE;
+        } else if (ret < Integer.MIN_VALUE) {
+            ret = Integer.MIN_VALUE;
+        } else {
+            ret = (int) ret;
+        }
+        return (int)ret;
     }
 
     public long atoi(String str) {
