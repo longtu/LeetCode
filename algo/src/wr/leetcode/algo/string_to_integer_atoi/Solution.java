@@ -10,7 +10,6 @@ public class Solution {
 
     public long atoi(String str) {
         long ret = 0;
-
         int sign = 1;
         boolean isDigit = false;
 
@@ -19,10 +18,11 @@ public class Solution {
             if(ch >= '0' && ch <= '9') {
                 isDigit = true;
                 ret = (ch-'0') + ret*10;
-            } else if(isDigit) {
+            } else if((ch == '-' || ch == '+') && !isDigit) {
+                sign = (ch == '-')?(-1):(1);
+                isDigit = true;
+            } else if( isDigit) {
                 break;
-            } else if(ch == '-') {
-                sign *= -1;
             }
         }
         return sign * ret;
