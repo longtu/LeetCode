@@ -10,8 +10,6 @@ public class Solution {
             ret = Integer.MAX_VALUE;
         } else if (ret < Integer.MIN_VALUE) {
             ret = Integer.MIN_VALUE;
-        } else {
-            ret = (int) ret;
         }
         return (int)ret;
     }
@@ -41,6 +39,8 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution sol = new Solution();
-        System.out.println(sol.myAtoi("+-2"));
+        System.out.println(sol.myAtoi("9223372036854775809"));
+        System.out.println(Long.MAX_VALUE);
+
     }
 }

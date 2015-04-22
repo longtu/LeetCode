@@ -34,6 +34,13 @@ valid Parenthesis
 	-use a stack to keep track of matching pairs
 	-watch for not enough to match/mismatch/overmatch
 
+Atoi
+	-trim string
+	-Bound to Integer(min, max)
+	-use long to forbid overflow, break from loop in case min/max out
+	-break from the first non digit/non sign
+	-just check for at most one instance of '+'/'-'
+
 
 ##Stack
 Simplify Path
