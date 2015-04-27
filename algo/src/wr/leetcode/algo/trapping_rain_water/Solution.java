@@ -1,7 +1,9 @@
 package wr.leetcode.algo.trapping_rain_water;
 
+import java.util.Stack;
+
 public class Solution {
-    public int trap(int[] A) {
+    public int trap0(int[] A) {
     	int sum = 0;
     	if (null == A) {
     		return sum;
@@ -29,6 +31,30 @@ public class Solution {
     	return sum;
     }
 
+    public int trap(int[] A) {
+        int sum = 0;
+        if (null == A) {
+            return sum;
+        }
+        int len = A.length;
+        Stack<Integer> stack = new Stack<Integer>();
+        for (int i = 0; i < len; ++i) {
+            if(!stack.isEmpty() && A[i] > A[stack.peek()]) {
+                int last = A[i];
+                while(!stack.isEmpty()) {
+                    int tail = stack.peek();
+                    sum += (Math.min(A[tail], A[i])-last)* (i-tail-1);
+                    if(A[tail] >= A[i]) {
+                        break;
+                    }
+                    last = A[tail];
+                    stack.pop();
+                }
+            }
+            stack.push(i);
+        }
+        return sum;
+    }
 
     public static void main(String[] args) {
         Solution sol = new Solution();

@@ -30,9 +30,7 @@ Hash Table
 ZigZag Conversion
 	-use a group of stringBuilder and index with changing increment
 
-valid Parenthesis
-	-use a stack to keep track of matching pairs
-	-watch for not enough to match/mismatch/overmatch
+
 
 Atoi
 	-trim string
@@ -41,10 +39,32 @@ Atoi
 	-break from the first non digit/non sign
 	-just check for at most one instance of '+'/'-'
 
+Valid Number //edge cases
+	-SKIP
+Text Justification //edge cases
+	-SKIP
 
 ##Stack
 Simplify Path
 	-condition about '..' when to push!
+
+valid Parenthesis
+	-use a stack to keep track of matching pairs
+	-watch for not enough to match/mismatch/overmatch
+
+Trapping Rain Water
+	-Method1:left/right max
+	-Method2: use stack to keep track of the decreasing elements
+
+Min Stack
+	-use a seperate min Stack
+
+Evaluate Reverse Polish Notation
+	-simply use a stack, watch out for the sequence
+
+
+
+
 
 ##Linked List
 Copy List with Random Pointer
@@ -493,7 +513,3 @@ Strstr
 Substring with Concatenation of All Words ***
 	-Optimization of early stop
 	-Use a map as word count, test if each index statisfies the word count
-
-TODO_OPTIMAL:
-Trapping Rain Water
-	-left/right max
