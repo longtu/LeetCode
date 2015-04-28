@@ -130,7 +130,7 @@ Convert Sorted List to Binary Search Tree
 ## Divide Conquer
 Maximum Subarray ***
 	-recursive to subLeft/subRight only when possible, INSTEAD of return 0!!!
-
+	-linear solution: use start/end, make sure the current sum is always positive
 
 ##bit-manipulation:
     use 1<<shifts to achieve range limit or make mask, e.g. IntegerMax = 1<<32-1;

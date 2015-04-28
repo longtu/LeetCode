@@ -3,7 +3,7 @@ package wr.leetcode.algo.maximum_subarray;
 import java.util.Map;
 
 public class Solution {
-    public int maxSubArray(int[] nums) {
+    public int maxSubArray0(int[] nums) {
         if(null == nums ) {
             nums = new int[0];
         }
@@ -38,6 +38,28 @@ public class Solution {
             }
         }
         return sum;
+    }
+
+    public int maxSubArray(int[] nums) {
+
+        int max = Integer.MIN_VALUE;
+        int sum = 0;
+        if(null == nums || nums.length == 0) {
+            return sum;
+        }
+
+        int startInclusive = 0;
+        int endExclusive = -1;
+        while(startInclusive < nums.length) {
+            sum += nums[startInclusive];
+            max = Math.max(sum, max);
+            while(sum < 0 && endExclusive < startInclusive) {
+                endExclusive++;
+                sum -= nums[endExclusive];
+            }
+            startInclusive++;
+        }
+        return max;
     }
 
 
