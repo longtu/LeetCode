@@ -1,5 +1,7 @@
 package wr.leetcode.algo.maximum_subarray;
 
+import java.util.Map;
+
 public class Solution {
     public int maxSubArray(int[] nums) {
         if(null == nums ) {
@@ -12,11 +14,7 @@ public class Solution {
     public int maxSubArray(int[] nums, int startInclusive, int endExclusive) {
         int sum = 0;
         if(startInclusive < endExclusive) {
-
             int mid = (startInclusive + endExclusive-1)/2;
-            int leftSub = maxSubArray(nums, startInclusive, mid);
-            int rightSub = maxSubArray(nums, mid+1,endExclusive);
-
             int left = 0;
             int leftMax = 0;
             for (int x = mid-1; x >= startInclusive; x--){
@@ -30,9 +28,14 @@ public class Solution {
                 right += nums[x];
                 rightMax = Math.max(right, rightMax);
             }
+            sum = nums[mid] + leftMax + rightMax;
 
-            sum = Math.max( Math.max(leftSub, rightSub),
-                    nums[mid] + leftMax + rightMax);
+            if(startInclusive < mid) {
+                sum = Math.max(sum, maxSubArray(nums, startInclusive, mid));
+            }
+            if(mid +1 < endExclusive) {
+                sum = Math.max(sum, maxSubArray(nums, mid+1,endExclusive));
+            }
         }
         return sum;
     }
@@ -41,6 +44,9 @@ public class Solution {
     public static void main(String[] args) {
         Solution sol = new Solution();
         int[] arr = {-2,1,-3,4,-1,2,1,-5,4};
+        int[] b = {-1};
+
         System.out.println(sol.maxSubArray(arr));
+        System.out.println(sol.maxSubArray(b));
     }
 }
