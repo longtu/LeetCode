@@ -1,18 +1,20 @@
 ###PLAN###
 Linked List 19
+Stack 12
+Heap 1
+
+Divide and Conquer 4
+Graph 1
+
 
 String 39
 Breadth-first Search 9
-Graph 1
 Data Structure 3
 
 Array 57
 Bit Manipulation 8
-Divide and Conquer 4
 
 Math 19
-Stack 12
-Heap 1
 
 Depth-first Search 21
 Greedy 6
@@ -360,6 +362,8 @@ Parlindrome Paritioning i
 Majority Element ***
 	-figures out the relationship to cancel
 	-but not realized to use a count variable!!!
+	-remember the example of 11112
+
 Max Points on a Line
 	- watch out for single point
 	- watch out for same points as origin
