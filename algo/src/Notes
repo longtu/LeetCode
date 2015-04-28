@@ -52,19 +52,21 @@ valid Parenthesis
 	-use a stack to keep track of matching pairs
 	-watch for not enough to match/mismatch/overmatch
 
-Trapping Rain Water
-	-Method1:left/right max
-	-Method2: use stack to keep track of the decreasing elements
-
 Min Stack
 	-use a seperate min Stack
 
 Evaluate Reverse Polish Notation
 	-simply use a stack, watch out for the sequence
 
+Trapping Rain Water ***
+	-Method1:left/right max
+	-Method2: use stack to keep track of the decreasing elements
 
+Largest Rectangle in Histogram ***
+	-use stack to keep track of increasing elements
 
-
+Maximal Rectangle //skip
+	-Two dimensional problem of 'Largest Rectangle in Histogram'
 
 ##Linked List
 Copy List with Random Pointer
