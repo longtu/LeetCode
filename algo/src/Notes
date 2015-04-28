@@ -524,3 +524,7 @@ Strstr
 Substring with Concatenation of All Words ***
 	-Optimization of early stop
 	-Use a map as word count, test if each index statisfies the word count
+
+###Graph
+CloneGraph
+	-BFS+Hashtable
