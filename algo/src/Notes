@@ -383,7 +383,10 @@ Sort Colors ***
 	-counting sort
 	-use firstOne, next, end to track parition
 	-watch out for maintains firstOne
+	-use lastZero, next and end to track partition will be much easier!
 
+Largest Number ***
+	- use recursive string comparison
 
 #Iterative, implementation
 Excel Sheet Column Title ***
