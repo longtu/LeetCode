@@ -112,7 +112,7 @@ Add Two Numbers
 	-Very easy idea, do not complicate it, watch for requirements!
 
 Insertion Sort List
-	-Two pointer; src/dest not necessarily connected, could be two seperate list
+	-Two pointer; src/dest not necessarily connected, could be two seperate lisLargest Numbert
 	-Buble/Insert/Selection sort
 
 Merge k Sorted Lists
@@ -387,6 +387,16 @@ Sort Colors ***
 
 Largest Number ***
 	- use recursive string comparison
+
+Insertion sort of list
+	- see 'Insertion Sort List'
+
+Merge intervals
+	- sort and merge
+
+Insert Interval ***
+	- copy to new list
+	- if there is no overlap, append to end of the list
 
 #Iterative, implementation
 Excel Sheet Column Title ***

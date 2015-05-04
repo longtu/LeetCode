@@ -1,32 +1,33 @@
-package wr.leetcode.algo.merge_intervals;
+package wr.leetcode.algo.insert_interval;
 
 import wr.leetcode.algo.Interval;
 
-import java.util.Collections;
+
 import java.util.LinkedList;
 import java.util.List;
 
 public class Solution {
-    public List<Interval> merge(List<Interval> intervals) {
+    public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+        if(null == intervals){
+            intervals = new LinkedList();
+        }
         List<Interval> ret = new LinkedList();
 
-        if(null == intervals) {
-            return ret;
-        }
-        Collections.sort(intervals, (a,b)->(a.start-b.start));
-
         while(!intervals.isEmpty()) {
-            Interval merged = intervals.remove(0);
-            while(!intervals.isEmpty()) {
-                Interval next = intervals.get(0);
-                if(isOverlap(merged, next)) {
-                    intervals.remove(0);
-                    merged = mergeInterval(merged, next);
-                } else {
-                    break;
+            Interval next = intervals.remove(0);
+            if(isOverlap(newInterval, next)){
+                newInterval = mergeInterval(newInterval, next);
+            } else {
+                if(newInterval != null && next.start > newInterval.end) {
+                    ret.add(newInterval);
+                    newInterval = null;
                 }
+                ret.add(next);
             }
-            ret.add(merged);
+        }
+        // this is very easy to forget!!
+        if(newInterval != null){
+            ret.add(newInterval);
         }
         return ret;
     }
@@ -36,7 +37,7 @@ public class Solution {
             throw new IllegalArgumentException("Trying to merge non-overlap intervals");
         }
         return new Interval(Math.min(src.start, dest.start),
-            Math.max(src.end, dest.end));
+                Math.max(src.end, dest.end));
     }
 
     private boolean isOverlap(Interval src, Interval dest) {
@@ -48,15 +49,15 @@ public class Solution {
         }
         return  (src.start - dest.start) * (src.end - dest.start) <= 0;
     }
-
     public static void main(String[] args) {
         Solution sol = new Solution();
         List<Interval> test = new LinkedList<>();
-        test.add(new Interval(1,3));
-        test.add(new Interval(2,6));
+        test.add(new Interval(1,2));
+        test.add(new Interval(3,5));
+        test.add(new Interval(6,7));
         test.add(new Interval(8,10));
-        test.add(new Interval(15,8));
+        test.add(new Interval(12,16));
         System.out.println(sol
-        .merge(test));
+                .insert(test, new Interval(4,9)));
     }
 }
