@@ -550,3 +550,17 @@ Surrounded Regions
 	-update original map for visited
 	-Reverse thinking: only set alive ones and reset others.
 	-similar BFS as Number of Islands
+Binary Tree Right Side View
+	-Two buffer BFS: curr/next
+	-right child->left child
+	-(cannot use addFirst, will break the sequence!!!)
+Binary Tree Level Order Traversal i/ii
+	-Two buffer BFS: curr/next
+	-ret. add/addFirst (line)
+Binary Tree Level Order Traversal zigzag
+	-Two buffer BFS: curr/next
+	-ret. add(line)
+	-use reverse label
+	(enqueue from left to right, add to result according to reverse label; never addToFirst & leftChild->rightChild)
+Word Ladder
+	-see 'Word Ladder'
