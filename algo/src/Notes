@@ -546,3 +546,7 @@ CloneGraph
 Number of Islands
 	-update original map for visited
 	-update visited before pushing into queue to speed up!
+Surrounded Regions
+	-update original map for visited
+	-Reverse thinking: only set alive ones and reset others.
+	-similar BFS as Number of Islands
