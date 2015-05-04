@@ -541,3 +541,8 @@ Substring with Concatenation of All Words ***
 ###Graph
 CloneGraph
 	-BFS+Hashtable
+
+###BFS
+Number of Islands
+	-update original map for visited
+	-update visited before pushing into queue to speed up!
