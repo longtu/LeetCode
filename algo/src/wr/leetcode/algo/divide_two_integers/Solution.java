@@ -1,6 +1,56 @@
 package wr.leetcode.algo.divide_two_integers;
 
+
+
 public class Solution {
+
+    public int divide(int up, int below) {
+
+        long dividend = up;
+        long divisor = below;
+
+        boolean isNeg = (dividend < 0 && divisor > 0)
+                            || (dividend > 0 && divisor <0);
+        dividend = (dividend < 0) ? (0 - dividend) : (dividend);
+        divisor = (divisor < 0) ? (0 - divisor) : (divisor);
+        DivData ret = divideLong(dividend, divisor);
+
+        if(isNeg) {
+            ret.result = 0 - ret.result;
+        }
+        if(ret.result > Integer.MAX_VALUE || ret.result < Integer.MIN_VALUE) {
+            ret.result = Integer.MAX_VALUE;
+        }
+        return (int) (ret.result);
+    }
+
+    public DivData divideLong(long dividend, long divisor) {
+        if( 0 == divisor ) {
+            throw new IllegalStateException("Invalid Input!");
+        }
+        DivData ret = new DivData();
+
+        if( dividend < divisor) {
+            ret.residu = dividend;
+        } else if (dividend >= divisor && dividend < divisor + divisor ) {
+            ret.result = 1;
+            ret.residu = dividend - divisor;
+        } else { // dividend > 2* divisor
+            DivData parent = divideLong(dividend, divisor + divisor);
+            DivData child = divideLong(parent.residu, divisor);
+            ret.residu = child.residu;
+            ret.result = parent.result + parent.result + child.result;
+        }
+        return ret;
+    }
+
+
+    class DivData {
+        long result = 0;
+        long residu = 0;
+    }
+
+    /*
     public long divide(long dividend, long divisor) {
         if(0 == divisor) {
             throw new IllegalArgumentException("Invalid Input");
@@ -46,7 +96,7 @@ public class Solution {
             this.result = result;
             this.remain = remain;
         }
-    }
+    }*/
 
     public static void main(String[] args) {
         Solution sol = new Solution();

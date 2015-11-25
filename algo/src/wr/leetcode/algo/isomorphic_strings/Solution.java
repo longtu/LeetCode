@@ -1,9 +1,12 @@
 package wr.leetcode.algo.isomorphic_strings;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Solution {
+    /*
     public boolean isIsomorphic(String s, String t) {
         if( null == s ) {
             s = "";
@@ -35,7 +38,48 @@ public class Solution {
             rMap.put(rhs, lhs);
         }
         return ret;
+    }*/
+
+
+    private String notNull(String s) {
+        return (null == s)? (""):(s);
     }
+
+    public boolean isIsomorphic(String s, String t) {
+
+        s = notNull(s);
+        t = notNull(t);
+        boolean ret = true;
+        if(s.length() != t.length()) {
+            ret = false;
+        } else {
+            Map<Character, Character> map = new HashMap<>();
+            Set<Character> values = new HashSet<>();
+            for (int i = 0; i < s.length(); ++i) {
+                char k = s.charAt(i);
+                char v = t.charAt(i);
+
+                if(!map.containsKey(k)) {
+                    if(values.contains(v)) {
+                        ret = false;
+                        break;
+                    }
+                    map.put(k,v);
+                    values.add(v);
+                } else {
+                    if(!map.get(k).equals(v)) {
+                        ret = false;
+                        break;
+                    }
+                }
+            }
+        }
+        return ret;
+    }
+
+
+
+
 
     public static void main(String[] args) {
         Solution sol = new Solution();

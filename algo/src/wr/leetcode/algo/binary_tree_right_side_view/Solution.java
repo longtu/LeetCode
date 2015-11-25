@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Queue;
 
 public class Solution {
+
+    /*
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> ret = new LinkedList();
         if(null == root) {
@@ -27,6 +29,34 @@ public class Solution {
                 if(null != node.left) {
                     next.offer(node.left);
                 }
+            }
+        }
+        return ret;
+    }*/
+
+    public List<Integer> rightSideView(TreeNode root) {
+        Queue<TreeNode> nextq = new LinkedList<>();
+        List<Integer> ret = new LinkedList<>();
+        if( null != root) {
+            nextq.add(root);
+        }
+
+        while(!nextq.isEmpty()) {
+            Queue<TreeNode> q = nextq;
+            nextq = new LinkedList<>();
+            Integer rightMost = null;
+            while(!q.isEmpty()) {
+                TreeNode node = q.remove();
+                rightMost = node.val;
+                if( null != node.left ) {
+                    nextq.add(node.left);
+                }
+                if( null != node.right) {
+                    nextq.add(node.right);
+                }
+            }
+            if(null != rightMost) {
+                ret.add(rightMost);
             }
         }
         return ret;

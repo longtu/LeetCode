@@ -1,6 +1,34 @@
 package wr.leetcode.algo.remove_duplicates_from_sorted_array_ii;
 
 public class Solution {
+
+
+    public int removeDuplicates(int[] nums) {
+        if(null == nums) {
+            nums = new int[0];
+        }
+        int write = 0;
+        int n = nums.length;
+        Integer key = null;
+        int count = 0;
+        for (int i = 0; i < n; ++i) {
+            int val = nums[i];
+            if( null == key || key != val) {
+                key = val;
+                count = 1;
+                nums[write++] = val;
+            } else {
+                if(++count < 3) {
+                    nums[write++] = val;
+                }
+            }
+        }
+        return write;
+    }
+
+
+
+    /*
     public int removeDuplicates(int[] A) {
         int ret = 0;
         if( null != A ) {
@@ -22,5 +50,5 @@ public class Solution {
             ret = start + 1;
         }
         return ret;
-    }
+    }*/
 }

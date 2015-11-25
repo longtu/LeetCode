@@ -4,6 +4,33 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Solution {
+
+    public int compare(Integer left, Integer right) {
+        String l = Integer.toString(left) + Integer.toString(right);
+        String r = Integer.toString(right) + Integer.toString(left);
+        return r.compareTo(l);
+    }
+
+    public String largestNumber(int[] nums) {
+        if( null == nums) {
+            nums = new int[0];
+        }
+        String ret = Arrays.stream(nums).boxed()
+            .sorted(this::compare)
+            .map(a -> (a.toString()))
+            .collect(Collectors.joining());
+        //BUG: multiple zeros
+        return ret.replaceAll("^0+", "0");
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.largestNumber(
+                new int[]{0,0,0,0}
+        ));
+    }
+
+    /*
     public static int compare (String left, String right) {
         if(left.length() < right.length()) {
             return -1*compare(right, left);
@@ -38,5 +65,5 @@ public class Solution {
         }
         System.out.println(strs);
         return ret;
-    }
+    }*/
 }

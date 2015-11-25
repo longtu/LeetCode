@@ -1,9 +1,45 @@
 package wr.leetcode.algo.pascals_triangle;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Solution {
+
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ret = new LinkedList<>();
+        if( numRows > 0) {
+            ArrayList<Integer> prev = new ArrayList<>();
+            for (int i = 1; i <= numRows; ++i ) {
+                ArrayList<Integer> row = new ArrayList<>();
+                for (int j = 0; j < i; ++j) {
+                    int val;
+                    if(0 == j || i-1 == j) {
+                        val = 1;
+                    } else {
+                        val = prev.get(j-1) + prev.get(j);
+                    }
+                    row.add(val);
+                }
+                ret.add(row);
+                prev = row;
+            }
+        }
+        return ret;
+    }
+
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        List<List<Integer>> ans = new Solution().generate(5);
+        for (List<Integer> row : ans) {
+            System.out.println(row);
+        }
+    }
+
+
+
+        /*
     public List<List<Integer>> generate(int numRows) {
 
         List<List<Integer>> ret = new ArrayList<>(numRows);
@@ -22,13 +58,5 @@ public class Solution {
             ret.add(row);
         }
         return ret;
-    }
-
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-        List<List<Integer>> ans = new Solution().generate(5);
-        for (List<Integer> row : ans) {
-            System.out.println(row);
-        }
-    }
+    }*/
 }

@@ -3,7 +3,7 @@ package wr.leetcode.algo.reverse_linked_list_ii;
 import wr.leetcode.algo.ListNode;
 
 public class Solution {
-
+/*
     public ListNode reverseBetween(ListNode head, int m, int n) {
         ListNode dest = new ListNode(-1);
         ListNode ret = dest;
@@ -28,4 +28,35 @@ public class Solution {
         lastReverse.next = node;
         return ret.next;
     }
+    */
+
+
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+        ListNode helper = new ListNode(-1);
+        helper.next = head;
+
+        ListNode l,r ;
+
+        ListNode node = helper;
+        for (int i = 0; i < m - 1; ++i){
+            node = node.next;
+        }
+        l = node;
+
+        ListNode rHead = new ListNode(-1);
+        rHead.next = null;
+        node = l.next;
+        for (int i = m; i <= n; ++i) {
+            ListNode next = node.next;
+            node.next = rHead.next;
+            rHead.next = node;
+            node = next;
+        }
+        r = node;
+
+        l.next.next = r;
+        l.next = rHead.next;
+        return helper.next;
+    }
+
 }

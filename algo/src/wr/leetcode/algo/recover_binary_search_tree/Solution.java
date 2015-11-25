@@ -5,6 +5,7 @@ import wr.leetcode.algo.TreeNode;
 import java.util.*;
 
 public class Solution {
+    /*
     public void recoverTree(TreeNode root) {
 
         if(null == root || (root.left == root.right && root.right== null)) {
@@ -43,6 +44,40 @@ public class Solution {
             return last;
         }
         return root;
+    }*/
+
+
+    public void recoverTree(TreeNode root) {
+
+        List<TreeNode> ret = new LinkedList<>();
+        TreeNode[] prev = new TreeNode[1];
+        recoverTree(root, prev , ret);
+        if(2 == ret.size()) {
+            TreeNode left = ret.get(0);
+            TreeNode right = ret.get(1);
+            int tmp = left.val;
+            left.val = right.val;
+            right.val = tmp;
+        }
     }
 
+    public void recoverTree(TreeNode root, TreeNode[] preNode, List<TreeNode> nodes) {
+        if( null == root) {
+            return;
+        }
+        recoverTree(root.left, preNode, nodes);
+        int val = root.val;
+        TreeNode pre = preNode[0];
+        if(null != pre && val < pre.val) {
+            if(0 == nodes.size()) {
+                nodes.add(pre);
+                nodes.add(root);
+            } else {
+                nodes.remove(1);
+                nodes.add(root);
+            }
+        }
+        preNode[0] = root;
+        recoverTree(root.right, preNode, nodes);
+    }
 }

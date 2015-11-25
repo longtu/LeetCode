@@ -4,72 +4,103 @@ import wr.leetcode.algo.ListNode;
 
 class Solution {
 
-    public int size(ListNode head) {
-        int ret = 0;
-        while(head != null) {
-            head = head.next;
-            ret++;
+    public int len(ListNode node) {
+        int len = 0;
+        while(null != node) {
+            node = node.next;
+            len++;
         }
-        return ret;
+        return len;
     }
 
-    public ListNode split(ListNode head, int index) {
-        ListNode ret = null;
-        for (int i = 1; i < index; ++i) {
-            if(index - 1 == i) {
-                ret = head.next;
-                head.next = null;
-                break;
+    public boolean isPalindrome(ListNode head) {
+        boolean ret = true;
+        int len = len(head);
+        if( len > 1 ) {
+            int half = len/2;
+            ListNode helper = new ListNode(-1);
+            int count = 0;
+            while( count++ < half ) {
+                ListNode next = head.next;
+                head.next = helper.next;
+                helper.next = head;
+                head = next;
             }
-            head = head.next;
+            if(1 == len%2) {
+                head = head.next;
+            }
+            ListNode l = helper.next;
+            ListNode r = head;
+            while( l != null) {
+                if(l.val != r.val) {
+                    ret = false;
+                    break;
+                }
+                l = l.next;
+                r = r.next;
+            }
         }
         return ret;
     }
 
-    public ListNode reverse(ListNode head){
-        ListNode helper = new ListNode(0);
-        helper.next = null;
+
+
+
+
+
+
+    /*
+    public boolean isPalindrome(ListNode head) {
+        boolean ret = true;
+        int len = size(head);
+        if( len  > 1 ) {
+            int half = (len + 1)/2;
+            ListNode r = head;
+            for (int i = 0; i < half; ++i) {
+                r = r.next;
+            }
+            ListNode rr = reverse(r);
+            ListNode h = head;
+            int end = len/2 - 1;
+            for (int i = 0; i <= end; ++i) {
+                System.out.println(h.val + ":" + rr.val);
+                if( rr.val != h.val) {
+                    ret = false;
+                    break;
+                } else {
+                    rr = rr.next;
+                    h = h.next;
+                }
+            }
+        }
+        return ret;
+    }
+
+    public int size ( ListNode head) {
+        int len = 0;
         while(null != head) {
+            len++;
+            head = head.next;
+        }
+        return len;
+    }
+
+    public ListNode reverse(ListNode head) {
+        ListNode helper = new ListNode(-1);
+        while(null != head){
             ListNode next = head.next;
             head.next = helper.next;
             helper.next = head;
             head = next;
         }
         return helper.next;
-    }
-
-    public boolean isPalindrome(ListNode head) {
-        int len = size(head);
-        boolean ret = true;
-        if(len > 1) {
-            int rStart = (len+1)/2+1;
-            ListNode nStart = split(head, rStart);
-            ListNode tail = reverse(nStart);
-            ret = true;
-            System.out.println(tail.val);
-            System.out.println(head.val);
-            for (int i = 1; i <= len/2; ++i) {
-                if(head.val != tail.val) {
-                    ret = false;
-                    break;
-                }
-                head = head.next;
-                tail = tail.next;
-            }
-
-        }
-        return ret;
-    }
-
-
+    }*/
 
     public static void main(String[] args) {
-        ListNode first = new ListNode(1);
-        ListNode second = new ListNode(2);
-        first.next = second;
-
         Solution sol = new Solution();
-
-        System.out.println(sol.isPalindrome(first));
+        ListNode n1 = new ListNode(1);
+        ListNode n2 = new ListNode(2);
+        n1.next = n2;
+        System.out.println(sol.isPalindrome(n1));
     }
 }

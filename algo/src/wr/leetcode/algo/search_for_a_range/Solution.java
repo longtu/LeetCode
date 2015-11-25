@@ -3,6 +3,40 @@ package wr.leetcode.algo.search_for_a_range;
 import java.util.Arrays;
 
 public class Solution {
+
+    public int[] searchRange(int[] nums, int target) {
+        int [] ans = {searchRange(nums, target, true), searchRange(nums, target, false)};
+        return ans;
+    }
+
+    public int searchRange(int[] nums, int target, boolean isLeft) {
+        if (null == nums) {
+            nums = new int[0];
+        }
+
+        int start = 0;
+        int end = nums.length - 1;
+        int found = -1;
+        while( start <= end ) {
+            int mid = start + ((end - start) >> 1);
+            int mv = nums[mid];
+            if(mv == target) {
+                found = mid;
+                if(isLeft) {
+                    end = mid - 1;
+                } else {
+                    start = mid + 1;
+                }
+            } else if (mv > target) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return found;
+    }
+
+    /*
     public int[] searchRange(int[] A, int target) {
         int [] ret = {searchRangeLeft(A, target),searchRangeRight(A, target)};
         return ret;
@@ -48,6 +82,7 @@ public class Solution {
         }
         return (found)?(start-1):(-1);
     }
+    */
 
     public static void main(String[] args) {
         int [] arr = {5, 7, 7, 8, 8, 10};

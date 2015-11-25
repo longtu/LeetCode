@@ -1,5 +1,6 @@
 package wr.leetcode.algo.binary_tree_postorder_traversal;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
@@ -11,7 +12,7 @@ class TreeNode {
     TreeNode(int x) { val = x; }
 }
 public class Solution {
-    public List<Integer> postorderTraversal(TreeNode root) {
+    /*public List<Integer> postorderTraversal(TreeNode root) {
 
         Stack<Integer> ret = new Stack<>();
         if (null == root) {
@@ -33,5 +34,29 @@ public class Solution {
         	r.add(ret.pop());
         }
         return r;
+    }*/
+    public List<Integer> postorderTraversal(TreeNode root) {
+        Stack<TreeNode> st = new Stack<>();
+        Stack<Integer>  result = new Stack<>();
+        if(null != root){
+            st.push(root);
+        }
+
+        while(!st.isEmpty()) {
+            TreeNode node = st.pop();
+            result.push(node.val);
+            if(null != node.left){
+                st.push(node.left);
+            }
+            if(null != node.right){
+                st.push(node.right);
+            }
+        }
+
+        List<Integer> ret = new ArrayList<>(result.size());
+        while(!result.isEmpty()){
+            ret.add(result.pop());
+        }
+        return ret;
     }
 }

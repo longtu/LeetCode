@@ -4,6 +4,31 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Solution {
+
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        List<List<Integer>> ret = new LinkedList<>();
+        if( null == nums || 0 == nums.length ) {
+            return ret;
+        } else if (1 == nums.length) {
+            List<Integer> l = new LinkedList<>();
+            l.add(nums[0]);
+            ret.add(l);
+        } else {
+            Set<List<Integer>> next = new HashSet<>();
+            List<List<Integer>> subs = permuteUnique(Arrays.copyOfRange(nums, 1, nums.length));
+            for (List<Integer> sub : subs) {
+                for (int i = 0; i <= sub.size(); ++i) {
+                    List<Integer> n = new LinkedList<>(sub);
+                    n.add(i, nums[0]);
+                    next.add(n);
+                }
+            }
+            ret = new LinkedList<>(next);
+        }
+        return ret;
+    }
+
+    /*
     public List<List<Integer>> permuteUnique(int[] num) {
         List<List<Integer>> ret = new LinkedList();
         if(null == num) {
@@ -23,12 +48,14 @@ public class Solution {
             }
         }
         return ret.parallelStream().collect(Collectors.toSet()).stream().collect(Collectors.toList());
-    }
+    }*/
 
 
     public static void main(String[] args) {
         Solution sol = new Solution();
-        int [] arr = {3,3,0,0,2,3,2};
-        System.out.println(sol.permuteUnique(arr));
+        int [][] arr = { {1,1,2}, {1,1,1} };
+        for (int [] ar : arr) {
+            System.out.println(sol.permuteUnique(ar));
+        }
     }
 }

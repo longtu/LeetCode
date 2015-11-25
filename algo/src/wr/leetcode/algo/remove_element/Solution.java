@@ -1,6 +1,27 @@
 package wr.leetcode.algo.remove_element;
 
 public class Solution {
+
+    public int removeElement(int[] nums, int val) {
+        if( null == nums ) {
+            nums = new int[0];
+        }
+        int end = nums.length;
+        int start = 0;
+
+        while( start < end ) {
+            if( nums[start] == val) {
+                int tmp = nums[start];
+                nums[start] = nums[--end];
+                nums[end] = tmp;
+            } else {
+                start ++;
+            }
+        }
+        return end;
+    }
+
+    /*
     public int removeElement(int[] A, int elem) {
         int ret = 0;
         if(null != A ) {
@@ -20,5 +41,5 @@ public class Solution {
             }
         }
         return ret;
-    }
+    }*/
 }

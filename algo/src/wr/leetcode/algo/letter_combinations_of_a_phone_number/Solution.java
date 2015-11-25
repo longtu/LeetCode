@@ -7,6 +7,66 @@ import java.util.Map;
 
 public class Solution {
 
+    public String notNull(String str) {
+        return (null == str)?(""):(str);
+    }
+
+    public List<String> letterCombinations(String digits) {
+        Map<Integer, String> table = table();
+        digits = notNull(digits);
+        List<String> ret = new LinkedList<>();
+        if(!digits.isEmpty()) {
+            ret = letterDFS(digits, table);
+        }
+        return ret;
+    }
+
+    public List<String> letterDFS(String digits, Map<Integer, String> table) {
+        List<String> ret = new LinkedList<>();
+        if(digits.isEmpty()) {
+            ret.add("");
+        } else {
+            char [] chars = table.get(Integer.parseInt(digits.substring(0,1))).toCharArray();
+            List<String> subs = letterDFS(digits.substring(1), table);
+            for (String sub : subs) {
+                if(0 == chars.length) {
+                    ret.add(sub);
+                } else {
+                    for(char ch : chars) {
+                        ret.add( ch + sub);
+                    }
+                }
+            }
+        }
+        return ret;
+    }
+
+
+    public Map<Integer, String> table() {
+        Map<Integer, String> table = new HashMap<>();
+        table.put(1, "");
+        table.put(2, "abc");
+        table.put(3, "def");
+        table.put(4, "ghi");
+        table.put(5, "jkl");
+        table.put(6, "mno");
+        table.put(7, "pqrs");
+        table.put(8, "tuv");
+        table.put(9, "wxyz");
+        table.put(0, "");
+        return table;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.letterCombinations("203"));
+        System.out.println(sol.letterCombinations("23"));
+        System.out.println(sol.letterCombinations(null));
+        System.out.println(sol.letterCombinations(""));
+    }
+
+
+    /*
     public List<String> letterCombinations(String digits) {
         Map<Character, String> code = new HashMap();
         code.put('2', "abc");
@@ -46,13 +106,8 @@ public class Solution {
             ret.add(sb.toString());
         }
         return ret;
-    }
+    }*/
 
 
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-        System.out.println(sol.letterCombinations("203"));
-        System.out.println(sol.letterCombinations(null));
-        System.out.println(sol.letterCombinations(""));
-    }
+
 }

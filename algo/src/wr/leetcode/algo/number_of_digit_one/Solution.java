@@ -3,6 +3,36 @@ package wr.leetcode.algo.number_of_digit_one;
 public class Solution {
 
 
+    public static void main(String[] args) {
+
+        Solution sol = new Solution();
+
+        System.out.println(sol.countDigitOne(13));
+        System.out.println(sol.countDigitOne(0));
+        System.out.println(sol.countDigitOne(1));
+        System.out.println(sol.countDigitOne(2));
+        System.out.println(sol.countDigitOne(3));
+        System.out.println(sol.countDigitOne(9));
+        System.out.println(sol.countDigitOne(11));
+        System.out.println(sol.countDigitOne(100));
+        System.out.println(sol.countDigitOne(109));
+        System.out.println(sol.countDigitOne(110));
+        System.out.println(sol.countDigitOne(111));
+        System.out.println(sol.countDigitOne(119));
+        System.out.println(sol.countDigitOne(209));
+        System.out.println(sol.countDigitOne(1410065408));
+
+    }
+
+
+
+
+
+
+
+
+
+
     public long countDigitOne(long n, long index) {
         long sum = 0;
         sum += n/(index * 10) * index;
@@ -29,22 +59,5 @@ public class Solution {
         return (int)sum;
     }
 
-    public static void main(String[] args) {
 
-        Solution sol = new Solution();
-
-        System.out.println(sol.countDigitOne(13));
-        System.out.println(sol.countDigitOne(0));
-        System.out.println(sol.countDigitOne(1));
-        System.out.println(sol.countDigitOne(2));
-        System.out.println(sol.countDigitOne(3));
-        System.out.println(sol.countDigitOne(9));
-        System.out.println(sol.countDigitOne(11));
-        System.out.println(sol.countDigitOne(110));
-        System.out.println(sol.countDigitOne(111));
-        System.out.println(sol.countDigitOne(119));
-        System.out.println(sol.countDigitOne(209));
-        System.out.println(sol.countDigitOne(1410065408));
-
-    }
 }

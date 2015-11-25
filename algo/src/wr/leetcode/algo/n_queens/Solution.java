@@ -3,8 +3,69 @@ package wr.leetcode.algo.n_queens;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class Solution {
+
+    public List<String> draw ( int[] yPos ) {
+        List<String> ret = new LinkedList<>();
+        int n = yPos.length;
+        for (int i = 0; i < n; ++i) {
+            StringBuilder sb = new StringBuilder();
+            for (int j = 0; j < n; ++j) {
+                char ch;
+                if(j == yPos[i]) {
+                    ch = 'Q';
+                } else {
+                    ch = '.';
+                }
+                sb.append(ch);
+            }
+            ret.add(sb.toString());
+        }
+        return ret;
+    }
+
+    public List<List<String>> solveNQueens(int n) {
+
+        List<List<String>> ret = new LinkedList<>();
+        if(n > 0) {
+            int [] yPos = new int[n];
+            ret = solveNQueens(yPos, 0);
+        }
+        return ret;
+    }
+
+    public List<List<String>> solveNQueens(int[] yPos, int row) {
+        int n = yPos.length;
+        List<List<String>> ret = new LinkedList<>();
+
+        if(row == n) {
+            ret.add(draw(yPos));
+        } else {
+            for (int y = 0; y < n; ++y) {
+                boolean valid = true;
+                for (int k = 0; k < row; ++k) {
+                    if (y == yPos[k] || (Math.abs(y-yPos[k]) == Math.abs(k-row))) {
+                        valid = false;
+                        break;
+                    }
+                }
+                if(!valid) {
+                    continue;
+                }
+                yPos[row] = y;
+                ret.addAll(solveNQueens(yPos, row + 1));
+            }
+        }
+        return ret;
+    }
+
+
+
+
+
+    /*
     public List<String[]> solveNQueens(int n) {
         List<String[]> sols = new LinkedList();
         if(n <= 0) {
@@ -56,14 +117,14 @@ public class Solution {
             }
         }
         return ret;
-    }
+    }*/
 
 
     public static void main(String[] args) {
         Solution sol = new Solution();
-        List<String[]> sols = sol.solveNQueens(4);
-        for(String[] s : sols) {
-            System.out.println(Arrays.toString(s));
+        List<List<String>> sols = sol.solveNQueens(4);
+        for(List<String> s : sols) {
+            System.out.println(s);
         }
     }
 }

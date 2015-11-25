@@ -195,6 +195,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "wr/leetcode/algo/search_a_2d_matrix_ii/Solution.java",
+			"settings":
+			{
+				"buffer_size": 2857,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "wr/leetcode/algo/find_the_duplicate_number/Solution.java",
+			"settings":
+			{
+				"buffer_size": 2317,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
 	"build_system_choices":
@@ -203,13 +219,17 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 207.0,
+		"height": 287.0,
 		"last_filter": ":w",
 		"selected_items":
 		[
 			[
 				":w",
 				":w - Save"
+			],
+			[
+				":sort",
+				"Set Syntax: ActionScript"
 			],
 			[
 				":s",
@@ -238,19 +258,68 @@
 	[
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/word_pattern"
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/find_the_duplicate_number"
 	],
 	"file_history":
 	[
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/sqrtx/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/find_minimum_in_rotated_sorted_array_ii/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/search_in_rotated_sorted_array_ii/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/search_insert_position/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/search_for_a_range/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/search_in_rotated_sorted_array/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/find_minimum_in_rotated_sorted_array/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/count_complete_tree_nodes/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/binary_tree_right_side_view/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/sum_root_to_leaf_numbers/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/kth_smallest_element_in_a_bst/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/kth_largest_element_in_an_array/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/populating_next_right_pointers_in_each_node_ii/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/binary_tree_paths/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/path_sum/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/path_sum_ii/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/binary_tree_level_order_traversal_ii/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/populating_next_right_pointers_in_each_node/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/construct_binary_tree_from_inorder_and_postorder_traversal/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/construct_binary_tree_from_inorder_and_preorder_traversal/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/validate_binary_search_tree/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/symmetric_tree/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/contains_duplicate_iii/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/validate_binary_search_tree/Solution.py",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/repeated_dna_sequences/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/max_points_on_a_line/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/the_skyline_problem/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/four_sum/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/word_pattern/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/sudoku_solver/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/valid_sudoku/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/anagrams/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/longest_substring_without_repeating_characters/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/add_and_search_word_data_structure_design/WordDictionary.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/word_search_ii/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/implement_trie_prefix_tree/Trie.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/sliding_window_maximum/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/maximal_rectangle/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/ugly_number_ii/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/simplify_path/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/trapping_rain_water/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/insertion_sort_list/Solution/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/reorder_list/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/linked_list_cycle_ii/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/reverse_linked_list_ii/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/remove_duplicates_from_sorted_list_ii/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/remove_linked_list_elements/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/palindrome_linked_list/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/remove_duplicates_from_sorted_list/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/remove_duplicates_from_sorted_array_ii/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/remove_duplicates_from_sorted_array/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/rotate_list/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/expression_add_operators/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/single_number_iii/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/h_index/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/move_zeroes/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/missing_number/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/ugly_number_ii/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/different_ways_to_add_parentheses/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/sliding_window_maximum/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/basic_calculator/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/valid_anagram/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/shortest_palindrome/Solution.java",
@@ -260,15 +329,12 @@
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/delete_node_in_a_linked_list/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/lowest_common_ancestor_of_a_binary_search_tree/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/lowest_common_ancestor_of_a_binary_tree/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/add_and_search_word_data_structure_design/WordDictionary.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/summary_ranges/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/combinations/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/combination_sum_iii/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/majority_element_ii/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/kth_smallest_element_in_a_bst/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/Notes",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/bitwise_and_of_numbers_range/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/binary_tree_right_side_view/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/surrounded_regions/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/number_of_islands/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/sort_colors/Solution.java",
@@ -276,19 +342,13 @@
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/largest_rectangle_in_histogram/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/evaluate_reverse_polish_notation/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/min_stack/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/trapping_rain_water/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/valid_parentheses/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/zigzag_conversion/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/reverse_linked_list_ii/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/swap_nodes_in_pairs/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/intersection_of_two_linked_lists/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/merge_two_sorted_lists/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/remove_duplicates_from_sorted_list/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/insertion_sort_list/Solution/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/remove_duplicates_from_sorted_list_ii/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/add_two_numbers/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/sort_list/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/reorder_list/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/merge_k_sorted_lists/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/reverse_nodes_in_k_group/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/copy_list_with_random_pointer/Solution.java",
@@ -296,16 +356,9 @@
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/median_of_two_sorted_arrays/Solution.java",
 		"/Users/wangran/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Users/wangran/Library/Application Support/Sublime Text 3/Packages/User/JSON.sublime-settings",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/sqrtx/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/find_peak_element/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/search_a_2d_matrix/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/find_minimum_in_rotated_sorted_array_ii/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/find_minimum_in_rotated_sorted_array/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/search_for_a_range/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/search_insert_position/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/powx_n/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/search_in_rotated_sorted_array/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/search_in_rotated_sorted_array_ii/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/palindrome_partitioning/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/generate_parentheses/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/restore_ip_addresses/Solution.java",
@@ -320,56 +373,23 @@
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/subsets/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/word_ladder_ii/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/word_search/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/linked_list_cycle_ii/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/merge_sorted_array/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/partition_list/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/remove_duplicates_from_sorted_array/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/remove_element/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/container_with_most_water/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/remove_nth_node_from_end_of_list/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/rotate_list/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/valid_palindrome/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/implement_strstr/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/substring_with_concatenation_of_all_words/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/four_sum/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/max_points_on_a_line/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/longest_substring_without_repeating_characters/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/minimum_window_substring/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/valid_sudoku/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/fraction_to_recurring_decimal/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/excel_sheet_column_number/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/majority_element/Solution.py",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/populating_next_right_pointers_in_each_node_ii/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/recover_binary_search_tree/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/binary_tree_maximum_path_sum/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/path_sum_ii/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/sum_root_to_leaf_numbers/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/binary_tree_level_order_traversal_ii/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/binary_tree_zigzag_level_order_traversal/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/binary_tree_level_order_traversal/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/balanced_binary_tree/Solution.py",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/binary_tree_preorder_traversal/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/binary_tree_postorder_traversal/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/binary_tree_postorder_traversal/Solution.py",
-		"/Users/wangran/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/validate_binary_search_tree/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/maximum_depth_of_binary_tree/Solution.py",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/minimum_depth_of_binary_tree/Solution.py",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/binary_search_tree_iterator/BSTIterator.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/binary_tree_upside_down/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/validate_binary_search_tree/Solution.py",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/unique_binary_search_trees_ii/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/regular_expression_matching/Solution.py",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/wildcard_matching/Solution.py",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/maximal_rectangle/Solution.py",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/scramble_string/Solution.py",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/palindrome_partitioning_ii/Solution.py",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/longest_valid_parentheses/Solution.py",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/word_break/Solution.java",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/interleaving_string/Solution.py",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/edit_distance/Solution.py",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/distinct_subsequences/Solution.py",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/best_time_to_buy_and_sell_stock_iv/Solution.py"
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/balanced_binary_tree/Solution.py"
 	],
 	"find":
 	{
@@ -377,9 +397,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 102.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -387,6 +408,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"],",
+			"^-",
 			"Word",
 			"#Sort",
 			"Insertion",
@@ -450,9 +473,11 @@
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"],\\r",
+			"],\\n"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -463,8 +488,69 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "wr/leetcode/algo/search_a_2d_matrix_ii/Solution.java",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2857,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1054,
+								372
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/Java.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "wr/leetcode/algo/find_the_duplicate_number/Solution.java",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2317,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1177,
+								1177
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/Java.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -511,7 +597,7 @@
 	"project": "leetcode-algo.sublime-project",
 	"replace":
 	{
-		"height": 56.0
+		"height": 70.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -534,12 +620,12 @@
 	},
 	"select_symbol":
 	{
-		"height": 0.0,
+		"height": 392.0,
 		"last_filter": "",
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 392.0
 	},
 	"selected_group": 0,
 	"settings":
@@ -549,7 +635,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 243.0,
+	"side_bar_width": 297.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -3,6 +3,57 @@ package wr.leetcode.algo.trapping_rain_water;
 import java.util.Stack;
 
 public class Solution {
+
+    public int trap(int[] height) {
+        int ret = 0;
+        if( null == height ) {
+            height = new int[0];
+        }
+        Stack<Integer> st = new Stack<>();
+        int n = height.length;
+        for (int i = 0; i < n; ++i) {
+            int val = height[i];
+            if(!st.isEmpty() && height[st.peek()] < val) {
+                while( !st.isEmpty() && height[st.peek()] < val) {
+                    int j = st.pop();
+                    if(st.isEmpty()) {
+                        break;
+                    } else {
+                        int h = Math.min(height[st.peek()], val) - height[j];
+                        ret += h * (i - st.peek() - 1);
+                    }
+                }
+            }
+            st.push(i);
+        }
+        return ret;
+    }
+
+    /*
+    public int trap(int[] height) {
+        int ret = 0;
+        if(null == height) {
+            height = new int[0];
+        }
+        int n = height.length;
+        int [] leftMax = new int[n];
+        int [] rightMax = new int[n];
+        int max = 0;
+        for (int i = n-1; i>=0; --i) {
+            rightMax[i] = max;
+            max = Math.max(max, height[i]);
+        }
+        max = 0;
+        for (int i = 0; i < n; ++i) {
+            leftMax[i] = max;
+            int level = Math.min(leftMax[i], rightMax[i]);
+            int v = level - height[i];
+            ret += (v > 0)?(v):(0);
+            max = Math.max(max, height[i]);
+        }
+        return ret;
+    }
+
     public int trap0(int[] A) {
     	int sum = 0;
     	if (null == A) {
@@ -54,7 +105,7 @@ public class Solution {
             stack.push(i);
         }
         return sum;
-    }
+    }*/
 
     public static void main(String[] args) {
         Solution sol = new Solution();

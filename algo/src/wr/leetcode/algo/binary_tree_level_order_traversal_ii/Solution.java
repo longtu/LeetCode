@@ -1,17 +1,14 @@
 package wr.leetcode.algo.binary_tree_level_order_traversal_ii;
 
+import wr.leetcode.algo.TreeNode;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(int x) { val = x; }
-}
 public class Solution {
+	/*
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
         List<List<Integer>> ret = new LinkedList<>();
         if (null == root) {
@@ -43,5 +40,31 @@ public class Solution {
  		}
 
  		return ret;
-    }
+    }*/
+	public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        LinkedList<List<Integer>> ret = new LinkedList<>();
+        Queue<TreeNode> nextQ = new LinkedList<>();
+        if(null != root) {
+            nextQ.add(root);
+        }
+
+        while(!nextQ.isEmpty()) {
+            Queue<TreeNode> q = nextQ;
+            nextQ = new LinkedList<>();
+            List<Integer> line = new LinkedList<>();
+            while(!q.isEmpty()) {
+                TreeNode node = q.remove();
+                line.add(node.val);
+                if(null != node.left) {
+                    nextQ.add(node.left);
+                }
+                if(null != node.right) {
+                    nextQ.add(node.right);
+                }
+
+            }
+            ret.addFirst(line);
+        }
+        return ret;
+	}
 }

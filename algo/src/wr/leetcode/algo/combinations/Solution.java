@@ -1,9 +1,48 @@
 package wr.leetcode.algo.combinations;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Solution {
+
+
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> ret = new LinkedList<>();
+        if( k > 0 && n >= k) {
+            int[] nums = new int[n];
+            for (int i = 0; i < n; ++i) {
+                nums[i] = i + 1;
+            }
+            ret = combineRec(k, nums);
+        }
+        return ret;
+    }
+
+    public List<List<Integer>> combineRec(int k, int[] nums) {
+        List<List<Integer>> ret =  new LinkedList<>();
+        if( 0 == k ) {
+            ret.add( new LinkedList<>() );
+        } else if (nums.length > 0 ) {// k > 0
+            int first = nums[0];
+            int[] subNums = Arrays.copyOfRange(nums, 1, nums.length);
+            List<List<Integer>> subs = combineRec(k-1, subNums);
+            for (List<Integer> sub : subs) {
+                List<Integer> r = new LinkedList<>(sub);
+                r.add(0, first);
+                ret.add(r);
+            }
+            ret.addAll(combineRec(k, subNums));
+        }
+        return ret;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.combine(4,2));
+    }
+
+    /*
     public List<List<Integer>> combine1(int n, int k) {
 
         Object[][] sols = new Object[2][k + 1];
@@ -51,10 +90,5 @@ public class Solution {
             }
             return mySol;
         }
-
-
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-        System.out.println(sol.combine(4,2));
-    }
+    */
 }

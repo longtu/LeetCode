@@ -5,6 +5,37 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Solution {
+
+    public List<Integer> getRow(int rowIndex) {
+
+        ArrayList<Integer> prev = new ArrayList<>();
+        for (int i = 0; i <= rowIndex; ++i) {
+            ArrayList<Integer> row = new ArrayList<>();
+            for (int j = 0; j <= i; ++j) {
+                if( j == i || 0 == j ) {
+                    row.add(1);
+                } else {
+                    row.add(prev.get(j)+prev.get(j-1));
+                }
+            }
+            prev = row;
+        }
+
+        return prev;
+    }
+
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.getRow(0));
+        System.out.println(sol.getRow(1));
+        System.out.println(sol.getRow(2));
+        System.out.println(sol.getRow(3));
+        System.out.println(sol.getRow(4));
+        System.out.println(sol.getRow(5));
+    }
+
+        /*
     public List<Integer> getRow(int rowIndex) {
         List<Integer> row = new ArrayList<>();
 
@@ -22,15 +53,5 @@ public class Solution {
             }
         }
         return row;
-    }
-
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-        System.out.println(sol.getRow(0));
-        System.out.println(sol.getRow(1));
-        System.out.println(sol.getRow(2));
-        System.out.println(sol.getRow(3));
-        System.out.println(sol.getRow(4));
-        System.out.println(sol.getRow(5));
-    }
+    }*/
 }

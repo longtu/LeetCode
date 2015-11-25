@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Solution {
+
+
     public int numDecodings(String s) {
 
         Set<String> decodes =
@@ -28,9 +30,11 @@ public class Solution {
         return (len > 0) ? decodings[len%3] : 0; // is is up to the requirement
     }
 
+
+
     public static void main(String[] args) {
         System.out.println(new Solution().numDecodings("12"));
-        System.out.println(new Solution().numDecodings("ab"));
+       // System.out.println(new Solution().numDecodings("ab"));
         System.out.println(new Solution().numDecodings(""));
 
     }

@@ -3,6 +3,7 @@ package wr.leetcode.algo.flatten_binary_tree_to_linked_list;
 import wr.leetcode.algo.TreeNode;
 
 public class Solution {
+    /*
     public void flatten(TreeNode root) {
         flattenTree(root);
     }
@@ -33,4 +34,33 @@ public class Solution {
         leftTail.right = tmp;
         return rightTail;
     }
+    */
+
+
+    public void flatten(TreeNode root) {
+        flattenTree(root);
+    }
+
+    public TreeNode flattenTree (TreeNode root) {
+        TreeNode tail = root;
+
+        if( null != root ) {
+            TreeNode right = root.right;
+            root.right = null;
+            if (null != root.left) {
+                TreeNode left = root.left;
+                root.left = null;
+                TreeNode leftEnd = flattenTree(left);
+                tail.right = left;
+                tail = leftEnd;
+            }
+            if (null != right) {
+                TreeNode rightEnd = flattenTree(right);
+                tail.right = right;
+                tail = rightEnd;
+            }
+        }
+        return tail;
+    }
+
 }

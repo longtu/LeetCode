@@ -1,10 +1,85 @@
 package wr.leetcode.algo.maximal_square;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Set;
 
 public class Solution {
+
+    public static void main(String[] args) {
+        char[][] matrix = {
+            {'1','0','1','0','0'},
+            {'1','0','1','1','1'},
+            {'1','1','1','1','1'},
+            {'1','0','0','1','0'}
+        };
+        Solution sol = new Solution();
+        System.out.println(sol.maximalSquare(matrix));
+    }
+
     public int maximalSquare(char[][] matrix) {
+        int ret = 0;
+        if(null != matrix && matrix.length > 0 && matrix[0].length > 0) {
+            int m = matrix.length;
+            int n = matrix[0].length;
+
+            int l = 0;
+            Queue<Pos> nextQ = new LinkedList<Pos>();
+            for (int i = 0; i < m; ++i){
+                for (int j = 0; j < n; ++j) {
+                    if(matrix[i][j] == '1') {
+                        nextQ.add(new Pos(i,j));
+                    }
+                }
+            }
+
+            int maxL = 0;
+            while(!nextQ.isEmpty()) {
+               // l+= 1; BUG: should not update here
+                Queue<Pos> q = nextQ;
+                nextQ = new LinkedList<>();
+                l += 1;
+                while(!q.isEmpty()) {
+                    Pos p = q.remove();
+                    int sx = p.x;
+                    int sy = p.y;
+                    boolean isSquare = true;
+                    for (int i = 0; i <= l; ++i) { //BUG: starting with 0
+                        int x = sx + i;
+                        int y = sy + i;
+                        if(x >= m || y >= n || sy +l >=n || sx +l >=m ||
+                                matrix[x][sy+l] != '1' ||
+                            matrix[sx+l][y] != '1') { /*BUG: INDEX OUT OF BOUNDARY*/
+                            isSquare = false;
+                            break;
+                        }
+                    }
+                    if(isSquare) {
+                        nextQ.add(new Pos(sx, sy));
+                    }
+                }
+            }
+            ret = l*l;
+        }
+        return ret;
+    }
+
+    public class Pos {
+        int x;
+        int y;
+        public Pos (int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+
+
+
+
+
+    /*public int maximalSquare(char[][] matrix) {
 
         int ret = 0;
         if(null == matrix || matrix.length == 0 || matrix[0].length == 0) {
@@ -84,16 +159,6 @@ public class Solution {
         public String toString(){
             return String.format("%d:%d", row, col);
         }
-    }
+    }*/
 
-    public static void main(String[] args) {
-        char[][] matrix = {
-            {'1','0','1','0','0'},
-            {'1','0','1','1','1'},
-            {'1','1','1','1','1'},
-            {'1','0','0','1','0'}
-        };
-        Solution sol = new Solution();
-        System.out.println(sol.maximalSquare(matrix));
-    }
 }

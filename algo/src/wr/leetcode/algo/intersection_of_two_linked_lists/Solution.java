@@ -3,7 +3,7 @@ package wr.leetcode.algo.intersection_of_two_linked_lists;
 import wr.leetcode.algo.ListNode;
 
 public class Solution {
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    public ListNode getIntersectionNode0(ListNode headA, ListNode headB) {
         int lenA = len(headA);
         int lenB = len(headB);
         if(lenA < lenB) {
@@ -33,5 +33,29 @@ public class Solution {
             len++;
         }
         return len;
+    }
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+
+        int lenA = len(headA);
+        int lenB = len(headB);
+
+        if(lenA < lenB) {
+            return getIntersectionNode(headB, headA);
+        }
+
+        int diff = lenA - lenB; //lenA >= lenB
+
+        for (int i = 0; i < lenA; ++i) {
+            if( diff > 0) {
+                diff -- ;
+            } else {
+                if(headA == headB) {
+                    break;
+                }
+                headB = headB.next;
+            }
+            headA = headA.next;
+        }
+        return headA;
     }
 }

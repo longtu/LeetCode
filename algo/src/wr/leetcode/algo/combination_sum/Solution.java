@@ -1,10 +1,58 @@
 package wr.leetcode.algo.combination_sum;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Solution {
+
+    public List<List<Integer>> combinationSumRec(int[] candidates, int target) {
+        List<List<Integer>> ret = new LinkedList<>();
+
+        if(null == candidates || 0 == candidates.length) {
+            return ret;
+        } else if( 0 == target ) {
+            List<Integer> r = new LinkedList<>();
+            ret.add(r);
+        } else {
+            int first = candidates[0];
+            Set<List<Integer>> set = new HashSet<>();
+            if( first <= target ) {
+                List<List<Integer>> subs = combinationSumRec(candidates, target - first);
+                for (List<Integer> sub : subs) {
+                    List<Integer> r = new LinkedList(sub);
+                    r.add(0, first);
+                    set.add(r);
+                }
+                if(candidates.length > 1) {
+                    int[] subCandidates = Arrays.copyOfRange(candidates, 1, candidates.length);
+                    List<List<Integer>> subRecs = combinationSumRec(subCandidates, target);
+                    for (List<Integer> sub : subRecs) {
+                        List<Integer> r = new LinkedList(sub);
+                        set.add(r);
+                    }
+                }
+            }
+            ret.addAll(set);
+        }
+        return ret;
+    }
+
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> ret = new LinkedList<>();
+        if( 0 <= target ) {
+            Arrays.sort(candidates);
+            ret = combinationSumRec(candidates, target);
+        }
+        return ret;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int[] arr = {3,6,7,2};
+        System.out.println(sol.combinationSum(arr, 7));
+    }
+
+
+    /*
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         if(null == candidates ) {
             candidates = new int[0];
@@ -39,12 +87,5 @@ public class Solution {
             }
         }
         return sols;
-    }
-
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-        int[] arr = {3,6,7,2};
-        System.out.println(sol.combinationSum(arr, 7));
-    }
-
+    }*/
 }

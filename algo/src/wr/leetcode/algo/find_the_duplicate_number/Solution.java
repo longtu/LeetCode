@@ -3,6 +3,7 @@ package wr.leetcode.algo.find_the_duplicate_number;
 import java.util.Arrays;
 
 public class Solution {
+    /*
     public int findDuplicate(int[] nums) {
         int start = 1;
         int end = nums.length;
@@ -32,6 +33,39 @@ public class Solution {
         return (int) Arrays.stream(nums)
                 .filter( (x)->(x <= ceiling))
                 .count();
+    }
+    */
+
+
+    public int findDuplicate(int[] nums) {
+        if(null == nums || nums.length < 2) {
+            throw new IllegalStateException("Invalid Input");
+        }
+        int n = nums.length;
+        int start = 1;
+        int end = n-1;
+        int found = -1;
+        while(start <= end) {
+            int mid = start + ( (end - start) >> 1);
+            int mv = countLE(mid, nums);
+            if( mv > mid ) {
+                if (mid == 1 || countLE(mid-1, nums) <= mid - 1) {
+                    found = mid;
+                    break;
+                } else {
+                    end = mid - 1;
+                }
+            } else {
+                start = mid + 1;
+            }
+        }
+        return found;
+    }
+
+    public int countLE(int key, int [] nums) {
+        return  (int) Arrays.stream(nums)
+                    .filter((a) -> (a <= key))
+                    .count();
     }
 
 

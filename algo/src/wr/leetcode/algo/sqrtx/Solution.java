@@ -1,8 +1,9 @@
 package wr.leetcode.algo.sqrtx;
 
-public class Solution {
+import sun.plugin.dom.exception.InvalidStateException;
 
-    public long mySqrt(long x) {
+public class Solution {
+    /*public long mySqrt(long x) {
         long start = 0;
         long end = x;
         long ret = x;
@@ -26,6 +27,39 @@ public class Solution {
             throw new RuntimeException("Invalid Input");
         }
         return (int ) mySqrt((long)x);
+    }
+    */
+
+    public int mySqrt(int x) {
+        return (int)mySqrtLong(x);
+    }
+
+    public long mySqrtLong(long x) {
+        if (x < 0 ) {
+            throw new IllegalStateException("Invalid Input!");
+        }
+        long ret = -1;
+        if( x <= 1) {
+            ret = x;
+        } else { // x > 1
+            long start = 1;
+            long end = x;
+            while( start <= end) {
+                long mid = start + ((end - start) >> 1);
+                long mv = mid * mid;
+                long ev = (mid + 1) * (mid + 1);
+
+                if (ev <= x) {
+                    start = mid + 1;
+                } else if (x < mv) {
+                    end = mid - 1;
+                } else {
+                    ret = mid;
+                    break;
+                }
+            }
+        }
+        return ret;
     }
 
     public static void main(String[] args) {

@@ -2,7 +2,11 @@ package wr.leetcode.algo.convert_sorted_array_to_binary_search_tree;
 
 import wr.leetcode.algo.TreeNode;
 
+import java.util.Arrays;
+
 public class Solution {
+
+    /*
 
     public TreeNode sortedArrayToBST(int[] num, int startInclusive, int endExclusive) {
         if(startInclusive >= endExclusive) {
@@ -20,5 +24,20 @@ public class Solution {
             return null;
         }
         return sortedArrayToBST(num, 0, num.length);
+    }
+    */
+
+
+    public TreeNode sortedArrayToBST(int[] nums) {
+        TreeNode ret;
+        if(null == nums || 0 == nums.length) {
+            ret = null;
+        } else {
+            int mid = (nums.length - 1)/2;
+            ret = new TreeNode(nums[mid]);
+            ret.left = sortedArrayToBST(Arrays.copyOfRange(nums, 0, mid));
+            ret.right = sortedArrayToBST(Arrays.copyOfRange(nums, mid+1, nums.length));
+        }
+        return ret;
     }
 }

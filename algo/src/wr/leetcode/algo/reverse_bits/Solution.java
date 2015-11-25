@@ -2,6 +2,8 @@ package wr.leetcode.algo.reverse_bits;
 
 //reverse look up!!!!
 public class Solution {
+
+    /*
     public int reverseBits(int n) {
 
         int mask = 0x00000001;
@@ -18,7 +20,22 @@ public class Solution {
             }
         }
         return ret;
+    }*/
+
+    public int reverseBits(int n) {
+        int tmp = n;
+        int ret = 0;
+        for (int i = 0; i < 32; ++i) {
+            ret <<= 1;
+            int bit = tmp & 1;
+            tmp >>>= 1;
+            ret |= bit;
+        }
+
+        return ret;
     }
+
+
 
     public static void main(String[] args) {
         Solution sol = new Solution();

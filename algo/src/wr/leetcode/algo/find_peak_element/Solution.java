@@ -1,6 +1,41 @@
 package wr.leetcode.algo.find_peak_element;
 
 public class Solution {
+
+    public int findPeakElement(int[] nums) {
+        if(null == nums || 0 == nums.length) {
+            throw new IllegalStateException("Invalid Input");
+        }
+        int found = -1;
+        int start = 0;
+        int end = nums.length - 1;
+        while( start <= end ) {
+            int mid = start + ((end-start) >> 1);
+            if(start == end) { //size = 1
+                found = start;
+                break;
+            } else if (mid == start) { // size == 2
+                int sv = nums[start];
+                int ev = nums[end];
+                found = (sv > ev)?(start):(end);
+            } else { //size > 2
+                int mv = nums[mid];
+                int lm = nums[mid - 1];
+                int rm = nums[mid + 1];
+                if (mv > lm && mv > rm) {
+                    found = mid;
+                    break;
+                } else if ( mv < lm) {
+                    end = mid - 1;
+                } else {
+                    start = mid + 1;
+                }
+            }
+        }
+        return found;
+    }
+
+    /*
     public int findPeakElement(int[] num) {
         if(null == num || 0 == num.length) {
             throw new RuntimeException("Invalid Input");
@@ -46,6 +81,7 @@ public class Solution {
         }
         return num[left] - num[right];
     }
+    */
 
     public static void main(String[] args) {
         Solution sol = new Solution();

@@ -3,7 +3,39 @@ package wr.leetcode.algo.remove_nth_node_from_end_of_list;
 import wr.leetcode.algo.ListNode;
 
 public class Solution {
+
     public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode helper = new ListNode(-1);
+        helper.next = head;
+        ListNode fast = helper;
+        ListNode slow = helper;
+        int count = n;
+        if( n <= 0 ) {
+            return helper.next;
+        }
+
+        while( count-- > 0 ) {
+            fast = fast.next;
+        }
+
+        while(fast.next != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        ListNode next = slow.next.next;
+        slow.next = next;
+        return helper.next;
+    }
+
+
+
+
+
+
+
+
+    /*
+    public ListNode removeNthFromEnd0(ListNode head, int n) {
 
         ListNode helper = new ListNode(-1);
         helper.next = head;
@@ -37,4 +69,28 @@ public class Solution {
         }
         return i;
     }
+
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+
+        ListNode helper = new ListNode(-1);
+        helper.next = head;
+
+        ListNode fast = helper;
+        ListNode slow = helper;
+
+        if( n <= 0) {
+            return helper.next;
+        }
+
+        while( fast.next != null && n -- > 0) {
+            fast = fast.next;
+        }
+
+        while(fast.next != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        slow.next = slow.next.next;
+        return helper.next;
+    }*/
 }

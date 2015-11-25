@@ -1,9 +1,12 @@
 package wr.leetcode.algo.contains_duplicate_iii;
 
 import java.util.PriorityQueue;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class Solution {
     /* This needs a redo!!! problem solving is wrong!!! */
+    /*
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
         boolean ret = false;
         k = Math.abs(k);
@@ -37,10 +40,45 @@ public class Solution {
         }
         return ret;
     }
+    */
+
+    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
+        boolean ret = false;
+        if( null != nums && nums.length >= 2 && t >= 0 && k > 0) {
+            TreeSet<Integer> map = new TreeSet<>();
+            for ( int i = 0; i < nums.length; ++i) {
+                if( i > k ) {
+                    map.remove( nums[i-k-1] );
+                }
+                Integer val = (nums[i]);
+                Integer floor = map.floor(val);
+                if(null != floor && (long)val- (long)floor <=t) {
+                    ret = true;
+                    break;
+                }
+                Integer ceiling = map.ceiling(val);
+                /*BUG: Integer Overflow*/
+                if(null != ceiling && (long)ceiling - (long)val <= t) {
+                    ret = true;
+                    break;
+                }
+                map.add(val);
+                /*BUG: if the size is 1, first/last is the same element!!!
+                 *SHOULD NOT COMPARE THE RANGE but specific
+                if( (map.size() > 1) && (map.last() - map.first() <= t)) {
+                    ret = true;
+                    break;
+                }
+                */
+            }
+        }
+        return ret;
+    }
+
 
     public static void main(String[] args) {
         Solution sol = new Solution();
-        int [] arr = {0,10,22,15,0,5,22,12,1,5};
-        System.out.println(sol.containsNearbyAlmostDuplicate(arr, 3, 3));
+        int [] arr = {1,3,1};
+        System.out.println(sol.containsNearbyAlmostDuplicate(arr, 1,1));
     }
 }

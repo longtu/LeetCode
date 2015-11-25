@@ -1,8 +1,67 @@
 package wr.leetcode.algo.substring_with_concatenation_of_all_words;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Solution {
+
+    public boolean containsAll(String str,  Map<String, Integer> dict, int len) {
+        boolean ret = true;
+        int start = 0;
+        while(!dict.isEmpty()) {
+            String w = str.substring(start, start + len);
+            if(!dict.containsKey(w)) {
+                ret =false;
+                break;
+            } else {
+                int cnt = dict.get(w) - 1;
+                if(0 == cnt) {
+                    dict.remove(w);
+                } else {
+                    dict.put(w, cnt);
+                }
+            }
+            start += len;
+        }
+        return ret;
+    }
+
+    public List<Integer> findSubstring(String s, String[] words) {
+        List<Integer> ret = new LinkedList<>();
+        if(null == s) {
+            s = "";
+        }
+        if(null == words || 0 == words.length ) {
+            throw new IllegalArgumentException("Invalid Input!");
+        }
+        int n = s.length();
+        int wLen = words[0].length();
+        Map<String, Integer> ws = table(words);
+        int totalLen = wLen * words.length;
+
+        for (int i = 0; i + totalLen <= n; ++i) {
+            Map<String, Integer> dict = new HashMap<>(ws);
+            if (containsAll( s.substring(i, i+totalLen), dict, wLen)) {
+                ret.add(i);
+            }
+        }
+        return ret;
+    }
+
+    public Map<String, Integer> table( String [] words) {
+        Map<String, Integer> ret = new HashMap<>();
+        for( String w : words) {
+            Integer cnt = ret.getOrDefault(w, 0);
+            ret.put(w, cnt + 1);
+        }
+        return ret;
+    }
+
+
+
+
+
+    /*
     public List<Integer> findSubstring(String S, String[] L) {
         List<Integer> ret = new LinkedList();
         if(null == S || S.length() == 0 || null == L || L.length == 0 ) {
@@ -51,10 +110,69 @@ public class Solution {
         return true;
     }
 
+    public boolean isValid( String s, int start, Map<String, Integer> dict, int len, int size) {
+        boolean ret;
+
+        if( size * len + start > s.length()) {
+            ret = false;
+        } else {
+            Map<String, Integer> load = new HashMap<>(dict);
+            for (int i = 0; i < size; ++i) {
+                int pos = start + i * len;
+                String word = s.substring(pos, pos + len);
+                if( !load.containsKey(word) ) {
+                    break;
+                } else {
+                    int val = load.get(word) - 1;
+                    if(val != 0) {
+                        load.put(word, val);
+                    } else {
+                        load.remove(word);
+                    }
+                }
+            }
+            ret = load.isEmpty();
+        }
+        return ret;
+    }
+
+    public Map<String, Integer> buildMap(String[] words) {
+        Map<String, Integer> dict = new HashMap<>();
+        for (String w: words) {
+            int val = dict.getOrDefault(w, 0) + 1;
+            dict.put(w, val);
+        }
+        return dict;
+    }
+
+
+    public List<Integer> findSubstring(String s, String[] words) {
+        if(null == s) {
+            s = "";
+        }
+        if(null == words || words.length == 0) {
+            throw new IllegalStateException("Invalid Input!");
+        }
+
+        List<Integer> ret = new LinkedList<>();
+        int len = words[0].length();
+        Map<String, Integer> dict = buildMap(words);
+        for (int i = 0; i < s.length(); ++i) {
+            if(isValid(s, i, dict, len, words.length)){
+                ret.add(i);
+            }
+        }
+        return ret;
+    }
+    */
+
+
     public static void main(String[] args) {
         Solution sol = new Solution();
-        String S="a";
-        String [] arr = {"a"};
+        /*String S="goodgoodbestword";
+        String [] arr = {"word", "good","good", "best"};*/
+        String S="barfoothefoobarman";
+        String [] arr = {"foo", "bar"};
         System.out.println(sol.findSubstring(S, arr));
     }
 }

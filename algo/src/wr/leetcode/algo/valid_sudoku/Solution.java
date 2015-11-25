@@ -1,8 +1,43 @@
 package wr.leetcode.algo.valid_sudoku;
 
-import java.util.Arrays;
-
 public class Solution {
+
+    public boolean isValidSudoku(char[][] board) {
+
+     boolean [][] h = new boolean[9][9];
+     boolean [][] v = new boolean[9][9];
+     boolean [][][] x = new boolean[3][3][9];
+
+     if(null == board || board.length != 9 || board[0].length != 9) {
+        throw new IllegalStateException("Invalid input sudoku board!");
+    }
+
+    boolean ret = true;
+    for (int i = 0; i < 9 && ret; ++i) {
+        for (int j = 0; j < 9 && ret; ++j) {
+            if('.' == board[i][j]) {
+                continue;
+            }
+            int val = (board[i][j] - '0');
+            if( h[i][val-1] || v[j][val-1] || x[i/3][j/3][val-1]) {
+                ret = false;
+            } else {
+                h[i][val-1] = true;
+                v[j][val-1] = true;
+                x[i/3][j/3][val-1] = true;
+            }
+        }
+    }
+    return ret;
+}
+
+
+
+
+
+
+
+/*
     public boolean isValidSudoku(char[][] board) {
 
     	if(null == board || board[0].length == 0) {
@@ -88,7 +123,7 @@ public class Solution {
                 }
             }
         return true;
-    }
+    }*/
 
 
 }

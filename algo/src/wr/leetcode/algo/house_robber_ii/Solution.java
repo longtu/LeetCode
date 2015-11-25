@@ -3,6 +3,8 @@ package wr.leetcode.algo.house_robber_ii;
 import java.util.Arrays;
 
 public class Solution {
+
+    /*
     public int rob(int[] nums) {
         int ret = 0;
         //Did not think through empty/null check!!!
@@ -30,7 +32,41 @@ public class Solution {
             glb[i] = Math.max(loc[i], (i > 0)?(glb[i-1]):(0));
         }
         return glb[nums.length-1];
+    }*/
+
+    public int rob(int[] nums) {
+        int ret;
+        if(null == nums || 0 == nums.length ){
+            ret = 0;
+        } else if (1 == nums.length) {
+            ret = nums[0];
+        } else {
+            int tmp = nums[0];
+            nums[0] = 0;
+            int first = robCircle(nums);
+
+            nums[0] = tmp;
+            nums[nums.length -1] = 0;
+            int second = robCircle(nums);
+            ret = Math.max(first, second);
+        }
+        return ret;
     }
+
+    public int robCircle(int[] nums) {
+        int n = nums.length;
+        int[] glo = new int[4];
+        int[] loc = new int[4];
+        for (int i = 0; i < n; ++i) {
+            loc[i%4] = nums[i] + ((i > 1)?(glo[(i-2)%4]):(0));
+            glo[i%4] = Math.max(loc[i%4], (i>0)?(glo[(i-1)%4]):(0));
+        }
+        return glo[(n-1)%4];
+    }
+
+
+
+
 
     public static void main(String[] args) {
         Solution sol = new Solution();

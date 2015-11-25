@@ -21,7 +21,7 @@ class  TreeNode {
     TreeNode(int x) { val = x; }
 }
 public class Solution {
-    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+   /* public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
 
     	List<List<Integer>> ret = new LinkedList<>();
     	if (null == root) {
@@ -54,5 +54,35 @@ public class Solution {
 			reverse = !reverse;
     	}
     	return ret;
-    }
+    }*/
+   public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+	   List<List<Integer>> ret = new LinkedList<>();
+	   Queue<TreeNode> q = new LinkedList<>();
+	   if(null != root) {
+		   q.add(root);
+	   }
+	   boolean isReverse = false;
+	   while(!q.isEmpty()) {
+		   LinkedList<Integer> r = new LinkedList<>();
+		   Queue<TreeNode> nextQ = new LinkedList<>();
+		   while(q.isEmpty()){
+			   TreeNode node = q.remove();
+			   if(isReverse) {
+				   r.addFirst(node.val);
+			   } else {
+				   r.addLast(node.val);
+			   }
+			   if(null != node.left) {
+				   nextQ.add(node.left);
+			   }
+			   if(null != node.right) {
+					nextQ.add(node.right);
+			   }
+		   }
+		   isReverse = !isReverse;
+		   ret.add(r);
+		   q = nextQ;
+	   }
+	   return ret;
+   }
 }

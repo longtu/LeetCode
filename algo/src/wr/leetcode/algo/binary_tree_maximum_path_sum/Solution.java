@@ -6,6 +6,47 @@ import wr.leetcode.algo.TreeNode;
 //LEAF NODE LEAF NODE!!!!
 
 public class Solution {
+    class PathData{
+        int maxNodePathSum;
+        int maxPathSum;
+    }
+
+    public PathData maxPathSumData(TreeNode root) {
+        PathData data = new PathData();
+        if(null == root) {
+            data.maxNodePathSum = 0;
+            data.maxPathSum = 0;
+        } else {
+            int maxNodePathSum = root.val;
+            int connect = root.val;
+            int maxPathSum = root.val;
+
+            if(null != root.left) {
+                PathData leftData = maxPathSumData(root.left);
+                maxNodePathSum = Math.max(maxNodePathSum, leftData.maxNodePathSum + root.val);
+                maxPathSum = Math.max(maxPathSum, leftData.maxPathSum);
+                connect += leftData.maxNodePathSum;
+            }
+
+            if(null != root.right) {
+                PathData rightData = maxPathSumData(root.right);
+                maxNodePathSum = Math.max(maxNodePathSum, rightData.maxNodePathSum + root.val);
+                maxPathSum = Math.max(maxPathSum, rightData.maxPathSum);
+                connect += rightData.maxNodePathSum;
+            }
+
+            maxPathSum = Math.max(Math.max(connect, maxPathSum), maxNodePathSum);
+            data.maxPathSum = maxPathSum;
+            data.maxNodePathSum = maxNodePathSum;
+        }
+        return data;
+    }
+
+    public int maxPathSum(TreeNode root) {
+        return maxPathSumData(root).maxPathSum;
+    }
+
+    /*
     class PathInfo{
         int maxSum;
         int maxPath;
@@ -37,5 +78,6 @@ public class Solution {
                          ((rightInfo == null)? (Integer.MIN_VALUE):(rightInfo.maxSum))));
 
         return new PathInfo( maxSum, maxPath);
-    }
+    }*/
+
 }

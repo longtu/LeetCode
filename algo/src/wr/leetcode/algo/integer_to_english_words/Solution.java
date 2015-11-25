@@ -7,7 +7,61 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Solution {
-    Map<Integer, String> converter = convertMap();
+    Map<Integer, String> table = convertMap();
+
+    public String numberToWords(int num) {
+        List<String> ret = new LinkedList<>();
+
+        int mod = 1000;
+        int val = num;
+        int unit = 1;
+        while( val > 0) {
+            String str = processThousand( val % mod, unit);
+            //BUG: may cause extra spaces if not check empty here
+            if( !str.isEmpty() ) {
+                ret.add(0, str);
+            }
+            unit *= mod;
+            val /= mod;
+        }
+
+        if(ret.isEmpty()) {
+            ret.add(table.get(0));
+        }
+
+        return ret.stream().collect(Collectors.joining(" "));
+    }
+
+
+
+    public String processThousand( int num, int unit ) {
+        List<String> strs = new LinkedList<>();
+
+        int hundres = num / 100;
+        if(hundres > 0) {
+            strs.add ( table.get(hundres) + " " + table.get(100) );
+        }
+        num = num % 100;
+        if( num > 0 ) {
+            if( num < 20) {
+                strs.add(table.get(num));
+            } else {
+                int tens = num/10;
+                int ones = num%10;
+                strs.add(table.get(tens*10));
+                if(ones > 0) {
+                    strs.add(table.get(ones));
+                }
+            }
+        }
+
+        if( !strs.isEmpty() && unit > 1) {
+            strs.add( table.get(unit) );
+        }
+
+        return strs.stream().collect(Collectors.joining(" "));
+    }
+
 
 
     public Map<Integer, String> convertMap() {
@@ -47,6 +101,12 @@ public class Solution {
         return ret;
     }
 
+
+
+
+
+
+/*
     public String numberToWords(int num) {
 
         List<String> ret = new LinkedList<>();
@@ -102,7 +162,7 @@ public class Solution {
             }
         }
         return ret.stream().collect(Collectors.joining(" "));
-    }
+    }*/
 
 
     public static void main(String[] args) {

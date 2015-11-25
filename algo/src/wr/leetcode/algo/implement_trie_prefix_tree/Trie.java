@@ -1,10 +1,11 @@
 package wr.leetcode.algo.implement_trie_prefix_tree;
 
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-class TrieNode {
+/*class TrieNode {
 
     Map<Character, TrieNode> children;
     boolean isTail;
@@ -74,6 +75,88 @@ public class Trie {
     }
 
 
+
+
+    }
+
+}*/
+
+class TrieNode {
+    boolean isTail;
+    Map<Character,TrieNode> children;
+
+    public TrieNode() {
+        children = new HashMap<>();
+        isTail = false;
+    }
+}
+
+public class Trie {
+    private TrieNode root;
+
+    public Trie() {
+        root = new TrieNode();
+    }
+
+    public void insert(String word) {
+        if (null == word) {
+            return;
+        }
+        TrieNode node = root;
+        while (word.length() >= 0) {
+            if (!word.isEmpty()) {
+                char ch = word.charAt(0);
+                TrieNode child = node.children.getOrDefault(ch, new TrieNode());
+                node.children.put(ch, child);
+                node = child;
+                word = word.substring(1);
+            } else { //word is empty
+                node.isTail = true;
+                break;
+            }
+        }
+    }
+
+    public boolean search(String word) {
+        boolean found = false;
+        if (null == word) {
+            return found;
+        }
+        TrieNode node = root;
+        while (null != node) {
+            if (word.isEmpty()) {
+                found = node.isTail;
+                break;
+            } else {
+                char ch = word.charAt(0);
+                TrieNode child = node.children.get(ch);
+                word = word.substring(1);
+                node = child;
+            }
+        }
+        return found;
+    }
+
+    public boolean startsWith(String prefix) {
+        boolean found = false;
+        if (null == prefix) {
+            return found;
+        }
+        TrieNode node = root;
+        while (null != node) {
+            if (prefix.isEmpty()) {
+                found = true;
+                break;
+            } else {
+                char ch = prefix.charAt(0);
+                TrieNode child = node.children.get(ch);
+                node = child;
+                prefix = prefix.substring(1);
+            }
+        }
+        return found;
+    }
+
     public static void main(String[] args) {
         Trie trie = new Trie();
         trie.insert("something");
@@ -87,7 +170,10 @@ public class Trie {
         System.out.println(trie.search("prefix"));
         System.out.println(trie.search("intesting"));
         System.out.println(trie.search("interesting"));
-
     }
-
 }
+
+// Your Trie object will be instantiated and called as such:
+// Trie trie = new Trie();
+// trie.insert("somestring");
+// trie.search("key");

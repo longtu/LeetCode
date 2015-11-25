@@ -1,10 +1,68 @@
 package wr.leetcode.algo.minimum_window_substring;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Solution {
 
+    public String notNull(String str) {
+        return (null == str)? (""):(str);
+    }
+
+    public String minWindow(String s, String t) {
+        s = notNull(s);
+        t = notNull(t);
+        String ret = "";
+        if (0 != t.length() && s.length() >= t.length()) {
+            Map<Character, Integer> target = table(t);
+            Map<Character, Integer> dict = new HashMap<>();
+            int n = s.length();
+            int start = 0;
+            int minLen = Integer.MAX_VALUE;
+            for (int i = 0; i < n; ++i) {
+                char ch = s.charAt(i);
+                int cnt = dict.getOrDefault(ch, 0) + 1;
+                dict.put(ch, cnt);
+                while( matches(dict, target) ) {
+                    int dist = i-start + 1;
+                    if(dist < minLen) {
+                        minLen = dist;
+                        ret = s.substring(start, i+1);
+                    }
+                    char c = s.charAt(start++);
+                    int count = dict.getOrDefault(c, 0) - 1;
+                    //BUG: c instead of CH BABY!!!
+                    dict.put(c, count);
+                }
+            }
+        }
+        return ret;
+    }
+
+    public Map<Character, Integer> table( String t ) {
+        Map<Character, Integer> table = new HashMap<>();
+        for (char ch : t.toCharArray()) {
+            int cnt = table.getOrDefault(ch, 0) + 1;
+            table.put(ch, cnt);
+        }
+        return table;
+    }
+
+    public boolean matches(Map<Character, Integer> count, Map<Character, Integer> target) {
+
+        boolean ret = true;
+        for ( Character ch : target.keySet() ) {
+            int tV = target.get(ch);
+            int cV = count.getOrDefault(ch, 0);
+            if(cV < tV) {
+                ret = false;
+                break;
+            }
+        }
+        return ret;
+    }
+
+
+    /*
     public String minWindow(String S, String T) {
 
         String ret = "";
@@ -65,7 +123,63 @@ public class Solution {
         return true;
     }
 
-    public static void main(String[] args) {
+    private String notNull(String t) {
+        return (null == t) ? (""):(t);
+    }
+
+    public String minWindow(String s, String t) {
+        s = notNull(s);
+        t = notNull(t);
+
+        Set<Character> keys = new HashSet<>();
+        Map<Character, Integer> index = new HashMap<>();
+        String ret = null;
+        for (char ch : t.toCharArray()) {
+            int v = index.getOrDefault(ch, 0) + 1;
+            index.put(ch, v);
+            keys.add(ch);
+        }
+
+        for (int h = 0, e = 0; e < s.length(); e++) {
+            char ch = s.charAt(e);
+            if( !keys.contains(ch) ) {
+                continue;
+            }
+            int val = index.get(ch) - 1;
+            index.put(ch, val);
+            if(isWindow(index)) {
+                if(null == ret || ret.length() > (e-h+1)) {
+                    ret = s.substring(h, e+1);
+                }
+                while(isWindow(index) && h<= e){
+                    if(ret.length() > (e-h+1)) {
+                        ret = s.substring(h, e+1);
+                    }
+                    char hch = s.charAt(h++);
+                    if(!keys.contains(hch)) {
+                        continue;
+                    }
+                    int v = index.get(hch) + 1;
+                    index.put(hch,v);
+                }
+            }
+        }
+        return (null == ret)?(""):(ret);
+    }
+
+    public boolean isWindow( Map<Character, Integer> map ) {
+        boolean ret = true;
+        for ( int v : map.values()) {
+            if (v > 0) {
+                ret = false;
+            }
+        }
+        return ret;
+    }*/
+
+
+
+        public static void main(String[] args) {
         Solution sol = new Solution();
         System.out.println(sol.minWindow("ADOBECODEBANC", "ABC"));
         System.out.println(sol.minWindow("a", "aa"));

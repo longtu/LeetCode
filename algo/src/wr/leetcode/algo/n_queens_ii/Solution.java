@@ -5,6 +5,44 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Solution {
+
+    public int totalNQueens(int n) {
+
+        int ret = 0;
+        if(n > 0) {
+            int [] yPos = new int[n];
+            ret = solveNQueens(yPos, 0);
+        }
+        return ret;
+    }
+
+    public int solveNQueens(int[] yPos, int row) {
+        int n = yPos.length;
+        int ret = 0;
+
+        if(row == n) {
+            ret = 1;
+        } else {
+            for (int y = 0; y < n; ++y) {
+                boolean valid = true;
+                for (int k = 0; k < row; ++k) {
+                    if (y == yPos[k] || (Math.abs(y-yPos[k]) == Math.abs(k-row))) {
+                        valid = false;
+                        break;
+                    }
+                }
+                if(!valid) {
+                    continue;
+                }
+                yPos[row] = y;
+                ret += solveNQueens(yPos, row + 1);
+            }
+        }
+        return ret;
+    }
+
+
+    /*
     public int totalNQueens(int n) {
         int ret= 0;
         if(n <= 0) {
@@ -33,7 +71,7 @@ public class Solution {
             }
         }
         return ret;
-    }
+    }*/
 
     public static void main(String[] args) {
         Solution sol = new Solution();

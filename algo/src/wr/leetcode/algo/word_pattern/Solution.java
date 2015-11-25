@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Solution {
-
+/*
     public String notNull (String str) {
         return (null == str) ? (""):(str);
     }
@@ -41,7 +41,46 @@ public class Solution {
             }
         }
         return ret;
-  }
+  }*/
+
+
+
+    public boolean wordPattern(String pattern, String str) {
+        Map<String, Character> l2r = new HashMap<>();
+        Set<Character> rs = new HashSet<>();
+
+        String[] strs = str.split(" ");
+        boolean ret = true;
+        if(strs.length != pattern.length()) {
+            ret = false;
+        } else {
+            for (int i = 0; i < strs.length; ++i) {
+                String s = strs[i];
+                char p = pattern.charAt(i);
+                if( l2r.containsKey(s) ) {
+                    char ch = l2r.get(s);
+                    if(ch!= p) {
+                        ret = false;
+                        break;
+                    }
+                } else {
+                    if(rs.contains(p)) {
+                        ret = false;
+                        break;
+                    }
+                    l2r.put(s, p);
+                    rs.add(p);
+                }
+            }
+        }
+        return ret;
+    }
+
+
+
+
+
+
     public static void main(String[] args) {
         Solution sol = new Solution();
 

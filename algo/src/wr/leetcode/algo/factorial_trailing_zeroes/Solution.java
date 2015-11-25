@@ -1,6 +1,31 @@
 package wr.leetcode.algo.factorial_trailing_zeroes;
 
 public class Solution {
+
+    public int trailingZeroes(int n) {
+        int sum = 0;
+
+        //BUG: overflow baby!!
+        long val = n;
+        long mod = 5;
+        while( mod <= val ) {
+            sum += n/mod;
+            mod *= 5;
+        }
+
+        return sum;
+    }
+
+
+
+
+    public static void main( String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.trailingZeroes(2147483647));
+    }
+
+    /*
+
     public int trailingZeroes(int n) {
         if(n < 0) {
             n *= -1;
@@ -13,9 +38,5 @@ public class Solution {
         }
         return zeros;
     }
-
-    public static void main( String[] args) {
-        Solution sol = new Solution();
-        System.out.println(sol.trailingZeroes(1808548329));
-    }
+    */
 }

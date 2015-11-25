@@ -1,6 +1,39 @@
 package wr.leetcode.algo.find_minimum_in_rotated_sorted_array;
 
 public class Solution {
+
+    public int findMin(int[] nums) {
+        if( null == nums || 0 == nums.length ) {
+            throw new IllegalStateException("Invalid input!");
+        }
+        int start = 0;
+        int end = nums.length - 1;
+        int found = -1;
+
+        while( start <= end ) {
+            if( nums[start] <= nums[end]) {
+                found = nums[start];
+                break;
+            } else {
+                int mid = start + ((end - start)>>1);
+                int mv = nums[mid];
+                int sv = nums[start];
+
+                if(mv == sv) {
+                    start = mid + 1;
+                } else if (mv > sv) {
+                    start = mid + 1;
+                } else {
+                    end = mid;
+                }
+            }
+        }
+        return found;
+    }
+
+
+
+    /*
     public int findMin(int[] num) {
         if(null == num || num.length == 0) {
             throw new RuntimeException("Invalid Input!");
@@ -25,6 +58,7 @@ public class Solution {
         }
         return num[ret];
     }
+    */
 
     public static void main(String[] args) {
         Solution sol = new Solution();

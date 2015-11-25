@@ -1,9 +1,58 @@
 package wr.leetcode.algo.combination_sum_iii;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Solution {
+
+    public List<List<Integer>> combinationSum3(int k, int n) {
+
+        List<List<Integer>> ret = new LinkedList<>();
+        int [] nums = new int[9];
+        for (int i = 1; i < 10; ++i) {
+            //BUG: nums[i] = i;
+            nums[i-1] = i;
+        }
+
+        if( k > 0 && n >= k) {
+            ret = combinationSum3(k, n, nums);
+        }
+        return ret;
+    }
+
+    public List<List<Integer>> combinationSum3(int k, int n, int[] nums) {
+
+        List<List<Integer>> ret = new LinkedList<>();
+        if(n == 0 && k == 0) {
+            ret.add(new LinkedList<>());
+        } else if (nums.length >= k && k > 0) {
+            Set<List<Integer>> set = new HashSet<>();
+            for (int i = 0; i <= nums.length - k ; ++i) {
+                int[] subArray = Arrays.copyOfRange(nums, i + 1, nums.length);
+                set.addAll(combinationSum3(k, n, subArray));
+                int val = nums[i];
+                int nextN = n - val;
+                if (nextN >= 0) {
+                    List<List<Integer>> subs = combinationSum3(k-1, nextN, subArray);
+                    for (List<Integer> sub : subs) {
+                        List<Integer> r = new LinkedList<>(sub);
+                        r.add(0, val);
+                        set.add(r);
+                    }
+
+                }
+            }
+            ret.addAll(set);
+        }
+        return ret;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.combinationSum3(3,7));
+        System.out.println(sol.combinationSum3(3,9));
+    }
+
+    /*
     public List<List<Integer>> combinationSum3(int k, int n) {
 
             List<List<Integer>> ret = new LinkedList<>();
@@ -33,12 +82,5 @@ public class Solution {
                 }
             }
             return ret;
-    }
-
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-        System.out.println(sol.combinationSum3(3,7));
-        System.out.println(sol.combinationSum3(3,9));
-    }
-
+    }*/
 }

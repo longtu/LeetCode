@@ -1,7 +1,7 @@
 package wr.leetcode.algo.unique_binary_search_trees;
 
 public class Solution {
-    public int numTrees(int n) {
+/*    public int numTrees(int n) {
 
         if( n < 0) {
             return 0;
@@ -13,6 +13,24 @@ public class Solution {
             int sum = 0;
             for ( int l = 0; l <= i-1; ++l) {
                 sum += dp[l] * dp[ i - 1 -l ];
+            }
+            dp[i] = sum;
+        }
+        return dp[n];
+    }
+    */
+
+    public int numTrees(int n) {
+
+        int [] dp = new int[n + 1];
+        for (int i = 0; i <=n; ++i) {
+            int sum = 0;
+            if(i < 2) {
+                sum = 1;
+            } else {
+                for (int left = 0; left < i ; ++ left) {
+                    sum += dp[left] * dp[i-1- left];
+                }
             }
             dp[i] = sum;
         }

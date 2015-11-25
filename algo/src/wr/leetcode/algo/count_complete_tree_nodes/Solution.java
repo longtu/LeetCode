@@ -4,6 +4,42 @@ package wr.leetcode.algo.count_complete_tree_nodes;
 import wr.leetcode.algo.TreeNode;
 
 public class Solution {
+
+    public int countNodes(TreeNode root) {
+        int ret = 0;
+        if(null != root) {
+            int l = leftHeight(root);
+            int r = rightHeight(root);
+            if(r == l) {
+                ret += (1<<l) - 1;
+            } else {
+                ret = 1 + countNodes(root.left) + countNodes(root.right);
+            }
+        }
+        return ret;
+    }
+
+    public int leftHeight(TreeNode root) {
+        int ret = 0;
+        while(null != root) { /*BUG: use iterative to save time*/
+            ret += 1;
+            root = root.left;
+        }
+        return ret;
+    }
+
+    public int rightHeight(TreeNode root) {
+        int ret = 0;
+        while(null != root) {
+            ret += 1;
+            root = root.right;
+        }
+        return ret;
+    }
+
+
+
+/*
     public int countNodes(TreeNode root) {
         int val = 0;
         if(null != root) {
@@ -42,5 +78,6 @@ public class Solution {
             return 0;
         }
         return  1 + rightHeight(root.right);
-    }
+    }*/
+
 }

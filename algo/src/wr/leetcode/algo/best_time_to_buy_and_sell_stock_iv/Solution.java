@@ -11,6 +11,50 @@ import java.util.List;
 public class Solution {
 
 
+
+    public int maxProfit(int k, int[] prices) {
+        int ret = 0;
+        if(null != prices && k >0 && prices.length > 0) {
+            int n = prices.length;
+            if( k >= n - 1) {
+                ret = maxProfit(prices);
+            } else {
+                int[][] loc = new int[k+1][n];
+                int[][] glo = new int[k+1][n];
+
+                for (int i = 1; i <=k; ++i) {
+                    for (int j = 1; j < n; ++j) {
+                        int diff = prices[j] - prices[j-1];
+                        loc[i][j] = Math.max (loc[i][j-1] + diff,
+                            glo[i-1][j-1] + diff);
+                        glo[i][j] = Math.max (Math.max (loc[i][j], glo[i][j-1]),
+                            glo[i-1][j]);
+                    }
+                }
+                ret = glo[k][n-1];
+            }
+        }
+        return ret;
+    }
+
+    public int maxProfit(int [] prices ) {
+        int sum = 0;
+        for (int i = 0; i < prices.length; ++i) {
+            if(i > 0 && prices[i] > prices[i-1]) {
+                sum += prices[i] - prices[i-1];
+            }
+        }
+        return sum;
+    }
+
+
+
+
+
+
+
+
+/*
     public int maxProfit(int k, int[] prices) {
         if ( prices == null || prices.length <2 || k <=0 ) {
             return 0;
@@ -43,4 +87,5 @@ public class Solution {
         }
         return sum;
     }
+    */
 }

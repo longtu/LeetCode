@@ -1,6 +1,47 @@
 package wr.leetcode.algo.valid_palindrome;
 
 public class Solution {
+
+    private boolean isValid( char ch) {
+        return ((ch >= 'a') && (ch <= 'z')) ||
+                ((ch >= 'A') && (ch <= 'Z')) ||
+                ((ch >= '0') && (ch <= '9'));
+    }
+
+    private boolean isMatch( char left, char right) {
+        return (left == right) ||
+                (left == right + 'Z' - 'z') ||
+                (right == left + 'Z' - 'z');
+    }
+
+    public boolean isPalindrome(String s) {
+        boolean ret = true;
+        if( null != s ) {
+            int n = s.length();
+            int start = 0;
+            int end = n-1;
+            while(start <= end) {
+                char l = s.charAt(start);
+                char r = s.charAt(end);
+                if( !isValid(l) ) {
+                    start ++;
+                } else if ( !isValid(r)) {
+                    end --;
+                } else if (isMatch(l,r)) {
+                    start ++;
+                    end --;
+                } else {
+                    ret = false;
+                    //BUG: break
+                    break;
+                }
+            }
+        }
+        return ret;
+    }
+
+
+    /*
     public boolean isPalindrome(String s) {
         boolean ret = true;
         if(null==s) {
@@ -28,18 +69,7 @@ public class Solution {
         return ret;
     }
 
-    private boolean isValid( char ch) {
-    	return ((ch >= 'a') && (ch <= 'z')) ||
-    			((ch >= 'A') && (ch <= 'Z')) ||
-    			((ch >= '0') && (ch <= '9'));
-    }
-
-
-    private boolean isMatch( char left, char right) {
-    	return (left == right) ||
-    			(left == right + 'Z' - 'z') ||
-    			(right == left + 'Z' - 'z');
-    }
+    */
 
 
     public static void main(String[] args) {

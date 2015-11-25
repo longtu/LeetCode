@@ -5,32 +5,33 @@ import wr.leetcode.algo.TreeNode;
 
 public class Solution {
     public TreeNode sortedListToBST(ListNode head) {
-        return sortedListToBST(head, len(head));
-    }
-
-    public TreeNode sortedListToBST(ListNode head, int len) {
-        if(len == 0) {
+        int len = len(head);
+        if ( 0 == len) {
             return null;
         }
-        int leftLen = (len+1)/2;
-        ListNode node = head;
-        for (int i = 1; i < leftLen; ++i) {
-            node = node.next;
+        int mid = len/2;
+        ListNode midNode = head;
+        for (int i = 0; i < mid; ++i) {
+            ListNode next = midNode.next;
+            if( i == mid - 1 ) {
+                midNode.next = null;
+            }
+            midNode = next;
         }
-        TreeNode left = sortedListToBST(head, leftLen - 1);
-        TreeNode right = sortedListToBST(node.next, len - leftLen);
-        TreeNode root = new TreeNode(node.val);
-        root.left = left;
-        root.right = right;
-        return root;
+        TreeNode node = new TreeNode(midNode.val);
+        if(len > 1) {
+            node.left = sortedListToBST(head);
+            node.right = sortedListToBST(midNode.next);
+        }
+        return node;
     }
 
-    public int len (ListNode node) {
-        int len = 0;
-        while(node != null) {
-            len ++;
-            node = node.next;
+    public int len (ListNode head){
+        int ret = 0;
+        while(null != head ) {
+            head = head.next;
+            ret ++;
         }
-        return len;
+        return ret;
     }
 }

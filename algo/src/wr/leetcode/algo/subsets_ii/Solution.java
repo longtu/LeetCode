@@ -4,6 +4,42 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Solution {
+
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        List<List<Integer>> ret = new LinkedList<>();
+        if( null != nums && 0 < nums.length) {
+            Arrays.sort(nums);
+            ret = subsetsRec(nums);
+        }
+        return ret;
+    }
+
+    public List<List<Integer>> subsetsRec(int[] nums) {
+        Set<List<Integer>> ret = new HashSet<>();
+        if( 0 == nums.length ) {
+            ret.add(new LinkedList<>());
+        } else {
+            int first = nums[0];
+            int[] subArray = Arrays.copyOfRange(nums, 1, nums.length);
+            //BUG: Recursive to recursive function
+            for (List<Integer> l : subsetsRec(subArray)) {
+                List<Integer> r = new LinkedList<>(l);
+                r.add(0, first);
+                ret.add(r);
+                ret.add(l);
+            }
+        }
+        return new LinkedList<>(ret);
+    }
+
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int [] arr = {1,2,2 };
+        System.out.println(sol.subsetsWithDup(arr));
+    }
+
+     /*
     public List<List<Integer>> subsetsWithDup(int[] num) {
         List<List<Integer>> ret = new LinkedList<>();
         if(null == num || 0 == num.length) {
@@ -33,11 +69,5 @@ public class Solution {
             ret.add(sol);
         }
         return new LinkedList<>(ret.stream().collect(Collectors.toSet()));
-    }
-
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-        int [] arr = {1,2,2 };
-        System.out.println(sol.subsetsWithDup(arr));
-    }
+    }*/
 }

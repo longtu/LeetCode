@@ -3,6 +3,27 @@ package wr.leetcode.algo.move_zeroes;
 import java.util.Arrays;
 
 public class Solution {
+
+
+    public void moveZeroes(int[] nums) {
+        int digits = 0;
+
+        if (null != nums) {
+            int n = nums.length;
+            for (int i = 0; i < n; ++i) {
+                int v = nums[i];
+                if ( 0 != v) {
+                    nums[digits++] = v;
+                }
+            }
+            while(digits < n) {
+                nums[digits++] = 0;
+            }
+        }
+    }
+
+
+    /*
     public void moveZeroes(int[] nums) {
         if (null == nums) {
             nums = new int[0];
@@ -18,7 +39,7 @@ public class Solution {
         while(tail < nums.length) {
             nums[tail++] = 0;
         }
-    }
+    }*/
 
 
     public static void main(String[] args) {

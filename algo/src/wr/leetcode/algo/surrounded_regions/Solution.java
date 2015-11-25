@@ -1,9 +1,84 @@
 package wr.leetcode.algo.surrounded_regions;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Set;
 
 public class Solution {
+
+
+    public void solve(char[][] board) {
+        if( null != board && 0 != board.length && board[0].length != 0 ) {
+            int m = board.length;
+            int n = board[0].length;
+
+            for (int i = 0; i < m; ++i){
+                if('O' == board[i][0] ) {
+                    explore(i, 0, board);
+                }
+                if('O' == board[i][n-1] ) {
+                    explore(i, n-1, board);
+                }
+            }
+
+            for (int j = 0; j < n; ++j){
+                if('O' == board[0][j] ) {
+                    explore(0, j, board);
+                }
+                if('O' == board[m-1][j] ) {
+                    explore(m-1, j, board);
+                }
+            }
+
+            for (int i = 0; i < m; ++i) {
+                for (int j = 0; j < n; ++j ) {
+                    char ch = board[i][j];
+                    if( '1' == ch ) {
+                        board[i][j] = 'O';
+                    } else {
+                        board[i][j] = 'X';
+                    }
+                }
+            }
+        }
+    }
+
+    public void explore( int x, int y, char[][] board) {
+        int m = board.length;
+        int n = board[0].length;
+        int xdiff [] = {0, -1, 1, 0};
+        int ydiff [] = {-1, 0, 0, 1};
+        Queue<Pos> q = new LinkedList<>();
+        q.add(new Pos(x,y));
+        while(!q.isEmpty()) {
+
+            Pos node = q.remove();
+            //GOOD: avoid duplicate visit among different explore sessions
+
+
+            for (int i = 0; i < 4; ++i) {
+                int dx = xdiff[i] + node.x;
+                int dy = ydiff[i] + node.y;
+
+                if(dx >= 0 && dy >=0 && dx < m && dy < n && 'O' == board[dx][dy]) {
+                    q.add(new Pos(dx,dy));
+                    board[node.x][node.y] = '1';
+                }
+            }
+        }
+    }
+
+    class Pos{
+        int x;
+        int y;
+        public Pos(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    /*
     public void solve(char[][] board) {
         if(null == board || 0 == board.length || 0 == board[0].length) {
             return;
@@ -77,4 +152,5 @@ public class Solution {
             this.y = y;
         }
     }
+    */
 }

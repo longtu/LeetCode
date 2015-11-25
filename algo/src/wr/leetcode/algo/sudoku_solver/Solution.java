@@ -2,46 +2,44 @@ package wr.leetcode.algo.sudoku_solver;
 
 public class Solution {
     public void solveSudoku(char[][] board) {
-        if(board.length != 9 || board[0].length != 9) {
-            return;
+        if( null == board || board.length != 9 || 9 != board[0].length ) {
+            throw new IllegalStateException("Invalid input sudoku board!");
         }
-        isValidSudoku(board);
+        checkSudoku(board);
+
     }
 
-    public boolean isValidSudoku(char [][] board) {
-        for (int i = 0; i< 9; ++i)
-            for (int j = 0; j < 9; ++j) {
-                if(board[i][j] == '.') {
-                    boolean[] occupied = new boolean[10];
-                    for(int k = 0; k < 9; ++k) {
+    public boolean checkSudoku(char[][] board) {
+        for (int i = 0; i < 9 ; ++i) {
+            for (int j = 0; j < 9 ; ++j) {
+                if('.' == board[i][j]) {
+                    boolean [] taken = new boolean [9];
+                    for (int k = 0; k < 9; ++k) {
                         if(board[i][k] != '.') {
-                            int idx = board[i][k] - '0';
-                            occupied[idx] = true;
+                            taken[ board[i][k] - '1' ] = true;
                         }
                         if(board[k][j] != '.') {
-                            int idx = board[k][j] - '0';
-                            occupied[idx] = true;
+                            taken[ board[k][j] - '1' ] = true;
+                        }
+                        char val = board[i/3*3 + k/3] [j/3*3 + k%3];
+                        if(val != '.') {
+                            taken[val - '1' ] = true;
                         }
                     }
-                    for (int u = i/3; u < i/3+3; ++u)
-                        for(int v = j/3; v < j/3+3; ++v){
-                            if(board[u][v] != '.') {
-                                int idx = board[u][v] - '0';
-                                occupied[idx] = true;
-                            }
-                        }
-
-                    for(int k = 1; k <= 9; ++k) {
-                        if(!occupied[k]) {
-                            board[i][j] = (char) (k + '0');
-                            if(isValidSudoku(board))
+                    for (int val = 1; val <=9; ++val) {
+                        if(!taken[val-1]) {
+                            board[i][j] = (char)(val + '0');
+                            if(checkSudoku(board)) {
                                 return true;
+                            }
                         }
                     }
                     board[i][j] = '.';
                     return false;
                 }
             }
+        }
         return true;
     }
+
 }

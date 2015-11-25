@@ -6,6 +6,46 @@ import java.util.List;
 import java.util.Stack;
 
 public class Solution {
+
+    public String reverseWords(String s) {
+        if( null == s || s.isEmpty() ) {
+            return s;
+        }
+        s = reverse(s);
+        s = s.replaceAll("\\s+", " ");
+        s = s.replaceAll("\\s+$", "");
+        s = s.replaceAll("^\\s+", "");
+        String [] words = s.split("\\s");
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        for (String w : words) {
+            if(0 != i++) {
+                sb.append(" ");
+            }
+            sb.append(reverse(w));
+        }
+        return sb.toString();
+    }
+
+    public String reverse(String s ) {
+        if (null == s) {
+            return s;
+        }
+        StringBuilder sb = new StringBuilder();
+        int n = s.length();
+        for (int i = n-1; i >=0; i--) {
+            sb.append(s.charAt(i));
+        }
+        return sb.toString();
+    }
+
+
+
+
+
+
+
+    /*
     public String reverseWords(String s) {
         if(null == s || s.isEmpty()) {
             return s;
@@ -29,7 +69,7 @@ public class Solution {
             }
         }
         return sb.toString();
-    }
+    }*/
 
     public static void main(String[] args) {
         Solution sol = new Solution();

@@ -1,6 +1,24 @@
 package wr.leetcode.algo.excel_sheet_column_number;
 
 public class Solution {
+
+    public int titleToNumber(String s) {
+        int ret = 0;
+        s = s.trim();
+        if( null != s && !s.isEmpty() ) {
+            int n = s.length();
+            for ( int i = 0; i < n; ++i ) {
+                ret *= 26;
+                int val = (s.charAt(i) - 'A' + 1);
+                ret += val;
+            }
+        }
+        return ret;
+    }
+
+
+
+    /*
     public int titleToNumber(String s) {
 
         if(null == s) {
@@ -15,7 +33,7 @@ public class Solution {
         }
 
         return ret;
-    }
+    }*/
 
     public static void main(String[] args) {
         Solution sol = new Solution();

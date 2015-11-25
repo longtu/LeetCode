@@ -1,9 +1,12 @@
 package wr.leetcode.algo.contains_duplicate_ii;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Solution {
+    /*
     //edge case of K == 0
     //edge case of duplicates happens within first K
 
@@ -24,6 +27,27 @@ public class Solution {
                 }
                 dict.add(val);
             }
+        }
+        return ret;
+    }*/
+
+
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+
+        Map<Integer, Integer> dic = new HashMap<>();
+        if( null == nums ) {
+            nums = new int[0];
+        }
+        boolean ret = false;
+        for (int i = 0; i < nums.length; ++i) {
+            int n = nums[i];
+            if (dic.containsKey(n)){
+                int prev = dic.get(n);
+                if( i-prev <= k) {
+                    ret = true;
+                }
+            }
+            dic.put(n, i);
         }
         return ret;
     }
