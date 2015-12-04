@@ -1,0 +1,9 @@
+Given a string, determine if a permutation of the string could form a palindrome.
+
+For example,
+"code" -> False, "aab" -> True, "carerac" -> True.
+
+Show Hint
+Hide Company Tags Google Uber
+Hide Tags Hash Table
+Hide Similar Problems (M) Longest Palindromic Substring (E) Valid Anagram (M) Palindrome Permutation II
