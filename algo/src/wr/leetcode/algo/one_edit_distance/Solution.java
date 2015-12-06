@@ -1,6 +1,55 @@
 package wr.leetcode.algo.one_edit_distance;
 
 public class Solution {
+
+    //Method2: Optimized for single difference
+    public boolean isOneEditDistance(String s, String t) {
+        if( null == s ) {
+            s = "";
+        }
+        if( null == t ) {
+            t = "";
+        }
+        if(s.length() < t.length()) {
+            return isOneEditDistance(t, s);
+        }
+
+        int m = s.length();
+        int n = t.length();//m >= n
+
+        if (m - n > 1){
+            return false;
+        }
+
+        // m == n + 1 or m == n
+        int i = 0;
+        while( i< n && (s.charAt(i) == t.charAt(i)) ) {
+            i++;
+        }
+
+        if(i == n) {
+            return !(m == n);
+        }
+        //must be at least one difference smaller than n
+        int j = 0;
+        while( m-1-j >=0 && n-1-j >=0 && s.charAt(m-1-j) == t.charAt(n-1-j)) {
+            j++;
+        }
+        return (i == m-1-j);
+    }
+
+
+
+
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.isOneEditDistance("s", "t"));
+        System.out.println(sol.isOneEditDistance("s", "tt"));
+        System.out.println(sol.isOneEditDistance("ss", "sstt"));
+        System.out.println(sol.isOneEditDistance("ss", "st"));
+    }
+
     public int editDistance( String s, String t) {
         if( null == s ) {
             s = "";
@@ -43,13 +92,8 @@ public class Solution {
     }
 
 
-    public boolean isOneEditDistance(String s, String t) {
+    //Method1: TLE, naive way, overkill and requires a lot of resource
+    public boolean isOneEditDistance0(String s, String t) {
         return 1 == editDistance(s,t);
-    }
-
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-        System.out.println(sol.isOneEditDistance("s", "t"));
-        System.out.println(sol.isOneEditDistance("s", "tt"));
     }
 }
