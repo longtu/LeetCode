@@ -22,7 +22,7 @@ public class Solution extends Reader4 {
         }
         return read;
     }
-    
+
     char[] buffer = new char[4];
     int bufferSize = 0;
     int index = 0;
