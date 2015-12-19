@@ -2,7 +2,54 @@ package wr.leetcode.algo.minimum_height_trees;
 
 import java.util.*;
 
+
 public class Solution {
+
+    public Map<Integer, Set<Integer>> edges ( int [][] es){
+        Map<Integer, Set<Integer>> edges = new HashMap<>();
+        for (int[] e : es) {
+            int start = e[0];
+            int end = e[1];
+
+            Set<Integer> startData = edges.getOrDefault(start, new HashSet<>());
+            startData.add(end);
+            edges.put(start, startData);
+
+            Set<Integer> endData = edges.getOrDefault(end, new HashSet<>());
+            endData.add(start);
+            edges.put(end, endData);
+        }
+        return edges;
+    }
+
+    public List<Integer> findMinHeightTrees(int n, int[][] edges) {
+        List<Integer> ret = new LinkedList<>();
+        if( 1 == n) { //BUG for 0
+            ret.add(0);
+        } else if ( n > 1 ) {
+            Map<Integer, Set<Integer>> nodes = edges(edges);
+
+            while( nodes.size() > 2) {
+                Set<Integer> leaves = new HashSet<>();
+                for (Map.Entry<Integer, Set<Integer>> entry : nodes.entrySet()) {
+                    if(1 == entry.getValue().size()) {
+                        leaves.add(entry.getKey());
+                    }
+                }
+                for (Integer l : leaves) {
+                    int innerNode = nodes.get(l).iterator().next();
+                    Set<Integer> outGoings = nodes.get(innerNode);
+                    outGoings.remove(l);
+                    nodes.remove(l);
+                }
+            }
+            ret = new ArrayList<>(nodes.keySet());
+        }
+        return ret;
+    }
+
+
+
 
     //Method1: use bfs to find height and choose min TLE
     public List<Integer> findMinHeightTrees0(int n, int[][] es) {
@@ -29,30 +76,33 @@ public class Solution {
     // we can use any single leaf node and find its longest path length
     // BUG: need to find the nodes that are len/2 (even) or (len+1)/2, (len-1)/2 dist away
     // along the longest path instead of all of them
-    public List<Integer> findMinHeightTrees(int n, int[][] es) {
+    public List<Integer> findMinHeightTrees1(int n, int[][] es) {
         List<Integer> ret = new LinkedList<>();
         //BUG: about 1 node
         if(n == 1) {
             ret.add(0);
         } else if( n  > 1 ) {
             Map<Integer, Set<Integer>> edges = edges(es);
+            int maxNode = 0;
+            int maxPath = -1;
             for (int i = 0; i < n; ++i) {
                 //find first leaf node
                 if(edges.getOrDefault(i, new HashSet<>()).size() == 1) {
                     int maxDist = bfs(i, edges);
-
-                    Set<Integer> dists = new HashSet<>();
-                    if(maxDist % 2 == 1) { //double solution
-                        dists.add((maxDist+1)/2);
-                        dists.add((maxDist-1)/2);
-                    } else { //single solution
-                        dists.add(maxDist/2);
+                    if(maxDist > maxPath) {
+                        maxPath = maxDist;
+                        maxNode = i;
                     }
-                    ret = bfs(i, edges, dists, maxDist);
-                    //BUG: forogt to break from it
-                    break;
                 }
             }
+            Set<Integer> dists = new HashSet<>();
+            if(maxPath % 2 == 1) { //double solution
+                dists.add((maxPath+1)/2);
+                dists.add((maxPath-1)/2);
+            } else { //single solution
+                dists.add(maxPath/2);
+            }
+            ret = bfs(maxNode, edges, dists, maxPath);
         }
         return ret;
     }
@@ -82,23 +132,7 @@ public class Solution {
         return h;
     }
 
-    public Map<Integer, Set<Integer>> edges ( int [][] es){
 
-        Map<Integer, Set<Integer>> edges = new HashMap<>();
-        for (int[] e : es) {
-            int start = e[0];
-            int end = e[1];
-
-            Set<Integer> startEdges = edges.getOrDefault(start, new HashSet<>());
-            startEdges.add(end);
-            edges.put(start, startEdges);
-
-            Set<Integer> endEdges = edges.getOrDefault(end, new HashSet<>());
-            endEdges.add(start);
-            edges.put(end, endEdges);
-        }
-        return edges;
-    }
 
 
     public List<Integer> bfs(int start, Map<Integer, Set<Integer>> edges, Set<Integer> dist, int maxH ) {
