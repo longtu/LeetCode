@@ -56,22 +56,31 @@
 	"buffers":
 	[
 		{
-			"file": "climbing_stairs/Solution.py",
+			"file": "count_of_range_sum/Solution.java",
 			"settings":
 			{
-				"buffer_size": 381,
+				"buffer_size": 1069,
 				"line_ending": "Unix"
 			}
 		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 287.0,
+		"last_filter": ":w",
 		"selected_items":
 		[
+			[
+				":w",
+				":w - Save"
+			]
 		],
-		"width": 0.0
+		"width": 392.0
 	},
 	"console":
 	{
@@ -91,10 +100,17 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo"
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/count_of_range_sum"
 	],
 	"file_history":
 	[
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/odd_even_linked_list/Solution.java",
+		"/Users/wangran/Desktop/SystemDesign",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/count_of_range_sum/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/power_of_three/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/climbing_stairs/Solution.py",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/maximum_size_subarray_sum_equals_k/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/best_time_to_buy_and_sell_stock/Solution.py",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/compare_version_numbers/Solution.py",
 		"/Users/wangran/Desktop/test.py",
@@ -133,7 +149,6 @@
 	"folders":
 	[
 		{
-			"follow_symlinks": true,
 			"path": "/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo"
 		}
 	],
@@ -145,24 +160,26 @@
 			[
 				{
 					"buffer": 0,
-					"file": "climbing_stairs/Solution.py",
+					"file": "count_of_range_sum/Solution.java",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 381,
+						"buffer_size": 1069,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								347,
-								347
+								313,
+								313
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/Java/Java.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -213,6 +230,7 @@
 	{
 		"height": 0.0
 	},
+	"pinned_build_system": "",
 	"project": "",
 	"replace":
 	{
@@ -222,6 +240,7 @@
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -230,6 +249,7 @@
 	"select_project":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -238,6 +258,7 @@
 	"select_symbol":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
