@@ -1,7 +1,7 @@
 package wr.leetcode.algo.paint_fence;
 
 public class Solution {
-    public int numWays(int n, int k) {
+    public int numWays0(int n, int k) {
         int ways = 0;
 
         if( n > 0 && k > 0) {
@@ -45,11 +45,39 @@ public class Solution {
         return ways;
     }
 
+
+    public int numWays(int n, int k) {
+        int ret = 0;
+        int [] dp = new int[n+1];
+
+        for (int i = 1; i <= n; ++i ) {
+            int val;
+            if ( 1 == i) {
+                val = 1;
+            } else if ( 2 == i) {
+                val = k;
+            } else {
+                val = (k-1) * (dp[n-1] + dp[n-2]);
+            }
+            dp[i] = val;
+        }
+        ret = dp[n] * k;
+        return ret;
+    }
+
     public static void main(String[] args) {
         Solution sol = new Solution();
+        System.out.println(sol.numWays(3, 3));
+        System.out.println(sol.numWays(2, 2));
+        System.out.println(sol.numWays(2, 3));
+        System.out.println(sol.numWays(2, 4));
         System.out.println(sol.numWays(2, 46340));
         System.out.println(sol.numWays(3, 1290));
         //2147395600
         //2146687710
+
+        System.out.println(sol.numWays(4, 2));
+        System.out.println(sol.numWays(2, 1));
+
     }
 }

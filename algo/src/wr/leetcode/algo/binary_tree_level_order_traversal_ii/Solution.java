@@ -8,6 +8,32 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class Solution {
+		public List<List<Integer>> levelOrderBottom(TreeNode root) {
+			List<List<Integer>> ret = new LinkedList<>();
+
+			Queue<TreeNode> nextQ = new LinkedList<>();
+			if(null != root) {
+				nextQ.offer(root);
+			}
+			while( !nextQ.isEmpty() ) {
+				Queue<TreeNode> q = nextQ;
+				nextQ = new LinkedList<>();
+				List<Integer> row = new LinkedList<>();
+				while(!q.isEmpty()) {
+					TreeNode node = q.poll();
+					row.add(node.val);
+					if ( null != node.left ) {
+						nextQ.add(node.left);
+					}
+					if ( null != node.right ) {
+						nextQ.add(node.right);
+					}
+				}
+				ret.add(0, row);
+			}
+			return ret;
+		}
+
 	/*
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
         List<List<Integer>> ret = new LinkedList<>();
@@ -40,7 +66,7 @@ public class Solution {
  		}
 
  		return ret;
-    }*/
+    }
 	public List<List<Integer>> levelOrderBottom(TreeNode root) {
         LinkedList<List<Integer>> ret = new LinkedList<>();
         Queue<TreeNode> nextQ = new LinkedList<>();
@@ -66,5 +92,5 @@ public class Solution {
             ret.addFirst(line);
         }
         return ret;
-	}
+	} */
 }

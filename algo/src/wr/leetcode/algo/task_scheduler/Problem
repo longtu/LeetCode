@@ -1,0 +1,6 @@
+Tasks: AABABCD
+Cooldown Time: 2
+A__AB_ABCD
+Output: 10
+就是说同样类型的task之间至少要等2，每个task的执行时间是1
+followup: 如果cooldown是个参数，也就是说有可能会很长时间，怎么修改之前的程序

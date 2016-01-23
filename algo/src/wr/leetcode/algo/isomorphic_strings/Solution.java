@@ -40,43 +40,38 @@ public class Solution {
         return ret;
     }*/
 
-
-    private String notNull(String s) {
-        return (null == s)? (""):(s);
+    String notNull( String str ) {
+        return (null == str)?(""):(str);
     }
 
     public boolean isIsomorphic(String s, String t) {
-
         s = notNull(s);
         t = notNull(t);
-        boolean ret = true;
-        if(s.length() != t.length()) {
+
+        boolean ret;
+        if (s.length() != t.length() ) {
             ret = false;
         } else {
-            Map<Character, Character> map = new HashMap<>();
-            Set<Character> values = new HashSet<>();
-            for (int i = 0; i < s.length(); ++i) {
-                char k = s.charAt(i);
-                char v = t.charAt(i);
+            Map<Character, Character> left = new HashMap<>();
+            Map<Character, Character> right = new HashMap<>();
 
-                if(!map.containsKey(k)) {
-                    if(values.contains(v)) {
-                        ret = false;
-                        break;
-                    }
-                    map.put(k,v);
-                    values.add(v);
+            ret = true;
+            int n = s.length();
+            for ( int i = 0; i < n; ++i ) {
+                char l = s.charAt(i);
+                char r = t.charAt(i);
+                if( (left.containsKey(l) && !left.get(l).equals(r)) ||
+                        (right.containsKey(r) && !right.get(r).equals(l)) )  {
+                    ret = false;
+                    break;
                 } else {
-                    if(!map.get(k).equals(v)) {
-                        ret = false;
-                        break;
-                    }
+                    left.put(l, r);
+                    right.put(r,l);
                 }
             }
         }
         return ret;
     }
-
 
 
 

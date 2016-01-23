@@ -55,14 +55,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "count_of_range_sum/Solution.java",
-			"settings":
-			{
-				"buffer_size": 1069,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
 	"build_system_choices":
@@ -105,9 +97,9 @@
 	],
 	"file_history":
 	[
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/count_of_range_sum/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/odd_even_linked_list/Solution.java",
 		"/Users/wangran/Desktop/SystemDesign",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/count_of_range_sum/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/power_of_three/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/climbing_stairs/Solution.py",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/maximum_size_subarray_sum_equals_k/Solution.java",
@@ -155,39 +147,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "count_of_range_sum/Solution.java",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1069,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								313,
-								313
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Java/Java.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],

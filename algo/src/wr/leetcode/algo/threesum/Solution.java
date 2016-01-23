@@ -4,6 +4,49 @@ import java.util.*;
 
 public class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
+        Set<List<Integer>> ans = new HashSet<>();
+        if (null == nums) {
+            nums = new int[0];
+        }
+        Arrays.sort(nums);
+        int n = nums.length;
+
+        for ( int i = 0; i + 2 < n; ++i) {
+            Set<List<Integer>> twoSums = twoSum(Arrays.copyOfRange(nums,i+1,n),
+                    0 - nums[i]);
+            for ( List<Integer> two : twoSums) {
+                List<Integer> three = new LinkedList<>(two);
+                three.add(0, nums[i]);
+                ans.add(three);
+            }
+        }
+        return new LinkedList<>(ans);
+    }
+
+
+    public Set<List<Integer>> twoSum(int[] nums, int target) {
+        Set<List<Integer>> ret = new HashSet<>();
+        int l = 0;
+        int r = nums.length-1;
+        while( l < r) {
+            int sum = nums[l] + nums[r];
+            if ( sum == target ) {
+                List<Integer> two = new LinkedList<>();
+                two.add(nums[l]);
+                two.add(nums[r]);
+                ret.add(two);
+                l++;
+            } else if ( sum < target) {
+                l++;
+            } else {
+                r--;
+            }
+        }
+        return ret;
+    }
+
+    /*
+    public List<List<Integer>> threeSum(int[] nums) {
 
         Set<List<Integer>> ret = new HashSet<>();
         if( null != nums && nums.length > 2) {
@@ -44,7 +87,8 @@ public class Solution {
             }
         }
         return ret;
-    }
+    }*/
+
 
     public static void main(String[] args) {
         Solution sol = new Solution();

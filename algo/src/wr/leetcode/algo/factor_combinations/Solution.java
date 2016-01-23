@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Solution {
 
+    /*
     public List<List<Integer>> getFactors(int n) {
         //MLE: HashMap(n) -> HashMap()
         Map<Integer, Set<List<Integer>>> dp = new HashMap<>();
@@ -41,13 +42,35 @@ public class Solution {
         }
         Set<List<Integer>> ret = dp.getOrDefault(n, new HashSet());
         return new LinkedList<>(ret);
+    } */
+
+    public List<List<Integer>> getFactors(int n) {
+        List<List<Integer>> ret = new LinkedList<>();
+
+        for(int i = 2; i * i <= n; ++i) {
+            if( n % i == 0) {
+                //i <= k
+                int k = n/i;
+                ret.add(Arrays.asList(i, k));
+                List<List<Integer>> subfactors = getFactors( k );
+                for (List<Integer> sub : subfactors) {
+                    if( sub.get(0) >= i ) {
+                        List<Integer> factor = new LinkedList<>(sub);
+                        factor.add(0, i);
+                        ret.add(factor);
+                    }
+                }
+            }
+        }
+        return ret;
     }
+
 
     public static void main(String[] args) {
         Solution sol = new Solution();
 
         for (int i : new int[] {
-                /*1,37,12,32, */62847, 23848713
+                1,37,12,32, 62847, 23848713
         }) {
             System.out.println(sol.getFactors(i));
         }

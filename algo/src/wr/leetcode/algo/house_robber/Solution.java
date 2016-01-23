@@ -16,7 +16,7 @@ public class Solution {
             sum = g[(n-1)%4];
         }
         return sum;
-    }*/
+    }
 
 
     public int rob(int[] nums) {
@@ -33,6 +33,20 @@ public class Solution {
             ret = glo[(n-1)%4];
         }
         return ret;
-    }
+    }*/
+
+        public int rob(int[] nums) {
+            //assert that nums is not null
+
+            int n = nums.length;
+            int[] glo = new int[n];
+            int[] loc = new int[n];
+
+            for (int i = 0; i < n; ++i) {
+                loc[i] = ((i > 1)?(glo[i-2]):(0)) + nums[i];
+                glo[i] = Math.max(loc[i], (i>0)?(glo[i-1]):(Integer.MIN_VALUE));
+            }
+            return (0==n)? (0) : glo[n-1];
+        }
 
 }

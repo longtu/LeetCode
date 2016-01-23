@@ -1,6 +1,51 @@
 package wr.leetcode.algo.paint_house_ii;
 
 public class Solution {
+    private int minIndex(int[][] dp, int i, int ignore) {
+        int min = Integer.MAX_VALUE;
+        int index = -1;
+        int k = dp[i].length;
+        for (int j = 0; j < k; ++j) {
+            if(j != ignore && dp[i][j] < min) {
+                min = dp[i][j];
+                index = j;
+            }
+        }
+        return index;
+    }
+
+    public int minCostII(int[][] costs) {
+        int ret = 0;
+        if ( costs.length > 0 && costs[0].length > 0) {
+            int n = costs.length;
+            int k = costs[0].length;
+            int[][] dp = new int[n][k];
+
+            int minIndex = 0;
+            int secondMin = 0;
+            for (int i = 0; i < n; ++i) {
+                for (int j = 0; j < k; ++j) {
+                    dp[i][j] += costs[i][j];
+                    if( i == 0) {
+                        continue;
+                    }
+                    if(1 == k) {
+                        dp[i][j] += dp[i-1][j];
+                    } else if( j == minIndex ) {
+                        dp[i][j] += dp[i-1][secondMin];
+                    } else {
+                        dp[i][j] += dp[i-1][minIndex];
+                    }
+                }
+                minIndex = minIndex(dp, i, -1);
+                secondMin = minIndex(dp, i, minIndex);
+            }
+            ret = dp[n-1][minIndex];
+        }
+        return ret;
+    }
+
+       /*
     public int minCostII(int[][] costs) {
         int ret = 0;
         if( null != costs && 0 < costs.length && costs[0].length > 0) {
@@ -53,7 +98,7 @@ public class Solution {
     }
 
     //BUG: Wrong fix
-    /*
+
     int minColor( int day, int skipColor, int[][] minCosts ) {
         int minValue = minCosts[0][day%2];
         int minColor = 0;

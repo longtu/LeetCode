@@ -8,6 +8,37 @@ import java.util.List;
 
 public class Solution {
 
+    public List<Interval> merge(List<Interval> intervals) {
+        if (null == intervals) {
+            intervals = new LinkedList<>();
+        }
+        Collections.sort(intervals, (a,b)->(a.start - b.start));
+        LinkedList<Interval> ret = new LinkedList<>();
+
+        for (Interval interval : intervals) {
+            if (ret.isEmpty()) {
+                ret.add(interval);
+            } else if (overlaps(ret.getLast(), interval)) { //overlaps
+                Interval next = ret.removeLast();
+                ret.addLast(merge(interval, next));
+            } else {
+                ret.add(interval);
+            }
+        }
+        return ret;
+    }
+
+    public Interval merge(Interval left, Interval right) {
+        return new Interval (Math.min(left.start, right.start), Math.max(left.end, right.end));
+    }
+
+    public boolean overlaps(Interval left, Interval right) {
+        int maxStart = Math.max(left.start, right.start);
+        int minEnd = Math.min(left.end, right.end);
+        return maxStart <= minEnd;
+    }
+
+        /*
 
     public List<Interval> merge(List<Interval> intervals) {
 
@@ -44,7 +75,6 @@ public class Solution {
 
 
 
-    /*
     public List<Interval> merge(List<Interval> intervals) {
         List<Interval> ret = new LinkedList();
 

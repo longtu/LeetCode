@@ -32,7 +32,7 @@ public class Solution {
             glb[i] = Math.max(loc[i], (i > 0)?(glb[i-1]):(0));
         }
         return glb[nums.length-1];
-    }*/
+    }
 
     public int rob(int[] nums) {
         int ret;
@@ -62,11 +62,41 @@ public class Solution {
             glo[i%4] = Math.max(loc[i%4], (i>0)?(glo[(i-1)%4]):(0));
         }
         return glo[(n-1)%4];
+    }*/
+
+    public int rob(int[] nums) {
+        int ret = 0;
+        int n = nums.length;
+        if( 1 == n) {
+            ret = nums[0];
+        } else if( n > 1 ) {
+            int first = nums[0];
+
+            nums[0] = 0;
+            int sum1 = robSimple(nums);
+
+            nums[0] = first;
+            nums[n-1] = 0;
+            int sum2 = robSimple(nums);
+
+            ret = Math.max(sum1, sum2);
+        }
+        return ret;
     }
 
+    public int robSimple(int[] nums) {
+        //assert that nums is not null
 
+        int n = nums.length;
+        int[] glo = new int[n];
+        int[] loc = new int[n];
 
-
+        for (int i = 0; i < n; ++i) {
+            loc[i] = ((i > 1)?(glo[i-2]):(0)) + nums[i];
+            glo[i] = Math.max(loc[i], (i>0)?(glo[i-1]):(Integer.MIN_VALUE));
+        }
+        return (0==n)? (0) : glo[n-1];
+    }
 
     public static void main(String[] args) {
         Solution sol = new Solution();

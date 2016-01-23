@@ -3,43 +3,95 @@ package wr.leetcode.algo.serialize_and_deserialize_binary_tree;
 import wr.leetcode.algo.TreeNode;
 import wr.leetcode.algo.same_tree.Solution;
 
-public class Codec {
+import java.util.Arrays;
 
+public class Codec {
+    public static String SEP = "#";
+
+    /*
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
         StringBuilder sb = new StringBuilder();
+        int len = 0;
+        String left = "";
+        String right = "";
+        String val = "";
         if(null != root) {
-            sb.append(root.val);
-            sb.append('V');
-            String left = serialize(root.left);
-            sb.append(left.length());
-            sb.append('L');
-            sb.append(left);
-            String right = serialize(root.right);
-            sb.append(right.length());
-            sb.append('R');
-            sb.append(right);
+            left = serialize(root.left);
+            right = serialize(root.right);
+            val = Integer.toString(root.val);
+            len = left.length() + right.length() + val.length();
         }
+        sb.append(len);
+        sb.append(SEP);
+        sb.append(left);
+        sb.append(right);
+        sb.append(val);
         return sb.toString();
     }
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
+        int i = data.indexOf(SEP);
+        int len = Integer.parseInt(data.substring(0, i));
         TreeNode node = null;
-        if(!data.isEmpty()) {
-            int i = data.indexOf('V');
-            Integer key = Integer.parseInt(data.substring(0, i));
-            int j = data.indexOf('L');
-            int leftLen = Integer.parseInt(data.substring(i+1,j));
-            TreeNode left = deserialize(data.substring(j+1, j+leftLen+1));
-            String rightSub = data.substring(j+leftLen+1);
-            int k = rightSub.indexOf('R');
-            //BUG:  data.substring(j+leftLen+1).substring(0,k) instead of data.substring(j+leftLen+1, k)
-            int rightLen = Integer.parseInt(rightSub.substring(0, k));
-            TreeNode right = deserialize(rightSub.substring(k+1,k+rightLen+1));
-            node = new TreeNode(key);
-            node.left = left;
-            node.right = right;
+        if (0 != len) {
+            node = new TreeNode(-1);
+            i++;
+            int start = i;
+
+            int sepIndex = data.indexOf(SEP, i);
+            int l = Integer.parseInt(data.substring(i, sepIndex));
+            node.left = deserialize(data.substring(i, sepIndex + 1 + l));
+
+            i = sepIndex + 1 + l;
+            sepIndex = data.indexOf(SEP, i);
+            l = Integer.parseInt(data.substring(i, sepIndex));
+            node.right = deserialize(data.substring(i, sepIndex + 1 + l));
+
+            i = sepIndex + 1 + l;
+            String valStr = data.substring(i, start + len);
+            node.val = Integer.parseInt(valStr);
+        }
+        return node;
+    }*/
+
+    // Encodes a tree to a single string.
+    public void serialize(TreeNode root, StringBuilder sb) {
+        if( null == root ) {
+            sb.append("null");
+            sb.append(SEP);
+        } else {
+            sb.append(root.val);
+            sb.append(SEP);
+            serialize(root.left, sb);
+            serialize(root.right, sb);
+        }
+    }
+
+    public String serialize(TreeNode root) {
+        StringBuilder sb = new StringBuilder();
+        serialize(root, sb);
+        return sb.toString();
+    }
+
+    public TreeNode deserialize(String data) {
+        String[] nodes = data.split( SEP );
+        System.out.println(Arrays.toString(nodes));
+        int[] index = new int[1];
+        index[0] = 0;
+        return deserialize(nodes, index);
+    }
+
+    public TreeNode deserialize(String[] strs, int [] index) {
+        TreeNode node = null;
+        String str = strs[index[0]];
+        if ( !"null".equals(str) ) {
+            node = new TreeNode(Integer.parseInt(str));
+            index[0]++;
+            node.left = deserialize(strs, index);
+            index[0]++;
+            node.right = deserialize(strs, index);
         }
         return node;
     }

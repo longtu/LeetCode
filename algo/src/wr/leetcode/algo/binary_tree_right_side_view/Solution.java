@@ -32,7 +32,7 @@ public class Solution {
             }
         }
         return ret;
-    }*/
+    }
 
     public List<Integer> rightSideView(TreeNode root) {
         Queue<TreeNode> nextq = new LinkedList<>();
@@ -57,6 +57,35 @@ public class Solution {
             }
             if(null != rightMost) {
                 ret.add(rightMost);
+            }
+        }
+        return ret;
+    }*/
+
+    public List<Integer> rightSideView(TreeNode root) {
+
+        List<Integer> ret = new LinkedList<>();
+        Queue<TreeNode> nextQ = new LinkedList<>();
+        if( null != root ) {
+            nextQ.offer(root);
+        }
+
+        while( !nextQ.isEmpty() ) {
+            Queue<TreeNode> q = nextQ;
+            nextQ = new LinkedList<>();
+            Integer rightmost = null;
+            while( !q.isEmpty() ) {
+                TreeNode node = q.poll();
+                rightmost = node.val;
+                if( null != node.left ) {
+                    nextQ.offer(node.left);
+                }
+                if( null != node.right ) {
+                    nextQ.offer(node.right);
+                }
+            }
+            if( null != rightmost ) {
+                ret.add(rightmost);
             }
         }
         return ret;

@@ -3,12 +3,13 @@ package wr.leetcode.algo.insert_interval;
 import wr.leetcode.algo.Interval;
 
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Solution {
 
-    public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+    public List<Interval> insert0(List<Interval> intervals, Interval newInterval) {
         intervals = (null == intervals)?(new LinkedList<>()):(intervals);
         LinkedList<Interval> ret = new LinkedList<>();
 
@@ -47,11 +48,13 @@ public class Solution {
         return (left.start - right.start) * (left.end - right.start) <= 0;
     }
 
+
     public Interval merge ( Interval left, Interval right) {
         int start = Math.min(left.start, right.start);
         int end = Math.max(left.end, right.end);
         return new Interval(start, end);
     }
+
 
 
 
@@ -99,6 +102,31 @@ public class Solution {
         return  (src.start - dest.start) * (src.end - dest.start) <= 0;
     }
     */
+
+
+    public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+        //intervals is not null, newInterval is valid
+        Collections.sort(intervals, (a, b) -> (a.start - b.start));
+        List<Interval> ret = new LinkedList<>();
+
+        for (Interval interval : intervals) {
+            if( null == newInterval) {
+                ret.add(interval);
+            } else if (interval.end < newInterval.start ) {
+                ret.add(interval);
+            } else if (interval.start > newInterval.end ) {
+                ret.add(newInterval);
+                ret.add(interval);
+                newInterval = null;
+            } else {
+                newInterval = merge(newInterval, interval);
+            }
+        }
+        if(null != newInterval) {
+            ret.add(newInterval);
+        }
+        return ret;
+    }
 
     public static void main(String[] args) {
         Solution sol = new Solution();
