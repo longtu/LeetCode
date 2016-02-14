@@ -9,6 +9,32 @@ import java.util.List;
 public class Solution {
 
     public List<Interval> merge(List<Interval> intervals) {
+        if( null == intervals ) {
+            intervals = new LinkedList<>();
+        }
+        Collections.sort(intervals, (a,b)->(a.start-b.start));
+        LinkedList<Interval> ret = new LinkedList<>();
+        for (Interval interval : intervals) {
+            if (!ret.isEmpty() && overlaps(ret.getLast(), interval)) {
+                interval = merge(ret.removeLast(), interval);
+            }
+            ret.add(interval);
+        }
+        return ret;
+    }
+
+    public boolean overlaps( Interval left, Interval right) {
+        return (Math.min(left.end, right.end) >= Math.max(left.start, right.start));
+    }
+
+    public Interval merge(Interval left, Interval right) {
+        return new Interval(Math.min(left.start, right.start),
+                Math.max(left.end, right.end));
+    }
+
+
+    /*
+    public List<Interval> merge(List<Interval> intervals) {
         if (null == intervals) {
             intervals = new LinkedList<>();
         }

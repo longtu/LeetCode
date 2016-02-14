@@ -40,4 +40,37 @@ public class Solution {
         }
         return ret;
     }
+
+        public List<Integer> spiralOrder0(int[][] matrix) {
+            List<Integer> ret = new LinkedList<>();
+            if( null != matrix && matrix.length > 0 && matrix[0].length > 0) {
+                int m = matrix.length;
+                int n = matrix[0].length;
+                int i = 0;
+                for (i = 0; i < n-i-1 && i < m-i-1; ++i) {
+                    for (int x = 0; i+x < n-1-i; ++x) {
+                        ret.add(matrix[i][i+x]);
+                    }
+                    for (int x = 0; i+x < m-1; ++x) {
+                        ret.add(matrix[i+x][n-1-i]);
+                    }
+                    for (int x = 0; n-1-i-x > 0; ++x) {
+                        ret.add(matrix[m-i-1][n-1-i-x]);
+                    }
+                    for (int x = 0; m-1-i-x > 0; ++x) {
+                        ret.add(matrix[m-1-i-x][i]);
+                    }
+                }
+                if ( i == n - i -1) {
+                    for (int x = 0; i+x <= m-1-i; ++x) {
+                        ret.add(matrix[i+x][i]);
+                    }
+                } else if ( i == m - i -1) {
+                    for (int x = 0; i+x <= n-i-1; ++x) {
+                        ret.add(matrix[i][i+x]);
+                    }
+                }
+            }
+            return ret;
+        }
 }

@@ -4,6 +4,28 @@ import wr.leetcode.algo.TreeNode;
 
 public class Solution {
 
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        TreeNode ret = null;
+        if (null != root) {
+            if( p == root || q == root ) {
+                ret = root;
+            } else {
+                TreeNode left = lowestCommonAncestor(root.left, p, q);
+                TreeNode right = lowestCommonAncestor(root.right, p, q);
+                if( null == left && null == right) {
+                    ret = null;
+                } else if ( null != left ) {
+                    ret = left;
+                }  else if (null != right ) {
+                    ret = right;
+                } else {
+                    ret = root;
+                }
+            }
+        }
+        return ret;
+    }
+
     public class MetaData {
         boolean containsP;
         boolean containsQ;
@@ -44,7 +66,7 @@ public class Solution {
         return ret;
     }
 
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    public TreeNode lowestCommonAncestor0(TreeNode root, TreeNode p, TreeNode q) {
         TreeNode ret;
         if( null == root || (null == p && null == q)) {
             ret = null;

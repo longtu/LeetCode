@@ -2,10 +2,7 @@ package wr.leetcode.algo.merge_k_sorted_lists;
 
 import wr.leetcode.algo.ListNode;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class Solution {
 
@@ -40,7 +37,7 @@ public class Solution {
         return head.next;
     }
 
-    public ListNode mergeKLists(ListNode [] lists) {
+    public ListNode mergeKLists1(ListNode [] lists) {
         ListNode helper = new ListNode(-1);
         ListNode head = helper;
         PriorityQueue<ListNode> heap = new PriorityQueue<>(
@@ -60,6 +57,34 @@ public class Solution {
             head = head.next;
         }
         return helper.next;
+    }
+
+    public ListNode mergeKLists(ListNode[] lists) {
+        ListNode ret = new ListNode(-1);
+        ListNode helper = ret;
+        if( null == lists ) {
+            lists = new ListNode[0];
+        }
+        Queue<ListNode> heap = new PriorityQueue<>(
+                (a,b)->(a.val-b.val)
+        );
+
+        for (ListNode l : lists) {
+            if (null != l) {
+                heap.offer(l);
+            }
+        }
+        while(!heap.isEmpty()) {
+            ListNode remove = heap.poll();
+            ListNode next = remove.next;
+            remove.next = helper.next;
+            helper.next = remove;
+            helper = helper.next;
+            if( null != next ) {
+                heap.offer(next);
+            }
+        }
+        return ret.next;
     }
 
     public static void main(String[] args) {

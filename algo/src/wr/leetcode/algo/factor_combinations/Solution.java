@@ -42,7 +42,7 @@ public class Solution {
         }
         Set<List<Integer>> ret = dp.getOrDefault(n, new HashSet());
         return new LinkedList<>(ret);
-    } */
+    }
 
     public List<List<Integer>> getFactors(int n) {
         List<List<Integer>> ret = new LinkedList<>();
@@ -59,6 +59,31 @@ public class Solution {
                         factor.add(0, i);
                         ret.add(factor);
                     }
+                }
+            }
+        }
+        return ret;
+    }*/
+
+    public List<List<Integer>> getFactors(int n) {
+        return getFactors(n, 2);
+    }
+
+    public List<List<Integer>> getFactors(int n, int start) {
+        List<List<Integer>> ret = new LinkedList<>();
+        for (int i = start; i * i <= n; ++i) {
+            if( 0 != (n%i) ) {
+                continue;
+            } else {
+                int k = n/i;
+                List<Integer> list = new LinkedList<>();
+                list.add(i);
+                list.add(k);
+                ret.add(list);
+                List<List<Integer>> factors = getFactors(k, i);
+                for (List<Integer> f : factors) {
+                    f.add(0, i);
+                    ret.add(f);
                 }
             }
         }

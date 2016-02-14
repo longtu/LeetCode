@@ -41,7 +41,7 @@ public class Solution {
         }
         return sum;
     }
-*/
+
     public int maxSubArray0(int[] nums) {
 
         int max = Integer.MIN_VALUE;
@@ -104,8 +104,23 @@ public class Solution {
         }
         return ret;
     }
+*/
 
-
+    public int maxSubArray(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        int sum = 0;
+        int j = -1;
+        for (int num : nums) {
+            sum += num;
+            if (sum > max) {
+                max = sum;
+            }
+            while (sum < 0) {
+                sum -= nums[++j];
+            }
+        }
+        return max;
+    }
 
 
     public static void main(String[] args) {
@@ -114,9 +129,9 @@ public class Solution {
         int[] b = {-1};
         int[] c = {1};
 
-        System.out.println(sol.maxSubArray0(arr));
-        System.out.println(sol.maxSubArray0(b));
-        System.out.println(sol.maxSubArray0(c));
+        System.out.println(sol.maxSubArray(arr));
+        System.out.println(sol.maxSubArray(b));
+        System.out.println(sol.maxSubArray(c));
 
     }
 

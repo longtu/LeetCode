@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Vector2D {
 
+    /*
     ListIterator<List<Integer>> listIte;
     Iterator<Integer> ite = new LinkedList<Integer>().iterator();
 
@@ -27,7 +28,43 @@ public class Vector2D {
             ite = listIte.next().iterator();
         }
         return ite.hasNext();
+    }*/
+
+    Iterator<Iterator<Integer>> iteratorMaster;
+    Iterator<Integer> iterator;
+
+    public Vector2D(List<List<Integer>> vec2d) {
+        List<Iterator<Integer>> iterators = new LinkedList<>();
+        for (List<Integer> vec : vec2d ) {
+            if ( null != vec && !vec.isEmpty() ) {
+                iterators.add(vec.iterator());
+            }
+        }
+        iteratorMaster = iterators.iterator();
+        advance();
     }
+
+    public int next() {
+        if (!hasNext()) {
+            throw new IllegalStateException("vector is empty!");
+        }
+        int ret = iterator.next();
+        advance();
+        return ret;
+    }
+
+    public boolean hasNext() {
+        return (null != iterator) && iterator.hasNext();
+    }
+
+    private void advance() {
+        if(null == iterator || !iterator.hasNext()) {
+            if (iteratorMaster.hasNext()) {
+                iterator = iteratorMaster.next();
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
 

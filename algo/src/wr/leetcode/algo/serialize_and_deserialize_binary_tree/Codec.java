@@ -122,3 +122,48 @@ public class Codec {
 
     }
 }
+
+class Codec2{
+    public static final String NULL = "NULL";
+    public static final String SPLIT = "#";
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        StringBuilder sb = new StringBuilder();
+        serialize(root, sb);
+        return sb.toString();
+    }
+
+    public void serialize(TreeNode root, StringBuilder sb) {
+        if ( null == root ) {
+            sb.append(NULL);
+            sb.append(SPLIT);
+        } else {
+            sb.append(root.val);
+            sb.append(SPLIT);
+            serialize(root.left, sb);
+            serialize(root.right, sb);
+        }
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        String[] nodes = data.split(SPLIT);
+        int[] index = new int[0];
+        return deserialize(nodes, index);
+    }
+
+    public TreeNode deserialize(String[] nodes, int[] index) {
+        TreeNode ret = null;
+        String node = nodes[index[0]];
+        if (!NULL.equals(node)) {
+            Integer val = Integer.parseInt(node);
+            ret = new TreeNode(val);
+            index[0]++;
+            ret.left = deserialize(nodes, index);
+            index[0]++;
+            ret.right = deserialize(nodes, index);
+        }
+        return ret;
+    }
+
+        }

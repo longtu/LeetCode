@@ -11,7 +11,7 @@ class Point {
 }
 
 public class Solution {
-    public int maxPoints(Point[] points) {
+    /*public int maxPoints(Point[] points) {
 
         if( null == points ) {
             points = new Point[0];
@@ -46,7 +46,7 @@ public class Solution {
         return max;
     }
 
-   /* public int maxPoints(Point[] points) {
+   public int maxPoints(Point[] points) {
     	int ret = 0;
     	if (null == points) {
     		return ret;
@@ -77,4 +77,38 @@ public class Solution {
     	return ret;
     }
     */
+    public int maxPoints(Point[] points) {
+        int max = 0;
+        if (null != points && points.length > 0) {
+            for (Point origin : points) {
+                Map<Double, Integer> slopeCounts = new HashMap<>();
+                int originCounts = 0;
+                for (Point p : points) {
+                    int dx = p.x - origin.x;
+                    int dy = p.y - origin.y;
+                    if (dx == 0 && dy == 0) {
+                        originCounts += 1;
+                    } else {
+                        Double slope = Double.POSITIVE_INFINITY;
+                        if (dx != 0) {
+                            slope = (double)dy/dx;
+                        }
+                        int cnt = slopeCounts.getOrDefault(slope, 0) + 1;
+                        slopeCounts.put(slope, cnt);
+                    }
+                }
+                System.out.println(slopeCounts);
+                //BUG: calculate max instead of summing everything!!!
+                int pointMax = slopeCounts.entrySet().stream().map(Map.Entry::getValue)
+                        .max((a, b) -> (a - b)).orElse(0) + originCounts;
+                max = Math.max(max, pointMax);
+            }
+        }
+        return max;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.maxPoints(new Point[]{ new Point(0,0),new Point(1,1),new Point(1,-1)}));
+    }
 }

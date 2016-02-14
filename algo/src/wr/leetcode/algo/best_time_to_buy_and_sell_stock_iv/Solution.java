@@ -48,7 +48,31 @@ public class Solution {
     }
 
 
+    public int maxProfit0(int k, int[] prices) {
+        prices = (null == prices)?(new int[0]):(prices);
+        int n = prices.length;
+        int ret = 0;
 
+        if (k > n) {
+            k = n;
+        }
+
+        if ( k > 0 && n > 1) {
+            int[][] loc = new int[k+1][n];
+            int[][] glo = new int[k+1][n];
+            for (int l = 1; l <=k; ++l) {
+                for (int i = 1; i < n; ++i) {
+                    int diff = prices[i] - prices[i-1];
+                    //glo[l-1][i-1]: last transaction is buy at i-1, sell at i
+                    //loc[l][i-1]: last transaction buy did not happen on i-1
+                    loc[l][i] = Math.max(glo[l-1][i-1], loc[l][i-1]) + diff;
+                    glo[l][i] = Math.max(loc[l][i], glo[l][i-1]);
+                }
+            }
+            ret = glo[k][n-1];
+        }
+        return ret;
+    }
 
 
 

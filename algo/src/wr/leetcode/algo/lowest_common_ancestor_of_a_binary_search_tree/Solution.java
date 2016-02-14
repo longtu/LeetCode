@@ -23,7 +23,7 @@ public class Solution {
             return lowestCommonAncestor(root.left, p, q);
         }
         return root;
-    }*/
+    }
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         TreeNode ret;
@@ -46,5 +46,24 @@ public class Solution {
             }
         }
         return ret;
+    }*/
+
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        TreeNode ret = null;
+        if (null != root) {
+            int val = root.val;
+            int pVal = p.val;
+            int qVal = q.val;
+
+            if (pVal > val && qVal > val) {
+                ret = lowestCommonAncestor(root.right, p, q);
+            } else if (pVal < val && qVal < val) {
+                ret = lowestCommonAncestor(root.left, p, q);
+            } else {
+                ret = root;
+            }
+        }
+        return ret;
     }
+
 }

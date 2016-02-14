@@ -1,23 +1,20 @@
 package wr.leetcode.algo.palindrome_permutation;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Solution {
     public boolean canPermutePalindrome(String s) {
         if(null == s) {
             return true;
         }
-        Map<Character, Integer> count = new HashMap<>();
+        int[] count = new int[256];
         for (char ch : s.toCharArray()) {
-            int cnt = count.getOrDefault(ch, 0) + 1;
-            count.put(ch, cnt);
+            count[ ch ] += 1;
         }
-        long odds = count.entrySet().stream()
-                .map(Map.Entry::getValue)
-                .filter((a) -> (1 == a%2))
-                .count();
-
+        int odds = 0;
+        for (int i = 0; i < 256; ++i) {
+            if(1 == count[i]%2) {
+                odds++;
+            }
+        }
         return odds < 2;
     }
 

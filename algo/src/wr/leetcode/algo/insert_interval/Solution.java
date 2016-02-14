@@ -9,7 +9,39 @@ import java.util.List;
 
 public class Solution {
 
-    public List<Interval> insert0(List<Interval> intervals, Interval newInterval) {
+
+    public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+        List<Interval> ret = new LinkedList<>();
+        if( null == intervals ) {
+            intervals = new LinkedList<>();
+        }
+        for (Interval interval : intervals) {
+            if ( null == newInterval ) { // already processed
+                ret.add(interval);
+            } else {
+                if (interval.end < newInterval.start) {
+                    ret.add(interval);
+                } else if (interval.start > newInterval.end) {
+                    ret.add(newInterval);
+                    newInterval = null;
+                    ret.add(interval);
+                } else {
+                    newInterval = merge(interval, newInterval);
+                }
+            }
+        }
+        if (null != newInterval) {
+            ret.add(newInterval);
+        }
+        return ret;
+    }
+
+    public Interval merge(Interval left, Interval right) {
+        return new Interval(Math.min(left.start, right.start),
+                Math.max(left.end, right.end));
+    }
+
+    /*public List<Interval> insert0(List<Interval> intervals, Interval newInterval) {
         intervals = (null == intervals)?(new LinkedList<>()):(intervals);
         LinkedList<Interval> ret = new LinkedList<>();
 
@@ -101,7 +133,7 @@ public class Solution {
         }
         return  (src.start - dest.start) * (src.end - dest.start) <= 0;
     }
-    */
+
 
 
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
@@ -126,7 +158,7 @@ public class Solution {
             ret.add(newInterval);
         }
         return ret;
-    }
+    }*/
 
     public static void main(String[] args) {
         Solution sol = new Solution();

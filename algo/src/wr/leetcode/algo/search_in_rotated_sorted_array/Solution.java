@@ -30,7 +30,7 @@ public class Solution {
             }
         }
         return ret;
-    }*/
+    }
 
     public int search(int[] nums, int target) {
         int start = 0;
@@ -60,6 +60,38 @@ public class Solution {
             }
         }
         return found;
+    }*/
+    public int search(int[] nums, int target) {
+        if( null == nums ) {
+            nums = new int[0];
+        }
+        int n = nums.length;
+        int s = 0;
+        int e = n - 1;
+        int ret = -1;
+        while( s <= e ) {
+            int mid = s + ( (e-s) >> 1);
+            int midVal = nums[mid];
+            int sVal = nums[s];
+            int eVal = nums[e];
+            if(midVal == target) {
+                ret = mid;
+                break;
+            } else if (midVal >= sVal) {
+                if (target >= sVal && target < midVal) {
+                    e = mid-1;
+                } else {
+                    s = mid + 1;
+                }
+            } else { //midVal < nums[s]
+                if (target > midVal && target <= eVal) {
+                    s = mid + 1;
+                } else {
+                    e = mid -1;
+                }
+            }
+        }
+        return ret;
     }
 
 

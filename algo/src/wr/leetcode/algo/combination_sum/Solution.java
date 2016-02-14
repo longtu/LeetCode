@@ -4,6 +4,45 @@ import java.util.*;
 
 public class Solution {
 
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int[] arr = {3,6,7,2};
+        System.out.println(sol.combinationSum(arr, 7));
+    }
+
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+
+        List<List<Integer>> ret = new LinkedList<>();
+        if( null != candidates && candidates.length > 0 ) {
+            candidates = Arrays.stream(candidates).sorted().toArray();
+            Set<List<Integer>> combinations = combinationSum(candidates, 0, target);
+            ret = new LinkedList<>(combinations);
+        }
+        return ret;
+    }
+
+    public Set<List<Integer>> combinationSum(int[] candidates, int start, int target) {
+        Set<List<Integer>> ret = new HashSet<>();
+        if ( 0 == target ) {
+            ret.add(new LinkedList<>());
+        } else {
+            for (int i = start; i < candidates.length; ++i) {
+                int key = candidates[i];
+                if( target - key < 0 ) {
+                    break;
+                }
+                Set<List<Integer>> subCombinations = combinationSum(candidates, i, target - key);
+                for (List<Integer> subCombination : subCombinations) {
+                    subCombination.add(0, key);
+                    ret.add(subCombination);
+                }
+            }
+        }
+        return ret;
+    }
+
+    /*
+
     public List<List<Integer>> combinationSumRec(int[] candidates, int target) {
         List<List<Integer>> ret = new LinkedList<>();
 
@@ -45,14 +84,6 @@ public class Solution {
         return ret;
     }
 
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-        int[] arr = {3,6,7,2};
-        System.out.println(sol.combinationSum(arr, 7));
-    }
-
-
-    /*
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         if(null == candidates ) {
             candidates = new int[0];

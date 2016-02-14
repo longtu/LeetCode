@@ -3,6 +3,8 @@ package wr.leetcode.algo.number_of_connected_components_in_an_undirected_graph;
 import java.util.*;
 
 public class Solution {
+
+    /*
     public int countComponents(int n, int[][] input) {
         int ret = 0;
         if(n > 0) {
@@ -84,7 +86,57 @@ class DisjointSet {
 
     public void join ( int index, int newId) {
         group[newId] = groupId(index);
+    }*/
+
+
+    class DisjointSet {
+        int [] group;
+
+        public DisjointSet( int n ) {
+            group = new int[n];
+            for (int i = 0; i <n; ++i) {
+                group[i] = i;
+            }
+        }
+
+        public void join(int left, int right) {
+            group[group(right)] = group(left);
+        }
+
+        public int group(int k) {
+            int key = k;
+            while( group[key] != key ) {
+                key = group[key];
+            }
+            int ret = key;
+            key = k;
+            while(group[key] != ret) {
+                int next = group[key];
+                group[key] = ret;
+                key = next;
+            }
+            return ret;
+        }
     }
+
+        public int countComponents(int n, int[][] edges) {
+            int ret = 0;
+            if (n > 0 && null != edges && edges.length > 0) {
+                DisjointSet set = new DisjointSet(n);
+                for (int [] e : edges) {
+                    int st = e[0];
+                    int ed = e[1];
+                    set.join(st, ed);
+                }
+                Set<Integer> groups = new HashSet<>();
+                for (int i = 0; i < n; ++i) {
+                    int id = set.group(i);
+                    groups.add(id);
+                }
+                ret = groups.size();
+            }
+            return ret;
+        }
 
     public static void main(String[] args) {
         Solution sol = new Solution();

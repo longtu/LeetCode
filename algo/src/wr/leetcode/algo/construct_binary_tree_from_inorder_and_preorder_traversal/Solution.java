@@ -33,7 +33,7 @@ public class Solution {
         node.left = buildTree(preorder,pStartInclusive +1, sep - iStartInclusive + pStartInclusive +1,inorder, iStartInclusive, sep );
         node.right = buildTree(preorder, sep - iStartInclusive + pStartInclusive +1, pEndExclusive, inorder, sep+1, iEndExclusive );
         return node;
-    }*/
+    }
 
     public int[] notNull(int[] arr) {
         return (null == arr) ? (new int[0]) : (arr);
@@ -91,10 +91,37 @@ public class Solution {
         System.out.println("W " + found);
     }
     */
+    public TreeNode buildTree(int[] inorder, int[] preorder) {
+        //assert length of both array is the same
+        TreeNode root = null;
+        if (null != preorder && preorder.length > 0) {
+            int n = preorder.length;
+            int rootVal = preorder[0];
+            root = new TreeNode(rootVal);
+            int split = indexOf(rootVal, inorder);
+            root.left = buildTree(
+                    Arrays.copyOfRange(inorder, 0, split),
+                    Arrays.copyOfRange(preorder, 1, split+1)
+            );
+            root.right = buildTree(
+                    Arrays.copyOfRange(inorder, split+1, n),
+                    Arrays.copyOfRange(preorder, split+1, n)
+            );
+        }
+        return root;
+    }
+
+    public int indexOf( int key, int[] inorder) {
+        int ret = -1;
+        for (int i = 0; i < inorder.length; ++i) {
+            if ( inorder[i] == key ) {
+                ret = i;
+            }
+        }
+        return ret;
+    }
 
     public static void main(String[] args) {
-
-
 
         Solution sol = new Solution();
         int[] pre =  {1,2};
@@ -103,7 +130,7 @@ public class Solution {
         TreeNode node = sol.buildTree(pre, in);
         System.out.println(node.val);
         System.out.println(node.left);
-        System.out.println(node.right);
+        System.out.println(node.right.val);
     }
 
 }

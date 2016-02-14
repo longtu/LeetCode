@@ -32,7 +32,45 @@ public class Solution {
         node.left = buildTree(inorder, iStartInclusive, split, postorder, pStartInclusive, pStartInclusive + (split-iStartInclusive));
         node.right = buildTree(inorder, split+1, iEndExclusive, postorder, pStartInclusive + (split-iStartInclusive), pEndExclusive-1);
         return node;
+    }
+
+    //public TreeNode buildTree(int[] inorder, int[] postorder) {
+        //assert length of both array is the same
+        TreeNode root = null;
+        if (null != postorder && postorder.length > 0) {
+            int n = postorder.length;
+            root = buildTree(inorder, 0, n, postorder, 0, n);
+        }
+        return root;
+    }
+
+    public TreeNode buildTree(int[] inorder,int iStart, int iEnd, int[] postorder,
+                              int pStart, int pEnd) {
+        TreeNode root = null;
+        if ( iEnd - iStart > 0) {
+            int rootVal = postorder[pEnd-1];
+            root = new TreeNode(rootVal);
+            int split = indexOf(rootVal, iStart, iEnd, inorder);
+            root.left = buildTree( inorder, iStart, split, postorder, pStart,
+                    pStart + split - iStart
+            );
+            root.right = buildTree( inorder, split+1, iEnd, postorder, pStart + split -iStart,
+                    pEnd-1
+            );
+        }
+        return root;
+    }
+
+    public int indexOf( int key, int start, int end, int[] inorder) {
+        int ret = -1;
+        for (int i = start; i < end; ++i) {
+            if ( inorder[i] == key ) {
+                ret = i;
+            }
+        }
+        return ret;
     }*/
+
 
 
     public int[] notNull(int[] arr) {

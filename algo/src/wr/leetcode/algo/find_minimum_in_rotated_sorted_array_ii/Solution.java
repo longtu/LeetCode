@@ -1,7 +1,7 @@
 package wr.leetcode.algo.find_minimum_in_rotated_sorted_array_ii;
 
 public class Solution {
-
+    /*
     public int findMin(int[] nums) {
 
         if(null == nums || 0 == nums.length) {
@@ -33,8 +33,6 @@ public class Solution {
         return found;
     }
 
-
-    /*
     public int findMin(int[] num) {
         if (null == num || num.length == 0) {
             throw new RuntimeException("Invalid Input!");
@@ -60,4 +58,32 @@ public class Solution {
         }
         return num[ret];
     }*/
+
+    public int findMin(int[] nums) {
+        if(null == nums) {
+            nums = new int[0];
+        }
+        int s = 0;
+        int e = nums.length-1;
+        int ret = -1;
+        while(s <= e) {
+            int sv = nums[s];
+            int ev = nums[e];
+            if(s == e || sv < ev) {
+                ret = s;
+            } else if (sv == ev) { // s!=e && sv == ev
+                s ++;
+            } else { // s!= e && sv > ev
+                int m = s + ((e-s)>>1);
+                int mv = nums[m];
+                if( sv <= mv ) {
+                    s = m + 1;
+                } else if (sv > mv) {
+                    e = m;
+                }
+            }
+        }
+        return nums[ret];
+    }
+
 }
