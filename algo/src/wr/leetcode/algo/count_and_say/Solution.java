@@ -1,6 +1,7 @@
 package wr.leetcode.algo.count_and_say;
 
 public class Solution {
+    /*
     public String countAndSay(int n) {
 
         String str = "";
@@ -39,11 +40,47 @@ public class Solution {
             }
         }
         return sb.toString();
+    }*/
+
+    public String countAndSay(int n) {
+        String str = "1";
+        for (int i = 2; i <= n; ++i) {
+            str = countAndSay(str);
+        }
+        return (n > 0)?(str):("");
+    }
+
+    public String countAndSay(String str) {
+        char[] arr = str.toCharArray();
+        int n = arr.length;
+        StringBuilder sb = new StringBuilder();
+
+        Character ch = null;
+        int count = 0;
+        for (int i = 0; i<=n; ++i) {
+            if ( n == i) {
+                sb.append(count);
+                sb.append(ch);
+            } else {
+                Character val = arr[i];
+                if (null == ch || !ch.equals(val)) {
+                    if ( count > 0) {
+                        sb.append(count);
+                        sb.append(ch);
+                    }
+                    count = 1;
+                    ch = val;
+                } else {
+                    count++;
+                }
+            }
+        }
+        return sb.toString();
     }
 
     public static void main(String[] args) {
         Solution sol = new Solution();
-        for (int i = 0; i < 5; ++i) {
+        for (int i = 0; i < 6; ++i) {
             System.out.println(sol.countAndSay(i));
         }
     }

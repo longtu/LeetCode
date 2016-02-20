@@ -4,8 +4,12 @@ import wr.leetcode.algo.Interval;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;
+import java.util.Queue;
+
 
 public class Solution {
+
+    /*
     //Sorting Solution
     //O(NLogN) time, O(N) space
     // Tricky CompareTo function
@@ -77,6 +81,39 @@ public class Solution {
     //earlist,
 
     //Is there greedy solution for this problem?
+    */
+
+    public int minMeetingRooms(Interval[] intervals) {
+        intervals = (null == intervals)?(new Interval[0]):(intervals);
+        Queue<Event> heap = new PriorityQueue<>((a,b)->(a.time-b.time));
+
+        for (Interval itv : intervals) {
+            heap.offer(new Event(itv.start, 1));
+            heap.offer(new Event(itv.end, -1));
+        }
+        int max = 0;
+        int count = 0;
+        int t = 0;
+        while(!heap.isEmpty()) {
+            Event event = heap.poll();
+            t = event.time;
+            count += event.count;
+            while( !heap.isEmpty() && heap.peek().time == t) {
+                count += heap.poll().count;
+            }
+            max = Math.max(max, count);
+        }
+        return max;
+    }
+
+    class Event {
+        public Event(int time, int count) {
+            this.time = time;
+            this.count = count;
+        }
+        int time;
+        int count;
+    }
 
 
     public static void main(String[] args) {

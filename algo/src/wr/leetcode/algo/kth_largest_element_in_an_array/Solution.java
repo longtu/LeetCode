@@ -2,6 +2,7 @@ package wr.leetcode.algo.kth_largest_element_in_an_array;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class Solution {
 /*
@@ -44,7 +45,7 @@ public class Solution {
             }
         }
         return q.remove();
-    }*/
+    }
 
     public void swap(int[] arr, int lhs, int rhs){
         int tmp = arr[lhs];
@@ -68,11 +69,59 @@ public class Solution {
         } else {
             return findKthLargest( Arrays.copyOfRange(nums, 0, pivot), k);
         }
+    }*/
+
+    public int findKthLargestUsingHeap(int[] nums, int k) {
+        Queue<Integer> heap = new PriorityQueue<>((a,b)->(a-b));
+        for (int n : nums) {
+            if ( heap.size() < k || heap.peek() < n) {
+                heap.offer(n);
+            }
+            if (heap.size() > k) {
+                heap.poll();
+            }
+        }
+        return heap.peek();
     }
+
+    public int findKthLargest(int[] nums, int k) {
+        int p = 0;
+        int pv = nums[p];
+        int b = p;
+        int n = nums.length;
+        int ret = pv;
+
+        for (int i = 1; i < n; ++i) {
+            int v = nums[i];
+            if (v > pv) { // bigger
+                b++;
+                swap(nums, b, i);
+            }
+        }
+        swap(nums, p, b);
+
+        if (b + 1 == k) {
+            return pv;
+        } else if (b + 1 > k) {
+            return findKthLargest(Arrays.copyOfRange(nums, 0, b), k);
+        } else {
+            return findKthLargest(Arrays.copyOfRange(nums, b+1, n), k - b - 1);
+        }
+    }
+
+    private void swap(int [] arr, int l, int r) {
+        int tmp = arr[l];
+        arr[l] = arr[r];
+        arr[r] = tmp;
+    }
+
 
     public static void main(String[] args) {
         Solution sol = new Solution();
         int [] arr = {3,2,1,5,6,4};
-        System.out.println(sol.findKthLargest(arr, 2));
+        for (int i = 1; i <=6; ++i) {
+            System.out.println(sol.findKthLargest(arr, i));
+        }
+
     }
 }

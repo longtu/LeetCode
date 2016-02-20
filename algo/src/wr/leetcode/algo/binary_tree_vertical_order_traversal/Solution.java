@@ -2,12 +2,11 @@ package wr.leetcode.algo.binary_tree_vertical_order_traversal;
 
 import wr.leetcode.algo.TreeNode;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Solution {
-
+/*
     public List<List<Integer>> verticalOrder(TreeNode root) {
         PriorityQueue<Data> queue = new PriorityQueue<>(this::compare);
         inOrder(root, queue, 0, 0);
@@ -73,15 +72,54 @@ public class Solution {
             diff = left.sequence - right.sequence;
         }
         return diff;
-    }
+    }*/
+    public List<List<Integer>> verticalOrder(TreeNode root) {
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        Queue<TreeNode> nodes = new LinkedList<>();
+        Queue<Integer> xqueue = new LinkedList<>();
+        int x = 0;
+        int min = 0;
+        int max = 0;
 
+        if (null != root) {
+            nodes.offer(root);
+            xqueue.offer(x);
+        }
+        while( !nodes.isEmpty() ) {
+            TreeNode v = nodes.poll();
+            int vx = xqueue.poll();
+            List<Integer> list = map.getOrDefault(vx, new LinkedList<>());
+            list.add(v.val);
+            map.put(vx, list);
+            max = Math.max(max, vx);
+            min = Math.min(min, vx);
+
+            if(null != v.left) {
+                nodes.offer(v.left);
+                xqueue.offer(vx-1);
+            }
+            if(null != v.right) {
+                nodes.offer(v.right);
+                xqueue.offer(vx+1);
+            }
+        }
+        List<List<Integer>> ret = new LinkedList<>();
+        for (int i = min; i <=max; ++i) {
+            List<Integer> list = map.get(i);
+            if(null != list) {
+                ret.add(list);
+            }
+        }
+
+        return ret;
+    }
 
     public static void main(String[] args) {
         Solution sol = new Solution();
         TreeNode n3 = new TreeNode(3);
         TreeNode n9 = new TreeNode(9);
         TreeNode n20 = new TreeNode(20);
-        TreeNode n15 = new TreeNode(2);
+        TreeNode n15 = new TreeNode(15);
         TreeNode n7 = new TreeNode(7);
         TreeNode n4 = new TreeNode(4);
         TreeNode n5 = new TreeNode(5);

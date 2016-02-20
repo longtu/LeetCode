@@ -5,46 +5,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Codec {
+
+
+    public static char SEP = '#';
+
     /*
-    public static String LEFT = "HeaderLeft";
-    public static String RIGHT = "HeaderRight";
-
-    //GOOD: use special characters as boundary of length of a string
-    public String encode(List<String> strs) {
-        StringBuilder sb = new StringBuilder();
-        for (String str : strs) {
-            int n = (null != str)?(str.length()):(-1);
-            sb.append(LEFT + n + RIGHT);
-            sb.append( (null == str)?(""):(str) );
-        }
-        return sb.toString();
-    }
-
-    public List<String> decode(String s) {
-        List<String> ret = new LinkedList<>();
-        int n = s.length();
-        int start = 0;
-        while (start < n) {
-            int i = s.indexOf(LEFT, start);
-            int j = s.indexOf(RIGHT, start);
-            i += LEFT.length();
-            int len = Integer.parseInt(s.substring(i,j));
-            j += RIGHT.length();
-            String str;
-            if(-1 == len) {
-                str = null;
-                start = j;
-            } else {
-                str = s.substring(j, j+len);
-                start = j+len;
-            }
-            ret.add(str);
-        }
-        return ret;
-    }*/
-
-    public static char SEP = '$';
-
     public String encode(List<String> strs) {
         return String.format("%s%s", header(strs), concat(strs));
     }
@@ -102,6 +67,44 @@ public class Codec {
             }
         }
         return data;
+    }*/
+
+    public String encode(List<String> strs) {
+        StringBuilder sb = new StringBuilder();
+        strs.stream().forEach( (s)-> {
+                    if (s == null) {
+                        sb.append(-1).append(SEP).append("");
+                    } else {
+                        sb.append(s.length()).append(SEP).append(s);
+                    }
+                }
+        );
+        return sb.toString();
+    }
+
+    public List<String> decode(String s) {
+        char[] chars = s.toCharArray();
+        List<String> ret = new LinkedList<>();
+
+        int lastEnd = 0;
+        int i = 0;
+        while (i < chars.length) {
+            if (chars[i] == SEP) {
+                int len = Integer.parseInt(s.substring(lastEnd, i));
+                i++;
+                if (len == -1) {
+                    ret.add(null);
+                    len = 0;
+                } else {
+                    ret.add(s.substring(i, i+len));
+                }
+                i = i+len;
+                lastEnd = i;
+            } else {
+                i++;
+            }
+        }
+        return ret;
     }
 
 

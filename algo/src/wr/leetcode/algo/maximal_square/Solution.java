@@ -19,6 +19,37 @@ public class Solution {
     }
 
     public int maximalSquare(char[][] matrix) {
+        int max = 0;
+        if (null != matrix && matrix.length > 0 && matrix[0].length > 0) {
+            int m = matrix.length;
+            int n = matrix[0].length;
+
+            int [][] squres = new int[m][n];
+            for (int i = 0; i < m; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    char ch = matrix[i][j];
+                    int val = 0;
+                    if (ch == '1' ) {
+                        val = 1;
+                        if (i > 0 && j > 0) {
+                            val += Math.min(
+                                    Math.min(squres[i-1][j], squres[i][j-1]),
+                                    squres[i-1][j-1]
+                            );
+                        }
+                        max = Math.max(max, val);
+                    }
+                    squres[i][j] = val;
+                }
+            }
+        }
+        return max*max;
+    }
+
+
+
+/*
+    public int maximalSquare(char[][] matrix) {
         int ret = 0;
         if(null != matrix && matrix.length > 0 && matrix[0].length > 0) {
             int m = matrix.length;
@@ -50,7 +81,7 @@ public class Solution {
                         int y = sy + i;
                         if(x >= m || y >= n || sy +l >=n || sx +l >=m ||
                                 matrix[x][sy+l] != '1' ||
-                            matrix[sx+l][y] != '1') { /*BUG: INDEX OUT OF BOUNDARY*/
+                            matrix[sx+l][y] != '1') {
                             isSquare = false;
                             break;
                         }
@@ -73,7 +104,7 @@ public class Solution {
             this.y = y;
         }
     }
-
+*/
 
 
 

@@ -21,14 +21,14 @@ public class Solution {
             helper.next = node;
             node = nodeNext;
         }
-        head.next = reverseKGroup(tail, k);
+        head.next = reverseKGroup0(tail, k);
         return helper.next;
     }
 
 
 
 
-    public ListNode reverseKGroup(ListNode head, int k) {
+    public ListNode reverseKGroup1(ListNode head, int k) {
         ListNode helper = new ListNode(-1);
         helper.next = head;
         ListNode ret = helper;
@@ -45,7 +45,7 @@ public class Solution {
                 len ++;
             }
             if(len == k) {
-                helper.next = reverseByK(node, k);
+                helper.next = reverseByK1(node, k);
             } else {
                 helper.next = node;
             }
@@ -57,7 +57,7 @@ public class Solution {
         return ret.next;
     }
 
-    ListNode reverseByK(ListNode head, int k) {
+    ListNode reverseByK1(ListNode head, int k) {
         ListNode ret = new ListNode(-1);
         ListNode node = ret;
         while( null != head && k > 0){
@@ -72,6 +72,44 @@ public class Solution {
         return ret.next;
     }
 
+    public ListNode reverseKGroup(ListNode head, int k) {
+        ListNode ret = new ListNode(-1);
+        ListNode tail = ret;
+        if (k <= 1 ) {
+            return head;
+        }
+        while(null != head) {
+            if (hasMoreThanK(head, k)) {
+                ListNode group = new ListNode(-1);
+                for (int i = 0; i <k; ++i) {
+                    ListNode next = head.next;
+                    head.next = group.next;
+                    group.next = head;
+                    head = next;
+                }
+                tail.next = group.next;
+                while( null != tail.next ) {
+                    tail = tail.next;
+                }
+            } else {
+                tail.next = head;
+                head = null;
+            }
+        }
+        return ret.next;
+    }
+
+    public boolean hasMoreThanK (ListNode head, int k) {
+        boolean ret = false;
+        for (int i = 0; i < k && null != head; ++i) {
+            head = head.next;
+            if (k-1 == i) {
+                ret = true;
+            }
+        }
+        return ret;
+    }
+
     public static void main(String[] args) {
         Solution sol = new Solution();
         ListNode n1 = new ListNode(1);
@@ -79,7 +117,7 @@ public class Solution {
         ListNode n3 = new ListNode(3);
         n1.next = n2;
         n2.next = n3;
-        ListNode h = sol.reverseKGroup(n1, 5);
+        ListNode h = sol.reverseKGroup(n1, 2);
         while( null != h) {
             System.out.println( "node:" + h.val);
             h = h.next;

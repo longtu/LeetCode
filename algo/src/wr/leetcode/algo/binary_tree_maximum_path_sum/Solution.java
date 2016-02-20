@@ -5,6 +5,7 @@ import wr.leetcode.algo.TreeNode;
 
 //LEAF NODE LEAF NODE!!!!
 
+/*
 public class Solution {
     class PathData{
         int maxNodePathSum;
@@ -78,6 +79,40 @@ public class Solution {
                          ((rightInfo == null)? (Integer.MIN_VALUE):(rightInfo.maxSum))));
 
         return new PathInfo( maxSum, maxPath);
-    }*/
+    }
 
+}*/
+public class Solution {
+    public int maxPathSum(TreeNode root) {
+        return maxPathSumRec(root).maxPath;
+    }
+
+    public MetaData maxPathSumRec(TreeNode root) {
+        if ( null == root) {
+            return new MetaData(0,Integer.MIN_VALUE);
+        }
+        MetaData leftData = maxPathSumRec(root.left);
+        MetaData rightData = maxPathSumRec(root.right);
+
+        int maxSinglePath = root.val;
+        maxSinglePath = Math.max(maxSinglePath, leftData.maxSinglePath + root.val);
+        maxSinglePath = Math.max(maxSinglePath, rightData.maxSinglePath + root.val);
+
+        int maxPath = leftData.maxSinglePath + rightData.maxSinglePath + root.val;
+        maxPath = Math.max(maxPath, maxSinglePath);
+        int maxSubPath = Math.max(leftData.maxPath, rightData.maxPath);
+        maxPath = Math.max(maxPath, maxSubPath);
+        return new MetaData(maxSinglePath, maxPath);
+    }
+
+}
+
+class MetaData {
+    int maxSinglePath;
+    int maxPath;
+
+    public MetaData (int maxSinglePath, int maxPath) {
+        this.maxSinglePath = maxSinglePath;
+        this.maxPath = maxPath;
+    }
 }

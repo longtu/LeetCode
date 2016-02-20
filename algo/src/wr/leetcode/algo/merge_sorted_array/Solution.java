@@ -2,6 +2,25 @@ package wr.leetcode.algo.merge_sorted_array;
 
 public class Solution {
 
+        public void merge(int[] nums1, int m, int[] nums2, int n) {
+            int start = m + n - 1;
+            int l = m-1;
+            int r = n-1;
+            while(l >= 0 && r >=0 ) {
+                int val;
+                if (nums1[l] >= nums2[r]) {
+                    val = nums1[l--];
+                } else {
+                    val = nums2[r--];
+                }
+                nums1[start--] = val;
+            }
+            while( r >=0 ) {
+                nums1[start--] = nums2[r--];
+            }
+        }
+
+    /*
     public void merge(int[] nums1, int m, int[] nums2, int n) {
 
         int end = m + n -1;
@@ -28,9 +47,6 @@ public class Solution {
         }
     }
 
-
-
-    /*
     public void merge(int A[], int m, int B[], int n) {
 
         if(null == B || n == 0) {

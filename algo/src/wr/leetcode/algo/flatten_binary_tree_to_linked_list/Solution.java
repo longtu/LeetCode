@@ -36,7 +36,7 @@ public class Solution {
     }
     */
 
-
+    /*
     public void flatten(TreeNode root) {
         flattenTree(root);
     }
@@ -61,6 +61,29 @@ public class Solution {
             }
         }
         return tail;
+    }*/
+    public void flatten(TreeNode root) {
+        flattenNode(root);
+    }
+
+    public TreeNode flattenNode (TreeNode root) {
+        TreeNode ret = null;
+        if ( null != root ) {
+            ret = root;
+            if (null != root.right) {
+                ret = flattenNode(root.right);
+            }
+            if ( null != root.left) {
+                TreeNode leftEnd = flattenNode(root.left);
+                leftEnd.right = root.right;
+                root.right = root.left;
+                root.left = null;
+                if( ret == root) {
+                    ret = leftEnd;
+                }
+            }
+        }
+        return ret;
     }
 
 }

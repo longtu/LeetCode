@@ -31,7 +31,7 @@ public class Solution {
     		return base;
     	}
     	return sumNumbers(base, root.left) + sumNumbers(base, root.right);
-    }*/
+    }
 
     public int sumNumbers(TreeNode root) {
         List<String> numbers = numbers(root);
@@ -60,6 +60,28 @@ public class Solution {
                     for (String sub : subs) {
                         ret.add( Integer.toString(root.val) + sub);
                     }
+                }
+            }
+        }
+        return ret;
+    }*/
+
+    public int sumNumbers(TreeNode root) {
+        return numbers(root, 0);
+    }
+
+    public int numbers (TreeNode root, int rootVal) {
+        int ret = 0;
+        if (null != root) {
+            int v = rootVal * 10 + root.val;
+            if (null == root.left && null == root.right) {
+                ret = v;
+            } else {
+                if ( null != root.left ) {
+                    ret += numbers(root.left, v);
+                }
+                if (null != root.right) {
+                    ret += numbers(root.right, v);
                 }
             }
         }

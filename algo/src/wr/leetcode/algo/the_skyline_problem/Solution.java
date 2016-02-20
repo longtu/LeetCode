@@ -6,6 +6,64 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Solution {
+
+    public List<int[]> getSkyline(int[][] buildings) {
+        int n = buildings.length;
+        List<int[]> ret = new LinkedList<>();
+        if (n == 1) {
+            int[] b = buildings[0];
+            int [] left = {b[0], b[2]};
+            int [] right = {b[1], 0};
+            ret.add(left);
+            ret.add(right);
+        } else if (n > 1) {
+            int half = (n+1)/2;
+            List<int[]> leftLine = getSkyline(Arrays.copyOfRange(buildings, 0, half));
+            List<int[]> rightLine = getSkyline(Arrays.copyOfRange(buildings, half, n));
+            ret = merge(leftLine, rightLine);
+        }
+        return ret;
+    }
+
+    public List<int[]> merge(List<int[]> left, List<int[]> right) {
+        LinkedList<int[]> ret = new LinkedList<>();
+        int lh = 0;
+        int rh = 0;
+
+        while(!left.isEmpty() || !right.isEmpty()) {
+            int x;
+            if(!left.isEmpty() && !right.isEmpty()) {
+                int lx = left.get(0)[0];
+                int rx = right.get(0)[0];
+                if (lx == rx) {
+                    lh = left.remove(0)[1];
+                    rh = right.remove(0)[1];
+                    x = lx;
+                }else if (lx <= rx) {
+                    lh = left.remove(0)[1];
+                    x = lx;
+                } else {
+                    rh = right.remove(0)[1];
+                    x = rx;
+                }
+            } else if (!left.isEmpty()) {
+                int[] p = left.remove(0);
+                x = p[0];
+                lh = p[1];
+            } else {
+                int[] p = right.remove(0);
+                x = p[0];
+                rh = p[1];
+            }
+            int h = Math.max(lh, rh);
+            if (ret.isEmpty() || ret.getLast()[1] != h) {
+                ret.add(new int[] {x, h} );
+            }
+        }
+        return ret;
+    }
+
+
     public static void main(String[] args) {
         Solution sol = new Solution();
         int[][] buildings0 = {{0, 2, 3}};
@@ -14,6 +72,7 @@ public class Solution {
         int[][] buildings3 = {};
         int[][] buildings4 = {{0, 2, 3}, {2, 5, 3}};
         int[][] buildings5 = {{1, 2, 1}, {1, 2, 2}, {1, 2, 3}};
+        int[][] buildings6 = {{2, 4, 7},{2, 4, 5},{2, 4, 6}};
 
         toString(sol.getSkyline(buildings0));
         toString(sol.getSkyline(buildings1));
@@ -21,6 +80,7 @@ public class Solution {
         toString(sol.getSkyline(buildings3));
         toString(sol.getSkyline(buildings4));
         toString(sol.getSkyline(buildings5));
+        toString(sol.getSkyline(buildings6));
 
     }
 
@@ -30,7 +90,7 @@ public class Solution {
         }
         System.out.println();
     }
-
+/*
     public List<int[]> getSkyline(int[][] buildings, int start, int end) {
 
         List<int[]> ret = new LinkedList<>();
@@ -111,7 +171,7 @@ public class Solution {
             ret = getSkyline(buildings, 0, buildings.length-1);
         }
         return ret;
-    }
+    }*/
 }
 
 
