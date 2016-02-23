@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Solution {
-
+/*
     private List<List<String>> groups (String[] words, int maxWidth) {
         List<List<String>> wordGroups = new LinkedList<>();
 
@@ -84,12 +84,78 @@ public class Solution {
             }
         }
         return sb.toString();
+    }*/
+
+    public List<String> fullJustify(String[] words, int maxWidth) {
+        List<String> lines = new LinkedList<>();
+        words=(null == words)?(new String[0]):(words);
+        int n = words.length;
+
+        if (n > 0) {
+            int charsThisLine = 0;
+            int consumed = 0;
+            List<String> thisLine = new LinkedList<>();
+
+            for (String w : words) {
+                int chars = w.length();
+                int required = (thisLine.isEmpty())?(chars):(chars + 1);
+
+                if (maxWidth - consumed < required) {
+                    lines.add(toLine(thisLine, maxWidth - charsThisLine, false));
+                    charsThisLine = 0;
+                    consumed = 0;
+                    thisLine = new LinkedList<>();
+                    required = chars;
+                }
+                charsThisLine += chars;
+                consumed += required;
+                thisLine.add(w);
+            }
+            if(!thisLine.isEmpty()) {
+                lines.add(toLine(thisLine, maxWidth - charsThisLine, true));
+            }
+        }
+        return lines;
+    }
+
+    public String toLine(List<String> words, int spaces, boolean last) {
+
+        StringBuilder sb = new StringBuilder();
+        int n = words.size();
+        int spaceGroupCount = (n==1)?(1):(n-1);
+
+        int base = 0;
+        int extra = 0;
+        if (last) {
+            base = 1;
+        } else {
+            base = spaces/spaceGroupCount;
+            extra = spaces%spaceGroupCount;
+        }
+
+        int i = 1;
+        for (String w : words) {
+            sb.append(w);
+            if (i != n) {
+                int mySpaces = base + ((i<=extra)?(1):(0));
+                for (int j = 1; j <= mySpaces; ++j) {
+                    sb.append(' ');
+                    spaces--;
+                }
+            }
+            i++;
+        }
+        while( spaces-- >0 ) {
+            sb.append(' ');
+        }
+        return sb.toString();
     }
 
     public static void main(String[] args) {
-        String[] words = {"This", "is", "an", "example", "of", "text", "text", "justification."};
+        //String[] words = {"This", "is", "an", "example", "of", "text",  "justification."};
+        String[] words = {"a","b","c","d", "e"};
         Solution sol = new Solution();
-        List<String> strs = sol.fullJustify(words, 16);
+        List<String> strs = sol.fullJustify(words, 3);
         for (String str : strs) {
             System.out.println(str);
         }

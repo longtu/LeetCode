@@ -31,8 +31,7 @@ public class Solution {
         return ret;
     }*/
 
-
-    public boolean containsNearbyDuplicate(int[] nums, int k) {
+    public boolean containsNearbyDuplicate0(int[] nums, int k) {
 
         Map<Integer, Integer> dic = new HashMap<>();
         if( null == nums ) {
@@ -48,6 +47,27 @@ public class Solution {
                 }
             }
             dic.put(n, i);
+        }
+        return ret;
+    }
+
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        if( null == nums ) {
+            nums = new int[0];
+        }
+        Set<Integer> dic = new HashSet<>();
+        boolean ret = false;
+        for (int i = 0; i < nums.length; ++i) {
+            int key = nums[i];
+            if (dic.contains(key)) {
+                ret = true;
+                break;
+            } else {
+                dic.add(key);
+            }
+            if(dic.size() == k + 1) {
+                dic.remove(nums[i-k]);
+            }
         }
         return ret;
     }

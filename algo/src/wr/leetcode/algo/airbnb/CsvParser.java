@@ -60,6 +60,7 @@ public class CsvParser {
                 "\"Alexandra \"\"Alex\"\"\",Menendez,alex.menendez@gmail.com,Miami,1",
                 "\"\"\"Alexandra Alex\"\"\"",
                 // "\"\"Alexandra Alex\"\"" is invalid input as any quote character in a filed should be two quoted characters
+                "aa,bb,\"aa\",\"aa,bb\",\"aa\"\"aa\"\"\""
         };
         for (String tst : tsts) {
             System.out.println(csvParser.parseCsv(tst));
