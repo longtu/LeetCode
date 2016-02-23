@@ -3,35 +3,35 @@ package wr.leetcode.algo.airbnb;
 import java.util.LinkedList;
 import java.util.List;
 
-class NestedIntList {
+class IntOrList {
     private int value;
-    private boolean isNumber;
-    private List<NestedIntList> intList;
+    private boolean isInt;
+    private List<IntOrList> intList;
 
-    public NestedIntList() {
+    public IntOrList() {
         this(0, false, new LinkedList<>());
     }
 
-    public NestedIntList(int value){
+    public IntOrList(int value){
         this(value, true, null);
     }
 
-    public NestedIntList(int value, boolean isNumber, List<NestedIntList> intList) {
+    public IntOrList(int value, boolean isInt, List<IntOrList> intList) {
         this.value = value;
-        this.isNumber = isNumber;
+        this.isInt = isInt;
         this.intList = intList;
     }
 
     public String toString() {
-        if(isNumber) {
+        if(isInt) {
             return Integer.toString(value);
         } else {
             return intList.toString();
         }
     }
 
-    public void add(NestedIntList node) {
-        if(!isNumber){
+    public void add(IntOrList node) {
+        if(!isInt){
             intList.add(node);
         } else {
             throw new IllegalArgumentException("Int value cannot be added");
@@ -40,11 +40,11 @@ class NestedIntList {
 }
 
 public class MiniParser {
-    public NestedIntList parse(String input) {
-        NestedIntList ret = null;
+    public IntOrList parse(String input) {
+        IntOrList ret = null;
         if (null != input && !input.isEmpty() ) {
             if(input.startsWith("[")) { //array
-                ret = new NestedIntList();
+                ret = new IntOrList();
                 int n = input.length();
                 int opens = 1;
                 int lastPos = 1;
@@ -54,7 +54,7 @@ public class MiniParser {
                         case '[': opens++; break;
                         case ']': opens--;
                             if(opens == 0) { //BUG: Very easy to forget this!!!
-                                NestedIntList value = parse(input.substring(lastPos, i));
+                                IntOrList value = parse(input.substring(lastPos, i));
                                 if(null != value){
                                     ret.add(value);
                                 }
@@ -62,7 +62,7 @@ public class MiniParser {
                             break;
                         case ',':
                             if (opens == 1) {
-                                NestedIntList value = parse(input.substring(lastPos, i));
+                                IntOrList value = parse(input.substring(lastPos, i));
                                 if(null != value){
                                     ret.add(value);
                                 }
@@ -72,7 +72,7 @@ public class MiniParser {
                     }
                 }
             } else {
-                ret = new NestedIntList(Integer.parseInt(input));
+                ret = new IntOrList(Integer.parseInt(input));
             }
         }
         return ret;
@@ -88,7 +88,7 @@ public class MiniParser {
                 "[123,456,[788,799,833],[[]],10,[]]"
         };
         for (String str : strs) {
-            NestedIntList ret = parser.parse(str);
+            IntOrList ret = parser.parse(str);
             System.out.println(ret);
         }
     }
