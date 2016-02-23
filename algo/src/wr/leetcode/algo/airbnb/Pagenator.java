@@ -4,30 +4,41 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Pagenator {
-    public static final int PAGE = 3;
+    public static final int PAGE = 12;
+    final List<String> buffer = new LinkedList<>();
     final List<String> records;
-    public Pagenator( String [] records ) {
-        this.records = new LinkedList<>(Arrays.asList(records));
+    final Iterator<String> ite;
+
+    public Pagenator( String [] data  ) {
+        this.records = Arrays.asList(data);
+        this.ite = this.records.iterator();
     }
 
     List<String> getNextPage() {
-        List<String> ret = new LinkedList<>();
-        Set<String> hosts = new HashSet<>();
-        Iterator<String> ite = records.iterator();
-        while(ite.hasNext()) {
-            String record = ite.next();
-            String hostId = record.split(",")[0];
-            if (!hosts.contains(hostId)) {
-                hosts.add(hostId);
-                ret.add(record);
-                ite.remove();
-            }
-            if (ret.size() == PAGE) {
-                break;
+        Map<String, String> ret = new LinkedHashMap<>();
+        Iterator<String> bufferIteRead = buffer.iterator();
+
+        while(ret.size() < PAGE && bufferIteRead.hasNext()) {
+            String record = bufferIteRead.next();
+            String host = record.split(",")[0];
+            if(!ret.containsKey(host)) {
+                ret.put(host, record);
+                bufferIteRead.remove();
             }
         }
-        return ret;
+
+        while (ret.size() < PAGE && ite.hasNext()) {
+            String record = ite.next();
+            String host = record.split(",")[0];
+            if(!ret.containsKey(host)) {
+                ret.put(host, record);
+            } else {
+                buffer.add(record);
+            }
+        }
+        return ret.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList());
     }
+
 
     public static void main(String[] args) {
 
@@ -64,52 +75,12 @@ public class Pagenator {
                 "30,23,1.1,SanJose"
         };
         Pagenator pagenator = new Pagenator(strs);
-        PageNatorV2 v2 = new PageNatorV2(strs);
         List<String> ret = pagenator.getNextPage();
-        List<String> ret2 = v2.getNextPage();
         while( !ret.isEmpty() ) {
-            System.out.println(ret2);
             System.out.println(ret);
-            System.out.println(ret2.equals(ret));
             System.out.println();
             ret = pagenator.getNextPage();
-            ret2 = v2.getNextPage();
         }
     }
 }
 
-class PageNatorV2 extends Pagenator{
-    final List<String> buffer = new LinkedList<>();
-    final Iterator<String> ite = records.iterator();
-
-    public PageNatorV2( String [] records )
-    {
-        super(records);
-    }
-
-    @Override
-    List<String> getNextPage() {
-        Map<String, String> ret = new LinkedHashMap<>();
-        Iterator<String> bufferIteRead = buffer.iterator();
-
-        while(ret.size() < PAGE && bufferIteRead.hasNext()) {
-            String record = bufferIteRead.next();
-            String host = record.split(",")[0];
-            if(!ret.containsKey(host)) {
-                ret.put(host, record);
-                bufferIteRead.remove();
-            }
-        }
-
-        while (ret.size() < PAGE && ite.hasNext()) {
-            String record = ite.next();
-            String host = record.split(",")[0];
-            if(!ret.containsKey(host)) {
-                ret.put(host, record);
-            } else {
-                buffer.add(record);
-            }
-        }
-        return ret.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList());
-    }
-}
