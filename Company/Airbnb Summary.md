@@ -58,8 +58,7 @@ Airbnb Summary
 1. among all the features of airbnb, what do you want to improve?
 1. 描述一件你当时觉得非常risky的事情，你是怎么做的，结果如何
 
-
-TBD:
+# TBD:
 1. PingServer: output the timestamp offset [TBD]
 写echo TCP client， 向面试官的server发请求， 读回数据。地里比较少人说这种， 我来详细说一下， 情境是这样的： 想象你开车， 踩下油门，车会加速，放开油门，车会减速。 client向server发的请求有以下2种： （a）STATUS –表示查询现在车的速度和踩下踏板的压力； （b）THROTTLE 50.1 — 这条指令是“THROTTLE” 加上一个数字， 表示我现在将踩油门的压力调为50.1
 
