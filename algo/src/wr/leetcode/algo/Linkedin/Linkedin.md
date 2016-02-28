@@ -58,5 +58,26 @@
 1. [Find the maximum product subset with negative and positive integer]()
 
 1.[Tiny URL]
-  * How to implement collision strategy?
+  * How to implement collision strategy, add some randomness factor?
 2.[Trending Topics]
+3.[Most frequent words]: map reduce
+4.Delay Queue
+5.Message Broker
+6.host manager那轮最后问了一个，如何在不影响功能的情况下，把一个data center
+的数据复制到另外一个新的data center去。
+
+7.设计题: a restful server with 4GB,
+given a request such as: http://seq=4?len=60?xxxxdata
+the system will store the binary data with that sequence number.
+given a request: http://startseq=3?maxLen=100, the system returns all data objects with sequence >= 3 with total data length less equal than 100.
+
+multiple clients calling simutaneous
+what data structure, concurrency, locking, etc..
+
+8.Given a social graph, find if there is a path between two persons with at
+most 2 steps (3rd level connection), how to handle it in distributed way (
+large graph stored at a large number of nodes, minimize cross-communication)
+
+9.design a service to blacklist malicious IP addresses
+
+10. Leetcode Search for a Range
