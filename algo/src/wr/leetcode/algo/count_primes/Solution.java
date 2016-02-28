@@ -6,7 +6,8 @@ import java.util.TreeSet;
 
 public class Solution {
 
-    public int countPrimes(int n) {
+
+    public int countPrimes1(int n) {
         int ret = 0;
         boolean [] prime = new boolean [n];
         Arrays.fill(prime, true);
@@ -24,7 +25,7 @@ public class Solution {
 
         for (int i = 2; i < n; ++i) {
             if(prime[i]) {
-                System.out.println(i);
+               // System.out.println(i);
                 ret ++;
             }
         }
@@ -33,7 +34,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution sol = new Solution();
-        System.out.println(sol.countPrimes(1000));
+        System.out.println(sol.countPrimes1(1000));
     }
 
 
