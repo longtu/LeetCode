@@ -60,7 +60,7 @@ public class Solution {
             }
         }
         return match[m][n];
-    }*/
+    }
 
     String notNull(String s) {
         return (null == s)?(""):(s);
@@ -114,7 +114,57 @@ public class Solution {
             }
         }
         return match[m][n];
+    }*/
+    private String notNull(String str) {
+        return (null == str)?(""):(str);
     }
+
+    public boolean isMatch(String s, String p) {
+        s = notNull(s);
+        p = notNull(p);
+
+        int m = p.length();
+        int n = s.length();
+
+        boolean[][] match = new boolean[m+1][n+1];
+
+        for (int i = 0; i<=m; ++i) {
+            for (int j = 0; j <=n; ++j) {
+                boolean val;
+                if (i == 0) {
+                    val = (j==0);
+                } else {
+                    char pChar = p.charAt(i-1);
+                    switch (pChar) {
+                        case '.':
+                            val = (j != 0) && (match[i - 1][j - 1]);
+                            break;
+                        case '*': // i >=2
+                            char prevChar = p.charAt(i-2);
+                            if (prevChar == '.') {
+                                int k = j;
+                                val = match[i-2][k];
+                                while(!val && k > 0) {
+                                    val = match[i-2][--k];
+                                }
+                            } else {
+                                int k = j;
+                                val = match[i-2][k];
+                                while(!val && k > 0 && prevChar == s.charAt(k-1)) {
+                                    val = match[i-2][--k];
+                                }
+                            }
+                            break;
+                        default:
+                            val = (j != 0) && (pChar == s.charAt(j - 1) && match[i - 1][j - 1]);
+                    }
+                }
+                match[i][j] = val;
+            }
+        }
+        return match[m][n];
+    }
+
 
     public static void main(String[] args) {
         Solution sol = new Solution();

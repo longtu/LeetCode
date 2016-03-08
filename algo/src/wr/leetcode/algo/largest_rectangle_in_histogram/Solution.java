@@ -50,7 +50,7 @@ public class Solution {
         }
         return max;
     }*/
-    public int largestRectangleArea(int[] heights) {
+    public int largestRectangleArea0(int[] heights) {
         heights = (null == heights)?(new int[0]):(heights);
         int [] hs = new int[heights.length + 2];
         System.arraycopy(heights, 0, hs, 1, heights.length);
@@ -70,6 +70,32 @@ public class Solution {
             st.push(i);
         }
         return max;
+    }
+
+    public int largestRectangleArea(int[] heights) {
+        int ret = 0;
+        if (null != heights && heights.length > 0) {
+            int [] hts = new int [heights.length+2];
+            System.arraycopy(heights, 0, hts, 1, heights.length);
+            Stack<Integer> st = new Stack<>();
+
+            for (int i = 0; i < hts.length; ++i) {
+                int h = hts[i];
+                if (st.isEmpty() || h >= hts[st.peek()]) {
+                    st.push(i);
+                } else {
+                    while(hts[st.peek()] > h) {
+                        int myHeight = hts[st.pop()];
+                        int w = i - st.peek() - 1;
+                        int area = myHeight * w;
+                        ret = Math.max(area, ret);
+                    }
+                    st.push(i);
+                }
+            }
+
+        }
+        return ret;
     }
 
     public static void main(String[] args) {

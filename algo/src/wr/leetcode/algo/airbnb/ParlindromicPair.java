@@ -8,13 +8,11 @@ public class ParlindromicPair {
 
         if (input != null && input.length > 0) {
             // Step 1: put the reversed order of each word into the map
-            Map<String, List<Integer>> map = new HashMap<>();
+            Map<String, Integer> map = new HashMap<>();
 
-            for (int i = 0; i < input.length; i++) {
-                String str = input[i];
+            for (String str : input) {
                 String reStr = reverse(str);
-                List<Integer> indices = map.getOrDefault(reStr, new LinkedList<>());
-                indices.add(i);
+                Integer indices = map.getOrDefault(reStr, 0) + 1;
                 map.put(reStr, indices);
             }
 
@@ -26,13 +24,13 @@ public class ParlindromicPair {
                     String postfix = str.substring(j);
                     String reverse = reverse(str);
                     if (map.containsKey(prefix) && isPalindrome(postfix)) {
-                        if (map.get(prefix).size() > 1 || !prefix.equals(reverse)) {
+                        if (map.get(prefix) > 1 || !prefix.equals(reverse)) {
                             String palin = str + reverse(prefix);
                             result.add(palin);
                         }
                     }
                     if (map.containsKey(postfix) && isPalindrome(prefix)) {
-                        if (map.get(postfix).size() > 1 || !postfix.equals(reverse)) {
+                        if (map.get(postfix) > 1 || !postfix.equals(reverse)) {
                             String palin = reverse(postfix) + str;
                             result.add(palin);
                         }
@@ -41,6 +39,33 @@ public class ParlindromicPair {
             }
         }
         return new ArrayList<>(result);
+    }
+
+    public List<List<String>> pairPalindrome(List<String> words){
+        List<List<String>> res = new ArrayList<List<String>>();
+        if(words == null || words.size() == 0){
+            return res;
+        }
+        HashSet<String> hashset = new HashSet<String>();
+        for(String word : words){
+            hashset.add(word);
+        }
+        for(String word : words){
+            int N = word.length();
+            for(int i = 0; i < N; i++){
+                String prefix = word.substring(0, i);
+                String suffix = word.substring(i, N);
+                String reverseSuffix = reverse(suffix);
+                if(isPalindrome(prefix) && hashset.contains(reverseSuffix)){
+
+                    List<String> sol = new ArrayList<String>();
+                    sol.add(reverseSuffix);
+                    sol.add(word);
+                    res.add(sol);
+                }
+            }
+        }
+        return res;
     }
 
     private String reverse(String s) {
@@ -74,8 +99,11 @@ public class ParlindromicPair {
         };
 
         for (String[] input : inputs) {
+            List<List<String>> res = solution.pairPalindrome(Arrays.asList(input));
+            System.out.println(res);
             List<String> result = solution.getPalindromaticPairs(input);
             System.out.println(result);
+            System.out.println("====");
         }
     }
 }

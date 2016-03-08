@@ -6,11 +6,11 @@ public class Solution {
 
     /*
         public void connect(TreeLinkNode root) {
-    
+
             TreeLinkNode parent = new TreeLinkNode(-1);
             parent.left = root;
             TreeLinkNode leftMost = parent.left;
-    
+
             while(leftMost != null) {
                 TreeLinkNode node = leftMost;
                 while(node != null ){
@@ -33,15 +33,15 @@ public class Solution {
                 parent = nextHasChild(leftMost);
                 leftMost = nextCusin(parent);
             }
-    
+
         }
-    
+
         private TreeLinkNode nextCusinHasChild(TreeLinkNode node){
             return nextHasChild(node.next);
         }
-    
+
         private TreeLinkNode nextHasChild(TreeLinkNode node){
-    
+
             while(null != node) {
                 if(null != node.left || null != node.right) {
                     return node;
@@ -50,7 +50,7 @@ public class Solution {
             }
             return null;
         }
-    
+
         private TreeLinkNode nextCusin(TreeLinkNode uncle){
             if(null == uncle){
                 return null;
@@ -58,7 +58,7 @@ public class Solution {
                 return (null != uncle.left)?(uncle.left):(uncle.right);
             }
         }
-        */
+
     public void connect0(TreeLinkNode root) {
         TreeLinkNode nextStart = root;
 
@@ -129,6 +129,48 @@ public class Solution {
                 ret = uncle.right;
             }
             uncle = uncle.next;
+        }
+        return ret;
+    }*/
+    public void connect(TreeLinkNode root) {
+        TreeLinkNode nextStart = root;
+
+        while(null != nextStart) {
+            TreeLinkNode parent = nextStart;
+            nextStart = null;
+            while(null != parent) {
+                if (null == nextStart){
+                    nextStart = (null != parent.left)?(parent.left):
+                            (null != parent.right)?(parent.right):(null);
+                }
+                if (null != parent.left) {
+                    if(null != parent.right) {
+                        parent.left.next = parent.right;
+                    } else {
+                        parent.left.next = nextSibling(parent);
+                    }
+                }
+                if (null != parent.right) {
+                    parent.right.next = nextSibling(parent);
+                }
+                parent = parent.next;
+            }
+        }
+    }
+
+    private TreeLinkNode nextSibling(TreeLinkNode parent) {
+        TreeLinkNode ret = null;
+        TreeLinkNode node = parent.next;
+        while(null != node) {
+            if (null != node.left ) {
+                ret = node.left;
+                break;
+            }
+            if(null != node.right) {
+                ret = node.right;
+                break;
+            }
+            node = node.next;
         }
         return ret;
     }
