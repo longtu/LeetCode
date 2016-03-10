@@ -1,4 +1,4 @@
-#New
+# Coding
 1. Find the k most frequent words from a file
   * First time iteration Map + PriorityQueue
 1. Positive Subarray sums to the target value *** 2
@@ -16,7 +16,6 @@
 1. PasswordCombination
   * Check on emptyString.
 
-#OLD
 1. Level Order Traversal
   * 3
   * Calculate level average(iterative + recursive) 2
@@ -137,29 +136,49 @@
   * https://leetcode.com/submissions/detail/55807287/
 1. First Bad Version
   * Cut the range aggresively enough!
+1. group anagrams 2
+  * map and then sort values will be faster!
+1. sort colors
+  https://leetcode.com/submissions/detail/55891651/
+1. Shift all zeros to right of array
+  https://leetcode.com/submissions/detail/55892248/
+1. Divide Two Integers
+  * Divide/Conquer
+  https://leetcode.com/submissions/detail/55894524/
+1. Jump Game 2 (SEA) **(Worth) revisit!!
+  * Similar with BFS
+  * Jump Game I: BUGGY https://leetcode.com/submissions/detail/55895922/
+  * Jump Game II: https://leetcode.com/submissions/detail/55898421/
+1. valid palindrome, cannot use String.lowerCase() but can use Character.toLowerCase
+  * Character.isLetterOrDigit
+  * https://leetcode.com/submissions/detail/55900150/
+
+1. simplify path with current path，based on current path和cd command找到最后的 (SEA)
+   例如current path = ‘/a/b’, cd command = ‘../c/./d’，那最后的path就是’/a/c/d’。
+  * https://leetcode.com/submissions/detail/55902644/
+  * Stream Joinning
+  * check cd command prefix, if starts with/, simplify cd command
+  * otherwise simplify concatenation of path + "/" + command
+
+1. Count Number of Islands
+  * TODO: Union Find Solution, which is also Count Number of Islands II
+
+1. Implement PriorityQueue/Heap
+  * O(N) time to build a heap is not by calling insert N times,
+  * Rather, by calling heapify for all 'Parent' nodes.
 
 //TODO:
 http://www.themianjing.com/tag/facebook/page/8/
 1. Task Scheduler
   * Check discussion
 
-1. Divide Two Integers
-1. Implement PriorityQueue/Heap
-1. Sort Colors
-1. group anagrams 2
-1. Count Number of Islands/Surrounded Regions
 1. Buy/Sell Stock
 1. Longest increasing contiguous sequence in array
-1. Longest increasing subsequence in array
+1. Longest increasing sub-sequence in array
   http://www.geeksforgeeks.org/dynamic-programming-set-3-longest-increasing-subsequence/
 1. 一组字符串，求所有彼此之间无公共字符的两两组合中，两字符串长度乘积的最大值。
-1. valid palindrome, cannot use String.lowerCase() but can use Character.toLowerCase
-1. Shift all zeros to right of array
-1. Jump Game 2 (SEA)
-1. simplify path with current path，based on current path和cd command找到最后的 (SEA)
-   例如current path = ‘/a/b’, cd command = ‘../c/./d’，那最后的path就是’/a/c/d’。
 
-Design
+# Design
 1. System design Mobile app of photo feeds.
 功能： 读取好友的最近图片, 阅览好友的相册
 要求： 满足功能的同时减少对手机的能耗。

@@ -1,7 +1,7 @@
 package wr.leetcode.algo.valid_palindrome;
 
 public class Solution {
-
+    /*
     private boolean isValid( char ch) {
         return ((ch >= 'a') && (ch <= 'z')) ||
                 ((ch >= 'A') && (ch <= 'Z')) ||
@@ -40,8 +40,6 @@ public class Solution {
         return ret;
     }
 
-
-    /*
     public boolean isPalindrome(String s) {
         boolean ret = true;
         if(null==s) {
@@ -70,11 +68,39 @@ public class Solution {
     }
 
     */
+    public boolean isPalindrome(String s) {
+        boolean ret = true;
+        s = (null == s)?(""):(s);
+        int n = s.length();
+        int l = 0;
+        int r = n-1;
 
+        while( l < r ) {
+            char lc = s.charAt(l);
+            char rc = s.charAt(r);
+            if (!Character.isLetterOrDigit(lc)) {
+                l++;
+            } else if (!Character.isLetterOrDigit(rc)) {
+                r--;
+            } else {
+                lc = Character.toLowerCase(lc);
+                rc = Character.toLowerCase(rc);
+                if (lc != rc) {
+                    ret = false;
+                    break;
+                } else {
+                    l++;
+                    r--;
+                }
+            }
+        }
+        return ret;
+    }
 
     public static void main(String[] args) {
         Solution sol = new Solution();
         System.out.println(sol.isPalindrome("A man, a plan, a canal: Panama"));
         System.out.println(sol.isPalindrome("race a car"));
+        System.out.println(sol.isPalindrome("0P"));
     }
 }

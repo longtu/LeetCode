@@ -46,7 +46,37 @@ public class Solution {
 
     }
 
+    public String simplifyPath(String path) {
+        Stack<String> st = new Stack<>();
+        path = (null == path)?(""):(path);
+        String[] intervals = path.split("/");
 
+        for (String str : intervals) {
+            switch (str) {
+                case ".":
+                case "":
+                    break;
+                case "..":
+                    if (!st.isEmpty()) {
+                        st.pop();
+                    }
+                    break;
+                default:
+                    st.push(str);
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (String str : st) {
+            sb.append("/");
+            sb.append(str);
+        }
+        if(sb.length() == 0) {
+            sb.append("/");
+        }
+        return sb.toString();
+    }
+
+/*
 
     public String simplifyPath(String path) {
 
@@ -68,7 +98,7 @@ public class Solution {
         }
         String ret = "/" + st.stream().collect(Collectors.joining("/"));
         return ret;
-    }
+    }*/
 
 
 
