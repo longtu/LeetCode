@@ -1,5 +1,7 @@
 package wr.leetcode.algo.best_time_to_buy_and_sell_stock;
 
+import java.util.Arrays;
+
 public class Solution {
     public int maxProfit0(int[] prices) {
 

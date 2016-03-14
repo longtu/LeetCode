@@ -1,7 +1,6 @@
 package wr.leetcode.algo.Facebook;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  *
@@ -15,76 +14,98 @@ import java.util.Map;
  */
 public class TaskScheduler {
 
-    /*cool down time is 2*/
-    public int taskSchedule(char [] tasks ) {
-        int t = 0;
-        if( null == tasks || tasks.length == 0) {
-            return t;
+
+    /**
+     * Not that complicated! Consider hashtable
+     *
+     * time O(input task list)
+     * space O(Task type)
+     */
+    public int taskSchedule(char[] tasks, int k) {
+        Map<Character, Integer> schedule = new HashMap<>();
+        int time = 0;
+        for (int i = 0; i < tasks.length; ++i) {
+            char task = tasks[i];
+            if ( schedule.containsKey(task)){
+                time =  schedule.get(task);
+            }
+            schedule.put(task, time + k + 1);
+            time += 1;
+        }
+        return time;
+    }
+
+    /**
+     * What if the tasks no need to execute in order?
+     *
+     * TODO: improve to fast skip the time with no events:
+     *  fast skip t when at t:
+     *   runqueue is empty
+     *   no scheduled events in queue
+     *
+     * can add another queue as next events.
+     *
+     */
+    public int taskScheduleNoOrder(String taskStr, int k) {
+
+        Map<Character, Integer> taskCounts = new HashMap<>();
+        for (char ch : taskStr.toCharArray()) {
+            int cnt = taskCounts.getOrDefault(ch, 0) + 1;
+            taskCounts.put(ch, cnt);
         }
 
-        int i = 0;
-        Character [] history = new Character[3];
-        while( i < tasks.length ) {
-            Character task = tasks[i];
-            boolean needsWait = false;
-            for (int j = 1; j<=2; ++j) {
-                if (task.equals(history[(t-j+3)%3])) {
-                    needsWait = true;
-                }
+        Queue<RunQueueEntry> runQueue = new PriorityQueue<>((a,b)->(
+                b.remaining.compareTo(a.remaining) ));
+
+        //scheduled task
+        Map<Integer, List<Character>> time = new HashMap<>();
+        List<Character> tasks = new LinkedList<>(taskCounts.keySet());
+        time.put(0, tasks);
+
+        int t = 0;
+
+        while( !taskCounts.isEmpty() || !runQueue.isEmpty()) {
+            List<Character> executables = time.getOrDefault(t, new LinkedList<>());
+            time.remove(t);
+            for (Character task : executables) {
+                runQueue.offer(new RunQueueEntry(
+                        taskCounts.get(task),
+                        task));
             }
-            if(needsWait) {
-                history[t%3] = null;
-            } else {
-                history[t%3] = task;
-                i++;
+            //every task in runqueue is executable
+            if(!runQueue.isEmpty()) {
+                RunQueueEntry entry = runQueue.poll();
+                Character task = entry.taskId;
+                System.out.println( t + ":" + task);
+                int cnt = taskCounts.get(task)-1;
+                if(cnt == 0) {
+                    taskCounts.remove(task);
+                } else {
+                    taskCounts.put(task, cnt);
+                    int nextTime = t + k + 1;
+                    List<Character> futureTasks = time.getOrDefault(nextTime, new LinkedList<>());
+                    futureTasks.add(task);
+                    time.put(nextTime, futureTasks);
+                }
             }
             t++;
         }
         return t;
     }
 
-    /*cool down time is k */
-    public int taskSchedule(char [] tasks, int cooldown ) {
-        int t = 0;
-        if( null == tasks || tasks.length == 0) {
-            return t;
-        }
+    class RunQueueEntry {
+        Integer remaining;
+        Character taskId;
 
-        int i = 0;
-        int mod = cooldown + 1;
-        Character [] history = new Character[mod];
-        Map<Character, Integer> tasksCounts = new HashMap<>();
-        while( i < tasks.length ) {
-            Character task = tasks[i];
-            if( t - cooldown -1 >= 0) {
-                Character tsk = history[(mod + t-cooldown-1)%mod];
-                if( null != tsk) {
-                    int cnt = tasksCounts.get(tsk) - 1;
-                    if (cnt == 0) {
-                        tasksCounts.remove(tsk);
-                    } else {
-                        tasksCounts.put(tsk, cnt);
-                    }
-                }
-            }
-
-            boolean needsWait = tasksCounts.containsKey(task);
-            if(needsWait) {
-                history[t%mod] = null;
-            } else {
-                history[t%mod] = task;
-                int cnt = tasksCounts.getOrDefault(task, 0) + 1;
-                tasksCounts.put(task, cnt);
-                i++;
-            }
-            t++;
+        public RunQueueEntry (int remaining, Character taskId) {
+            this.remaining = remaining;
+            this.taskId = taskId;
         }
-        return t;
     }
 
     public static void main(String[] args) {
         TaskScheduler scheduler = new TaskScheduler();
-        System.out.println(scheduler.taskSchedule("AABABCD".toCharArray()));
         System.out.println(scheduler.taskSchedule("AABABCD".toCharArray(), 2));
+        System.out.println(scheduler.taskScheduleNoOrder("AABABCD", 10));
     }
 }

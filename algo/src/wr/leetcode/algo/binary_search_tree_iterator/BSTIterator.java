@@ -1,13 +1,10 @@
 package wr.leetcode.algo.binary_search_tree_iterator;
 
+import wr.leetcode.algo.TreeNode;
+
 import java.util.Stack;
 
-class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode(int x) { val = x; }
-}
+
 
 public class BSTIterator {
 
@@ -30,12 +27,16 @@ public class BSTIterator {
     }
 
     public int next() {
+        return nextNode().val;
+    }
+
+    public TreeNode nextNode() {
         if(!hasNext()){
-          throw new RuntimeException("Index out of bound!");
+            throw new RuntimeException("Index out of bound!");
         }
         TreeNode node = stack.pop();
         pushLeftDecents(node.right);
-        return node.val;
+        return node;
     }
 }
 

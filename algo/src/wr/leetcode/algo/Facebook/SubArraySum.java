@@ -21,23 +21,22 @@ public class SubArraySum {
 
     // input not null
     // target not negative
-    public static int[] findRange(int[] input, int target) {
-        Integer sum = 0;
+    public static int[] findRange( int[] nums, int target ) {
+
+        int sum = 0;
+        int j = -1;
         int[] ret = null;
 
-        int j = -1;
-        for (int i = 0; i < input.length; ++i) {
-            sum += input[i];
-            while (sum > target) {
-                sum -= input[++j];
-            }
-            //BUG: watch out for i >= j+ 1 here for valid subarray
-            // at least one element
-            if( sum == target && i >= j+1) {
-                ret = new int[2];
-                ret[0] = j+1;
-                ret[1] = i;
-                break;
+        for(int i = 0; i < nums.length; ++i) {
+            sum += nums[i];
+            //j < i to make sure if target is 0, no zero element sub array
+            while( sum >= target && j < i ) {
+                if( sum == target ) {
+                    ret = new int[2];
+                    ret[0] = j+1;
+                    ret[1] = i;
+                }
+                sum -= nums[++j];
             }
         }
         return ret;
@@ -47,24 +46,47 @@ public class SubArraySum {
     // input not null
     // target not negative
     // input may contains negatives
-    public static int[] findRangeWithNeg(int[] input, int target) {
-        int sum = 0;
+    public static int[] findRangeWithNeg(int[] nums, int target) {
         int[] ret = null;
-        Map<Integer, Integer> prefixSum = new HashMap<>();
+        Map<Integer, Integer> index = new HashMap<>();
+        index.put(0, -1);
 
-        for (int i = 0; i < input.length; ++i) {
-            sum += input[i];
-            if (sum == target) {
-                ret = new int[] {0, i};
-            } else if (prefixSum.containsKey(sum)) {
-                //BUG: value +1
-                ret = new int[] {prefixSum.get(sum)+1, i};
-                break;
-            } else {
-                prefixSum.put(sum + target, i);
+        int sum = 0;
+        for (int i = 0; i < nums.length; ++i) {
+            int val = nums[i];
+            sum += val;
+            if ( index.containsKey(sum - target)) {
+                ret = new int[2];
+                ret[0] = index.get(sum - target ) + 1;
+                ret[1] = i;
+            }
+            if( !index.containsKey(sum)) {
+                index.put(sum, i);
             }
         }
         return ret;
+    }
+
+    //assume input nums is never empty/null
+    public static int longestSubArrayWithSum( int[] nums, int target ) {
+
+        Map<Integer, Integer> index = new HashMap<>();
+        index.put(0, -1);
+
+        int sum = 0;
+        int max = -1;
+        for (int i = 0; i < nums.length; ++i) {
+            int val = nums[i];
+            sum += val;
+            if ( index.containsKey(sum - target)) {
+                int len = i - index.get(sum - target);
+                max = Math.max(max, len);
+            }
+            if( !index.containsKey(sum)) {
+                index.put(sum, i);
+            }
+        }
+        return max;
     }
 
     public static void main(String[] args) {
@@ -88,7 +110,10 @@ public class SubArraySum {
                 {{1, 4, 20, 3, 10, 5}, {33}},
                 {{1, 4, 0, 0, 3, 10, 5}, {7}},
                 {{1, 4}, {0}},
-                {{1,2,-3,4,-9,6},{-8}}
+                {{1,2,-3,4,-9,6},{-8}},
+                {{1,-2,-6,2,-3,4,-9,6},{-8}},
+                {{1, 4, 0, 0, 3, 10, 5}, {0}},
+
         }) {
             int[] sol = SubArraySum.findRangeWithNeg(arr[0], arr[1][0]);
             if(null == sol ){
@@ -96,6 +121,7 @@ public class SubArraySum {
             } else {
                 System.out.println(String.format("%s, %s", sol[0], sol[1]));
             }
+            System.out.println("LongestSubArr: " + SubArraySum.longestSubArrayWithSum(arr[0], arr[1][0]));
         }
     }
 }

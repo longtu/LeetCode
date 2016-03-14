@@ -1,5 +1,7 @@
 package wr.leetcode.algo.Facebook;
 
+import wr.leetcode.algo.TreeNode;
+
 class ListNode {
     int value;
     ListNode prev;
@@ -12,22 +14,21 @@ class ListNode {
     }
 }
 
-class TreeNode {
-    int value;
-    TreeNode left;
-    TreeNode right;
-
-    public TreeNode( int value) {
-        this.value = value;
-    }
-}
-
-
 class Info {
     ListNode head;
     ListNode tail;
 
     public Info (ListNode head, ListNode tail) {
+        this.head = head;
+        this.tail = tail;
+    }
+}
+
+class TreeInfo{
+    TreeNode head;
+    TreeNode tail;
+
+    public TreeInfo (TreeNode head, TreeNode tail) {
         this.head = head;
         this.tail = tail;
     }
@@ -44,7 +45,7 @@ public class Tree2DoublyLinkedList {
         if( null == root) {
             return info;
         }
-        ListNode node = new ListNode(root.value);
+        ListNode node = new ListNode(root.val);
         info = new Info(node, node);
 
         if( null != root.left) {
@@ -63,6 +64,33 @@ public class Tree2DoublyLinkedList {
         return info;
     }
 
+    TreeNode flattenBST(TreeNode root) {
+        return flattenBSTInfo(root).head;
+    }
+
+    TreeInfo flattenBSTInfo(TreeNode root) {
+        TreeNode head = null;
+        TreeNode tail = null;
+        if( null != root ) {
+            head = root;
+            tail = root;
+            if( null != root.left) {
+                TreeInfo leftInfo = flattenBSTInfo(root.left);
+                head = leftInfo.head;
+                leftInfo.tail.right = root;
+                root.left = leftInfo.tail;
+            }
+            if( null != root.right) {
+                TreeInfo rightInfo = flattenBSTInfo(root.right);
+                tail = rightInfo.tail;
+                rightInfo.head.left = root;
+                root.right = rightInfo.head;
+            }
+        }
+        return new TreeInfo(head, tail);
+    }
+
+
     void printList(ListNode node) {
         while (node != null) {
             System.out.print(node.value + " ");
@@ -71,6 +99,17 @@ public class Tree2DoublyLinkedList {
             }
             System.out.println(", ");
             node = node.next;
+        }
+    }
+
+    void printList(TreeNode node) {
+        while (node != null) {
+            System.out.print(node.val + " ");
+            if(null != node.left) {
+                System.out.print(node.left.val + " ");
+            }
+            System.out.println(", ");
+            node = node.right;
         }
     }
 
@@ -86,7 +125,7 @@ public class Tree2DoublyLinkedList {
         root.right.left = new TreeNode(36);
 
         // Convert to DLL
-        ListNode head = solution.tree2List(root);
+        TreeNode head = solution.flattenBST(root);
 
         solution.printList(head);
     }
