@@ -156,6 +156,7 @@
   * Cut the range aggresively enough!
 1. group anagrams 2
   * map and then sort values will be faster!
+
 1. sort colors 2
   * https://leetcode.com/submissions/detail/55891651/
   * This process is very similar with quickSort Partition
@@ -201,6 +202,7 @@
 
 1. Task Scheduler
   * Check discussion
+1. POI geo hashing, 2D->1D
 
 1. Longest increasing sub-sequence in array
   * https://leetcode.com/submissions/detail/56225311/
@@ -244,6 +246,7 @@ http://www.themianjing.com/tag/facebook/page/7/
 1. 一组字符串，求所有彼此之间无公共字符的两两组合中，两字符串长度乘积的最大值。
 1. KMP/StrStr
 1. Fair Locking Implementation
+
 1. Design Messenger
 1. System design Mobile app of photo feeds/Instagram
 功能： 读取好友的最近图片, 阅览好友的相册
