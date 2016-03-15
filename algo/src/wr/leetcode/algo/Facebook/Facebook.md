@@ -25,7 +25,7 @@
   * 3
   * Calculate level average(iterative + recursive) 2
   * Top-down, bottom-up, ZigZag
-1. Binary Tree Inorder traversal Iterator 2
+1. Binary Tree Inorder traversal Iterator 3
 1. BinaryTree to doubly LinkedList 2
   * Method1: Recursive with Info (head,tail)
   * Method2: Using an Iterator and iterate over the tree and build
@@ -84,7 +84,8 @@
   * O(1) space
 1. **Meeting Rooms I/II**
   * If one person can attend all 2
-  * Minimum number of meeting rooms required 2
+  * Minimum number of meeting rooms required/Find time with max overlapping meetings 4
+
 1. Double Binary Search to find sqrt
   * use eps
 1. Combination Sum
@@ -96,8 +97,6 @@
   * How to print all paths
 1. Find the Thief
   * DP of size n (room number) * K(sequence size)
-1. 3 Sum
-  * How about each digit can be reused?
 1. Decode Ways 4
 1. Lowest common ancestor of binary tree
   * with parent pointer
@@ -133,13 +132,13 @@
   * do it in place: reverse twice
 1. Product of all elements except itself
     //One pass solution exists
-    * Trap Water, similar algorithm
+    * Trap Water, similar algorithm 2
     * Container with Most water is very different with 'Trap Water' above.
 
 1. Longest Weighted leaf-to-leaf Path in BST
   * Recursive, similar to longest path
 
-1. Phone number combination 2 (Recursion or DP)(SEA)
+1. Phone number combination 3 (Recursion or DP)(SEA)
 
 1. Longest Common Prefix
   * char by char
@@ -152,26 +151,27 @@
 1. Walls and Gates
   * enqueue all and then do a single BFS; making sure it's O(M*N)
   * https://leetcode.com/submissions/detail/55807287/
-1. First Bad Version 3
+1. First Bad Version 5
   * Cut the range aggresively enough!
-1. group anagrams 2
+1. group anagrams 3
   * map and then sort values will be faster!
 
-1. sort colors 2
+1. sort colors 4
   * https://leetcode.com/submissions/detail/55891651/
   * This process is very similar with quickSort Partition
-1. Shift all zeros to right of array 2
+1. Shift all zeros to right of array 4
   https://leetcode.com/submissions/detail/55892248/
   * Similar as delete certain elements with minimum writes (swap with last elements).
+  * Can break order therefore uses swap to minimize operation
 
-1. Divide Two Integers 2
+1. Divide Two Integers 3
   * Divide/Conquer
   https://leetcode.com/submissions/detail/55894524/
 1. Jump Game 2 (SEA) **(Worth) revisit!!
   * Similar with BFS
   * Jump Game I: BUGGY https://leetcode.com/submissions/detail/55895922/
   * Jump Game II: https://leetcode.com/submissions/detail/55898421/
-1. valid palindrome, cannot use String.lowerCase() but can use Character.toLowerCase
+1. valid palindrome, cannot use String.lowerCase() but can use Character.toLowerCase 2
   * Character.isLetterOrDigit
   * https://leetcode.com/submissions/detail/55900150/
 
@@ -182,7 +182,7 @@
   * check cd command prefix, if starts with/, simplify cd command
   * otherwise simplify concatenation of path + "/" + command
 
-1. Count Number of Islands
+1. Count Number of Islands 3
   * TODO: Union Find Solution, which is also Count Number of Islands II
   * Find connected Size of 1s in given binary matrix
 
@@ -211,18 +211,19 @@
   * Longest increasing contiguous sequence in array
     * Two pointers, trivial
 
-1. 3Sum with duplicates allowed
+1. 3Sum with duplicates allowed 4
   * dedupe and two level nested loop  + Map O(N^2)
+  * K-Sum: recursive
 
 Design:
-1. Shorten URL
+1. Shorten URL 2
 1. 1 T messages of max 10 words, how do you build the index table and how many machines to host?
   * Assumption: 2^14 words, words are evenly distributed in messages
   * 5bytes is enough to represent 1T message ID, but we use 8 Bytes Long
   * IndexTable size = 2^14 ( 2^40 * 10 / 2^14 * 8 + avg_byte_per_words) = 80T
   * If in Ram, each machine has 16G Ram, needs 5K * 2 for redundancy = 10K
   * If in filesystem, each machine has 1T, needs around 100.
-1. POI geo hashing, 2D->1D
+1. POI geo hashing, 2D->1D 2
   * [Solution](https://github.com/rw2409/system_design/blob/master/ClassicalProblems/Geo-Poi.md)
 1. How to improve Facebook?
   * Community Based Used Inventory Sharing/Selling Platform.
@@ -244,8 +245,55 @@ Design:
 //TODO:
 http://www.themianjing.com/tag/facebook/page/7/
 1. 一组字符串，求所有彼此之间无公共字符的两两组合中，两字符串长度乘积的最大值。
-1. KMP/StrStr
+1. KMP/StrStr  3
 1. Fair Locking Implementation
+
+plusOne binary without add 2
+(http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=138204&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26sortid%3D311)
+
+given two nodes in a tree, return paths between those two nodes
+
+Flatten list of lists
+http://www.themianjing.com/2015/06/fb-%E7%94%B5%E9%9D%A2-2/
+
+String to floatNumber
+Vertical level printBST one pass
+System design of query field
+
+http://www.themianjing.com/2015/06/f%E9%9D%A2%E7%BB%8F%EF%BC%8Cee%E8%BD%AC%E8%A1%8C/
+
+Page Rank Design
+http://www.themianjing.com/2015/06/facebook-%E5%8A%A0%E9%9D%A2-design-%E9%A2%98/
+
+http://www.themianjing.com/2015/07/facebook-onsite-%E9%9D%A2%E7%BB%8F/
+UserContact
+dot product of sparse vectors
+
+cooldown task with K, if k is very small, only need to keep track of hashtable with size no more than k
+
+wordbreak
+Merge Interval in place
+http://www.mitbbs.com/article_t/JobHunting/32748585.html
+
+WordGame
+http://www.mitbbs.com/article_t/JobHunting/33055253.html
+
+Integer to English words
+http://www.mitbbs.com/article_t/JobHunting/33038409.html
+
+http://www.mitbbs.com/article_t/JobHunting/33037695.html
+Write a iterator to iterate a nested array.
+hsah table remap
+alien dictionary
+Given an array with length n + 1. The array contains numbers from 1 to n,
+with one of the number duplicated. Now find the duplicated number.讨论各种解法以及时间空间复杂度，最后实现O(N)时间O(1)空间的解法。数组可以
+mutate.
+ Given a bag of characters and a dictionary, find longest string that can 
+be constructed.
+
+remove minimum number of left and right brackets and return the string with
+valid bracket pairs
+http://www.mitbbs.com/article_t/JobHunting/33049009.html
 
 1. Design Messenger
 1. System design Mobile app of photo feeds/Instagram
