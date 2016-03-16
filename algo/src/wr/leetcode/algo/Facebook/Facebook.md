@@ -1,9 +1,9 @@
 # Coding
 1. Find the k most frequent words from a file
   * First time iteration Map + PriorityQueue
-1. Positive Subarray sums to the target value *** 2
+1. Positive Subarray sums to the target value *** 4
   * Watch out for sum = 0 and corresponding range
-  * General subarray sums to target value
+  * General subarray sums to target value 2
   * Maximum Sized Subsequence with sum equal to given target 2
   * Minimum Window Substring: what's optimum? 2
     * Use array + appearCount, only update appearCount when count change to/from 0
@@ -25,7 +25,7 @@
   * 3
   * Calculate level average(iterative + recursive) 2
   * Top-down, bottom-up, ZigZag
-1. Binary Tree Inorder traversal Iterator 3
+1. Binary Tree Inorder traversal Iterator 4
 1. BinaryTree to doubly LinkedList 2
   * Method1: Recursive with Info (head,tail)
   * Method2: Using an Iterator and iterate over the tree and build
@@ -55,7 +55,7 @@
   * How to print with indentation? (add width index based on root)
   * How to parallel?(split at certain depth and reduce), reducing using the depth vector
 
-1. Search in rotated sorted array 3
+1. Search in rotated sorted array, with/without duplicates 4
 1. search kth element in sorted matrix, 列不升序
   * Method1: Merge K sorted List
   * Method2: pull K*N elements and sort
@@ -74,7 +74,7 @@
   * One Edit Distance 2
   * OneOrZero Edit Distance Iterator ** HARD **
 
-1. Regular Expression Matching 2
+1. Regular Expression Matching 3
   * [Solution](https://leetcode.com/submissions/detail/55539502/)
 1. Longest Consecutive Sub-sequence *
   * Put and then remove
@@ -97,7 +97,7 @@
   * How to print all paths
 1. Find the Thief
   * DP of size n (room number) * K(sequence size)
-1. Decode Ways 4
+1. Decode Ways 6
 1. Lowest common ancestor of binary tree
   * with parent pointer
   * without parent pointer
@@ -124,7 +124,7 @@
   * swap(p++, i, array); swap(p, i, array)
   * This approach is the same as sort zeros.
 
-1. ReadN using Read4 3
+1. ReadN using Read4 4
   * https://leetcode.com/submissions/detail/55700746/
   * Clarify read4 behavior after read through all chars
   * https://leetcode.com/submissions/detail/55701380/
@@ -162,7 +162,7 @@
 1. sort colors 4
   * https://leetcode.com/submissions/detail/55891651/
   * This process is very similar with quickSort Partition
-1. Shift all zeros to right of array 4
+1. Shift all zeros to right of array 6
   https://leetcode.com/submissions/detail/55892248/
   * Similar as delete certain elements with minimum writes (swap with last elements).
   * Can break order therefore uses swap to minimize operation
@@ -174,7 +174,7 @@
   * Similar with BFS
   * Jump Game I: BUGGY https://leetcode.com/submissions/detail/55895922/
   * Jump Game II: https://leetcode.com/submissions/detail/55898421/
-1. valid palindrome, cannot use String.lowerCase() but can use Character.toLowerCase 2
+1. valid palindrome, cannot use String.lowerCase() but can use Character.toLowerCase 4
   * Character.isLetterOrDigit
   * https://leetcode.com/submissions/detail/55900150/
 
@@ -188,12 +188,13 @@
 1. Count Number of Islands 3
   * TODO: Union Find Solution, which is also Count Number of Islands II
   * Find connected Size of 1s in given binary matrix
+  * Max area of same color connected islands
 
 1. Implement PriorityQueue/Heap
   * O(N) time to build a heap is not by calling insert N times,
   * Rather, by calling heapify for all 'Parent' nodes.
 
-1. Key Stroke
+1. Key Stroke 2
   * http://www.themianjing.com/2015/07/facebook-onsite%E9%9D%A2%E7%BB%8F/
 1. Merge Intervals
 1. Dropping meetins that are lowest priority and schedule meetings with limited number of rooms.
@@ -238,7 +239,7 @@ Design:
   * SingleWord: DFS
   * Word Collection: Trie + DFS
 
-1. Add and Search word with
+1. Add and Search word with 2
   * Using [Trie](https://leetcode.com/submissions/detail/56238006/)
 
 1. Buy/Sell Stock: loc/glo solves all
@@ -249,7 +250,7 @@ Design:
     https://leetcode.com/submissions/detail/56244376/
 1. PlusOne binary without add 2
 
-1. **Integer to English words**
+1. **Integer to English words** 3
   * Recursive function to deal with spaces in hundreds group
   * deal with 0 in hundreds? correct order added
   * joining
@@ -266,10 +267,12 @@ Design:
   * If the single duplicated number could appear more than once
     * https://leetcode.com/submissions/detail/44048887/
 
+1. find kth minimal number in tournament tree
+
 //TODO:
 http://www.themianjing.com/tag/facebook/page/7/
 1. 一组字符串，求所有彼此之间无公共字符的两两组合中，两字符串长度乘积的最大值。
-1. KMP/StrStr  3
+1. KMP/StrStr  4
 1. Fair Locking Implementation
 
 given two nodes in a tree, return paths between those two nodes
@@ -278,6 +281,47 @@ String to floatNumber
 Vertical level printBST one pass
 System design of query field
 http://www.themianjing.com/2015/06/f%E9%9D%A2%E7%BB%8F%EF%BC%8Cee%E8%BD%AC%E8%A1%8C/
+
+1. Minimum Height of BinaryTree
+  * BFS/DFS
+1. SameTree iteratively
+1. Longest consecutive paths in BST
+1. use normal lock to implement readwrite lock
+1. count and say next string
+1. BST vertical Traversal
+  * Using double-linked to avoid second time pass
+1. Serialize/Deserialize BT
+1. Minstack
+1. Meeting Intervals
+1. Valid Number
+1. CoolDown Job
+1. Identify contacts
+1. Minimum size subarray with exact equal number
+
+6. system design – design facebook music system，只需要design service tie.
+- get_top_10_list_music_ids(int64 userid) return top 10 most frequent listened music ids for a given user last week. 这个call在load页面的时候要进行，所以对latency要求比较高。 
+- record(int64 userid, int64 musicid, int64 timestamp) – 每当user听一首歌，就 需要记录下来，这个可以asynch进行，需要eventually consistent，但不需要每听一 首歌马上就能反映到上一个call中。要做各种spec和resource的estimation。 
+
+7. 抄dropbox那个问题，get_hits_last_5mins(), record_hit()，但是后面又扯到 system design，如何thread safe，如果是districuted syste怎么搞，能想到几种方法.
+http://www.mitbbs.com/article_t1/JobHunting/32549839_0_2.html
+
+1.Rank the most shared urls for the last 10 minutes, for last hour, for last day, etc. there are total 100 millions url
+sharing happen every day.
+
+1. Difficult problem.
+1. Production bug, how to avoid.
+1. Cross Team, hot wo communicate them to listen to us.
+1. 设计@别人的功能，扩展到大规模
+1. isNumber
+1. Meeting rooms
+1. valid tree graph
+1. Given data structure (internally sorted) supports three APIs:
+pop() randomly pops first/last element
+peek() randomly peeks first/last element
+isEmpty()
+Build a datastructure that can pull all elements from it in order.
+Follow ups: what if there is no peek()?
+
 
 1. UserContact
   * Union-Find
