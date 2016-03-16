@@ -1,9 +1,9 @@
 # Coding
 1. Find the k most frequent words from a file
   * First time iteration Map + PriorityQueue
-1. Positive Subarray sums to the target value *** 2
+1. Positive Subarray sums to the target value *** 4
   * Watch out for sum = 0 and corresponding range
-  * General subarray sums to target value
+  * General subarray sums to target value 2
   * Maximum Sized Subsequence with sum equal to given target 2
   * Minimum Window Substring: what's optimum? 2
     * Use array + appearCount, only update appearCount when count change to/from 0
@@ -25,7 +25,7 @@
   * 3
   * Calculate level average(iterative + recursive) 2
   * Top-down, bottom-up, ZigZag
-1. Binary Tree Inorder traversal Iterator 3
+1. Binary Tree Inorder traversal Iterator 4
 1. BinaryTree to doubly LinkedList 2
   * Method1: Recursive with Info (head,tail)
   * Method2: Using an Iterator and iterate over the tree and build
@@ -55,7 +55,7 @@
   * How to print with indentation? (add width index based on root)
   * How to parallel?(split at certain depth and reduce), reducing using the depth vector
 
-1. Search in rotated sorted array 3
+1. Search in rotated sorted array, with/without duplicates 4
 1. search kth element in sorted matrix, 列不升序
   * Method1: Merge K sorted List
   * Method2: pull K*N elements and sort
@@ -74,7 +74,7 @@
   * One Edit Distance 2
   * OneOrZero Edit Distance Iterator ** HARD **
 
-1. Regular Expression Matching 2
+1. Regular Expression Matching 3
   * [Solution](https://leetcode.com/submissions/detail/55539502/)
 1. Longest Consecutive Sub-sequence *
   * Put and then remove
@@ -97,14 +97,16 @@
   * How to print all paths
 1. Find the Thief
   * DP of size n (room number) * K(sequence size)
-1. Decode Ways 4
+1. Decode Ways 6
 1. Lowest common ancestor of binary tree
   * with parent pointer
   * without parent pointer
   * how about binary search tree?
-1. Vector multiplication of two billion size vectors
-  * split to chunks
-  * reduce
+1. dot product of sparse vectors
+  * Map Or SortedList
+  * Vector multiplication of two billion size vectors
+    * split to chunks
+    * reduce
 1.Consumer/Producer synchronization
   * synchronized
   * consumer/produce semaphore
@@ -122,7 +124,7 @@
   * swap(p++, i, array); swap(p, i, array)
   * This approach is the same as sort zeros.
 
-1. ReadN using Read4 3
+1. ReadN using Read4 4
   * https://leetcode.com/submissions/detail/55700746/
   * Clarify read4 behavior after read through all chars
   * https://leetcode.com/submissions/detail/55701380/
@@ -152,14 +154,15 @@
   * enqueue all and then do a single BFS; making sure it's O(M*N)
   * https://leetcode.com/submissions/detail/55807287/
 1. First Bad Version 5
-  * Cut the range aggresively enough!
+  * call badVersion() once every call.
+  * https://leetcode.com/submissions/detail/56339729/
 1. group anagrams 3
   * map and then sort values will be faster!
 
 1. sort colors 4
   * https://leetcode.com/submissions/detail/55891651/
   * This process is very similar with quickSort Partition
-1. Shift all zeros to right of array 4
+1. Shift all zeros to right of array 6
   https://leetcode.com/submissions/detail/55892248/
   * Similar as delete certain elements with minimum writes (swap with last elements).
   * Can break order therefore uses swap to minimize operation
@@ -171,7 +174,7 @@
   * Similar with BFS
   * Jump Game I: BUGGY https://leetcode.com/submissions/detail/55895922/
   * Jump Game II: https://leetcode.com/submissions/detail/55898421/
-1. valid palindrome, cannot use String.lowerCase() but can use Character.toLowerCase 2
+1. valid palindrome, cannot use String.lowerCase() but can use Character.toLowerCase 4
   * Character.isLetterOrDigit
   * https://leetcode.com/submissions/detail/55900150/
 
@@ -185,12 +188,13 @@
 1. Count Number of Islands 3
   * TODO: Union Find Solution, which is also Count Number of Islands II
   * Find connected Size of 1s in given binary matrix
+  * Max area of same color connected islands
 
 1. Implement PriorityQueue/Heap
   * O(N) time to build a heap is not by calling insert N times,
   * Rather, by calling heapify for all 'Parent' nodes.
 
-1. Key Stroke
+1. Key Stroke 2
   * http://www.themianjing.com/2015/07/facebook-onsite%E9%9D%A2%E7%BB%8F/
 1. Merge Intervals
 1. Dropping meetins that are lowest priority and schedule meetings with limited number of rooms.
@@ -201,7 +205,10 @@
   * see RandomIndexedMax
 
 1. Task Scheduler
-  * Check discussion
+  * use hash table to keep track of each task future schedule
+  * if k is very small, we can keep hash table with size K (LinkedHashMap)
+  * if order can change, we use greedy with priority queue, always execute the job that's available with highest count
+
 1. POI geo hashing, 2D->1D
 
 1. Longest increasing sub-sequence in array
@@ -232,7 +239,7 @@ Design:
   * SingleWord: DFS
   * Word Collection: Trie + DFS
 
-1. Add and Search word with
+1. Add and Search word with 2
   * Using [Trie](https://leetcode.com/submissions/detail/56238006/)
 
 1. Buy/Sell Stock: loc/glo solves all
@@ -241,55 +248,95 @@ Design:
     * glo: did sell on last day
   * Cooldown:
     https://leetcode.com/submissions/detail/56244376/
+1. PlusOne binary without add 2
+
+1. **Integer to English words** 3
+  * Recursive function to deal with spaces in hundreds group
+  * deal with 0 in hundreds? correct order added
+  * joining
+  * https://leetcode.com/submissions/detail/56337387/
+
+1. Flatten list of lists
+  * use down pointer as link
+  * similar with airbnb problem of concatenate using down
+
+1. Given an array with length n + 1. The array contains numbers from 1 to n.
+  * O(1) space, O(N) time we could use XOR
+    * We can also use swap if array is mutable
+  * If sorted, we can use BinarySearch
+  * If the single duplicated number could appear more than once
+    * https://leetcode.com/submissions/detail/44048887/
+
+1. find kth minimal number in tournament tree
 
 //TODO:
 http://www.themianjing.com/tag/facebook/page/7/
 1. 一组字符串，求所有彼此之间无公共字符的两两组合中，两字符串长度乘积的最大值。
-1. KMP/StrStr  3
+1. KMP/StrStr  4
 1. Fair Locking Implementation
 
-plusOne binary without add 2
-(http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=138204&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26sortid%3D311)
-
 given two nodes in a tree, return paths between those two nodes
-
-Flatten list of lists
-http://www.themianjing.com/2015/06/fb-%E7%94%B5%E9%9D%A2-2/
 
 String to floatNumber
 Vertical level printBST one pass
 System design of query field
-
 http://www.themianjing.com/2015/06/f%E9%9D%A2%E7%BB%8F%EF%BC%8Cee%E8%BD%AC%E8%A1%8C/
 
-Page Rank Design
-http://www.themianjing.com/2015/06/facebook-%E5%8A%A0%E9%9D%A2-design-%E9%A2%98/
+1. Minimum Height of BinaryTree
+  * BFS/DFS
+1. SameTree iteratively
+1. Longest consecutive paths in BST
+1. use normal lock to implement readwrite lock
+1. count and say next string
+1. BST vertical Traversal
+  * Using double-linked to avoid second time pass
+1. Serialize/Deserialize BT
+1. Minstack
+1. Meeting Intervals
+1. Valid Number
+1. CoolDown Job
+1. Identify contacts
+1. Minimum size subarray with exact equal number
 
-http://www.themianjing.com/2015/07/facebook-onsite-%E9%9D%A2%E7%BB%8F/
-UserContact
-dot product of sparse vectors
+6. system design – design facebook music system，只需要design service tie.
+- get_top_10_list_music_ids(int64 userid) return top 10 most frequent listened music ids for a given user last week. 这个call在load页面的时候要进行，所以对latency要求比较高。 
+- record(int64 userid, int64 musicid, int64 timestamp) – 每当user听一首歌，就 需要记录下来，这个可以asynch进行，需要eventually consistent，但不需要每听一 首歌马上就能反映到上一个call中。要做各种spec和resource的estimation。 
 
-cooldown task with K, if k is very small, only need to keep track of hashtable with size no more than k
+7. 抄dropbox那个问题，get_hits_last_5mins(), record_hit()，但是后面又扯到 system design，如何thread safe，如果是districuted syste怎么搞，能想到几种方法.
+http://www.mitbbs.com/article_t1/JobHunting/32549839_0_2.html
 
-wordbreak
+1.Rank the most shared urls for the last 10 minutes, for last hour, for last day, etc. there are total 100 millions url
+sharing happen every day.
+
+1. Difficult problem.
+1. Production bug, how to avoid.
+1. Cross Team, hot wo communicate them to listen to us.
+1. 设计@别人的功能，扩展到大规模
+1. isNumber
+1. Meeting rooms
+1. valid tree graph
+1. Given data structure (internally sorted) supports three APIs:
+pop() randomly pops first/last element
+peek() randomly peeks first/last element
+isEmpty()
+Build a datastructure that can pull all elements from it in order.
+Follow ups: what if there is no peek()?
+
+
+1. UserContact
+  * Union-Find
+
+Wordbreak
 Merge Interval in place
 http://www.mitbbs.com/article_t/JobHunting/32748585.html
 
 WordGame
 http://www.mitbbs.com/article_t/JobHunting/33055253.html
 
-Integer to English words
-http://www.mitbbs.com/article_t/JobHunting/33038409.html
-
 http://www.mitbbs.com/article_t/JobHunting/33037695.html
-Write a iterator to iterate a nested array.
-hsah table remap
+Write a iterator to iterate a nested array: use stack to keep track of <Array, index>
+hash table remap
 alien dictionary
-Given an array with length n + 1. The array contains numbers from 1 to n,
-with one of the number duplicated. Now find the duplicated number.讨论各种解法以及时间空间复杂度，最后实现O(N)时间O(1)空间的解法。数组可以
-mutate.
- Given a bag of characters and a dictionary, find longest string that can 
-be constructed.
 
 remove minimum number of left and right brackets and return the string with
 valid bracket pairs
@@ -304,3 +351,5 @@ http://www.mitbbs.com/article_t/JobHunting/33049009.html
    , 在每个Appserver 上对每个photo加一个counter,然后每隔T时间传到一个aggregator
    把所有与目标相关的counter相加，然后update DB和Memcached. 一些细节还没想清楚
    ，求讨论。
+1. Page Rank Design
+http://www.themianjing.com/2015/06/facebook-%E5%8A%A0%E9%9D%A2-design-%E9%A2%98/
