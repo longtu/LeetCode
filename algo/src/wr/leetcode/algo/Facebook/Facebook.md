@@ -8,6 +8,7 @@
   * Minimum Window Substring: what's optimum? 2
     * Use array + appearCount, only update appearCount when count change to/from 0
     * https://leetcode.com/submissions/detail/56160784/
+  * Minimum size subarray with exact equal number
 
 1. Mutate Input Array
 1. Find Nth Element In Tree
@@ -31,7 +32,11 @@
   * Method2: Using an Iterator and iterate over the tree and build
   * Flatten in place, using recursion is simpler
 
-1. Binary Tree Column print from left to right
+1. BST vertical Traversal 2
+  * TOP-DOWN, left->right: BFS
+  * one pass: keep track of min
+  * without map: use list and min/max
+
 1. Clone List with Random Pointer
 1. Clone Graph
   * One pass to use hashtable as visited set
@@ -80,10 +85,12 @@
   * Put and then remove
 1. Minimum Window Substring
   * with substring has no duplicates, we can just compare hashtable size
+  * with substring has exact the same character count.
+
 1. Populating Next pointer of Binary Tree
   * O(1) space
 1. **Meeting Rooms I/II**
-  * If one person can attend all 2
+  * If one person can attend all 3 (lambda is slow)
   * Minimum number of meeting rooms required/Find time with max overlapping meetings 4
 
 1. Double Binary Search to find sqrt
@@ -197,7 +204,7 @@
 1. Key Stroke 2
   * http://www.themianjing.com/2015/07/facebook-onsite%E9%9D%A2%E7%BB%8F/
 1. Merge Intervals
-1. Dropping meetins that are lowest priority and schedule meetings with limited number of rooms.
+1. Dropping meetings that are lowest priority and schedule meetings with limited number of rooms.
 
 1. Return index of max element in given array, the index needs to be random.
 [2,1,2,1,5,4,5,5] return 4,6,7 randomly. O(1) space
@@ -268,63 +275,44 @@ Design:
     * https://leetcode.com/submissions/detail/44048887/
 
 1. find kth minimal number in tournament tree
+   * level of depth i has first 2^i players
+   * using shift to find which level K is at
+
+1. UserContact 2
+  * Union-Find
+
+1. valid tree graph
+  * Need to validate (edge count + connectivity)
+  * Undirected Edge, pick any node can visit all nodes
+  * Undirected Edge, UnionFind to merge all nodes
+  * Directed Edge, toplogical sort
+
+1. Longest consecutive paths in BST
+  * https://leetcode.com/submissions/detail/47554119/
+
+1. Sort Random double-ended pop list
+  * see RandomListSorted
 
 //TODO:
-http://www.themianjing.com/tag/facebook/page/7/
 1. 一组字符串，求所有彼此之间无公共字符的两两组合中，两字符串长度乘积的最大值。
 1. KMP/StrStr  4
 1. Fair Locking Implementation
+1. CoolDown Job no order fastest solution
 
-given two nodes in a tree, return paths between those two nodes
+1. given two nodes in a tree, return paths between those two nodes
+    //Recursive, using data including how many found
 
-String to floatNumber
-Vertical level printBST one pass
-System design of query field
-http://www.themianjing.com/2015/06/f%E9%9D%A2%E7%BB%8F%EF%BC%8Cee%E8%BD%AC%E8%A1%8C/
-
+1. String to floatNumber
 1. Minimum Height of BinaryTree
   * BFS/DFS
 1. SameTree iteratively
-1. Longest consecutive paths in BST
 1. use normal lock to implement readwrite lock
 1. count and say next string
-1. BST vertical Traversal
-  * Using double-linked to avoid second time pass
+
 1. Serialize/Deserialize BT
 1. Minstack
-1. Meeting Intervals
 1. Valid Number
-1. CoolDown Job
-1. Identify contacts
-1. Minimum size subarray with exact equal number
-
-6. system design – design facebook music system，只需要design service tie.
-- get_top_10_list_music_ids(int64 userid) return top 10 most frequent listened music ids for a given user last week. 这个call在load页面的时候要进行，所以对latency要求比较高。 
-- record(int64 userid, int64 musicid, int64 timestamp) – 每当user听一首歌，就 需要记录下来，这个可以asynch进行，需要eventually consistent，但不需要每听一 首歌马上就能反映到上一个call中。要做各种spec和resource的estimation。 
-
-7. 抄dropbox那个问题，get_hits_last_5mins(), record_hit()，但是后面又扯到 system design，如何thread safe，如果是districuted syste怎么搞，能想到几种方法.
-http://www.mitbbs.com/article_t1/JobHunting/32549839_0_2.html
-
-1.Rank the most shared urls for the last 10 minutes, for last hour, for last day, etc. there are total 100 millions url
-sharing happen every day.
-
-1. Difficult problem.
-1. Production bug, how to avoid.
-1. Cross Team, hot wo communicate them to listen to us.
-1. 设计@别人的功能，扩展到大规模
 1. isNumber
-1. Meeting rooms
-1. valid tree graph
-1. Given data structure (internally sorted) supports three APIs:
-pop() randomly pops first/last element
-peek() randomly peeks first/last element
-isEmpty()
-Build a datastructure that can pull all elements from it in order.
-Follow ups: what if there is no peek()?
-
-
-1. UserContact
-  * Union-Find
 
 Wordbreak
 Merge Interval in place
@@ -342,6 +330,7 @@ remove minimum number of left and right brackets and return the string with
 valid bracket pairs
 http://www.mitbbs.com/article_t/JobHunting/33049009.html
 
+
 1. Design Messenger
 1. System design Mobile app of photo feeds/Instagram
 功能： 读取好友的最近图片, 阅览好友的相册
@@ -353,3 +342,16 @@ http://www.mitbbs.com/article_t/JobHunting/33049009.html
    ，求讨论。
 1. Page Rank Design
 http://www.themianjing.com/2015/06/facebook-%E5%8A%A0%E9%9D%A2-design-%E9%A2%98/
+1. System design of query field
+http://www.themianjing.com/2015/06/f%E9%9D%A2%E7%BB%8F%EF%BC%8Cee%E8%BD%AC%E8%A1%8C/
+1. Difficult problem.
+1. Production bug, how to avoid.
+1. Cross Team, hot wo communicate them to listen to us.
+1. 设计@别人的功能，扩展到大规模
+1. system design – design facebook music system，只需要design service tie.
+- get_top_10_list_music_ids(int64 userid) return top 10 most frequent listened music ids for a given user last week. 这个call在load页面的时候要进行，所以对latency要求比较高。
+- record(int64 userid, int64 musicid, int64 timestamp) – 每当user听一首歌，就 需要记录下来，这个可以asynch进行，需要eventually consistent，但不需要每听一 首歌马上就能反映到上一个call中。要做各种spec和resource的estimation。
+1. 抄dropbox那个问题，get_hits_last_5mins(), record_hit()，但是后面又扯到 system design，如何thread safe，如果是districuted syste怎么搞，能想到几种方法.
+http://www.mitbbs.com/article_t1/JobHunting/32549839_0_2.html
+1.Rank the most shared urls for the last 10 minutes, for last hour, for last day, etc. there are total 100 millions url
+sharing happen every day.
