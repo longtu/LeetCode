@@ -89,6 +89,28 @@ public class SubArraySum {
         return max;
     }
 
+
+    //assume input nums is never empty/null
+    public static int shortestSubArrayWithSum( int[] nums, int target ) {
+
+        Map<Integer, Integer> index = new HashMap<>();
+        index.put(0, -1);
+
+        int sum = 0;
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < nums.length; ++i) {
+            int val = nums[i];
+            sum += val;
+            if ( index.containsKey(sum - target)) {
+                int len = i - index.get(sum - target);
+                min = Math.min(min, len);
+            }
+            index.put(sum, i);
+        }
+        return (min == Integer.MAX_VALUE)?(-1):(min);
+    }
+
+
     public static void main(String[] args) {
 
         for (int [][] arr : new int[][][]{
@@ -122,6 +144,7 @@ public class SubArraySum {
                 System.out.println(String.format("%s, %s", sol[0], sol[1]));
             }
             System.out.println("LongestSubArr: " + SubArraySum.longestSubArrayWithSum(arr[0], arr[1][0]));
+            System.out.println("ShortestSubArr: " + SubArraySum.shortestSubArrayWithSum(arr[0], arr[1][0]));
         }
     }
 }

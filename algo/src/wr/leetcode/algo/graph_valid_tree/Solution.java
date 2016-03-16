@@ -6,7 +6,11 @@ import java.util.Map;
 import java.util.Set;
 
 public class Solution {
-    public boolean validTree(int n, int[][] edges) {
+
+    /**
+     * BFS solution
+     */
+    public boolean validTree0(int n, int[][] edges) {
         if( null == edges ) {
             edges = new int[0][0];
         }
@@ -48,6 +52,72 @@ public class Solution {
             if(!visited.contains(n)) {
                 bfs(n, neighbours, visited);
             }
+        }
+    }
+
+    /**
+     * UnionFind simple solution
+     */
+
+    public boolean validTree(int n, int[][] edges) {
+        if( null == edges ) {
+            edges = new int[0][0];
+        }
+
+        int edgeCount = edges.length;
+        boolean ret = true;
+        if( n > 0 ) {
+            if( edgeCount != n-1) {
+                ret = false;
+            } else {
+                ret = validTree(edges, new UnionFind(n), n);
+            }
+        }
+        return ret;
+    }
+
+    public boolean validTree(int[][] edges, UnionFind uf, int n ) {
+        for (int[] e : edges) {
+            int st = e[0];
+            int ed = e[1];
+            uf.merge(st, ed);
+        }
+
+        Set<Integer> scc = new HashSet<>();
+        for (int i = 0; i < n; ++i) {
+            scc.add(uf.groupOf(i));
+        }
+        return scc.size() == 1;
+    }
+
+    class UnionFind {
+
+        int[] groupId;
+
+        public UnionFind(int n) {
+            groupId = new int[n];
+            for (int i = 0; i < n; ++i) {
+                groupId[i] = i;
+            }
+        }
+
+        public void merge(int l, int r) {
+            int lId = groupOf(l);
+            int rId = groupOf(r);
+            groupId[rId] = lId;
+        }
+
+        public int groupOf( int i) {
+            int ret = i;
+            while( ret != groupId[ret]) {
+                ret = groupId[ret];
+            }
+            while( groupId[i] != ret) {
+                int next = groupId[i];
+                groupId[i] = ret;
+                i = next;
+            }
+            return ret;
         }
     }
 

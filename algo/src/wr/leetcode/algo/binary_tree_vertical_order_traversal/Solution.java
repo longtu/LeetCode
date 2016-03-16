@@ -6,113 +6,90 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Solution {
-/*
-    public List<List<Integer>> verticalOrder(TreeNode root) {
-        PriorityQueue<Data> queue = new PriorityQueue<>(this::compare);
-        inOrder(root, queue, 0, 0);
+
+    /**
+     * Implementation with HashMap
+     */
+    public List<List<Integer>> verticalOrder0(TreeNode root) {
         List<List<Integer>> ret = new LinkedList<>();
-        List<Integer> currentList = new LinkedList<>();
-        Integer currentW = null;
-        while(!queue.isEmpty()) {
-            Data data = queue.poll();
-            int w = data.w;
-            if(null == currentW ) {
-                currentW = w;
-            } else if( !currentW.equals(w)){
-                //BUG: update currentW
-                currentW = w;
-                ret.add(currentList);
-                currentList = new LinkedList<>();
-            }
-            currentList.add(data.node.val);
+        Map<Integer, List<Integer>> nodeList = new HashMap<>();
+        int leftMost = 0;
+
+        Queue<Info> queue = new LinkedList<>();
+        if( null != root ) {
+            queue.offer(new Info(leftMost, root));
         }
-        if(!currentList.isEmpty()) {
-            ret.add(currentList);
+
+        while( !queue.isEmpty() ) {
+            Info v = queue.poll();
+            List<Integer> list = nodeList.getOrDefault(v.width, new LinkedList<>());
+            list.add(v.node.val);
+            nodeList.put(v.width, list);
+            leftMost = Math.min(leftMost, v.width);
+            if(null != v.node.left) {
+                queue.offer(new Info(v.width-1, v.node.left));
+            }
+            if(null != v.node.right) {
+                queue.offer(new Info(v.width+1, v.node.right));
+            }
+        }
+
+        for (int i = leftMost; nodeList.containsKey(i); ++i) {
+            ret.add(nodeList.get(i));
         }
         return ret;
     }
 
-    public void inOrder( TreeNode node, PriorityQueue<Data> heap , int w, int h) {
-        if (null == node) {
-            return;
-        }
-        if( null != node.left ) {
-            inOrder(node.left, heap, w-1, h+1);
-        }
-        heap.offer(new Data(w,h,node, heap.size()));
-
-        if( null != node.right ) {
-            inOrder(node.right, heap, w+1, h+1);
-        }
-
-    }
-
-    class Data {
-        int w;
-        int h;
-        int sequence;
+    class Info {
         TreeNode node;
+        int width;
 
-        public Data (int w, int h, TreeNode node, int sequence) {
-            this.w = w;
-            this.h = h;
+        public Info (int width, TreeNode node) {
+            this.width = width;
             this.node = node;
-            this.sequence = sequence;
         }
     }
 
-
-    public int compare(Data left, Data right) {
-        int diff;
-        if(left.w != right.w) {
-            diff = left.w - right.w;
-        } else if(left.h != right.h){
-            diff = left.h - right.h;
-        } else {
-            diff = left.sequence - right.sequence;
-        }
-        return diff;
-    }*/
+    /**
+     * Implementation without HashMap
+     */
     public List<List<Integer>> verticalOrder(TreeNode root) {
-        Map<Integer, List<Integer>> map = new HashMap<>();
-        Queue<TreeNode> nodes = new LinkedList<>();
-        Queue<Integer> xqueue = new LinkedList<>();
-        int x = 0;
+        List<List<Integer>> ret = new LinkedList<>();
         int min = 0;
         int max = 0;
-
-        if (null != root) {
-            nodes.offer(root);
-            xqueue.offer(x);
-        }
-        while( !nodes.isEmpty() ) {
-            TreeNode v = nodes.poll();
-            int vx = xqueue.poll();
-            List<Integer> list = map.getOrDefault(vx, new LinkedList<>());
-            list.add(v.val);
-            map.put(vx, list);
-            max = Math.max(max, vx);
-            min = Math.min(min, vx);
-
-            if(null != v.left) {
-                nodes.offer(v.left);
-                xqueue.offer(vx-1);
-            }
-            if(null != v.right) {
-                nodes.offer(v.right);
-                xqueue.offer(vx+1);
-            }
-        }
-        List<List<Integer>> ret = new LinkedList<>();
-        for (int i = min; i <=max; ++i) {
-            List<Integer> list = map.get(i);
-            if(null != list) {
-                ret.add(list);
-            }
+        Queue<Info> queue = new LinkedList<>();
+        if( null != root ) {
+            queue.offer(new Info(min, root));
+            ret.add(new LinkedList<>());
         }
 
+        while( !queue.isEmpty() ) {
+            Info v = queue.poll();
+            TreeNode node = v.node;
+            int w = v.width;
+            if(w < min) {
+                ret.add(0, new LinkedList<>());
+                min = w;
+            }
+            if(w > max) {
+                ret.add(new LinkedList<>());
+                max = w;
+            }
+            int id = w - min;
+            List<Integer> list = ret.get(id);
+            list.add(node.val);
+            if(null != v.node.left) {
+                queue.offer(new Info(v.width-1, v.node.left));
+            }
+            if(null != v.node.right) {
+                queue.offer(new Info(v.width+1, v.node.right));
+            }
+        }
         return ret;
     }
+
+
+
 
     public static void main(String[] args) {
         Solution sol = new Solution();
