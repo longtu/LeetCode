@@ -45,6 +45,9 @@ public class TaskScheduler {
      *
      * can add another queue as next events.
      *
+     * TODO: 我的思路是count所有的task，然后找到count最大的task的个数，
+     * 那么总时间不小于(max-1)*(interval+1)+countOfMax. 返回这个总时间和数组总长度的较大者。
+     * 
      */
     public int taskScheduleNoOrder(String taskStr, int k) {
 
