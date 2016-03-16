@@ -11,6 +11,8 @@ import java.util.*;
  Output: 10
  就是说同样类型的task之间至少要等2，每个task的执行时间是1
  followup: 如果cooldown是个参数，也就是说有可能会很长时间，怎么修改之前的程序
+ http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=161904&extra=page%3D2%26filter%3Dsortid%26sortid%3D311&page=2
+ 
  */
 public class TaskScheduler {
 
