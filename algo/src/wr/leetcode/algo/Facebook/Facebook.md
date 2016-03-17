@@ -112,17 +112,17 @@
   * with parent pointer
   * without parent pointer
   * how about binary search tree?
-1. dot product of sparse vectors
+1. Dot product of sparse vectors
   * Map Or SortedList
   * Vector multiplication of two billion size vectors
     * split to chunks
     * reduce
-1.Consumer/Producer synchronization
+1. Consumer/Producer synchronization
   * synchronized
   * consumer/produce semaphore
-1.Reverse LinkList
+1. Reverse LinkList
 
-1.K nearest points to origin (Kth min) 3
+1. K nearest points to origin (Kth min) 3
   Find top K users with max posts
   * Sort: NLogN + K
   * MinHeap: first build min heap of size N and then call min K times (N + KLogN)
@@ -240,7 +240,7 @@
 
 1. Merge K sorted List
 
-1.Union/Intersection of two sorted array
+1. Union/Intersection of two sorted array
 
 Design:
 1. Shorten URL 2
