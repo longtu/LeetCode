@@ -55,6 +55,17 @@
 	},
 	"buffers":
 	[
+		{
+			"contents": "public int longestValidParentheses(String s) {\n    \n}",
+			"file": "/Users/wangran/Desktop/Whiteboard",
+			"file_size": 1242,
+			"file_write_time": 131019755590000000,
+			"settings":
+			{
+				"buffer_size": 53,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
 	"build_system_choices":
@@ -63,8 +74,8 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 287.0,
-		"last_filter": ":w",
+		"height": 392.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -93,10 +104,16 @@
 	"expanded_folders":
 	[
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo",
-		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/count_of_range_sum"
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/populating_next_right_pointers_in_each_node_ii"
 	],
 	"file_history":
 	[
+		"/Users/wangran/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/wangran/Desktop/KrishnanReply",
+		"/Users/wangran/Desktop/Whiteboard",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/Facebook/Facebook.md",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/populating_next_right_pointers_in_each_node_ii/Solution.java",
+		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/largest_bst_subtree/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/count_of_range_sum/Solution.java",
 		"/Users/wangran/Workspaces/GitHub/LeetCode/algo/src/wr/leetcode/algo/odd_even_linked_list/Solution.java",
 		"/Users/wangran/Desktop/SystemDesign",
@@ -110,7 +127,7 @@
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 42.0
 	},
 	"find_in_files":
 	{
@@ -124,6 +141,17 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"，",
+			"”",
+			"“",
+			"3 Sum",
+			"3Sum",
+			"3 sum",
+			"number of",
+			"3Sum",
+			"phone",
+			"]",
+			"["
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -131,6 +159,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			",",
+			"\"",
+			"}",
+			"{"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -147,8 +179,39 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/Users/wangran/Desktop/Whiteboard",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 53,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								51,
+								51
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -195,7 +258,7 @@
 	"project": "",
 	"replace":
 	{
-		"height": 0.0
+		"height": 78.0
 	},
 	"save_all_on_build": true,
 	"select_file":

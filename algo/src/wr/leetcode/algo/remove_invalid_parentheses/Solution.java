@@ -6,73 +6,38 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution sols = new Solution();
-        for (String s : new String[] {"()())()","(a)())()", ")(" }) {
+        for (String s : new String[] {
+                "(a)()",
+            }) {
             System.out.println(sols.removeInvalidParentheses(s));
         }
     }
+
     public List<String> removeInvalidParentheses(String s) {
-        List<String> ret = new LinkedList<>();
-
-        if(null != s) {
-            Set<String> tails = new HashSet<>();
-            Set<String> visited = new HashSet<>();
-            Queue<String> nextQ = new LinkedList<>();
-            nextQ.add(s);
-            visited.add(s);
-
-            while(!nextQ.isEmpty()) {
-                Queue<String> q = nextQ;
-                nextQ = new LinkedList<>();
-                while(!q.isEmpty()) {
-                    String v = q.remove();
-                    if(isValid(v)){
-                        tails.add(v);
-                    }
-                    List<String> neighbours = neighbours(v);
-                    for (String n : neighbours) {
-                        if(!visited.contains(n)) {
-                            visited.add(n);
-                            nextQ.add(n);
-                        }
-                    }
-                }
-                if(!tails.isEmpty()) {
-                    ret = new LinkedList<>(tails);
-                    break;
-                }
-            }
-        }
-        return ret;
+        List<String> ans = new ArrayList<>();
+        remove(s, ans, 0, 0, new char[]{'(', ')'});
+        return ans;
     }
 
-
-    public List<String> neighbours(String str ) {
-
-        List<String> ret = new LinkedList<>();
-        int n = str.length();
-        for (int i = 0; i < n ; ++i) {
-            char ch = str.charAt(i);
-            if( '(' == ch || ')' == ch ) {
-                ret.add(str.substring(0, i) + str.substring(i+1, n));
-            }
+    public void remove(String s, List<String> ans, int last_i, int last_j,  char[] par) {
+        for (int stack = 0, i = last_i; i < s.length(); ++i) {
+            if (s.charAt(i) == par[0]) stack++;
+            if (s.charAt(i) == par[1]) stack--;
+            if (stack >= 0) continue;
+            for (int j = last_j; j <= i; ++j)
+                if (s.charAt(j) == par[1] && (j == last_j || s.charAt(j - 1) != par[1]))
+                    remove(s.substring(0, j) + s.substring(j + 1, s.length()), ans, i, j, par);
+            return;
         }
-        return ret;
-    }
-
-
-    public boolean isValid(String str) {
-        Stack<Character> st = new Stack<>();
-        for (char ch : str.toCharArray()) {
-            if( '(' == ch ) {
-                st.push('(');
-            } else if (')' == ch) {
-                if(st.isEmpty()) {
-                    return false;
-                } else {
-                    st.pop();
-                }
-            }
+        String reversed = new StringBuilder(s).reverse().toString();
+        System.out.println( "hello" + reversed);
+        if (par[0] == '(') {
+            remove(reversed, ans, 0, 0, new char[]{')', '('});
+            System.out.println("foo " + reversed);
         }
-        return st.isEmpty();
+        else {
+            System.out.println("bar " + reversed);
+            ans.add(reversed);
+        }
     }
 }

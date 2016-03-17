@@ -6,60 +6,18 @@ import wr.leetcode.algo.same_tree.Solution;
 import java.util.Arrays;
 
 public class Codec {
-    public static String SEP = "#";
+    public static String SEP = ",";
+    public static String NULL = "#";
 
-    /*
-    // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
         StringBuilder sb = new StringBuilder();
-        int len = 0;
-        String left = "";
-        String right = "";
-        String val = "";
-        if(null != root) {
-            left = serialize(root.left);
-            right = serialize(root.right);
-            val = Integer.toString(root.val);
-            len = left.length() + right.length() + val.length();
-        }
-        sb.append(len);
-        sb.append(SEP);
-        sb.append(left);
-        sb.append(right);
-        sb.append(val);
+        serialize(root, sb);
         return sb.toString();
     }
 
-    // Decodes your encoded data to tree.
-    public TreeNode deserialize(String data) {
-        int i = data.indexOf(SEP);
-        int len = Integer.parseInt(data.substring(0, i));
-        TreeNode node = null;
-        if (0 != len) {
-            node = new TreeNode(-1);
-            i++;
-            int start = i;
-
-            int sepIndex = data.indexOf(SEP, i);
-            int l = Integer.parseInt(data.substring(i, sepIndex));
-            node.left = deserialize(data.substring(i, sepIndex + 1 + l));
-
-            i = sepIndex + 1 + l;
-            sepIndex = data.indexOf(SEP, i);
-            l = Integer.parseInt(data.substring(i, sepIndex));
-            node.right = deserialize(data.substring(i, sepIndex + 1 + l));
-
-            i = sepIndex + 1 + l;
-            String valStr = data.substring(i, start + len);
-            node.val = Integer.parseInt(valStr);
-        }
-        return node;
-    }*/
-
-    // Encodes a tree to a single string.
     public void serialize(TreeNode root, StringBuilder sb) {
         if( null == root ) {
-            sb.append("null");
+            sb.append(NULL);
             sb.append(SEP);
         } else {
             sb.append(root.val);
@@ -69,33 +27,24 @@ public class Codec {
         }
     }
 
-    public String serialize(TreeNode root) {
-        StringBuilder sb = new StringBuilder();
-        serialize(root, sb);
-        return sb.toString();
-    }
-
     public TreeNode deserialize(String data) {
-        String[] nodes = data.split( SEP );
-        System.out.println(Arrays.toString(nodes));
         int[] index = new int[1];
-        index[0] = 0;
+        String [] nodes = data.split(SEP);
         return deserialize(nodes, index);
     }
 
-    public TreeNode deserialize(String[] strs, int [] index) {
-        TreeNode node = null;
-        String str = strs[index[0]];
-        if ( !"null".equals(str) ) {
-            node = new TreeNode(Integer.parseInt(str));
-            index[0]++;
-            node.left = deserialize(strs, index);
-            index[0]++;
-            node.right = deserialize(strs, index);
+    public TreeNode deserialize(String[] data, int[] index) {
+        TreeNode ret = null;
+        int i = index[0];
+        String str = data[i];
+        index[0]++;
+        if ( !str.equals(NULL) ) {
+            ret = new TreeNode(Integer.parseInt(str));
+            ret.left = deserialize(data, index);
+            ret.right = deserialize(data, index);
         }
-        return node;
+        return ret;
     }
-
 
     public static void main(String[] args) {
         Codec codec = new Codec();
@@ -116,6 +65,7 @@ public class Codec {
         for (TreeNode root : arr) {
 
             String data = codec.serialize(root);
+            System.out.println(data);
             TreeNode copy = codec.deserialize(data);
             System.out.println(sol.isSameTree(root, copy));
         }

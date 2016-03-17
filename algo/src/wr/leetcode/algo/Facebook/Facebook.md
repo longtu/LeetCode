@@ -306,18 +306,47 @@ Design:
 1. Sort Random double-ended pop list
   * see RandomListSorted
 
-//TODO:
+1. Remove Invalid Parenthesis 2 **Needs revisit **
+  * If find one solution: we can use stack/pointer to go from left/right to match '(' with ')'.
+   (Similarly as longest valid parenthesis).
+   The remaining indexes in stack are the ones need to be deleted.
+  * If find all solutions: use BFS/BackTracking using set to reduce duplicates.
+
+1. Minstack
+  * Watch out for Integer.Equals instead of "=="
+
+1. count and say next string
+
+1. Minimum Height of BinaryTree
+   * both BFS/DFS
+
+1. SameTree iteratively
+   * https://leetcode.com/submissions/detail/56542353/
+
 1.pre-order iterator
+  * https://leetcode.com/submissions/detail/56543254/
+
 1.IsBST, iterative apporach
-1.Implement Mutex
-1.Illegal Parenthesis
+  * InOrder Traversal ordered
+
+1. Serialize/Deserialize BT
+  * https://leetcode.com/submissions/detail/56546972/
+  * BUG: index global array is of size int[1] instead of int[0]
+
+//TODO:
+1. WordBreak 2
+1. String to floatNumber
+1. Valid Number 2
+1. alien dictionary
+1. Merge Interval in place http://www.mitbbs.com/article_t/JobHunting/32748585.html
+
 1.Find first k common elements in n sorted arrays.
   * Merge K sorted
   * Move 1 by 1
-1. Realtime Search, 
-1. Facebook friends recommendation
-1. Auto refresh when new comment shows up for certain post, no need to refresh page
-1. WordBreak
+
+1. given two nodes in a tree, return paths between those two nodes
+    //Recursive, using data including how many found
+
 1. Longest pattern https://www.careercup.com/question?id=5096352075743232
 1. TrieNode Match with wildcard http://www.mitbbs.com/article_t/JobHunting/33126923.html
 1. Find the most overlapped position of a collection of rectangulars.
@@ -326,42 +355,19 @@ Design:
 
 1. 一组字符串，求所有彼此之间无公共字符的两两组合中，两字符串长度乘积的最大值。
 1. KMP/StrStr  4
-1. Fair Locking Implementation
-1. CoolDown Job no order fastest solution
-
-1. given two nodes in a tree, return paths between those two nodes
-    //Recursive, using data including how many found
-
-1. String to floatNumber
-1. Minimum Height of BinaryTree
-  * BFS/DFS
-1. SameTree iteratively
-1. use normal lock to implement readwrite lock
-1. count and say next string
-
-1. Serialize/Deserialize BT
-1. Minstack
-1. Valid Number
-1. isNumber
-
-Wordbreak
-Merge Interval in place
-http://www.mitbbs.com/article_t/JobHunting/32748585.html
-
-WordGame
+1. WordGame
 http://www.mitbbs.com/article_t/JobHunting/33055253.html
 
 http://www.mitbbs.com/article_t/JobHunting/33037695.html
-Write a iterator to iterate a nested array: use stack to keep track of <Array, index>
-hash table remap
-alien dictionary
-
-remove minimum number of left and right brackets and return the string with
-valid bracket pairs
-http://www.mitbbs.com/article_t/JobHunting/33049009.html
-
+1. Write a iterator to iterate a nested array: use stack to keep track of <Array, index>
 1. reservoir sampling
 
+1. Fair Locking Implementation
+1. Implement Mutex
+1. use normal lock to implement readwrite lock
+1. hash table remap
+
+Design:
 1. Design Messenger
 1. System design Mobile app of photo feeds/Instagram
 功能： 读取好友的最近图片, 阅览好友的相册
@@ -375,9 +381,6 @@ http://www.mitbbs.com/article_t/JobHunting/33049009.html
 http://www.themianjing.com/2015/06/facebook-%E5%8A%A0%E9%9D%A2-design-%E9%A2%98/
 1. System design of query field
 http://www.themianjing.com/2015/06/f%E9%9D%A2%E7%BB%8F%EF%BC%8Cee%E8%BD%AC%E8%A1%8C/
-1. Difficult problem.
-1. Production bug, how to avoid.
-1. Cross Team, hot wo communicate them to listen to us.
 1. 设计@别人的功能，扩展到大规模
 1. system design – design facebook music system，只需要design service tie.
 - get_top_10_list_music_ids(int64 userid) return top 10 most frequent listened music ids for a given user last week. 这个call在load页面的时候要进行，所以对latency要求比较高。
@@ -386,3 +389,12 @@ http://www.themianjing.com/2015/06/f%E9%9D%A2%E7%BB%8F%EF%BC%8Cee%E8%BD%AC%E8%A1
 http://www.mitbbs.com/article_t1/JobHunting/32549839_0_2.html
 1.Rank the most shared urls for the last 10 minutes, for last hour, for last day, etc. there are total 100 millions url
 sharing happen every day.
+1. Realtime Search,
+1. Facebook friends recommendation
+1. Auto refresh when new comment shows up for certain post, no need to refresh page
+
+
+#Behavior
+1. Difficult problem.
+1. Production bug, how to avoid.
+1. Cross Team, hot wo communicate them to listen to us.

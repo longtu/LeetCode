@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class Solution {
 
-    public int longestValidParentheses(String s) {
+    public int longestValidParentheses1(String s) {
         int ret = 0;
         if(null != s && !s.isEmpty()) {
             Stack<Integer> st = new Stack<>();
@@ -59,8 +59,24 @@ public class Solution {
         return ret;
     }
 
+    public int longestValidParentheses(String s) {
+        int max = 0;
+        Stack<Integer> st = new Stack<>();
+        for (int i = 0; i < s.length(); ++i) {
+            char ch = s.charAt(i);
+            if( ch == '(' || st.isEmpty() || s.charAt(st.peek()) == ')') {
+                st.push(i);
+            } else {
+                st.pop();
+                int len = i - ((st.isEmpty())?(-1):(st.peek()));
+                max = Math.max(max, len);
+            }
+        }
+        return max;
+    }
+
     public static void main(String[] args) {
         Solution sol = new Solution();
-        System.out.println(sol.longestValidParentheses0("()()))))()()("));
+        System.out.println(sol.longestValidParentheses(")()())()()("));
     }
 }
