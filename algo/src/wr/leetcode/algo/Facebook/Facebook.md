@@ -5,7 +5,7 @@
   * Watch out for sum = 0 and corresponding range
   * General subarray sums to target value 2
   * Maximum Sized Subsequence with sum equal to given target 2
-  * Minimum Window Substring: what's optimum? 2
+  * Minimum Window Substring: what's optimum? 3
     * Use array + appearCount, only update appearCount when count change to/from 0
     * https://leetcode.com/submissions/detail/56160784/
   * Minimum size subarray with exact equal number
@@ -27,18 +27,21 @@
   * Calculate level average(iterative + recursive) 2
   * Top-down, bottom-up, ZigZag
 1. Binary Tree Inorder traversal Iterator 4
+  * pre-order iterator
 1. BinaryTree to doubly LinkedList 2
   * Method1: Recursive with Info (head,tail)
   * Method2: Using an Iterator and iterate over the tree and build
   * Flatten in place, using recursion is simpler
+  * flatten binary search tree to linked-list(using original data structure) *** BUG
 
-1. BST vertical Traversal 2
+
+1. BST vertical Traversal 3
   * TOP-DOWN, left->right: BFS
   * one pass: keep track of min
   * without map: use list and min/max
 
-1. Clone List with Random Pointer
-1. Clone Graph
+1. Clone List with Random Pointer 3
+1. Clone Graph 3
   * One pass to use hashtable as visited set
   * create copy only when first meet but always copy edge
 
@@ -56,7 +59,7 @@
 
 1. Fibonacci number
 1. Subsets 2
-1. Print all paths from root to leaf 2
+1. Print all paths from root to leaf 3
   * How to print with indentation? (add width index based on root)
   * How to parallel?(split at certain depth and reduce), reducing using the depth vector
 
@@ -68,7 +71,6 @@
   * Use max heap of size K
   * Use divide and conquer similar as selection
 
-1. flatten binary search tree to linked-list *** BUG
 1. Max Rectangular in Histogram *** BUG
 1. find all palindrome pairs in given list of words
   * It's one of the airbnb top problems
@@ -91,7 +93,8 @@
   * O(1) space
 1. **Meeting Rooms I/II**
   * If one person can attend all 3 (lambda is slow)
-  * Minimum number of meeting rooms required/Find time with max overlapping meetings 4
+  * Minimum number of meeting rooms required/Find time with max overlapping meetings 5
+  * Insert Interval and totalLength (different ways to optimize add/read)
 
 1. Double Binary Search to find sqrt
   * use eps
@@ -136,7 +139,7 @@
   * Clarify read4 behavior after read through all chars
   * https://leetcode.com/submissions/detail/55701380/
   * https://leetcode.com/submissions/detail/55702542/ Call once simple version
-1. Reverse Words in string
+1. Reverse Words in string 2
   * Clarify leading/trailing empty spaces, multi-space delimeters
   * do it in place: reverse twice
 1. Product of all elements except itself
@@ -148,6 +151,9 @@
   * Recursive, similar to longest path
 
 1. Phone number combination 3 (Recursion or DP)(SEA)
+  * Phone number combination 2
+  * with meaningful words: using trie
+  * with multiple meaningful words: connect tail with trie root
 
 1. Longest Common Prefix
   * char by char
@@ -166,10 +172,10 @@
 1. group anagrams 3
   * map and then sort values will be faster!
 
-1. sort colors 4
+1. sort colors 7
   * https://leetcode.com/submissions/detail/55891651/
   * This process is very similar with quickSort Partition
-1. Shift all zeros to right of array 6
+1. Shift all zeros to right of array 7
   https://leetcode.com/submissions/detail/55892248/
   * Similar as delete certain elements with minimum writes (swap with last elements).
   * Can break order therefore uses swap to minimize operation
@@ -181,7 +187,7 @@
   * Similar with BFS
   * Jump Game I: BUGGY https://leetcode.com/submissions/detail/55895922/
   * Jump Game II: https://leetcode.com/submissions/detail/55898421/
-1. valid palindrome, cannot use String.lowerCase() but can use Character.toLowerCase 4
+1. valid palindrome, cannot use String.lowerCase() but can use Character.toLowerCase 5
   * Character.isLetterOrDigit
   * https://leetcode.com/submissions/detail/55900150/
 
@@ -192,7 +198,7 @@
   * check cd command prefix, if starts with/, simplify cd command
   * otherwise simplify concatenation of path + "/" + command
 
-1. Count Number of Islands 3
+1. Count Number of Islands 4
   * TODO: Union Find Solution, which is also Count Number of Islands II
   * Find connected Size of 1s in given binary matrix
   * Max area of same color connected islands
@@ -206,15 +212,16 @@
 1. Merge Intervals
 1. Dropping meetings that are lowest priority and schedule meetings with limited number of rooms.
 
-1. Return index of max element in given array, the index needs to be random.
+1. Return index of max element in given array, the index needs to be random. 2
 [2,1,2,1,5,4,5,5] return 4,6,7 randomly. O(1) space
   * Use decreasing probability based on count
   * see RandomIndexedMax
 
-1. Task Scheduler
+1. Task Scheduler 3
   * use hash table to keep track of each task future schedule
   * if k is very small, we can keep hash table with size K (LinkedHashMap)
   * if order can change, we use greedy with priority queue, always execute the job that's available with highest count
+  * Return Max(maxCount + (max-1)*(interval+1), totalLength)
 
 1. POI geo hashing, 2D->1D
 
@@ -225,9 +232,15 @@
   * Longest increasing contiguous sequence in array
     * Two pointers, trivial
 
-1. 3Sum with duplicates allowed 4
+1. 3Sum with duplicates allowed 5
   * dedupe and two level nested loop  + Map O(N^2)
   * K-Sum: recursive
+
+1. Permutation/Subsets I/II
+
+1. Merge K sorted List
+
+1.Union/Intersection of two sorted array
 
 Design:
 1. Shorten URL 2
@@ -294,6 +307,23 @@ Design:
   * see RandomListSorted
 
 //TODO:
+1.pre-order iterator
+1.IsBST, iterative apporach
+1.Implement Mutex
+1.Illegal Parenthesis
+1.Find first k common elements in n sorted arrays.
+  * Merge K sorted
+  * Move 1 by 1
+1. Realtime Search, 
+1. Facebook friends recommendation
+1. Auto refresh when new comment shows up for certain post, no need to refresh page
+1. WordBreak
+1. Longest pattern https://www.careercup.com/question?id=5096352075743232
+1. TrieNode Match with wildcard http://www.mitbbs.com/article_t/JobHunting/33126923.html
+1. Find the most overlapped position of a collection of rectangulars.
+  * 我的想法是一个方向用扫描线，另一个方向用 BST，但复杂度是 N * NlogN = n^2 logN
+  * 我是先写了个一维的sweep line algorithm. 然后扩展到二维，所以算法复杂度是N N log(N). 但是是可以N logN实现的。
+
 1. 一组字符串，求所有彼此之间无公共字符的两两组合中，两字符串长度乘积的最大值。
 1. KMP/StrStr  4
 1. Fair Locking Implementation
@@ -330,6 +360,7 @@ remove minimum number of left and right brackets and return the string with
 valid bracket pairs
 http://www.mitbbs.com/article_t/JobHunting/33049009.html
 
+1. reservoir sampling
 
 1. Design Messenger
 1. System design Mobile app of photo feeds/Instagram
