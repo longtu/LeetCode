@@ -1,3 +1,16 @@
+# Design:
+1. Shorten URL 2
+1. 1 T messages of max 10 words, how do you build the index table and how many machines to host?
+  * Assumption: 2^14 words, words are evenly distributed in messages
+  * 5bytes is enough to represent 1T message ID, but we use 8 Bytes Long
+  * IndexTable size = 2^14 ( 2^40 * 10 / 2^14 * 8 + avg_byte_per_words) = 80T
+  * If in Ram, each machine has 16G Ram, needs 5K * 2 for redundancy = 10K
+  * If in filesystem, each machine has 1T, needs around 100.
+1. POI geo hashing, 2D->1D 2
+  * [Solution](https://github.com/rw2409/system_design/blob/master/ClassicalProblems/Geo-Poi.md)
+1. How to improve Facebook?
+  * Community Based Used Inventory Sharing/Selling Platform.
+
 # Coding
 1. Find the k most frequent words from a file
   * First time iteration Map + PriorityQueue
@@ -242,19 +255,6 @@
 
 1. Union/Intersection of two sorted array
 
-Design:
-1. Shorten URL 2
-1. 1 T messages of max 10 words, how do you build the index table and how many machines to host?
-  * Assumption: 2^14 words, words are evenly distributed in messages
-  * 5bytes is enough to represent 1T message ID, but we use 8 Bytes Long
-  * IndexTable size = 2^14 ( 2^40 * 10 / 2^14 * 8 + avg_byte_per_words) = 80T
-  * If in Ram, each machine has 16G Ram, needs 5K * 2 for redundancy = 10K
-  * If in filesystem, each machine has 1T, needs around 100.
-1. POI geo hashing, 2D->1D 2
-  * [Solution](https://github.com/rw2409/system_design/blob/master/ClassicalProblems/Geo-Poi.md)
-1. How to improve Facebook?
-  * Community Based Used Inventory Sharing/Selling Platform.
-
 1. Word Search
   * SingleWord: DFS
   * Word Collection: Trie + DFS
@@ -323,17 +323,18 @@ Design:
 1. SameTree iteratively
    * https://leetcode.com/submissions/detail/56542353/
 
-1.pre-order iterator
+1. pre-order iterator
   * https://leetcode.com/submissions/detail/56543254/
 
-1.IsBST, iterative apporach
+1. IsBST, iterative apporach
   * InOrder Traversal ordered
 
 1. Serialize/Deserialize BT
   * https://leetcode.com/submissions/detail/56546972/
   * BUG: index global array is of size int[1] instead of int[0]
 
-//TODO:
+# TODO:
+## Coding
 1. WordBreak 2
 1. String to floatNumber
 1. Valid Number 2
@@ -367,7 +368,7 @@ http://www.mitbbs.com/article_t/JobHunting/33037695.html
 1. use normal lock to implement readwrite lock
 1. hash table remap
 
-Design:
+## Design
 1. Design Messenger
 1. System design Mobile app of photo feeds/Instagram
 功能： 读取好友的最近图片, 阅览好友的相册
@@ -393,8 +394,7 @@ sharing happen every day.
 1. Facebook friends recommendation
 1. Auto refresh when new comment shows up for certain post, no need to refresh page
 
-
-#Behavior
+##Behavior
 1. Difficult problem.
 1. Production bug, how to avoid.
 1. Cross Team, hot wo communicate them to listen to us.
