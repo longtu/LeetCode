@@ -6,10 +6,11 @@ import wr.leetcode.algo.Interval;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class Solution {
 
-
+    /*
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
         List<Interval> ret = new LinkedList<>();
         if( null == intervals ) {
@@ -159,6 +160,31 @@ public class Solution {
         }
         return ret;
     }*/
+
+    public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+        ListIterator<Interval> ite = intervals.listIterator();
+        while(ite.hasNext()) {
+            Interval curr = ite.next();
+            if(null == newInterval) {
+                break;
+            } else if (curr.end < newInterval.start ) {
+                continue;
+            } else if (curr.start > newInterval.end) {
+                ite.remove();
+                ite.add(newInterval);
+                ite.add(curr);
+                newInterval = null;
+            } else {
+                newInterval = new Interval(Math.min(curr.start, newInterval.start), Math.max(curr.end, newInterval.end));
+                ite.remove();
+            }
+        }
+        if(null != newInterval) {
+            intervals.add(newInterval);
+        }
+
+        return intervals;
+    }
 
     public static void main(String[] args) {
         Solution sol = new Solution();

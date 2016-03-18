@@ -31,6 +31,15 @@ class Data {
 public class DeepIterator implements Iterator<Data> {
 
     Stack<Iterator<Data>> st = new Stack<>();
+    /**
+     * It's better to use next value here as we cannot put both Data and DataIterator in the stack.
+     * OtherOptions:
+     *  1. we will be fallback similar to array: warp index and data in another class used by stack
+     *  2. wrap iterator and data in a class similar as Data to indicate if it is value or iterator
+     *
+     *  But in general, only top of the stack is data, otherwise it's all arrays.
+     *
+     */
     Data next = null;
 
     public DeepIterator( Data data ) {

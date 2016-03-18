@@ -1,3 +1,16 @@
+# Design:
+1. Shorten URL 2
+1. 1 T messages of max 10 words, how do you build the index table and how many machines to host?
+  * Assumption: 2^14 words, words are evenly distributed in messages
+  * 5bytes is enough to represent 1T message ID, but we use 8 Bytes Long
+  * IndexTable size = 2^14 ( 2^40 * 10 / 2^14 * 8 + avg_byte_per_words) = 80T
+  * If in Ram, each machine has 16G Ram, needs 5K * 2 for redundancy = 10K
+  * If in filesystem, each machine has 1T, needs around 100.
+1. POI geo hashing, 2D->1D 2
+  * [Solution](https://github.com/rw2409/system_design/blob/master/ClassicalProblems/Geo-Poi.md)
+1. How to improve Facebook?
+  * Community Based Used Inventory Sharing/Selling Platform.
+
 # Coding
 1. Find the k most frequent words from a file
   * First time iteration Map + PriorityQueue
@@ -209,19 +222,20 @@
 
 1. Key Stroke 2
   * http://www.themianjing.com/2015/07/facebook-onsite%E9%9D%A2%E7%BB%8F/
-1. Merge Intervals
 1. Dropping meetings that are lowest priority and schedule meetings with limited number of rooms.
 
 1. Return index of max element in given array, the index needs to be random. 2
 [2,1,2,1,5,4,5,5] return 4,6,7 randomly. O(1) space
   * Use decreasing probability based on count
-  * see RandomIndexedMax
+  * see RandomIndexedMax and ReservoirSampling
 
 1. Task Scheduler 3
   * use hash table to keep track of each task future schedule
   * if k is very small, we can keep hash table with size K (LinkedHashMap)
   * if order can change, we use greedy with priority queue, always execute the job that's available with highest count
   * Return Max(maxCount + (max-1)*(interval+1), totalLength)
+  * Insert Merge Interval in place
+    * [Using ListIterator, support add/remove but not fast](https://leetcode.com/submissions/detail/56625221/)
 
 1. POI geo hashing, 2D->1D
 
@@ -241,19 +255,6 @@
 1. Merge K sorted List
 
 1. Union/Intersection of two sorted array
-
-Design:
-1. Shorten URL 2
-1. 1 T messages of max 10 words, how do you build the index table and how many machines to host?
-  * Assumption: 2^14 words, words are evenly distributed in messages
-  * 5bytes is enough to represent 1T message ID, but we use 8 Bytes Long
-  * IndexTable size = 2^14 ( 2^40 * 10 / 2^14 * 8 + avg_byte_per_words) = 80T
-  * If in Ram, each machine has 16G Ram, needs 5K * 2 for redundancy = 10K
-  * If in filesystem, each machine has 1T, needs around 100.
-1. POI geo hashing, 2D->1D 2
-  * [Solution](https://github.com/rw2409/system_design/blob/master/ClassicalProblems/Geo-Poi.md)
-1. How to improve Facebook?
-  * Community Based Used Inventory Sharing/Selling Platform.
 
 1. Word Search
   * SingleWord: DFS
@@ -323,30 +324,39 @@ Design:
 1. SameTree iteratively
    * https://leetcode.com/submissions/detail/56542353/
 
-1.pre-order iterator
+1. pre-order iterator
   * https://leetcode.com/submissions/detail/56543254/
 
-1.IsBST, iterative apporach
+1. IsBST, iterative apporach
   * InOrder Traversal ordered
 
 1. Serialize/Deserialize BT
   * https://leetcode.com/submissions/detail/56546972/
   * BUG: index global array is of size int[1] instead of int[0]
 
-//TODO:
+1. Write a iterator to iterate a nested array
+  * Comparing with LinkedIn problem of nested List with DeepIterator
+  * See NestedArrayIterator
+  * only top of the stack is data, others are all arrays.
+
+1. alien dictionary
+  * only need to compare from i to i+1 instead of N^2
+  * build a outgoing-set EdgeMap/ and incoming-Integer count Map is sufficient
+
+# TODO:
+## Coding
 1. WordBreak 2
+1. given two nodes in a tree, return paths between those two nodes
+    //Recursive, using data including how many found
+
 1. String to floatNumber
 1. Valid Number 2
-1. alien dictionary
-1. Merge Interval in place http://www.mitbbs.com/article_t/JobHunting/32748585.html
-
 1.Find first k common elements in n sorted arrays.
   * Merge K sorted
   * Move 1 by 1
 
-1. given two nodes in a tree, return paths between those two nodes
-    //Recursive, using data including how many found
-
+1. WordGame
+http://www.mitbbs.com/article_t/JobHunting/33055253.html
 1. Longest pattern https://www.careercup.com/question?id=5096352075743232
 1. TrieNode Match with wildcard http://www.mitbbs.com/article_t/JobHunting/33126923.html
 1. Find the most overlapped position of a collection of rectangulars.
@@ -355,19 +365,13 @@ Design:
 
 1. 一组字符串，求所有彼此之间无公共字符的两两组合中，两字符串长度乘积的最大值。
 1. KMP/StrStr  4
-1. WordGame
-http://www.mitbbs.com/article_t/JobHunting/33055253.html
-
-http://www.mitbbs.com/article_t/JobHunting/33037695.html
-1. Write a iterator to iterate a nested array: use stack to keep track of <Array, index>
-1. reservoir sampling
 
 1. Fair Locking Implementation
 1. Implement Mutex
 1. use normal lock to implement readwrite lock
 1. hash table remap
 
-Design:
+## Design
 1. Design Messenger
 1. System design Mobile app of photo feeds/Instagram
 功能： 读取好友的最近图片, 阅览好友的相册
@@ -393,8 +397,7 @@ sharing happen every day.
 1. Facebook friends recommendation
 1. Auto refresh when new comment shows up for certain post, no need to refresh page
 
-
-#Behavior
+##Behavior
 1. Difficult problem.
 1. Production bug, how to avoid.
 1. Cross Team, hot wo communicate them to listen to us.

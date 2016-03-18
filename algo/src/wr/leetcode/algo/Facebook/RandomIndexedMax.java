@@ -1,5 +1,7 @@
 package wr.leetcode.algo.Facebook;
 
+import java.util.Random;
+
 public class RandomIndexedMax {
 
     int maxIndex(int[] nums) {
@@ -7,6 +9,7 @@ public class RandomIndexedMax {
         int max = nums[0];
         int count = 1;
         int ret = 0;
+        Random random = new Random();
 
         for (int i = 1; i < nums.length; ++i) {
             int val = nums[i];
@@ -16,11 +19,13 @@ public class RandomIndexedMax {
                 max = val;
             } else if (max == val) {
                 count ++;
-                if(Math.random() < 1.0/count) {
+                if(0 == random.nextInt(count)) {
                     ret = i;
                 }
             }
         }
         return ret;
     }
+
+
 }
