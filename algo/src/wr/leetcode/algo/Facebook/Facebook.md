@@ -262,6 +262,7 @@
 
 1. Add and Search word with 2
   * Using [Trie](https://leetcode.com/submissions/detail/56238006/)
+  *  TrieNode Match with wildcard, see add and search word
 
 1. Buy/Sell Stock: loc/glo solves all
   * at most k times, Day i: https://leetcode.com/submissions/detail/56242691/
@@ -343,11 +344,19 @@
   * only need to compare from i to i+1 instead of N^2
   * build a outgoing-set EdgeMap/ and incoming-Integer count Map is sufficient
 
+1. Longest pattern
+  * see Longest Consecutive Pattern
+
+1. given two nodes in a tree, return paths between those two nodes
+  * Assuming two nodes are different and both in the tree
+  * See recursive solution of 'FindPathBetweenTwoNodes'.
+
+
 # TODO:
 ## Coding
 1. WordBreak 2
-1. given two nodes in a tree, return paths between those two nodes
-    //Recursive, using data including how many found
+1. WordGame
+http://www.mitbbs.com/article_t/JobHunting/33055253.html
 
 1. String to floatNumber
 1. Valid Number 2
@@ -355,14 +364,9 @@
   * Merge K sorted
   * Move 1 by 1
 
-1. WordGame
-http://www.mitbbs.com/article_t/JobHunting/33055253.html
-1. Longest pattern https://www.careercup.com/question?id=5096352075743232
-1. TrieNode Match with wildcard http://www.mitbbs.com/article_t/JobHunting/33126923.html
 1. Find the most overlapped position of a collection of rectangulars.
   * 我的想法是一个方向用扫描线，另一个方向用 BST，但复杂度是 N * NlogN = n^2 logN
   * 我是先写了个一维的sweep line algorithm. 然后扩展到二维，所以算法复杂度是N N log(N). 但是是可以N logN实现的。
-
 1. 一组字符串，求所有彼此之间无公共字符的两两组合中，两字符串长度乘积的最大值。
 1. KMP/StrStr  4
 
