@@ -10,6 +10,29 @@
   * [Solution](https://github.com/rw2409/system_design/blob/master/ClassicalProblems/Geo-Poi.md)
 1. How to improve Facebook?
   * Community Based Used Inventory Sharing/Selling Platform.
+1. Design photo reference counting system at fb scale.
+  * [Notes](https://github.com/rw2409/system_design/blob/master/ClassicalProblems/CountingRelatedProblems.md)
+  * Concurrent update on single photo is not huge?
+  * Total photos are huge.
+  * Data should be write-through cached.
+
+1. system design – design facebook music system，只需要design service tie.
+- get_top_10_list_music_ids(int64 userid) return top 10 most frequent listened music ids for a given user last week. 这个call在load页面的时候要进行，所以对latency要求比较高。
+- record(int64 userid, int64 musicid, int64 timestamp) – 每当user听一首歌，就 需要记录下来，这个可以asynch进行，需要eventually consistent，但不需要每听一 首歌马上就能反映到上一个call中。要做各种spec和resource的estimation。
+   * Async update
+   * Volume high but concurrent write is small
+   * [Notes](https://github.com/rw2409/system_design/blob/master/ClassicalProblems/CountingRelatedProblems.md)
+
+1. 抄dropbox那个问题，get_hits_last_5mins(), record_hit()
+  * Async write
+  * Based on Data precision requirements, we can use buffered write through or shard counter.
+  * [Notes](https://github.com/rw2409/system_design/blob/master/ClassicalProblems/CountingRelatedProblems.md)
+
+1.Rank the most shared urls for the last 10 minutes, for last hour, for last day, etc. There are total 100 millions url
+sharing happen every day.
+  * Stream processing: sharded, aggregated, use minute level window
+  * Probalistic data structures
+  * [Notes](https://github.com/rw2409/system_design/blob/master/ClassicalProblems/CountingRelatedProblems.md)
 
 # Coding
 1. Find the k most frequent words from a file
@@ -237,8 +260,6 @@
   * Insert Merge Interval in place
     * [Using ListIterator, support add/remove but not fast](https://leetcode.com/submissions/detail/56625221/)
 
-1. POI geo hashing, 2D->1D
-
 1. Longest increasing sub-sequence in array
   * https://leetcode.com/submissions/detail/56225311/
     * watch out for when key is equal
@@ -380,26 +401,18 @@ http://www.mitbbs.com/article_t/JobHunting/33055253.html
 1. System design Mobile app of photo feeds/Instagram
 功能： 读取好友的最近图片, 阅览好友的相册
 要求： 满足功能的同时减少对手机的能耗。
-1. Design photo reference counting system at fb scale
-   感觉这题主要是要解决high volume concurrent writing. 我想的是如果要scaling up
-   , 在每个Appserver 上对每个photo加一个counter,然后每隔T时间传到一个aggregator
-   把所有与目标相关的counter相加，然后update DB和Memcached. 一些细节还没想清楚
-   ，求讨论。
+
 1. Page Rank Design
 http://www.themianjing.com/2015/06/facebook-%E5%8A%A0%E9%9D%A2-design-%E9%A2%98/
-1. System design of query field
-http://www.themianjing.com/2015/06/f%E9%9D%A2%E7%BB%8F%EF%BC%8Cee%E8%BD%AC%E8%A1%8C/
-1. 设计@别人的功能，扩展到大规模
-1. system design – design facebook music system，只需要design service tie.
-- get_top_10_list_music_ids(int64 userid) return top 10 most frequent listened music ids for a given user last week. 这个call在load页面的时候要进行，所以对latency要求比较高。
-- record(int64 userid, int64 musicid, int64 timestamp) – 每当user听一首歌，就 需要记录下来，这个可以asynch进行，需要eventually consistent，但不需要每听一 首歌马上就能反映到上一个call中。要做各种spec和resource的estimation。
-1. 抄dropbox那个问题，get_hits_last_5mins(), record_hit()，但是后面又扯到 system design，如何thread safe，如果是districuted syste怎么搞，能想到几种方法.
-http://www.mitbbs.com/article_t1/JobHunting/32549839_0_2.html
-1.Rank the most shared urls for the last 10 minutes, for last hour, for last day, etc. there are total 100 millions url
-sharing happen every day.
+
+1. System design of query field, 每个record有个很大field，比如年龄，性别，爱好等。给一个field的组合，比如小于25岁，爱好体育,
+query满足这些组合条件的用户个数
 1. Realtime Search,
-1. Facebook friends recommendation
+
+1. 设计@别人的功能，扩展到大规模
 1. Auto refresh when new comment shows up for certain post, no need to refresh page
+
+1. Facebook friends recommendation
 
 ##Behavior
 1. Difficult problem.
