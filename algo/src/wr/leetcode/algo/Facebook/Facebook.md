@@ -34,6 +34,12 @@ sharing happen every day.
   * Probalistic data structures
   * [Notes](https://github.com/rw2409/system_design/blob/master/ClassicalProblems/CountingRelatedProblems.md)
 
+1. Design Messenger
+1. 设计@别人的功能，扩展到大规模
+1. Auto refresh when new comment shows up for certain post, no need to refresh page
+  * [Notes](https://github.com/rw2409/system_design/tree/master/ClassicalProblems)
+
+
 # Coding
 1. Find the k most frequent words from a file
   * First time iteration Map + PriorityQueue
@@ -397,22 +403,15 @@ http://www.mitbbs.com/article_t/JobHunting/33055253.html
 1. hash table remap
 
 ## Design
-1. Design Messenger
 1. System design Mobile app of photo feeds/Instagram
 功能： 读取好友的最近图片, 阅览好友的相册
 要求： 满足功能的同时减少对手机的能耗。
 
-1. Page Rank Design
 http://www.themianjing.com/2015/06/facebook-%E5%8A%A0%E9%9D%A2-design-%E9%A2%98/
-
 1. System design of query field, 每个record有个很大field，比如年龄，性别，爱好等。给一个field的组合，比如小于25岁，爱好体育,
 query满足这些组合条件的用户个数
 1. Realtime Search,
-
-1. 设计@别人的功能，扩展到大规模
-1. Auto refresh when new comment shows up for certain post, no need to refresh page
-
-1. Facebook friends recommendation
+1. Page Rank Design
 
 ##Behavior
 1. Difficult problem.
