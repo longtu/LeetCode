@@ -44,6 +44,11 @@ sharing happen every day.
 1. Auto refresh when new comment shows up for certain post, no need to refresh page
   * [Notes](https://github.com/rw2409/system_design/tree/master/ClassicalProblems)
 
+1. System design Mobile app of photo feeds/Instagram
+功能： 读取好友的最近图片, 阅览好友的相册
+要求： 满足功能的同时减少对手机的能耗。
+NewsFeed + Timeline + Mobile Optimization
+  *[NewsFeed](https://github.com/rw2409/system_design/blob/master/ClassicalProblems/FeedDesign.md)
 
 # Coding
 1. Find the k most frequent words from a file
@@ -407,10 +412,6 @@ http://www.mitbbs.com/article_t/JobHunting/33055253.html
 1. use normal lock to implement readwrite lock
 1. hash table remap
 
-## Design
-1. System design Mobile app of photo feeds/Instagram
-功能： 读取好友的最近图片, 阅览好友的相册
-要求： 满足功能的同时减少对手机的能耗。
 
 ##Behavior
 1. Difficult problem.
