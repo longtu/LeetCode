@@ -15,6 +15,11 @@
   * Concurrent update on single photo is not huge?
   * Total photos are huge.
   * Data should be write-through cached.
+1. System design of query field, 每个record有个很大field，比如年龄，性别，爱好等。给一个field的组合，比如小于25岁，爱好体育,
+query满足这些组合条件的用户个数.
+1. Realtime Search
+1. Page Rank Design
+[Notes](https://github.com/rw2409/system_design/blob/master/ClassicalProblems/SearchRelated.md)
 
 1. system design – design facebook music system，只需要design service tie.
 - get_top_10_list_music_ids(int64 userid) return top 10 most frequent listened music ids for a given user last week. 这个call在load页面的时候要进行，所以对latency要求比较高。
@@ -406,12 +411,6 @@ http://www.mitbbs.com/article_t/JobHunting/33055253.html
 1. System design Mobile app of photo feeds/Instagram
 功能： 读取好友的最近图片, 阅览好友的相册
 要求： 满足功能的同时减少对手机的能耗。
-
-http://www.themianjing.com/2015/06/facebook-%E5%8A%A0%E9%9D%A2-design-%E9%A2%98/
-1. System design of query field, 每个record有个很大field，比如年龄，性别，爱好等。给一个field的组合，比如小于25岁，爱好体育,
-query满足这些组合条件的用户个数
-1. Realtime Search,
-1. Page Rank Design
 
 ##Behavior
 1. Difficult problem.
