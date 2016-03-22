@@ -3,63 +3,50 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Solution {
-    public List<String> wordBreak(int i, String local, Set<String> dict, Set<Integer> wordLens, String target) {
-        int n = target.length();
-        List<String> ret = new LinkedList<>();
 
-        for (int wordLen : wordLens) {
-            if(i+wordLen > n) {
-                continue;
-            }
-            String word = target.substring(i, i+wordLen);
-            if(!dict.contains(word)) {
-                continue;
-            }
-            if (i+wordLen == n) {
-                String str = local + " " + word;
-                ret.add( str.trim() );
-                continue;
-            }
-            ret.addAll(wordBreak(i + wordLen, local + " " + word,  dict, wordLens, target));
+    public List<String> wordBreak(String s, Set<String> dict) {
+        List<String> ret = new LinkedList<>();
+        int n = s.length();
+        if (n > 0) {
+            LinkedList<String> [] dp = new LinkedList[n+1];
+            dp[n] = new LinkedList<>();
+            dp[n].add("");
+            ret = wordBreak(s, 0, dict, dp);
         }
         return ret;
     }
 
-    public List<String> wordBreak(String s, Set<String> dict) {
-        if(s == null) {
-            s = "";
+    public List<String> wordBreak(String s, int i, Set<String> dict, LinkedList<String> [] dp) {
+        LinkedList<String> ret = new LinkedList<>();
+        if(dp[i] == null) {
+            for (int j = i+1; j <= s.length(); ++j) {
+                String str = s.substring(i, j);
+                if(dict.contains(str)) {
+                    List<String> subSols = wordBreak(s, j, dict, dp);
+                    for (String subSol : subSols) {
+                        String sub = str + ((subSol.isEmpty())?(""):(" ")) + subSol;
+                        ret.add(sub);
+                    }
+                }
+            }
+            dp[i] = ret;
         }
-        if(dict == null) {
-            dict = new HashSet<>();
-        }
-        dict.remove("");
-        int n = s.length();
-
-        if(!validateVocabulary(s, dict)) {
-            return new LinkedList<>();
-        }
-
-        Set<Integer> wordLens = dict.stream().map( a -> a.length())
-                .collect(Collectors.toSet());
-        return wordBreak(0, "", dict, wordLens, s);
-    }
-
-    public boolean validateVocabulary(String s, Set<String> dict)
-    {
-        Set<Integer> vocabulary = dict.stream().flatMap(a -> a.chars().boxed()).collect(Collectors.toSet());
-        if (s.chars().boxed().filter( a -> !vocabulary.contains(a)).findAny().isPresent())
-            return false;
-
-        Set<Character> ends = dict.stream().map(a -> a.charAt(a.length() - 1)).collect(Collectors.toSet());
-        if (!ends.contains(s.charAt(s.length()-1)))
-            return false;
-
-        return true;
+        return dp[i];
     }
 
     public static void main(String[] args) {
         Solution sol = new Solution();
-        Set<String> dict = Arrays.asList("a","aa","ba").stream().collect(Collectors.toSet());
+        Set<String> dict = new HashSet<>();
+        for (String w : new String[] {"cat", "cats", "and", "sand", "dog" }) {
+            dict.add(w);
+        }
+        for (String s : new String[] {"","catsanddog", "cats", "catss" }) {
+            System.out.println(sol.wordBreak(s, dict));
+        }
+
+        dict = Arrays.asList("a", "aa", "ba").stream().collect(Collectors.toSet());
+        long time = System.currentTimeMillis();
         System.out.println(sol.wordBreak("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab", dict));
+        System.out.println(System.currentTimeMillis() - time);
     }
 }

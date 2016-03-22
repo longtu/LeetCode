@@ -5,10 +5,33 @@ import java.util.stream.Collectors;
 
 public class Solution {
 
-    public Solution() {
-    }
+		public boolean wordBreak(String s, Set<String> dict) {
+			boolean ret = false;
+			if(s.length() > 0) {
+				int n = s.length();
+				Boolean[] dp = new Boolean[n+1];
+				dp[n] = true;
+				ret = wordBreak(s, 0, dp, dict);
+			}
+			return ret;
+		}
 
-    public boolean wordBreak(String s, Set<String> dict) {
+		public boolean wordBreak(String s, int i, Boolean[] dp, Set<String> dict) {
+			if(dp[i] == null) {
+				boolean ret = false;
+				for (int j = i+1; j <= s.length(); ++j) {
+					String str = s.substring(i, j);
+					if( dict.contains(str) && wordBreak(s, j, dp, dict)) {
+						ret = true;
+						break;
+					}
+				}
+				dp[i] = ret;
+			}
+			return dp[i];
+		}
+
+    public boolean wordBreakBfs(String s, Set<String> dict) {
  		if(s == null) {
  			s = "";
  		}

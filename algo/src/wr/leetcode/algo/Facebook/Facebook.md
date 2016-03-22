@@ -388,22 +388,27 @@ NewsFeed + Timeline + Mobile Optimization
   * Assuming two nodes are different and both in the tree
   * See recursive solution of 'FindPathBetweenTwoNodes'.
 
+1. WordBreak 2
+  * [TrueOrFalse](https://leetcode.com/submissions/detail/56971606/)
+  * [All Solutins](https://leetcode.com/submissions/detail/56970658/)
 
 # TODO:
 ## Coding
-1. WordBreak 2
-1. WordGame
-http://www.mitbbs.com/article_t/JobHunting/33055253.html
-
 1. String to floatNumber
 1. Valid Number 2
+
 1.Find first k common elements in n sorted arrays.
   * Merge K sorted
   * Move 1 by 1
 
-1. Find the most overlapped position of a collection of rectangulars.
-  * 我的想法是一个方向用扫描线，另一个方向用 BST，但复杂度是 N * NlogN = n^2 logN
-  * 我是先写了个一维的sweep line algorithm. 然后扩展到二维，所以算法复杂度是N N log(N). 但是是可以N logN实现的。
+1. WordGame
+http://www.mitbbs.com/article_t/JobHunting/33055253.html
+
+1. Find the most overlapped position of a collection of rectangulars. (line sweep)
+1. Line segment intersection.
+https://community.topcoder.com/stat?c=problem_statement&pm=4463&rd=6536
+https://www.topcoder.com/community/data-science/data-science-tutorials/line-sweep-algorithms/
+
 1. 一组字符串，求所有彼此之间无公共字符的两两组合中，两字符串长度乘积的最大值。
 1. KMP/StrStr  4
 
@@ -411,7 +416,6 @@ http://www.mitbbs.com/article_t/JobHunting/33055253.html
 1. Implement Mutex
 1. use normal lock to implement readwrite lock
 1. hash table remap
-
 
 ##Behavior
 1. Difficult problem.
