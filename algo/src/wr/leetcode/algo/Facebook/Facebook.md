@@ -1,3 +1,18 @@
+##Behavior
+1. Difficult problem.
+  * AuditGrading Decision Base
+  * Memory Leak caused by initiating service client
+1. Production bug, how to avoid.
+  * DetailPage visibility setting
+  * Database truncation
+1. Cross Team, how to communicate them to listen to us.
+  * Omiga calling R-T-D in batches. From all at once to reduced load.
+1. Why Facebook?
+  * Easily can make impact
+  * Contribute to OpenSource
+1. How to improve Facebook?
+  * Community Based Used Inventory Sharing/Selling Platform
+
 # Design:
 1. Shorten URL 2
 1. 1 T messages of max 10 words, how do you build the index table and how many machines to host?
@@ -8,8 +23,6 @@
   * If in filesystem, each machine has 1T, needs around 100.
 1. POI geo hashing, 2D->1D 2
   * [Solution](https://github.com/rw2409/system_design/blob/master/ClassicalProblems/Geo-Poi.md)
-1. How to improve Facebook?
-  * Community Based Used Inventory Sharing/Selling Platform.
 1. Design photo reference counting system at fb scale.
   * [Notes](https://github.com/rw2409/system_design/blob/master/ClassicalProblems/CountingRelatedProblems.md)
   * Concurrent update on single photo is not huge?
@@ -396,15 +409,23 @@ NewsFeed + Timeline + Mobile Optimization
   * See Facebook/Mutex.java
 1. Use normal lock to implement readwrite lock
   * See Facebook/RWLock.java
+1. Fair Locking Implementation
+
+
+
+
 1. How to implement HashTable resize()? //JDK implementation
   * Always resize() by 2
   * for each node at j in oldTable, if node.next is null, newTable[(newSize-1)&j] = node;
   * else need to iterate over node.next list, distribute values into two lists newTable[j],newTable[j+oldSize]
   * if node.hashCode & oldSize !=0 go to newTable[j+oldSize]
 
-1. Fair Locking Implementation
-
-
+1. StrStr  4
+  * naive: nested loop
+  * rolling hash + naive only when hash is the same
+  * KMP
+    * build proper postfix/prefix table used to look up
+    * once stop, can shift right faster
 
 # TODO:
 ## Coding
@@ -414,7 +435,6 @@ NewsFeed + Timeline + Mobile Optimization
 1.Find first k common elements in n sorted arrays.
   * Merge K sorted
   * Move 1 by 1
-
 1. WordGame
 http://www.mitbbs.com/article_t/JobHunting/33055253.html
 
@@ -422,13 +442,4 @@ http://www.mitbbs.com/article_t/JobHunting/33055253.html
 1. Line segment intersection.
 https://community.topcoder.com/stat?c=problem_statement&pm=4463&rd=6536
 https://www.topcoder.com/community/data-science/data-science-tutorials/line-sweep-algorithms/
-
 1. 一组字符串，求所有彼此之间无公共字符的两两组合中，两字符串长度乘积的最大值。
-1. KMP/StrStr  4
-
-
-
-##Behavior
-1. Difficult problem.
-1. Production bug, how to avoid.
-1. Cross Team, hot wo communicate them to listen to us.

@@ -20,8 +20,11 @@ class MutexV1 {
 
 /**
  * Sleep lock using java intrinsic lock
+ * This lock is not reentrant.
+ * see http://tutorials.jenkov.com/java-concurrency/locks.html
+ * for reentrant defination
+ *
  */
-
 class MutexV2 {
     private boolean isLocked = false;
 
@@ -36,5 +39,36 @@ class MutexV2 {
     public synchronized void unlock(){
         isLocked = false;
         notify();
+    }
+}
+
+/**
+ * Reentrant lock implementation
+ */
+
+class MutexV3 {
+    boolean isTaken = false;
+    Thread takingThread = null;
+    //this is required otherwise one unlock will unlock all lock() positions
+    int lockedStackTime = 0;
+
+    public synchronized void lock() throws InterruptedException {
+        while (isTaken && takingThread != Thread.currentThread()) {
+            //this line will cause currentThread to give out the intrinsic lock
+            this.wait();
+        }
+        isTaken = true;
+        takingThread = Thread.currentThread();
+        lockedStackTime++;
+    }
+
+    public synchronized void unlock() {
+        if(Thread.currentThread() == this.takingThread){
+            if(--lockedStackTime == 0) {
+                isTaken = false;
+                takingThread = null;
+                this.notifyAll();
+            }
+        }
     }
 }
