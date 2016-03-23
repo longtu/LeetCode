@@ -392,6 +392,20 @@ NewsFeed + Timeline + Mobile Optimization
   * [TrueOrFalse](https://leetcode.com/submissions/detail/56971606/)
   * [All Solutins](https://leetcode.com/submissions/detail/56970658/)
 
+1. Implement Mutex
+  * See Facebook/Mutex.java
+1. Use normal lock to implement readwrite lock
+  * See Facebook/RWLock.java
+1. How to implement HashTable resize()? //JDK implementation
+  * Always resize() by 2
+  * for each node at j in oldTable, if node.next is null, newTable[(newSize-1)&j] = node;
+  * else need to iterate over node.next list, distribute values into two lists newTable[j],newTable[j+oldSize]
+  * if node.hashCode & oldSize !=0 go to newTable[j+oldSize]
+
+1. Fair Locking Implementation
+
+
+
 # TODO:
 ## Coding
 1. String to floatNumber
@@ -412,10 +426,7 @@ https://www.topcoder.com/community/data-science/data-science-tutorials/line-swee
 1. 一组字符串，求所有彼此之间无公共字符的两两组合中，两字符串长度乘积的最大值。
 1. KMP/StrStr  4
 
-1. Fair Locking Implementation
-1. Implement Mutex
-1. use normal lock to implement readwrite lock
-1. hash table remap
+
 
 ##Behavior
 1. Difficult problem.
