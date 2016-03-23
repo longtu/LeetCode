@@ -410,9 +410,7 @@ NewsFeed + Timeline + Mobile Optimization
 1. Use normal lock to implement readwrite lock
   * See Facebook/RWLock.java
 1. Fair Locking Implementation
-
-
-
+  * [Just take a look](http://tutorials.jenkov.com/java-concurrency/starvation-and-fairness.html)
 
 1. How to implement HashTable resize()? //JDK implementation
   * Always resize() by 2
@@ -435,6 +433,7 @@ NewsFeed + Timeline + Mobile Optimization
 1.Find first k common elements in n sorted arrays.
   * Merge K sorted
   * Move 1 by 1
+
 1. WordGame
 http://www.mitbbs.com/article_t/JobHunting/33055253.html
 
