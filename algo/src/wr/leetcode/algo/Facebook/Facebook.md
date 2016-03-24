@@ -425,20 +425,32 @@ NewsFeed + Timeline + Mobile Optimization
     * build proper postfix/prefix table used to look up
     * once stop, can shift right faster
 
+1. 一组字符串，求所有彼此之间无公共字符的两两组合中，两字符串长度乘积的最大值。
+  * convert each string to a bitmap using integer
+  * compare integer by bit wise and
+
+1. Find if a collection of nodes can make a polygon.
+  1. See SegmentIntersection.java for testing if two segment intersects.
+  1. If order of building could be arbitrary
+    * points has to be greater than 3
+    * Not all nodes on the same line (similar as the max points on a line)
+  1. If following input ordering
+    * Points has to be greater than 3
+    * Any segment should not overlap with non neighbour
+      * Be careful with l0 and lk (k = 2...n-1) did not intersects.
+      * For other segment, just check li and lk ( k = i+2 ... n) did not intersects.
+    * Not all nodes on the same line (similar as the max points on a line)
+
+1. WordGame http://www.mitbbs.com/article_t/JobHunting/33055253.html
+  * Brute-force
+
+1. Find the most overlapped position of a collection of rectangulars.
+  * See OverlapRectangular.java
+  * http://blog.csdn.net/u013480600/article/details/39322791
+
 # TODO:
-## Coding
 1. String to floatNumber
 1. Valid Number 2
-
 1.Find first k common elements in n sorted arrays.
   * Merge K sorted
   * Move 1 by 1
-
-1. WordGame
-http://www.mitbbs.com/article_t/JobHunting/33055253.html
-
-1. Find the most overlapped position of a collection of rectangulars. (line sweep)
-1. Line segment intersection.
-https://community.topcoder.com/stat?c=problem_statement&pm=4463&rd=6536
-https://www.topcoder.com/community/data-science/data-science-tutorials/line-sweep-algorithms/
-1. 一组字符串，求所有彼此之间无公共字符的两两组合中，两字符串长度乘积的最大值。
