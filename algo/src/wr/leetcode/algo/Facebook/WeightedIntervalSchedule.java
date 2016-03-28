@@ -3,6 +3,7 @@ package wr.leetcode.algo.Facebook;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 import java.util.stream.Collectors;
 
 class Task {
@@ -14,6 +15,11 @@ class Task {
         this.end = end;
         this.cost = cost;
     }
+    @Override
+    public String toString() {
+        return String.format("[%s, %s, %s]", start, end, cost);
+    }
+
 }
 
 public class WeightedIntervalSchedule {
@@ -22,46 +28,52 @@ public class WeightedIntervalSchedule {
         int ret = 0;
         if (null != tasks && tasks.length > 0) {
             int n = tasks.length;
-            int [] dp = new int[n+1];
-            int [] path = new int[n+1];
+            int [] dp = new int[n];
+            int [] path = new int[n];
 
             Arrays.sort(tasks, (a, b) -> (a.end - b.end));
 
-            for (int i = 1; i <=n; ++i) {
-                Task curr = tasks[i-1];
+            for (int i = 0; i <n; ++i) {
+                Task curr = tasks[i];
                 int loc = curr.cost;
-                int latest = latestNoOverlap(tasks, i-1);
-                loc += dp[latest+1];
-                if (loc > dp[i-1]) {
-                    dp[i] = loc;
-                    path[i] = latest+1;
-                } else {
+                int latest = latestNoOverlap(tasks, i);
+
+                if (latest != -1) {
+                    loc += dp[latest];
+                }
+                if (i > 0 && dp[i-1] > loc) {
                     dp[i] = dp[i-1];
                     path[i] = i-1;
+                } else {
+                    dp[i] = loc;
+                    path[i] = latest;
                 }
             }
-            List<String> paths = generatePath(path,tasks, n);
+            List<String> paths = generatePath(path,tasks);
             System.out.println(paths.stream().collect(Collectors.joining(",")));
-            ret = dp[n];
+            ret = dp[n-1];
         }
         return ret;
     }
 
-    public List<String> generatePath( int[] path, Task[] tasks, int end) {
+    public List<String> generatePath( int[] path, Task[] tasks) {
         List<String> ret = new LinkedList<>();
-        if ( 0 < end) {
-            Task task = tasks[end-1];
-            ret = generatePath(path, tasks, path[end]);
-            int parentIndex = path[end]-1;
-            if(parentIndex >= 0) {
-                Task parent = tasks[parentIndex];
-                if(Math.max(task.start, parent.start) >= Math.min(task.end, parent.end)) {
-                    ret.add(String.format("[%s, %s, %s]",task.start, task.end, task.cost ));
-                }
-            } else {
-                ret.add(String.format("[%s, %s, %s]",task.start, task.end, task.cost ));
+        Stack<Task> st = new Stack<>();
+        int i = path.length -1;
+
+        while( i >= 0) {
+            int prev = path[i];
+            Task current = tasks[i];
+            if( prev == -1 || tasks[prev].end <= current.start) {
+                st.push(current);
             }
+            i = prev;
         }
+
+        while (!st.isEmpty()) {
+            ret.add(st.pop().toString());
+        }
+
         return ret;
     }
 
@@ -91,11 +103,11 @@ public class WeightedIntervalSchedule {
                 {new Task(2,5,2)},
                 {new Task(1,4,1),
                  new Task(2,5,2),
-                 new Task(6,7,3),
+                 new Task(6,7,3),  //{063}, {673}
                  new Task(0,6,3),
                  new Task(2,10,4)},
                 {},
-                { new Task(2,5,2), new Task(6,7,3),}
+                { new Task(2,5,2), new Task(6,7,3),} //{063}, {673}
         };
         for (Task[] tasks: events) {
             System.out.println(sol.maxCost(tasks));

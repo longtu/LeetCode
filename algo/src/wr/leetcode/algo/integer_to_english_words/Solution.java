@@ -36,51 +36,40 @@ public class Solution {
         dict.put(90, "Ninety");
     }
 
-
-    //value >= 0 && value < 999
-    public String thousand(int value) {
+    public String numberToWords(int num) {
         StringBuilder sb = new StringBuilder();
-        if( value >= 100 ) {
-            sb.append(dict.get(value/100));
-            sb.append(" ");
-            sb.append("Hundred");
-            String sub = thousand(value%100);
-            if (!sub.isEmpty()) {
-                sb.append(" ");
-                sb.append(sub);
+        int base = 0;
+        while( num > 0) {
+            if (num %1000 > 0) {
+                String val = processGroup(num%1000);
+                if (!bases[base].isEmpty()) {
+                    val = val + " " + bases[base];
+                }
+                if(sb.length() > 0) {
+                    sb.insert(0, " ");
+                }
+                sb.insert(0, val);
             }
-        } else if ( value > 20 ) {
-            sb.append(dict.get(value/10 * 10));
-            String sub = thousand(value%10);
-            if(!sub.isEmpty()) {
-                sb.append(" ");
-                sb.append(sub);
-            }
-        } else if(value > 0) {
-            sb.append(dict.get(value));
+            base += 1;
+            num/=1000;
         }
-        return sb.toString();
+        return (sb.length() == 0)?("Zero"):(sb.toString());
     }
 
-    public String numberToWords(int x) {
-        String ret = "Zero";
-        if (x > 0) {
-            List<String> groups = new LinkedList<>();
-            int i = 0;
-            while( x > 0) {
-                int value = x % 1000;
-                String base = bases[i++];
-                x/= 1000;
-                if(0 == value) {
-                    continue;
-                }
-                String str = thousand(value);
-                if(!base.isEmpty()) {
-                    str = str + " "+ base;
-                }
-                groups.add(0, str);
+    public String processGroup (int num) {
+        String ret = "";
+        if (num >= 100) {
+            ret = dict.get(num/100) + " Hundred";
+            if( num%100 > 0 ) {
+                ret = ret + " " + processGroup(num%100);
             }
-            ret = groups.stream().collect(Collectors.joining(" "));
+        } else if (num > 20) {
+            ret = dict.get(num/10*10);
+            if ( num%10 > 0 ) {
+                ret = ret + " " + processGroup(num%10);
+            }
+        } else if (num > 0) {
+            ret = dict.get(num);
         }
         return ret;
     }
@@ -88,7 +77,7 @@ public class Solution {
     public static void main(String[] args) {
         Solution sol = new Solution();
         int [] arr = {
-            123, 12345, 1234567, 0, 1234567890, 1000010, 1000
+            123, 12345, 1234567, 0, 1234567890, 1000010, 1000, 23
         };
         for(int ar : arr ) {
             System.out.println(sol.numberToWords(ar));

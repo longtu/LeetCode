@@ -21,13 +21,13 @@ public class SingleNumberSortedArray {
                 int sv = numbers[mid-1];
                 int ev = numbers[mid+1];
                 if (sv == mv ) {
-                    if((mid+1)%2 == 0) {
-                        s = mid + 1;
+                    if((mid&1) == 1) {
+                        s = mid +1;
                     } else {
                         e = mid - 2;
                     }
                 } else if (mv == ev){
-                    if((mid+1)%2 == 1) {
+                    if((mid&1)== 0) {
                         s  = mid + 2;
                     } else {
                         e = mid -1;

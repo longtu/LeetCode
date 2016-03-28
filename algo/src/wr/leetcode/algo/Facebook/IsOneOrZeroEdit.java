@@ -6,7 +6,6 @@ import java.util.List;
 
 public class IsOneOrZeroEdit {
 
-
     public boolean isDistanceZeroOrOne(Iterator<Character> a, Iterator<Character> b) {
         boolean aExtra = false,
                 bExtra = false,
@@ -25,6 +24,7 @@ public class IsOneOrZeroEdit {
                     aExtra = bExtra = replace = hasDiff = true;
                 }
             } else {
+
                 if (aExtra && pre_b != cur_a) {
                     aExtra = false;
                 }

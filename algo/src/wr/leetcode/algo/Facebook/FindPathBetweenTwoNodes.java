@@ -4,6 +4,7 @@ import wr.leetcode.algo.TreeNode;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.prefs.NodeChangeEvent;
 
 public class FindPathBetweenTwoNodes {
 
@@ -12,6 +13,10 @@ public class FindPathBetweenTwoNodes {
         return findPathInfo(root, left, right).path;
     }
 
+    /**
+     * V1
+     *
+     */
     Info findPathInfo(TreeNode root, TreeNode left, TreeNode right) {
         Info ret = new Info(new LinkedList<>(), 0);
         if( null != root ) {
@@ -49,6 +54,7 @@ public class FindPathBetweenTwoNodes {
         }
         return ret;
     }
+
 
     public static void main(String[] args) {
         FindPathBetweenTwoNodes sol = new FindPathBetweenTwoNodes();

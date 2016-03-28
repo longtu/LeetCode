@@ -61,28 +61,29 @@ public class RandomListSorted {
         List<Integer> head = new LinkedList<>();
         List<Integer> tail = new LinkedList<>();
 
-        List<Integer> buffer = new LinkedList<>();
-        while (!randomList.isEmpty()) {
-            buffer.add(randomList.pop());
-            if(buffer.size() == 3) {
-                int v = buffer.get(2);
-                for (int i = 2; i >0; --i) {
-                    int n = buffer.remove(0);
-                    if(n < v) {
-                        head.add(n);
-                    } else {
-                        tail.add(0, n);
-                    }
+        Integer first = null;
+        Integer second = null;
+
+        while(!randomList.isEmpty()) {
+            if( null == first ) {
+                first = randomList.pop();
+            }
+            if (randomList.isEmpty()) {
+                break;
+            } else {
+                second = randomList.pop();
+                if( first < second) {
+                    head.add(first);
+                } else {
+                    tail.add(0, first);
                 }
+                first = second;
             }
         }
-        if(buffer.size() == 2 && buffer.get(1) < buffer.get(0)) {
-            buffer.add(buffer.remove(0));
+        if(null != first) {
+            head.add(first);
         }
-        head.addAll(buffer);
-        while(!tail.isEmpty()) {
-            head.add(tail.remove(0));
-        }
+        head.addAll(tail);
         return head;
     }
 

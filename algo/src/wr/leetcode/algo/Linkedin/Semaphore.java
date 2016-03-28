@@ -18,9 +18,6 @@ public class Semaphore {
 
     public synchronized void release() {
 
-
-
-
         signal++;
         notify(); //notifys the first thread
         //notifyAll(); notifies all threads

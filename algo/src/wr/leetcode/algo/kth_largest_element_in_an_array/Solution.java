@@ -1,8 +1,11 @@
 package wr.leetcode.algo.kth_largest_element_in_an_array;
 
+import wr.leetcode.algo.Facebook.RandomListSorted;
+
 import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Random;
 
 public class Solution {
 /*
@@ -70,51 +73,36 @@ public class Solution {
             return findKthLargest( Arrays.copyOfRange(nums, 0, pivot), k);
         }
     }*/
-
-    public int findKthLargestUsingHeap(int[] nums, int k) {
-        Queue<Integer> heap = new PriorityQueue<>((a,b)->(a-b));
-        for (int n : nums) {
-            if ( heap.size() < k || heap.peek() < n) {
-                heap.offer(n);
-            }
-            if (heap.size() > k) {
-                heap.poll();
-            }
-        }
-        return heap.peek();
-    }
-
     public int findKthLargest(int[] nums, int k) {
-        int p = 0;
-        int pv = nums[p];
-        int b = p;
-        int n = nums.length;
-        int ret = pv;
+        return findKthLargest(nums, k, 0, nums.length);
+    }
 
-        for (int i = 1; i < n; ++i) {
-            int v = nums[i];
-            if (v > pv) { // bigger
-                b++;
-                swap(nums, b, i);
+
+    public int findKthLargest(int[] nums, int k, int start, int end) {
+        int rand = new Random().nextInt(end-start);
+        swap(nums, rand+start, start);
+        int p = start;
+        int pv = nums[start];
+        for (int i = start+1; i < end; ++i) {
+            if(nums[i] > pv) {
+                swap(nums, ++p, i);
             }
         }
-        swap(nums, p, b);
-
-        if (b + 1 == k) {
+        swap(nums, p, 0);
+        if (p+1 == k) {
             return pv;
-        } else if (b + 1 > k) {
-            return findKthLargest(Arrays.copyOfRange(nums, 0, b), k);
+        } else if (p+1 < k) {
+            return findKthLargest(Arrays.copyOfRange(nums,p + 1, nums.length), k - p - 1);
         } else {
-            return findKthLargest(Arrays.copyOfRange(nums, b+1, n), k - b - 1);
+            return findKthLargest(Arrays.copyOfRange(nums, 0, p), k);
         }
     }
 
-    private void swap(int [] arr, int l, int r) {
-        int tmp = arr[l];
-        arr[l] = arr[r];
-        arr[r] = tmp;
+    public void swap(int[] nums, int l, int r) {
+        int tmp = nums[l];
+        nums[l] = nums[r];
+        nums[r] = tmp;
     }
-
 
     public static void main(String[] args) {
         Solution sol = new Solution();

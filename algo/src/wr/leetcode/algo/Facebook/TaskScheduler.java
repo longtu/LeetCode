@@ -28,8 +28,11 @@ public class TaskScheduler {
         int time = 0;
         for (int i = 0; i < tasks.length; ++i) {
             char task = tasks[i];
-            if ( schedule.containsKey(task)){
-                time =  schedule.get(task);
+            if ( schedule.containsKey(task) ){
+                int t = schedule.get(task);
+                if(t > time) {
+                    time = t;
+                }
             }
             schedule.put(task, time + k + 1);
             time += 1;
@@ -110,7 +113,7 @@ public class TaskScheduler {
 
     public static void main(String[] args) {
         TaskScheduler scheduler = new TaskScheduler();
-        System.out.println(scheduler.taskSchedule("AABABCD".toCharArray(), 2));
-        System.out.println(scheduler.taskScheduleNoOrder("AABABCD", 10));
+        System.out.println(scheduler.taskSchedule("ABABA".toCharArray(), 3));
+        //System.out.println(scheduler.taskScheduleNoOrder("AABABCD", 10));
     }
 }

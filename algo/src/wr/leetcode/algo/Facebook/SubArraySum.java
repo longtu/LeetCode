@@ -42,7 +42,6 @@ public class SubArraySum {
         return ret;
     }
 
-
     // input not null
     // target not negative
     // input may contains negatives

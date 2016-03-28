@@ -3,6 +3,7 @@ package wr.leetcode.algo.threesum;
 import java.util.*;
 
 public class Solution {
+    /*
     public List<List<Integer>> threeSum(int[] nums) {
         Set<List<Integer>> ans = new HashSet<>();
         if (null == nums) {
@@ -43,51 +44,48 @@ public class Solution {
             }
         }
         return ret;
-    }
-
-    /*
+    } */
     public List<List<Integer>> threeSum(int[] nums) {
-
-        Set<List<Integer>> ret = new HashSet<>();
-        if( null != nums && nums.length > 2) {
-            int n = nums.length;
+        List<List<Integer>> ret = new LinkedList<>();
+        if( nums.length > 2) {
             Arrays.sort(nums);
-            for (int i = 0; i + 2 < n; ++i ) {
-                int val = nums[i];
-                int[] subNums = Arrays.copyOfRange(nums, i + 1, n);
-                Set<List<Integer>> subs = twoSum(subNums, 0 - val);
-                for (List<Integer> s : subs) {
-                    s.add(0, val);
-                    ret.add(s);
+            Set<List<Integer>> sols = new HashSet<>();
+            int n = nums.length;
+            for (int i = 0; i < n; ++i) {
+                int sum = nums[i];
+                Set<List<Integer>> twos = twoSum(nums, i+1, 0-sum);
+                for (List<Integer> two : twos) {
+                    two.add(0, sum);
+                    sols.add(two);
                 }
             }
+            ret = new LinkedList<>(sols);
         }
-        return new LinkedList<>(ret);
+        return ret;
     }
 
-    public Set<List<Integer>> twoSum(int[] nums, int target) {
-        Set<List<Integer>> ret = new HashSet();
-        int n = nums.length;
-        int start = 0;
-        int end = n-1;
-        while( start < end ) {
-            int l = nums[start];
-            int r = nums[end];
-            int sum = l + r;
-            if( sum == target) {
-                List<Integer> list = new LinkedList<>();
-                list.add(l);
-                list.add(r);
-                ret.add(list);
-                start ++;
-            } else if (sum < target) {
-                start ++;
+    Set<List<Integer>> twoSum(int[] nums, int i, int sum) {
+        Set<List<Integer>> ret = new HashSet<>();
+        int s = i;
+        int e = nums.length-1;
+        while(s < e) {
+            int sv = nums[s];
+            int ev = nums[e];
+            int total = sv + ev;
+            if (total == sum) {
+                List<Integer> two = new LinkedList<>();
+                two.add(sv);
+                two.add(ev);
+                ret.add(two);
+                s++;
+            } else if (total > sum) {
+                e--;
             } else {
-                end --;
+                s++;
             }
         }
         return ret;
-    }*/
+    }
 
 
     public static void main(String[] args) {

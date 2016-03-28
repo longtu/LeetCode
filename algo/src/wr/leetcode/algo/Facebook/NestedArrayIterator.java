@@ -21,19 +21,18 @@ public class NestedArrayIterator {
             Info info = st.peek();
             NestedArray topNested = info.array;
             int index = info.index;
+            int len = info.array.children.length;
 
-            if(topNested.isArray) { //is array
+            if(index == len) {
+                st.pop();
+            } else {
                 NestedArray[] children = topNested.children;
-                int len = children.length;
-                if(index >= len) {
-                    st.pop();
-                } else {
-                    NestedArray nextElement = children[index];
-                    info.index++;
-                    st.push(new Info(nextElement, 0));
+                NestedArray nextElement = children[index];
+                info.index++;
+                st.push(new Info(nextElement, 0));
+                if( !nextElement.isArray ) {
+                    break;
                 }
-            } else { //is not Array
-                break;
             }
         }
     }
