@@ -52,14 +52,21 @@
 1. 269 Alien Dictionary    22.4%   Hard **(only consider w(i) and w(i+1) to find the mis-match pair, remember to add all characters)**
 1. 286 Walls and Gates     36.8%   Medium **(only enqueue to BFS when dist is smaller than previous)**
 1. 265 Paint House II  35.3%   Hard **(How is findMin implemented, how about only 1 color)**
+1. 273 Integer to English Words    18.5%   Hard
+  * sequence of adding groups, reverse
+  * for base of 1 no need to add space
+  * empty string output to ZERO
+1. 43  Multiply Strings    23.1%   Medium
+  * index order of k is i+j+1
+  * make sure to use carry
+  * ignore leading zeros
+  * empty string output to ZERO
 
 # WhiteBoarding:
-1. 301 Remove Invalid Parentheses  31.4%   Hard (BFS+Pruning by using valid function)        
-  * [Pruning]http://bookshadow.com/weblog/2015/11/05/leetcode-remove-invalid-parentheses/ 
-1. 273 Integer to English Words    18.5%   Hard
 1. 161 One Edit Distance   28.1%   Medium
-  * Check Iterator
-1. 43  Multiply Strings    23.1%   Medium
+  * **(Check Iterator)**
+1. 301 Remove Invalid Parentheses  31.4%   Hard (BFS+Pruning by using valid function)
+  * [Pruning]http://bookshadow.com/weblog/2015/11/05/leetcode-remove-invalid-parentheses/
 1. 79  Word Search 22.6%   Medium
 1. Word Break II
 
