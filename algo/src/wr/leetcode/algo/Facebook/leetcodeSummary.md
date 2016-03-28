@@ -58,6 +58,7 @@
   * [Pruning]http://bookshadow.com/weblog/2015/11/05/leetcode-remove-invalid-parentheses/ 
 1. 273 Integer to English Words    18.5%   Hard
 1. 161 One Edit Distance   28.1%   Medium
+  * Check Iterator
 1. 43  Multiply Strings    23.1%   Medium
 1. 79  Word Search 22.6%   Medium
 1. Word Break II
