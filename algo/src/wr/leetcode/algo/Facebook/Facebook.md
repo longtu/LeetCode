@@ -74,6 +74,7 @@ NewsFeed + Timeline + Mobile Optimization
     * Use array + appearCount, only update appearCount when count change to/from 0
     * https://leetcode.com/submissions/detail/56160784/
   * Minimum size subarray with exact equal number
+  * general subarray sum, put (0, -1) to capture things starting with 0.
 
 1. Mutate Input Array
 1. Find Nth Element In Tree
@@ -127,6 +128,9 @@ NewsFeed + Timeline + Mobile Optimization
 1. Print all paths from root to leaf 3
   * How to print with indentation? (add width index based on root)
   * How to parallel?(split at certain depth and reduce), reducing using the depth vector
+  *BST pretty print / Identation are different
+    * Two pass: calculate height first
+    * One pass: use root as 0, keep track of leftMost as base and shift each node accordingly
 
 1. Search in rotated sorted array, with/without duplicates 4
 1. search kth element in sorted matrix, 列不升序
