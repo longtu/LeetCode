@@ -69,20 +69,21 @@
 1. Word Break II
 
 #Look:
-1. Implement Semaphore/Mutex etc
 1. longest increasing subsequence
 1. Longest common subsequece
-1. Longest Consecutive Sub-sequence without order in sequence: one pass O(N) time , O(N) space
-1. Longest Consecutive Sub-sequence with order in sequence: two pass O(N) time, O(N) space
+1. Longest Consecutive Sub-sequence (order does not matter) in sequence: one pass O(N) time , O(N) space
+1. Find if subarray sum equal to given target. (fast/slow pointers moving to right)
+1. Longest increasing subarray in array(fast/slow pointers moving to right)
 1. Longest sized sub-sequence with sum equal to given target. (backtracking)
-1. Longest increasing subarray in array
-1. Calculate moving window average/max/min
-1. 3Sum similar problems, duplicated allowed (check sample question as well)
-1. Stock similar problems
+1. Validate Pre-order of BST
+1. Calculate moving window max/min
+1. Post-Order Iterator
+
 1. Number of Islands Similars
 1. WordLadder II
 1. BinaryTree Flip/Vertical etc
-1. Post-Order Iterator
-1. Validate Pre-order of BST
+1. 3Sum similar problems, duplicated allowed (check sample question as well)
+1. Stock similar problems
 1. Implement PriorityQueue
 1. KeyStroke followup
+1. Implement Semaphore/Mutex etc
