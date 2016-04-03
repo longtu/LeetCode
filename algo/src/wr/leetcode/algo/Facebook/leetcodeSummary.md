@@ -63,8 +63,6 @@
   * empty string output to ZERO
 1. 301 Remove Invalid Parentheses  31.4%   Hard (BFS+Pruning by using valid function)
   * [Pruning + BFS](https://leetcode.com/submissions/detail/57504482/)
-
-# WhiteBoarding:
 1. 161 One Edit Distance   28.1%   Medium
   * **(Check Iterator)**
 1. 79  Word Search 22.6%   Medium
