@@ -5,52 +5,38 @@ import java.math.BigInteger;
 
 public class Solution {
 
-    //at most one . character
-    public int compareVersion(String version1, String version2) {
-        String[] lefts = version1.split("\\.");
-        String[] rights = version2.split("\\.");
 
-        if(lefts.length < rights.length) {
+    public int compareVersion(String version1, String version2) {
+        String[] v1s = version1.split("\\.");
+        String[] v2s = version2.split("\\.");
+        if (v1s.length > v2s.length) {
             return -1 * compareVersion(version2, version1);
         }
-        //left size >= right size
-        int ret = 0;
 
-        for (int i = 0; i < rights.length; ++i) {
-            Long lv = toLong(lefts[i]);
-            Long rv = toLong(rights[i]);
+        int n = v1s.length;
+        int i = 0;
 
-            if(lv < rv){
-                ret =  -1;
-                break;
-            } else if (lv > rv) {
-                ret = 1;
-                break;
+        while( i < n ) {
+            int left = Integer.parseInt(v1s[i]);
+            int right = Integer.parseInt(v2s[i]);
+            if( left < right) {
+                return -1;
+            } else if (left > right) {
+                return 1;
             }
+            i++;
         }
 
-        if(0 == ret && lefts.length > rights.length) {
-            for (int i = rights.length; i < lefts.length; ++i) {
-                if (toLong(lefts[i]) > 0) {
-                    ret = 1;
-                    break;
-                }
-            }
+        while (i < v2s.length && Integer.parseInt(v2s[i]) == 0) {
+            i++;
         }
-        return ret;
 
-    }
-
-
-
-    public Long toLong (String key) {
-        if(null == key || key.isEmpty()) {
-            return 0l;
+        if( i == v2s.length) {
+            return 0;
         } else {
-            return Long.parseLong(key);
+            return -1;
         }
     }
-
 
     public static void main(String[] args) {
         Solution sol = new Solution();
@@ -62,12 +48,9 @@ public class Solution {
         System.out.println(sol.compareVersion("01","1"));
         System.out.println(sol.compareVersion("1.0","1.2"));
         System.out.println(sol.compareVersion("1.2","1.10"));
+        System.out.println(sol.compareVersion("1.0","1"));
 
     }
-
-
-
-
 
     /*
     public int compareVersion(String version1, String version2) {

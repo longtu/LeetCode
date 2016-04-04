@@ -55,6 +55,39 @@ public class IsOneOrZeroEdit {
         return ret;
     }
 
+    boolean isOneOrZeroDistV2(Iterator<Character> l, Iterator<Character> r) {
+        boolean lExtra = false, rExtra = false, replace = false, diff = false;
+        Character lprev = null, rprev = null;
+
+        while(l.hasNext() && r.hasNext() ) {
+            Character lcurr = l.next();
+            Character rcurr = r.next();
+
+            if(!diff) {
+                if(lcurr.equals(rcurr)) continue;
+                else diff = replace = rExtra = lExtra = true;
+            } else {
+                if(lExtra && !lcurr.equals(rprev)) lExtra = false;
+                if(rExtra && !rcurr.equals(lprev)) rExtra = false;
+                if(replace && !lcurr.equals(rcurr)) replace = false;
+                if(!replace && !lExtra && !rExtra) return false;
+            }
+            lprev = lcurr;
+            rprev = rcurr;
+        }
+
+        if(!l.hasNext() && !r.hasNext()) {
+            return !diff || replace;
+        } else if (!l.hasNext()) {
+            Character rc = r.next();
+            return !r.hasNext() && (!diff || (rExtra && rc.equals(lprev)));
+        } else {
+            Character lc = l.next();
+            return !l.hasNext() && (!diff || (lExtra && lc.equals(rprev)));
+        }
+    }
+
+
     public Iterator<Character> ite( String str) {
         char[] chars = str.toCharArray();
         List<Character> charList = new LinkedList<>();
@@ -116,5 +149,37 @@ public class IsOneOrZeroEdit {
             ret = replace;
         }
         return ret;
+    }
+
+    boolean isDistanceOneV2(Iterator<Character> l, Iterator<Character> r) {
+        boolean lExtra = false, rExtra = false, replace = false, diff = false;
+        Character lprev = null, rprev = null;
+
+        while(l.hasNext() && r.hasNext() ) {
+            Character lcurr = l.next();
+            Character rcurr = r.next();
+
+            if(!diff) {
+                if(lcurr.equals(rcurr)) continue;
+                else diff = replace = rExtra = lExtra = true;
+            } else {
+                if(lExtra && !lcurr.equals(rprev)) lExtra = false;
+                if(rExtra && !rcurr.equals(lprev)) rExtra = false;
+                if(replace && !lcurr.equals(rcurr)) replace = false;
+                if(!replace && !lExtra && !rExtra) return false;
+            }
+            lprev = lcurr;
+            rprev = rcurr;
+        }
+
+        if(!l.hasNext() && !r.hasNext()) {
+            return !diff || replace;
+        } else if (!l.hasNext()) {
+            Character rc = r.next();
+            return !r.hasNext() && (!diff || (rExtra && rc.equals(lprev)));
+        } else {
+            Character lc = l.next();
+            return !l.hasNext() && (!diff || (lExtra && lc.equals(rprev)));
+        }
     }
 }
