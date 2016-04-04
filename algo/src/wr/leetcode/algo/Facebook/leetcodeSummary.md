@@ -82,10 +82,12 @@
   * Building/Removing Recursively, what if children are already heaps?
   * Adding is different from building.
 1. Implement Semaphore/Mutex etc
+1. BinaryTree Flip/Vertical etc
+1. 3Sum similar problems, duplicated allowed (check sample question as well)
+
 
 1. Number of Islands Similars
 1. WordLadder II
-1. BinaryTree Flip/Vertical etc
-1. 3Sum similar problems, duplicated allowed (check sample question as well)
 1. Stock similar problems
 1. KeyStroke followup
+1. HashTable problems
