@@ -78,12 +78,14 @@
 1. Validate Pre-order of BST
 1. Calculate moving window max/min
 1. Post-Order Iterator
+1. Implement PriorityQueue
+  * Building/Removing Recursively, what if children are already heaps?
+  * Adding is different from building.
+1. Implement Semaphore/Mutex etc
 
 1. Number of Islands Similars
 1. WordLadder II
 1. BinaryTree Flip/Vertical etc
 1. 3Sum similar problems, duplicated allowed (check sample question as well)
 1. Stock similar problems
-1. Implement PriorityQueue
 1. KeyStroke followup
-1. Implement Semaphore/Mutex etc
