@@ -93,3 +93,4 @@
 1. Word Pattern II
 1. Fraction to Recurring Decimal   15.0%   Medium
 1. Palindrome Pairs    18.7%   Hard
+1. Ugly Number.
