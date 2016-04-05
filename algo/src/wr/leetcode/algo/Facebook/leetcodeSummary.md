@@ -90,4 +90,6 @@
 1. WordLadder II
 1. Stock similar problems
 1. KeyStroke followup
-1. HashTable problems
+1. Word Pattern II
+1. Fraction to Recurring Decimal   15.0%   Medium
+1. Palindrome Pairs    18.7%   Hard
