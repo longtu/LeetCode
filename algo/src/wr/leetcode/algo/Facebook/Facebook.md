@@ -1,12 +1,14 @@
 ##Behavior
 1. Difficult problem.
+  * Pricing deep dive, iterations of research, sharing and discussion.
   * AuditGrading Decision Base
-  * Memory Leak caused by initiating service client
 1. Production bug, how to avoid.
-  * DetailPage visibility setting
-  * Database truncation
+  * DetailPage visibility setting, use user agent
+  * Memory Leak caused by initiating service client, wrote a wrapper as shared utility
 1. Cross Team, how to communicate them to listen to us.
   * Omiga calling R-T-D in batches. From all at once to reduced load.
+  * Pricing integration, events of sync-async
+  * Pricing duration estimation
 1. Why Facebook?
   * Easily can make impact
   * Contribute to OpenSource
