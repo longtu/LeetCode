@@ -50,15 +50,14 @@ Why Uber
   * Practice
 1. Find all Palidrome subsequences in given string
   * Practice
+1. **Implement TimeTravelingHashTable**
+  * insert(key, value, timestamp)
+  * get(key, timestamp) and get(key) // returns value associated with key at latest time
 
 ##TODO:
-1. Rate limiter (http://blog.gssxgss.me/not-a-simple-problem-rate-limiting/) token bucket, leaky buckt
-1. Implement TimeTravelingHashTable的get和insert方法.
-* TimeTravelingHashTable
-* insert(key, value, timestamp)
-* get(key, timestamp)
-* get(key) // returns value associated with key at latest time
-Coding: Weighted Random Gen
+1. Rate limiter 
+  * [token bucket](http://blog.gssxgss.me/not-a-simple-problem-rate-limiting/)
+1. Weighted Random Gen
 1. CSV parser
 1. Range Sum Query 2D - Immutable,
 1. Range Sum Query 2D - Mutable (know quad tree solution)
